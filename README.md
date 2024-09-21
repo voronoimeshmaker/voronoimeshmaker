@@ -2,12 +2,11 @@
 
 **Version:** 1.0 (In Development)
 
-[![Build Status](https://img.shields.io/github/workflow/status/username/repository/Build)](https://github.com/username/repository/actions)
 [![License](https://img.shields.io/badge/license-GPL-blue)](https://www.gnu.org/licenses/gpl-3.0.html)
 
 ## Description
 
-VoronoiMeshMaker is a Voronoi mesh generator designed for discretizing both 2D and 3D geometries. It is primarily intended for use in programs that apply finite volume methods for solving equations.
+VoronoiMeshMaker is a Voronoi mesh generator designed for discretizing both 2D and 3D geometries. It is primarily intended for use in programs that apply finite volume methods for solving equations differential equations.
 
 ## Table of Contents
 
@@ -82,8 +81,8 @@ This project is licensed under the GNU General Public License (GPL). You can vie
 ## Contact
 
 For support or feedback, please contact:
-- **Email:** [your-email@example.com](mailto:your-email@example.com)
-- **GitHub Issues:** [Link to issues](https://github.com/username/repository/issues)
+- **Email:** [your-email@example.com](mailto:voronoimeshmaker@gmail.com)
+- **GitHub Issues:** [Link to issues](https://github.com/voronoimeshmaker/voronoimeshmaker.git)
 
 ## Credits
 
