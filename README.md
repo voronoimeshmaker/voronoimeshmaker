@@ -2,7 +2,7 @@
 
 **Version:** 1.0 (In Development)
 
-[![License](https://img.shields.io/badge/license-GPL-blue)](https://www.gnu.org/licenses/gpl-3.0.html)
+[![License]](https://www.gnu.org/licenses/gpl-3.0.html)
 
 ## Description
 
