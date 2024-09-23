@@ -1,0 +1,104 @@
+# Doxyfile template for VoronoiMeshMaker
+
+# Project related settings
+PROJECT_NAME           = VoronoiMeshMaker
+PROJECT_NUMBER         = 1.0
+OUTPUT_DIRECTORY       = /mnt/d/Desenvolvimento/VoronoiMeshMaker/docs_sphinx/doxygen
+OUTPUT_LANGUAGE        = English
+BRIEF_MEMBER_DESC      = YES
+REPEAT_BRIEF           = YES
+ALWAYS_DETAILED_SEC    = NO
+INLINE_INHERITED_MEMB  = YES
+FULL_PATH_NAMES        = YES
+STRIP_FROM_PATH        = /mnt/d/Desenvolvimento/VoronoiMeshMaker
+STRIP_FROM_INC_PATH    = /mnt/d/Desenvolvimento/VoronoiMeshMaker
+OPTIMIZE_OUTPUT_FOR_C  = NO
+OPTIMIZE_OUTPUT_JAVA   = NO
+BUILTIN_STL_SUPPORT    = YES
+CPP_CLI_SUPPORT        = NO
+MARKDOWN_SUPPORT       = YES
+DISTRIBUTE_GROUP_DOC   = NO
+SUBGROUPING            = YES
+TAB_SIZE               = 4
+SHOW_NAMESPACES        = YES
+
+# Build related configuration options
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = NO
+EXTRACT_STATIC         = NO
+EXTRACT_LOCAL_METHODS  = YES
+EXTRACT_ANON_NSPACES   = YES
+HIDE_UNDOC_MEMBERS     = NO
+HIDE_UNDOC_CLASSES     = NO
+HIDE_FRIEND_COMPOUNDS  = NO
+HIDE_IN_BODY_DOCS      = NO
+INTERNAL_DOCS          = NO
+CASE_SENSE_NAMES       = YES
+HIDE_SCOPE_NAMES       = NO
+SHOW_INCLUDE_FILES     = YES
+SHOW_USED_FILES        = YES
+SHOW_FILES             = YES
+SHOW_NAMESPACES        = YES
+QUIET                  = NO
+WARN_IF_UNDOCUMENTED   = YES
+WARN_NO_PARAMDOC       = YES
+WARN_FORMAT            = "$file:$line: $text"
+WARN_LOGFILE           = 
+
+# Input and output
+INPUT                  = /mnt/d/Desenvolvimento/VoronoiMeshMaker/include /mnt/d/Desenvolvimento/VoronoiMeshMaker/src  /mnt/d/Desenvolvimento/VoronoiMeshMaker/README.md
+FILE_PATTERNS          = *.h *.hpp *.cpp *.tpp *.md
+RECURSIVE              = YES
+EXCLUDE                = 
+EXCLUDE_SYMLINKS       = NO
+EXCLUDE_PATTERNS       = 
+EXCLUDE_SYMBOLS        = 
+EXAMPLE_PATH           = 
+EXAMPLE_PATTERNS       = 
+EXAMPLE_RECURSIVE      = NO
+IMAGE_PATH             = 
+INPUT_ENCODING         = UTF-8
+
+# Output formats
+GENERATE_HTML          = YES
+HTML_OUTPUT            = html
+HTML_FILE_EXTENSION    = .html
+HTML_COLORSTYLE_HUE    = 220
+HTML_COLORSTYLE_SAT    = 100
+HTML_COLORSTYLE_GAMMA  = 80
+HTML_DYNAMIC_SECTIONS  = YES
+GENERATE_DOCSET        = NO
+GENERATE_HTMLHELP      = NO
+GENERATE_QHP           = NO
+QCH_FILE               = 
+QHP_NAMESPACE          = 
+QHP_VIRTUAL_FOLDER     = 
+QHP_CUST_FILTER_NAME   = 
+QHP_CUST_FILTER_ATTRS  = 
+GENERATE_ECLIPSEHELP   = NO
+DISABLE_INDEX          = NO
+GENERATE_TREEVIEW      = YES
+ENUM_VALUES_PER_LINE   = 4
+TREEVIEW_WIDTH         = 250
+
+# LaTeX output configuration
+GENERATE_LATEX         = NO
+
+# Man page output configuration
+GENERATE_MAN           = NO
+
+# XML output configuration
+GENERATE_XML           = YES
+
+# Diagrams
+HAVE_DOT               = YES
+DOT_NUM_THREADS        = 4
+DOT_IMAGE_FORMAT       = svg
+DOT_PATH               = 
+DOTFILE_DIRS           = 
+MAX_DOT_GRAPH_WIDTH    = 1024
+MAX_DOT_GRAPH_HEIGHT   = 1024
+DOT_TRANSPARENT        = YES
+DOT_MULTI_TARGETS      = YES
+GENERATE_LEGEND        = YES
+DOT_CLEANUP            = YES
