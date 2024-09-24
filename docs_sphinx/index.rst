@@ -1,13 +1,11 @@
-.. VoronoiMeshMaker documentation master file, created by
-   sphinx-quickstart on Mon Sep 25 2024.
-
 VoronoiMeshMaker's Documentation!
-============================================
+=================================
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:   
-    introduction
+   :caption: Contents:
+
+   introduction
    installation
    api_reference
    examples

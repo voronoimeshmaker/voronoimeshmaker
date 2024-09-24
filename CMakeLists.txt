@@ -108,7 +108,7 @@ if(DOXYGEN_FOUND)
     # Add custom target for generating Doxygen documentation
     add_custom_target(doxygen_doc ALL
         COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYFILE_OUT}
-        WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/docs_sphinx
         COMMENT "Generating API documentation with Doxygen"
         VERBATIM
     )
@@ -127,6 +127,9 @@ if(SPHINX_EXECUTABLE)
         COMMENT "Generating documentation with Sphinx"
         VERBATIM
     )
+
+    # Make sphinx_doc depend on doxygen_doc
+    add_dependencies(sphinx_doc doxygen_doc)
 else()
     message(WARNING "Sphinx not found, Sphinx documentation will not be generated.")
 endif()

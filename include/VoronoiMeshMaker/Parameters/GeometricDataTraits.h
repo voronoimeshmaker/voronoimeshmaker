@@ -1,96 +1,185 @@
+//==============================================================================
+// Name        : GeometricDataTraits.h
+// Author      : Joao Flavio Vieira de Vasconcellos
+// Version     : 1.0
+// Description : Defines the GeometricDataTraits structure used for identifying 
+//               and working with different data types.
+//               This file is part of the 'parameters' group of utility files.
+//
+// Copyright   : Copyright (C) 2024 Joao Flavio Vasconcellos
+//               (jflavio at iprj.uerj.br)
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program. If not, see <http://www.gnu.org/licenses/>.
+//==============================================================================
+
 /**
  * @file GeometricDataTraits.h
- * @brief Defines the GeometricDataTraits structure used for identifying and working with different data types.
+ * @brief Defines the `GeometricDataTraits` structure used for type identification and operations on various data types.
+ * 
+ * This file defines a generic trait structure, `GeometricDataTraits`, that provides type information
+ * and possible operations for different data types used in the `GeometricDataHolder` class.
+ * Specializations of this trait structure are provided for specific data types used in computational geometry.
  * 
  * @ingroup parameters
- * 
- * This file defines a generic trait structure, `GeometricDataTraits`, that provides type information and possible
- * operations for different data types.
- * 
  * @version 1.0
  * @date 2024
  * 
  * Licensed under the GNU General Public License, version 3.
  */
 
-#ifndef __VORONOIFVMAKER_DATATRAITS_H__
-#define __VORONOIFVMAKER_DATATRAITS_H__
+#ifndef __VORONOIMESHMAKER_GEOMETRICDATATRAITS_H__
+#define __VORONOIMESHMAKER_GEOMETRICDATATRAITS_H__
 
 //==============================================================================
-//  c++ include
+//  C++ includes
 //==============================================================================
-#include <string_view>
 
-//==============================================================================
-//  VoronoiMeshMaker include
-//==============================================================================
-#include <VoronoiMeshMaker/Misc/configure.h>
+//#include <list>
+//#include <vector>
 
 
+//==============================================================================
+//  VoronoiMeshMaker includes
+//==============================================================================
+
+#include <VoronoiMeshMaker/Misc/type.h>
 
 VORMAKER_NAMESPACE_OPEN
 
+/**
+ * @brief Traits structure used for identifying and working with different data types.
+ * 
+ * The `GeometricDataTraits` structure provides a way to extract type information (such as type names)
+ * for supported data types in the `GeometricDataHolder` class. Specializations are provided for
+ * each data type that the system handles.
+ * 
+ * @tparam T The data type for which traits are provided.
+ */
+template<typename T>
+struct GeometricDataTraits {
     /**
-     * @struct GeometricDataTraits
-     * @brief A generic trait structure for identifying and describing different data types.
+     * @brief Returns the name of the data type as a string.
      * 
-     * Provides type information and operations for the data types used in the DataHolder class.
-     * Specializations of this template will be provided for each supported data type.
-     * 
-     * @tparam T The type of the data.
+     * This method provides a way to get a human-readable name for the data type.
+     * @return const char* The name of the data type.
      */
-    template<typename T>
-    struct GeometricDataTraits;
+    static const char* name() {
+        return "Unknown";
+    }
+};
 
-    /// Specialization for int
-    template<>
-    struct GeometricDataTraits<int> {
-        static std::string name() { return "Integer"; }
-        static constexpr bool is_arithmetic = true;
-    };
+//==============================================================================
+// Specializations for supported types
+//==============================================================================
 
-    /// Specialization for double
-    template<>
-    struct GeometricDataTraits<Real> {
-        static std::string name() { return "Real"; }
-        static constexpr bool is_arithmetic = true;
-    };
+template<>
+struct GeometricDataTraits<int> {
+    static const char* name() {
+        return "int";
+    }
+};
 
-    /// Specialization for Point2D
-    template<>
-    struct GeometricDataTraits<gtp::Point2D> {
-        static std::string name() { return "Point 2D"; }
-        static constexpr bool is_arithmetic = false;
-    };
+template<>
+struct GeometricDataTraits<Real> {
+    static const char* name() {
+        return "Real";
+    }
+};
 
-    /// Specialization for Point3D
-    template<>
-    struct GeometricDataTraits<gtp::Point3D> {
-        static std::string name() { return "Point 3D"; }
-        static constexpr bool is_arithmetic = false;
-    };
+template<>
+struct GeometricDataTraits<gtp::Point2D> {
+    static const char* name() {
+        return "Point2D";
+    }
+};
 
-    /// Specialization for Vector2D
-    template<>
-    struct GeometricDataTraits<gtp::Vector2D> {
-        static std::string name() { return "Vector 2D"; }
-        static constexpr bool is_arithmetic = true;
-    };
+template<>
+struct GeometricDataTraits<gtp::Point3D> {
+    static const char* name() {
+        return "Point3D";
+    }
+};
 
-    /// Specialization for Vector3D
-    template<>
-    struct GeometricDataTraits<gtp::Vector3D> {
-        static std::string name() { return "Vector 3D"; }
-        static constexpr bool is_arithmetic = true;
-    };
+template<>
+struct GeometricDataTraits<gtp::Vector2D> {
+    static const char* name() {
+        return "Vector2D";
+    }
+};
 
-    /// Specialization for Vector3D
-    template<>
-    struct GeometricDataTraits<std::string_view> {
-        static std::string name() { return "std::string_view"; }
-        static constexpr bool is_arithmetic = false;
-    };
+template<>
+struct GeometricDataTraits<gtp::Vector3D> {
+    static const char* name() {
+        return "Vector3D";
+    }
+};
+
+template<>
+struct GeometricDataTraits<std::list<int>> {
+    static const char* name() {
+        return "std::list<int>";
+    }
+};
+
+template<>
+struct GeometricDataTraits<std::list<Real>> {
+    static const char* name() {
+        return "std::list<Real>";
+    }
+};
+
+template<>
+struct GeometricDataTraits<std::list<gtp::Point2D>> {
+    static const char* name() {
+        return "std::list<Point2D>";
+    }
+};
+
+template<>
+struct GeometricDataTraits<std::list<gtp::Point3D>> {
+    static const char* name() {
+        return "std::list<Point3D>";
+    }
+};
+
+template<>
+struct GeometricDataTraits<std::vector<int>> {
+    static const char* name() {
+        return "std::vector<int>";
+    }
+};
+
+template<>
+struct GeometricDataTraits<std::vector<Real>> {
+    static const char* name() {
+        return "std::vector<Real>";
+    }
+};
+
+template<>
+struct GeometricDataTraits<std::vector<gtp::Point2D>> {
+    static const char* name() {
+        return "std::vector<Point2D>";
+    }
+};
+
+template<>
+struct GeometricDataTraits<std::vector<gtp::Point3D>> {
+    static const char* name() {
+        return "std::vector<Point3D>";
+    }
+};
 
 VORMAKER_NAMESPACE_CLOSE
 
-#endif // __VORONOIFVMAKER_DATATRAITS_H__
+#endif // __VORONOIMESHMAKER_GEOMETRICDATATRAITS_H__

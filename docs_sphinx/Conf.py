@@ -3,7 +3,7 @@
 import os
 import sys
 
-# Add the project root directory to the Python path for autodoc (if using)
+# Adicionar o diretório raiz do projeto ao sys.path (se necessário)
 sys.path.insert(0, os.path.abspath('../src'))
 
 # -- Project information -----------------------------------------------------
@@ -12,7 +12,7 @@ project = 'VoronoiMeshMaker'
 copyright = '2024, João Flávio Vasconcellos'
 author = 'João Flávio Vasconcellos'
 
-# The full version, including alpha/beta/rc tags
+# A versão completa, incluindo tags alpha/beta/rc
 release = '1.0'
 
 # -- General configuration ---------------------------------------------------
@@ -35,14 +35,16 @@ templates_path = ['_templates']
 exclude_patterns = []
 
 # -- Options for HTML output -------------------------------------------------
+# Base URL for the sitemap
+
+html_baseurl = 'https://voronoimeshmaker.github.io/voronoimeshmaker/'
+
 
 html_theme = 'sphinxdoc'
-
-#html_static_path = ['_static']
 
 # -- Breathe Configuration ---------------------------------------------------
 
 breathe_projects = {
-    "VoronoiMeshMaker": "doxygen/xml"  # Path to the Doxygen XML output
+    "VoronoiMeshMaker": "./doxygen/xml"  # Caminho para a saída XML do Doxygen
 }
 breathe_default_project = "VoronoiMeshMaker"

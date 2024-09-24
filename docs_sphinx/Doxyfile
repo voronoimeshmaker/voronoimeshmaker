@@ -1,17 +1,17 @@
-# Doxyfile template for VoronoiMeshMaker
+# Doxyfile for VoronoiMeshMaker
 
 # Project related settings
 PROJECT_NAME           = VoronoiMeshMaker
 PROJECT_NUMBER         = 1.0
-OUTPUT_DIRECTORY       = /mnt/d/Desenvolvimento/VoronoiMeshMaker/docs_sphinx/doxygen
+OUTPUT_DIRECTORY       = doxygen
 OUTPUT_LANGUAGE        = English
 BRIEF_MEMBER_DESC      = YES
 REPEAT_BRIEF           = YES
 ALWAYS_DETAILED_SEC    = NO
 INLINE_INHERITED_MEMB  = YES
 FULL_PATH_NAMES        = YES
-STRIP_FROM_PATH        = /mnt/d/Desenvolvimento/VoronoiMeshMaker
-STRIP_FROM_INC_PATH    = /mnt/d/Desenvolvimento/VoronoiMeshMaker
+STRIP_FROM_PATH        = ../
+STRIP_FROM_INC_PATH    = ../
 OPTIMIZE_OUTPUT_FOR_C  = NO
 OPTIMIZE_OUTPUT_JAVA   = NO
 BUILTIN_STL_SUPPORT    = YES
@@ -38,15 +38,25 @@ HIDE_SCOPE_NAMES       = NO
 SHOW_INCLUDE_FILES     = YES
 SHOW_USED_FILES        = YES
 SHOW_FILES             = YES
-SHOW_NAMESPACES        = YES
 QUIET                  = NO
 WARN_IF_UNDOCUMENTED   = YES
 WARN_NO_PARAMDOC       = YES
 WARN_FORMAT            = "$file:$line: $text"
 WARN_LOGFILE           = 
 
+# Preprocessing
+ENABLE_PREPROCESSING   = YES
+MACRO_EXPANSION        = YES
+EXPAND_ONLY_PREDEF     = NO
+SKIP_FUNCTION_MACROS   = NO
+
+# Define macros for namespace expansion
+PREDEFINED             = \
+    VORMAKER_NAMESPACE_OPEN=namespace Vormaker {,\
+    VORMAKER_NAMESPACE_CLOSE=}
+
 # Input and output
-INPUT                  = /mnt/d/Desenvolvimento/VoronoiMeshMaker/include /mnt/d/Desenvolvimento/VoronoiMeshMaker/src  /mnt/d/Desenvolvimento/VoronoiMeshMaker/README.md
+INPUT                  = ../include ../src ../README.md
 FILE_PATTERNS          = *.h *.hpp *.cpp *.tpp *.md
 RECURSIVE              = YES
 EXCLUDE                = 
@@ -58,6 +68,8 @@ EXAMPLE_PATTERNS       =
 EXAMPLE_RECURSIVE      = NO
 IMAGE_PATH             = 
 INPUT_ENCODING         = UTF-8
+# Output directory
+
 
 # Output formats
 GENERATE_HTML          = YES
@@ -89,6 +101,7 @@ GENERATE_MAN           = NO
 
 # XML output configuration
 GENERATE_XML           = YES
+XML_OUTPUT             = xml
 
 # Diagrams
 HAVE_DOT               = YES

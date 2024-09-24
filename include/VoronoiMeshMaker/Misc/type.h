@@ -2,10 +2,10 @@
 // Name        : type.h
 // Author      : Joao Flavio Vieira de Vasconcellos
 // Version     : 1.0
-// Description : Header file with the definitions of the most common variables
-//               in the library. This file is part of the 'misc' group of utility files.
+// Description : Header file with the definitions of common types used in the library.
+//               Part of the 'misc' group of utility files.
 //
-// Copyright   : Copyright (C) 2024 Joao Flavio Vasconcellos
+// Copyright   : Copyright (C) 2024 Joao Flavio Vieira de Vasconcellos
 //               (jflavio at iprj.uerj.br)
 //
 // This program is free software: you can redistribute it and/or modify
@@ -21,184 +21,142 @@
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 //==============================================================================
 
+/**
+ * @file type.h
+ * @brief Defines common geometric and numeric types used in the VoronoiMeshMaker library.
+ * 
+ * This file defines key types used in computational geometry and numerical calculations.
+ * Types such as points, segments, vectors, and polygons in 2D and 3D are defined here, 
+ * along with smart pointers for memory management.
+ * 
+ * @ingroup misc
+ * @version 1.0
+ * @date 2024
+ * 
+ * Licensed under the GNU General Public License, version 3.
+ */
+
 #ifndef __VORONOIFVMAKER_TYPE_H__
 #define __VORONOIFVMAKER_TYPE_H__
 
 //==============================================================================
-//  c++ include
+//  C++ includes
 //==============================================================================
 
 #include <memory>
 #include <list>
+#include <vector>
 
 //==============================================================================
-//  CGAL include
+//  CGAL includes
 //==============================================================================
 
 #include <CGAL/Exact_predicates_inexact_constructions_kernel.h>
 #include <CGAL/Polygon_2.h>
 #include <CGAL/Polyhedron_3.h>
 
-/**
- * @ingroup misc
- * @brief Namespace for the VoronoiMeshMaker library.
- * 
- * This namespace contains the constants and configurations used across the
- * VoronoiMeshMaker library.
- */
+//==============================================================================
+//  VoronoiMeshMaker includes
+//==============================================================================
 
-#define VORMAKER_NAMESPACE_OPEN namespace vmm {
-#define VORMAKER_NAMESPACE_CLOSE }
+#include <VoronoiMeshMaker/Misc/namespace.h>
 
-        
-#define GEOTYPES_NAMESPACE_OPEN namespace gtp {
-#define GEOTYPES_NAMESPACE_CLOSE }
-
-        
-        
 VORMAKER_NAMESPACE_OPEN
 GEOTYPES_NAMESPACE_OPEN
-//==============================================================================
-//  Type Definitions
-//==============================================================================
 
-    /**
-     * @ingroup misc
-     * @brief Defines the kernel used in CGAL.
-     */
-    using Kernel = CGAL::Exact_predicates_inexact_constructions_kernel;
+/// Defines the kernel used in CGAL computations.
+using Kernel = CGAL::Exact_predicates_inexact_constructions_kernel;
 
-    /**
-     * @ingroup misc
-     * @brief Defines a 2D point type.
-     */
-    using Point2D = Kernel::Point_2;
+/// 2D point type.
+using Point2D = Kernel::Point_2;
 
-    /**
-     * @ingroup misc
-     * @brief Defines a 3D point type.
-     */
-    using Point3D = Kernel::Point_3;
+/// 3D point type.
+using Point3D = Kernel::Point_3;
 
-    /**
-     * @ingroup misc
-     * @brief Defines a 2D segment type.
-     */
-    using Segment2D = Kernel::Segment_2;
+/// 2D segment type.
+using Segment2D = Kernel::Segment_2;
 
-    /**
-     * @ingroup misc
-     * @brief Defines a 3D segment type.
-     */
-    using Segment3D = Kernel::Segment_3;
+/// 3D segment type.
+using Segment3D = Kernel::Segment_3;
 
-    /**
-     * @ingroup misc
-     * @brief Defines a 2D ray type.
-     */
-    using Ray2D = Kernel::Ray_2;
+/// 2D ray type.
+using Ray2D = Kernel::Ray_2;
 
-    /**
-     * @ingroup misc
-     * @brief Defines a 3D ray type.
-     */
-    using Ray3D = Kernel::Ray_3;
+/// 3D ray type.
+using Ray3D = Kernel::Ray_3;
 
-    /**
-     * @ingroup misc
-     * @brief Defines a 2D vector type.
-     */
-    using Vector2D = Kernel::Vector_2;
+/// 2D vector type.
+using Vector2D = Kernel::Vector_2;
 
-    /**
-     * @ingroup misc
-     * @brief Defines a 3D vector type.
-     */
-    using Vector3D = Kernel::Vector_3;
+/// 3D vector type.
+using Vector3D = Kernel::Vector_3;
 
-    /**
-     * @ingroup misc
-     * @brief Defines a 2D polygon type.
-     */
-    using Polygon2D = CGAL::Polygon_2<Kernel>;
+/// 2D polygon type.
+using Polygon2D = CGAL::Polygon_2<Kernel>;
 
-    /**
-     * @ingroup misc
-     * @brief Defines a 2D polyhedron type.
-     */
-    using Polyhedron3D = CGAL::Polyhedron_3<Kernel>;
+/// 3D polyhedron type.
+using Polyhedron3D = CGAL::Polyhedron_3<Kernel>;
 
-    /**
-     * @ingroup misc
-     * @brief Defines a smart pointer type for 2D polygons.
-     */
-    using PtrPolygon2D = std::unique_ptr<Polygon2D>;
+/// Smart pointer to 2D polygon.
+using PtrPolygon2D = std::unique_ptr<Polygon2D>;
 
-    /**
-     * @ingroup misc
-     * @brief Defines a smart pointer type for 3D polyhedron.
-     */
-    using PtrPolyhedron3D = std::unique_ptr<Polyhedron3D>;
+/// Smart pointer to 3D polyhedron.
+using PtrPolyhedron3D = std::unique_ptr<Polyhedron3D>;
 
-    /**
-     * @ingroup misc
-     * @brief Defines a smart pointer type for const 2D polygons.
-     */
-    using PtrConstPolygon2D = std::unique_ptr<const Polygon2D>;
+/// Smart pointer to const 2D polygon.
+using PtrConstPolygon2D = std::unique_ptr<const Polygon2D>;
 
-    /**
-     * @ingroup misc
-     * @brief Defines a smart pointer type for const 3D polyhedron.
-     */
-    using PtrConstPolyhedron3D = std::unique_ptr<const Polyhedron3D>;
+/// Smart pointer to const 3D polyhedron.
+using PtrConstPolyhedron3D = std::unique_ptr<const Polyhedron3D>;
 
-    /**
-     * @ingroup misc
-     * @brief Defines a list type for 2D points.
-     */
-    using LstPoint2D = std::list<Point2D>;
+/// List of 2D points.
+using LstPoint2D = std::list<Point2D>;
 
-    /**
-     * @ingroup misc
-     * @brief Defines a list type for 3D points.
-     */
-    using LstPoint3D = std::list<Point3D>;
+/// List of 3D points.
+using LstPoint3D = std::list<Point3D>;
 
-//==============================================================================
-//  Enum to Classify Geometry Types
-//==============================================================================
+/// Vector of 2D points.
+using VecPoint2D = std::vector<Point2D>;
 
-    /**
-     * @ingroup misc
-     * @brief Enum to classify different geometry types.
-     * 
-     * This enum helps in distinguishing between different geometric types
-     * when processing various objects in the VoronoiMeshMaker library.
-     */
-    enum class GeometryType {
-        Point2D,
-        Point3D,
-        Segment2D,
-        Segment3D,
-        Ray2D,
-        Ray3D,
-        Vector2D,
-        Vector3D,
-        Polygon2D,
-        Polyhedron3D
-    };
+/// Vector of 3D points.
+using VecPoint3D = std::vector<Point3D>;
+
+/**
+ * @ingroup misc
+ * @brief Enum to classify different geometry types.
+ * 
+ * This enum is used to distinguish between different types of geometric
+ * objects in the VoronoiMeshMaker library.
+ */
+enum class GeometryType {
+    Point2D,   ///< 2D point type.
+    Point3D,   ///< 3D point type.
+    Segment2D, ///< 2D segment type.
+    Segment3D, ///< 3D segment type.
+    Ray2D,     ///< 2D ray type.
+    Ray3D,     ///< 3D ray type.
+    Vector2D,  ///< 2D vector type.
+    Vector3D,  ///< 3D vector type.
+    Polygon2D, ///< 2D polygon type.
+    Polyhedron3D ///< 3D polyhedron type.
+};
 
 GEOTYPES_NAMESPACE_CLOSE
 VORMAKER_NAMESPACE_CLOSE
 
-    /**
-     * @ingroup misc
-     * @brief Defines the real number type based on the Kernel.
-     * 
-     * The `FT` type defined by the Kernel is a field type used for all real numbers
-     * in geometric computations. By using this, we ensure consistency across the library.
-     */
-    using Real = vmm::gtp::Kernel::FT;
+/// Real number type based on the CGAL kernel.
+using Real = vmm::gtp::Kernel::FT;
 
+/// List of integers.
+using LstInt = std::list<int>;
+
+/// Vector of integers.
+using VecInt = std::vector<int>;
+
+/// List of Real numbers.
+using LstReal = std::list<Real>;
+
+/// Vector of Real numbers.
+using VecReal = std::vector<Real>;
 
 #endif // __VORONOIFVMAKER_TYPE_H__

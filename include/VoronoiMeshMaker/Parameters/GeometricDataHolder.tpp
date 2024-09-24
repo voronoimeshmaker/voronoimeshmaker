@@ -1,3 +1,27 @@
+//==============================================================================
+// Name        : GeometricDataHolder.tpp
+// Author      : Joao Flavio Vieira de Vasconcellos
+// Version     : 1.0
+// Description : Template implementations for the GeometricDataHolder class.
+//               This file contains the template function implementations for
+//               the GeometricDataHolder class.
+//
+// Copyright   : Copyright (C) 2024 Joao Flavio Vasconcellos
+//               (jflavio at iprj.uerj.br)
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program. If not, see <http://www.gnu.org/licenses/>.
+//==============================================================================
+
 /**
  * @file GeometricDataHolder.tpp
  * @brief Template implementations for the GeometricDataHolder class.
@@ -10,6 +34,8 @@
  * 
  * @version 1.0
  * @date 2024
+ * 
+ * Licensed under the GNU General Public License, version 3.
  */
 
 VORMAKER_NAMESPACE_OPEN
@@ -36,7 +62,24 @@ VORMAKER_NAMESPACE_OPEN
         for (const auto& [key, value] : holder.data_) {
             os << key << ": ";
             std::visit([&os](auto&& arg) {
-                os << arg;
+                using T = std::decay_t<decltype(arg)>;
+                if constexpr (std::is_same_v<T, std::list<int>> || std::is_same_v<T, std::list<Real>> ||
+                              std::is_same_v<T, std::list<vmm::gtp::Point2D>> || std::is_same_v<T, std::list<vmm::gtp::Point3D>>) {
+                    os << "[ ";
+                    for (const auto& elem : arg) {
+                        os << elem << " ";
+                    }
+                    os << "]";
+                } else if constexpr (std::is_same_v<T, std::vector<int>> || std::is_same_v<T, std::vector<Real>> ||
+                                     std::is_same_v<T, std::vector<vmm::gtp::Point2D>> || std::is_same_v<T, std::vector<vmm::gtp::Point3D>>) {
+                    os << "[ ";
+                    for (const auto& elem : arg) {
+                        os << elem << " ";
+                    }
+                    os << "]";
+                } else {
+                    os << arg;
+                }
             }, value);
             os << std::endl;
         }

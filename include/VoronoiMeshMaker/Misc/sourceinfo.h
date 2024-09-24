@@ -2,8 +2,8 @@
 // Name        : sourceinfo.h
 // Author      : Joao Flavio Vieira de Vasconcellos
 // Version     : 1.0
-// Description : Class that provides information about the source of an error in a function.
-//               This file is part of the 'misc' group of utility files.
+// Description : Provides information about the source of an error in a function.
+//               Part of the 'misc' group of utility files.
 //
 // Copyright   : Copyright (C) 2024 Joao Flavio Vasconcellos
 //               (jflavio at iprj.uerj.br)
@@ -21,98 +21,95 @@
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 //==============================================================================
 
+/**
+ * @file sourceinfo.h
+ * @brief Provides information about the source of an error or event in a function.
+ * 
+ * This file defines the SourceInfo class, which captures and stores file, line, and function
+ * information to aid in debugging and tracing errors in the library.
+ * 
+ * @ingroup misc
+ * @version 1.0
+ * @date 2024
+ * 
+ * Licensed under the GNU General Public License, version 3.
+ */
+
 #ifndef __VORONOIFVMAKER_SOURCEINFO_H__
 #define __VORONOIFVMAKER_SOURCEINFO_H__
 
-//==============================================================================
-//  c++ include
-//==============================================================================
-
 #include <string_view>
-
-//==============================================================================
-//  VoronoiMeshMaker include
-//==============================================================================
-
 #include <VoronoiMeshMaker/Misc/Misc.h>
 
 VORMAKER_NAMESPACE_OPEN
 
 /**
  * @ingroup misc
- * @brief Class that provides information about the source of an error in a function.
+ * @brief Class that stores the source of an error or event, including file location, line number, and function name.
  * 
- * This class stores the file location, line number, and function name where an error or
- * event occurred, making it easier to debug and trace.
+ * This class provides a simple way to capture and access information about where an error or event 
+ * occurred, including the file, line, and function name. It is primarily used for debugging and tracing.
  */
 class SourceInfo {
 public:
-//==============================================================================
-// Constructors / Destructor
-//==============================================================================
-
     /**
      * @brief Default constructor.
+     * 
+     * Initializes an empty SourceInfo object.
      */
     constexpr SourceInfo() noexcept = default;
 
     /**
-     * @brief Constructs a SourceInfo object with the provided file, line, and function information.
+     * @brief Constructs a SourceInfo object with file, line, and function details.
      * 
-     * This constructor initializes the SourceInfo object with the location (file), line number, 
-     * and the name of the function where the error or event occurred.
-     * 
-     * @param file A string view representing the file location where the error occurred.
-     * @param line An integer representing the line number where the error occurred.
-     * @param function A string view representing the name of the function where the error occurred.
+     * @param file The name of the file where the event occurred.
+     * @param line The line number where the event occurred.
+     * @param function The name of the function where the event occurred.
      */
     constexpr SourceInfo(std::string_view file, int line, std::string_view function)
         : fileLocation(file), lineLocation(line), functionName(function) {}
 
-//==============================================================================
-// Inline functions to retrieve data
-//==============================================================================
-
     /**
-     * @brief Returns the file location where the error occurred.
+     * @brief Retrieves the file location of the error or event.
      * 
-     * @return A string view representing the file location.
+     * @return The name of the file.
      */
     [[nodiscard]] constexpr std::string_view FileLocation() const { return fileLocation; }
 
     /**
-     * @brief Returns the line number where the error occurred.
+     * @brief Retrieves the line number of the error or event.
      * 
-     * @return An integer representing the line number.
+     * @return The line number.
      */
     [[nodiscard]] constexpr int LineNumber() const { return lineLocation; }
 
     /**
-     * @brief Returns the function name where the error occurred.
+     * @brief Retrieves the function name of the error or event.
      * 
-     * @return A string view representing the function name.
+     * @return The function name.
      */
     [[nodiscard]] constexpr std::string_view FunctionName() const { return functionName; }
 
 private:
-//==============================================================================
-// Private member variables (immutable)
-//==============================================================================
-
-    const std::string_view fileLocation;  //!< The file location where the error occurred
-    const int lineLocation;               //!< The line number where the error occurred
-    const std::string_view functionName;  //!< The name of the function where the error occurred
+    const std::string_view fileLocation;  //!< File location of the event.
+    const int lineLocation;               //!< Line number of the event.
+    const std::string_view functionName;  //!< Function name of the event.
 };
 
 /**
- * @brief Function to capture current file, line, and function information.
+ * @brief Captures the current file, line, and function information.
  * 
- * This function captures the current file location, line number, and function name
- * using the predefined macros __FILE__, __LINE__, and __func__.
+ * This function uses predefined macros (`__FILE__`, `__LINE__`, `__func__`) to capture
+ * the current source information and return a SourceInfo object.
  * 
+ * @param file The name of the file.
+ * @param line The line number.
+ * @param function The name of the function.
  * @return A SourceInfo object with the captured information.
  */
-constexpr SourceInfo CaptureSourceInfo(const char* file, int line, const char* function);
+constexpr SourceInfo CaptureSourceInfo(const char* file, int line, const char* function) {
+    return SourceInfo(file, line, function);
+}
 
 VORMAKER_NAMESPACE_CLOSE
 
