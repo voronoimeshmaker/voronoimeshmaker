@@ -28,23 +28,47 @@ extensions = [
     'sphinx.ext.viewcode',
     'sphinx_sitemap',
     'sphinx.ext.inheritance_diagram',
-    'breathe'
+    'breathe'  # Breathe é necessário para integrar com o Doxygen
 ]
 
 templates_path = ['_templates']
 exclude_patterns = []
 
 # -- Options for HTML output -------------------------------------------------
-# Base URL for the sitemap
-
-html_baseurl = 'https://voronoimeshmaker.github.io/voronoimeshmaker/'
-
 
 html_theme = 'sphinxdoc'
+html_static_path = ['_static']
+
+# Base URL for the sitemap (importante para gerar sitemap)
+html_baseurl = 'https://voronoimeshmaker.github.io/voronoimeshmaker/'
 
 # -- Breathe Configuration ---------------------------------------------------
 
+# Define o caminho para o XML gerado pelo Doxygen
 breathe_projects = {
-    "VoronoiMeshMaker": "./doxygen/xml"  # Caminho para a saída XML do Doxygen
+    "VoronoiMeshMaker": "../build/doxygen/xml"  # Caminho para a saída XML gerada pelo Doxygen
 }
 breathe_default_project = "VoronoiMeshMaker"
+
+# -- Options for Sphinx Sitemap ----------------------------------------------
+
+# Configuração para o sitemap gerado pelo sphinx_sitemap
+sitemap_url_scheme = "{link}"
+
+# -- Autosectionlabel configuration ------------------------------------------
+
+# Garante que rótulos de seções possam ser referenciados sem colisão
+autosectionlabel_prefix_document = True
+
+# -- Intersphinx configuration -----------------------------------------------
+
+# Configura links para documentações externas
+intersphinx_mapping = {
+    'python': ('https://docs.python.org/3/', None),
+    # Outros mapeamentos podem ser adicionados aqui
+}
+
+# -- Todo extension configuration --------------------------------------------
+
+# Ativa ou desativa a exibição de itens "TODO" na documentação
+todo_include_todos = True

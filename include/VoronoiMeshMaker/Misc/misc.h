@@ -39,7 +39,17 @@
 #ifndef __VORONOMESHVMAKER_MISC_H__
 #define __VORONOMESHVMAKER_MISC_H__
 
+
+//==============================================================================
+//  C++ includes
+//==============================================================================
+
 #include <filesystem>
+
+//==============================================================================
+//  VoronoiMeshMaker includes
+//==============================================================================
+
 #include <VoronoiMeshMaker/Misc/configure.h>
 
 VORMAKER_NAMESPACE_OPEN

@@ -1,51 +1,59 @@
-//==============================================================================
-// Name        : ShapeFactory.cpp
-// Author      : Joao Flavio Vieira de Vasconcellos
-// Version     : 1.0
-// Description : Implementation of ShapeFactory class.
-//
-// Copyright   : Copyright (C) 2024 Joao Flavio Vasconcellos
-//               (jflavio at iprj.uerj.br)
-//
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program. If not, see <http://www.gnu.org/licenses/>.
-//==============================================================================
+#ifndef __VORONOIMESHMAKER_SHAPEFACTORY_H__
+#define __VORONOIMESHMAKER_SHAPEFACTORY_H__
 
-#include <VoronoiMeshMaker/Geometry/ShapeFactory.h>
+#include <map>
+#include <functional>
+#include <memory>
+#include <stdexcept>
+#include <VoronoiMeshMaker/Shape/Shape.h>
+#include <VoronoiMeshMaker/Parameters/GeometricDataHolder.h>
 
 VORMAKER_NAMESPACE_OPEN
 
-template<typename T>
-size_t ShapeFactory::getKey() {
-    return typeid(T).hash_code();  // Get a unique key based on the type
-}
+/**
+ * @class ShapeFactory
+ * @brief Factory for creating shape objects dynamically based on type registration.
+ * 
+ * This factory uses a registration mechanism to associate shape creation functions with a unique ClassID,
+ * enabling shapes to be created dynamically based on this ID.
+ */
+class ShapeFactory {
+public:
+    /**
+     * @brief Registers a shape type in the factory using its ClassID.
+     * 
+     * This function associates a ClassID with a function that creates an instance of the shape
+     * when provided with a GeometricDataHolder.
+     * 
+     * @tparam T The type of shape to be registered.
+     */
+    template <typename T>
+    static void registerShape() {
+        static_assert(std::is_base_of<Shape, T>::value, "T must derive from Shape");
 
-template<typename T>
-void ShapeFactory::registerShape() {
-    registry_[getKey<T>()] = [](const GeometricDataHolder& data) -> std::unique_ptr<Shape> {
-        return std::make_unique<T>(data);
-    };
-}
-
-template<int Dimension, typename ShapeType>
-std::unique_ptr<Shape> ShapeFactory::createShape(const GeometricDataHolder& data) {
-    size_t key = getKey<ShapeType>();
-    auto it = registry_.find(key);
-
-    if (it == registry_.end()) {
-        throw ShapeException("Shape not registered.");
+        shapeRegistry[T::getClassID()] = [](const GeometricDataHolder& data) -> std::unique_ptr<Shape> {
+            return std::make_unique<T>(data);
+        };
     }
 
-    return it->second(data);  // Call the corresponding constructor
-}
+    /**
+     * @brief Creates a shape based on its ClassID.
+     * 
+     * Finds the associated shape creation function in the registry using the provided ClassID and
+     * returns a unique pointer to the newly created shape, initialized with the provided data.
+     * 
+     * @param classID The unique ID of the shape to create.
+     * @param data The geometric data used to initialize the shape.
+     * @return std::unique_ptr<Shape> A unique pointer to the created shape.
+     * @throws std::runtime_error if the ClassID is not found in the registry.
+     */
+    static std::unique_ptr<Shape> createShape(ClassID classID, const GeometricDataHolder& data);
+
+private:
+    /// Registry mapping ClassIDs to shape creation functions.
+    static std::map<ClassID, std::function<std::unique_ptr<Shape>(const GeometricDataHolder&)>> shapeRegistry;
+};
 
 VORMAKER_NAMESPACE_CLOSE
+
+#endif // __VORONOIMESHMAKER_SHAPEFACTORY_H__

@@ -42,22 +42,13 @@
 #ifndef __VORONOIMESHMAKER_DATAHOLDER_H__
 #define __VORONOIMESHMAKER_DATAHOLDER_H__
 
-//==============================================================================
-//  C++ includes
-//==============================================================================
-
-#include <iostream>
-#include <memory>
-#include <variant>
-#include <map>
-#include <optional>
 
 //==============================================================================
 //  VoronoiMeshMaker includes
 //==============================================================================
 
-#include <VoronoiMeshMaker/Misc/type.h>
-#include <VoronoiMeshMaker/Misc/ID.h>
+//#include <VoronoiMeshMaker/Misc/type.h>
+#include <VoronoiMeshMaker/Misc/ID.h>                   // class ID
 #include <VoronoiMeshMaker/Parameters/GeometricDataTraits.h>
 
 VORMAKER_NAMESPACE_OPEN
@@ -132,13 +123,6 @@ public:
      */
     friend std::ostream& operator<<(std::ostream& os, const GeometricDataHolder& holder);
 
-    /**
-     * @brief Prints the types of all stored values in the GeometricDataHolder.
-     * 
-     * This method prints the type of each variable stored in the map using the DataTraits structure.
-     */
-    void printTypes() const;
-
 private:
     /**
      * @brief The internal map storing the variables, where each variable is identified by a string key.
@@ -150,4 +134,12 @@ VORMAKER_NAMESPACE_CLOSE
 
 #include <VoronoiMeshMaker/Parameters/GeometricDataHolder.tpp>
 
+        
+//==============================================================================
+// Typedefs
+//==============================================================================
+
+using PtrGeometricDataHolder = std::unique_ptr<vmm::GeometricDataHolder>;
+using PtrConstGeometricDataHolder = std::unique_ptr<vmm::GeometricDataHolder const>;
+        
 #endif // __VORONOIMESHMAKER_DATAHOLDER_H__

@@ -41,7 +41,17 @@
 #ifndef __VORONOMESHVMAKER_ID_H__
 #define __VORONOMESHVMAKER_ID_H__
 
+
+//==============================================================================
+//  C++ includes
+//==============================================================================
+
 #include <string_view>
+
+//==============================================================================
+//  VoronoiMeshMaker includes
+//==============================================================================
+
 #include <VoronoiMeshMaker/Misc/configure.h>
 
 VORMAKER_NAMESPACE_OPEN
@@ -54,10 +64,14 @@ VORMAKER_NAMESPACE_OPEN
  * for easy comparison and distinction between classes.
  */
 enum class ClassID {
-    None,                 ///< Represents no class or an uninitialized class.
-    GeometricDataHolder,  ///< Identifier for the GeometricDataHolder class.
-    Shape2D,  ///< Identifier for the Shape2D class.
-    MarkerException       ///< Identifier for the MarkerException class.
+    None,                               ///< Represents no class or an uninitialized class.
+    Ellipse,                            ///< Identifier for the Ellipse class.
+    ExportStrategy,                     ///< Identifier for the ExportStrategy class.
+    GeometricDataHolder,                ///< Identifier for the GeometricDataHolder class.
+    Rectangle,                          ///< Identifier for the Rectangle class.
+    Shape2D,                            ///< Identifier for the Shape2D class.
+    Star,                               ///< Identifier for the Star class.
+    MarkerException                     ///< Identifier for the MarkerException class.
     // Add other class IDs here as needed.
 };
 

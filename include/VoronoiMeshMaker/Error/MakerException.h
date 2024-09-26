@@ -48,14 +48,15 @@ enum class VMMExceptionIndex {
     WrongAlpha,
     WrongDelta,
     WrongNNodes,
-    NegativeLength,
+    NEGATIVELENGHT,
     WrongNPoints,
     GridGenerationProblem,
     NullOffsetPolygon,
     IOToolsDuplicateKey,
     IOToolsFail,
     IOToolsFileMissing,
-    IOToolsNotFound
+    IOToolsNotFound,
+    DATANOTAVAILABLE
 };
 
 /**

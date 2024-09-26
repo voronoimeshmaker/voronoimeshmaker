@@ -1,20 +1,28 @@
 API Reference
 =============
 
-This section provides a detailed API reference for the **VoronoiMeshMaker** library.
+This section provides a detailed API reference for the VoronoiMeshMaker library.
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+Shapes and Meshes
+-----------------
 
-Namespace `vmm`
----------------
-.. doxygennamespace:: vmm
-   :project: VoronoiMeshMaker
+.. doxygenclass:: VoronoiMeshMaker::Shape
    :members:
 
-Namespace `gtp`
----------------
-.. doxygennamespace:: gtp
-   :project: VoronoiMeshMaker
+.. doxygenclass:: VoronoiMeshMaker::ShapeFactory
+   :members:
+
+.. doxygenclass:: VoronoiMeshMaker::Shape2D
+   :members:
+
+.. doxygenclass:: VoronoiMeshMaker::Shape3D
+   :members:
+
+.. doxygenclass:: VoronoiMeshMaker::VoronoiMeshMaker
+   :members:
+
+Error Handling
+--------------
+
+.. doxygenclass:: VoronoiMeshMaker::MakerException
    :members:

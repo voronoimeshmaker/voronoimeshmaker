@@ -1,19 +1,38 @@
 Examples
 ========
 
-Here are some usage examples for the **VoronoiMeshMaker** library:
+Here are some examples demonstrating how to use VoronoiMeshMaker.
 
-Basic Usage Example
--------------------
+Basic Voronoi Mesh
+------------------
 
-This is a simple example that demonstrates how to generate a 2D Voronoi mesh.
+This example shows how to generate a simple 2D Voronoi mesh:
 
-```cpp
-// Include necessary headers
-#include <VoronoiMeshMaker/VoronoiMeshMaker.h>
+.. code-block:: cpp
 
-int main() {
-    // Create a Voronoi mesh for a set of points
-    VoronoiMesh mesh = VoronoiMeshMaker::generate2D(points);
-    return 0;
-}
+   #include <VoronoiMeshMaker/Shape2D/Rectangle.h>
+   #include <VoronoiMeshMaker/VoronoiMeshMaker.h>
+
+   int main() {
+       VoronoiMeshMaker::Rectangle rect(10, 20);
+       VoronoiMeshMaker::VoronoiMeshMaker maker;
+       auto mesh = maker.createMesh(rect);
+       return 0;
+   }
+
+Advanced 3D Voronoi Mesh
+------------------------
+
+This example shows how to generate a 3D Voronoi mesh:
+
+.. code-block:: cpp
+
+   #include <VoronoiMeshMaker/Shape3D/Cube.h>
+   #include <VoronoiMeshMaker/VoronoiMeshMaker.h>
+
+   int main() {
+       VoronoiMeshMaker::Cube cube(10);
+       VoronoiMeshMaker::VoronoiMeshMaker maker;
+       auto mesh = maker.createMesh(cube);
+       return 0;
+   }

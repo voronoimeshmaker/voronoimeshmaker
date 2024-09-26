@@ -21,6 +21,7 @@ target_link_libraries(${example_name} PRIVATE
     VoronoiMeshMaker 
     gmp 
     mpfr 
+    TBB::tbb
 )
 
 # Inclui os diretórios de cabeçalhos

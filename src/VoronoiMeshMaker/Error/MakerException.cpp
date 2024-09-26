@@ -25,7 +25,8 @@ static const std::string VMMExceptionStr[] = {
     "IOTool duplicate parameter.",
     "Failed to open the file in IOTools::ReadParameters.",
     "File not found in IOTools::ReadParameters.",
-    "Parameter not found in IOTools::Unpack."
+    "Parameter not found in IOTools::Unpack.",
+    "Missing data in GeometricDataHolder variable."
 };
 
 // Constructors
@@ -83,4 +84,32 @@ std::string ErrorType(const VMMExceptionIndex& _index) {
     return VMMExceptionStr[static_cast<int>(_index)];
 }
 
+
+    std::ostream& operator << ( std::ostream& _os,
+                                const VMMException& _isoException) {
+
+        _os << "\n";
+        PrintLine(_os);
+        _os << "Erro:    " << VMMExceptionStr[static_cast<int>(_isoException.exceptionIndex)] << "\n";
+
+//        if (!_isoException.errorMsg.empty()) {
+//            _os << "Msg:     " << _isoException.errorMsg << "\n";
+//        }
+
+        _os << "Funcao:  " << _isoException.sourceInfo.FunctionName() << "\n"
+            << "Arquivo: " << _isoException.sourceInfo.FileLocation() << "\n"
+            << "Linha:   " << _isoException.sourceInfo.LineNumber() << "\n";
+
+
+        if (_isoException.flagAbort) {
+            _os << "Execucao cancelada\n";
+        }
+
+        PrintLine(_os);
+
+        _os << std::flush;
+        return _os;
+
+    }
+    
 VORMAKER_NAMESPACE_CLOSE

@@ -2,130 +2,99 @@
 // Name        : Shape2D.h
 // Author      : Joao Flavio Vieira de Vasconcellos
 // Version     : 1.0
-// Description : Base class for 2D shapes, derived from Shape.
-//               Provides common functionality for handling 2D geometric shapes.
+// Description : Defines the Shape2D class, derived from Shape.
 //
-// Copyright   : Copyright (C) 2024 Joao Flavio Vasconcellos
+// Copyright   : Copyright (C) 2024 Joao Flavio Vieira de Vasconcellos
 //               (jflavio at iprj.uerj.br)
-//
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with this program. If not, see <http://www.gnu.org/licenses/>.
 //==============================================================================
 
 /**
  * @file Shape2D.h
- * @brief Defines the base class for all 2D shapes.
+ * @brief Defines the Shape2D class, which represents 2D geometric shapes.
+ * This class provides methods for calculating area, perimeter, and handling
+ * rotation and translation of the shape.
+ *
+ * @ingroup shape2d
  * 
- * This class provides the implementation of methods to calculate
- * area and perimeter for 2D shapes using CGAL.
- * 
- * @ingroup geometry
  * @version 1.0
  * @date 2024
- * 
- * Licensed under the GNU General Public License, version 3.
  */
 
-#ifndef SHAPE2D_H
-#define SHAPE2D_H
+#ifndef __VORONOIMESHMAKER_SHAPE2D_H__
+#define __VORONOIMESHMAKER_SHAPE2D_H__
 
-#include <CGAL/Polygon_2.h>
+
+//#include <CGAL/Polygon_2.h>
+
+
+//==============================================================================
+//  VoronoiMeshMaker includes
+//==============================================================================
+
 #include <VoronoiMeshMaker/Shape/Shape.h>
-#include <VoronoiMeshMaker/Misc/type.h>
 
 VORMAKER_NAMESPACE_OPEN
 
-/**
- * @class Shape2D
- * @brief Base class for all 2D shapes.
- * 
- * This class provides implementations for calculating the area and perimeter
- * of 2D shapes, and for verifying whether a given set of points forms a valid polygon.
- */
 class Shape2D : public Shape {
+    
 public:
-    /**
-     * @brief Constructor for Shape2D.
-     * @param data A GeometricDataHolder containing the geometric data.
-     */
-    explicit Shape2D(const GeometricDataHolder& data);
+    
+    friend std::ostream& operator<<(std::ostream& os, const Shape2D& holder) {
+        return os;
+    }
 
+    
+//==============================================================================
+// Class ID
+//==============================================================================    
+    
+public:       
     /**
      * @brief Get the class name.
-     * @return The name of the class as a string view.
+     *
+     * @return A string view representing the name of this class.
      */
-    std::string_view className() const noexcept override;
+    virtual std::string_view className() const noexcept override {
+        return "Shape2D";
+    }
 
     /**
      * @brief Get the class ID.
-     * @return The unique ID for the class.
+     *
+     * @return A ClassID enum representing the unique ID of this class.
      */
-    ClassID classID() const noexcept override;
+    virtual ClassID classID() const noexcept override {
+        return ClassID::Shape2D;
+    }
+    
+public:
+    
+    Shape2D() noexcept = default;
+    Shape2D(const Shape2D&) noexcept = default;
+    Shape2D(Shape2D&&) noexcept = default;
 
-    /**
-     * @brief Calculate the area of the 2D shape.
-     * 
-     * Uses the CGAL `Polygon_2` object to compute the area.
-     * 
-     * @return The area of the 2D shape.
-     */
-    Real area() const override;
-
-    /**
-     * @brief Calculate the perimeter of the 2D shape.
-     * 
-     * Uses the CGAL `Polygon_2` object to compute the perimeter.
-     * 
-     * @return The perimeter of the 2D shape.
-     */
-    Real perimeter() const override;
-
-    /**
-     * @brief Check if the polygon is valid and ensure correct orientation.
-     * 
-     * This method checks whether the polygon is simple and has the correct orientation
-     * (clockwise). If the orientation is counterclockwise, it inverts the points.
-     * 
-     * @return `true` if the polygon is valid and oriented correctly, `false` otherwise.
-     */
-    bool validatePolygon();
-
-    /**
-     * @brief Rotate the 2D shape.
-     * @param data A GeometricDataHolder containing the rotation parameters.
-     * @return `true` if the rotation was successful, `false` if there was an error.
-     */
+    ~Shape2D() noexcept = default;
+    
+    Shape2D& operator=(const Shape2D& other) noexcept = default;
+    Shape2D& operator=(Shape2D&& other) noexcept = default;
+    
+    Shape2D(const GeometricDataHolder& data);
+    
     bool rotate(const GeometricDataHolder& data) override;
-
-    /**
-     * @brief Translate the 2D shape.
-     * @param data A GeometricDataHolder containing the translation parameters.
-     * @return `true` if the translation was successful, `false` if there was an error.
-     */
     bool translate(const GeometricDataHolder& data) override;
-
-    /**
-     * @brief Get the CGAL Polygon_2 object representing the shape.
-     * @return A const reference to the `CGAL::Polygon_2` object.
-     */
-    const gtp::Polygon2D& getPolygon() const;
+    double area() const override;
+    double volume() const override; // Should return 0 for 2D shapes
+    double perimeter() const override;
 
 protected:
-    /**
-     * @brief CGAL Polygon object storing the 2D shape.
-     */
-    gtp::Polygon2D polygon_;
+    
+    gtp::PtrPolygon2D  ptrPolygon2D_;
+
 };
+
+using PtrShape2D = std::unique_ptr<Shape2D>;
+using PtrConstShape2D = std::unique_ptr<const Shape2D>;
 
 VORMAKER_NAMESPACE_CLOSE
 
-#endif // SHAPE2D_H
+#endif // __VORONOIMESHMAKER_SHAPE2D_H__

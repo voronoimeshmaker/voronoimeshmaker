@@ -40,13 +40,6 @@
 #ifndef __VORONOIMESHMAKER_GEOMETRICDATATRAITS_H__
 #define __VORONOIMESHMAKER_GEOMETRICDATATRAITS_H__
 
-//==============================================================================
-//  C++ includes
-//==============================================================================
-
-//#include <list>
-//#include <vector>
-
 
 //==============================================================================
 //  VoronoiMeshMaker includes

@@ -19,10 +19,12 @@ endif()
 # Locate CGAL and VTK libraries
 find_package(CGAL REQUIRED)
 find_package(VTK REQUIRED)
+find_package(TBB REQUIRED)
 
 # Include directories for CGAL and VTK
 include_directories(${CGAL_INCLUDE_DIRS})
 include_directories(${VTK_INCLUDE_DIRS})
+include_directories(${TBB_INCLUDE_DIRS})
 
 # Include directories for your project headers
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
@@ -38,6 +40,7 @@ target_link_libraries(VoronoiMeshMaker
     PUBLIC  # Allow other projects to use the CGAL and VTK dependencies transitively
     ${CGAL_LIBRARIES}
     ${VTK_LIBRARIES}
+    ${TBB_LIBRARIES}
 )
 
 # Set output directories for the library and binaries to the "lib" directory

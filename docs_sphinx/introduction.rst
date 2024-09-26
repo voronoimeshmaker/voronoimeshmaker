@@ -1,8 +1,14 @@
 Introduction
 ============
 
-Welcome to the **VoronoiMeshMaker** documentation. This project is designed to create 2D and 3D Voronoi meshes for use in computational geometry, particularly in finite volume methods.
+The VoronoiMeshMaker project is designed to generate Voronoi meshes for use in 2D and 3D geometries, primarily targeting finite volume methods.
 
-Key Features:
-- Voronoi diagram generation for 2D and 3D geometries.
-- Integration with CGAL and VTK for advanced geometric operations.
+This documentation provides an overview of the library, how to install it, and how to use its core components.
+
+Main Features:
+--------------
+- Voronoi mesh generation for 2D and 3D.
+- Extensible design for adding new shapes.
+- Optimized for use with finite volume methods in computational simulations.
+
+For detailed usage instructions, refer to the API Reference and Examples sections.

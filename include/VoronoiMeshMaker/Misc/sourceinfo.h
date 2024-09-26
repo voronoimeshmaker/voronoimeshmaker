@@ -38,7 +38,17 @@
 #ifndef __VORONOIFVMAKER_SOURCEINFO_H__
 #define __VORONOIFVMAKER_SOURCEINFO_H__
 
+
+//==============================================================================
+//  C++ includes
+//==============================================================================
+
 #include <string_view>
+
+//==============================================================================
+//  VoronoiMeshMaker includes
+//==============================================================================
+
 #include <VoronoiMeshMaker/Misc/Misc.h>
 
 VORMAKER_NAMESPACE_OPEN
