@@ -40,27 +40,30 @@
 
 VORMAKER_NAMESPACE_OPEN
 
-    template<typename T>
-    void GeometricDataHolder::addValue(const std::string& key, T value) {
-        data_[key] = value;
-//      std::cout << "Added value of type: " << GeometricDataTraits<T>::name() << std::endl;
-    }
+// Remove Shape2D or any specific geometric shapes from GeometricDataHolder.
+// From now on, geometric shapes will not be handled within this holder.
+template<typename T>
+void GeometricDataHolder::addValue(const std::string& key, T value) {
+    data_[key] = value;
+}
 
-    template<typename T>
-    std::optional<T> GeometricDataHolder::getValue(const std::string& key) const {
-        auto it = data_.find(key);
-        if (it != data_.end()) {
-            if (auto pval = std::get_if<T>(&(it->second))) {
-//              std::cout << "Retrieved value of type: " << GeometricDataTraits<T>::name() << std::endl;
-                return *pval;
-            }
+template<typename T>
+std::optional<T> GeometricDataHolder::getValue(const std::string& key) const {
+    auto it = data_.find(key);
+    if (it != data_.end()) {
+        if (auto pval = std::get_if<T>(&(it->second))) {
+            return *pval;
         }
-        return std::nullopt;  // Return nullopt if the type or key is invalid
     }
+    return std::nullopt;  // Return nullopt if the type or key is invalid
+}
 
-inline    std::ostream& operator<<(std::ostream& os, const GeometricDataHolder& holder) {
-        for (const auto& [key, value] : holder.data_) {
-            os << key << ": ";
+// Parallelize the visit operation using parallel algorithms in case of large data
+inline std::ostream& operator<<(std::ostream& os, const GeometricDataHolder& holder) {
+    std::for_each(
+        std::execution::par, holder.data_.begin(), holder.data_.end(),
+        [&os](const auto& pair) {
+            os << pair.first << ": ";
             std::visit([&os](auto&& arg) {
                 using T = std::decay_t<decltype(arg)>;
                 if constexpr (std::is_same_v<T, std::list<int>> || std::is_same_v<T, std::list<Real>> ||
@@ -80,10 +83,11 @@ inline    std::ostream& operator<<(std::ostream& os, const GeometricDataHolder& 
                 } else {
                     os << arg;
                 }
-            }, value);
+            }, pair.second);
             os << std::endl;
         }
-        return os;
-    }
+    );
+    return os;
+}
 
 VORMAKER_NAMESPACE_CLOSE

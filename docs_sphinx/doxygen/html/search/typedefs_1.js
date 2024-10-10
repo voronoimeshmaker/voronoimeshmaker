@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['point2d_406',['Point2D',['../type_8h.html#aaaf5a4f3fcdfb59de2f926961baa8ad9',1,'type.h']]],
+  ['point3d_407',['Point3D',['../type_8h.html#ac7e02506cf8ef76c662fc459a35bc5f6',1,'type.h']]],
+  ['polygon2d_408',['Polygon2D',['../type_8h.html#a4bb42cc64e4df443b3a4782605a546f6',1,'type.h']]],
+  ['polyhedron3d_409',['Polyhedron3D',['../type_8h.html#a8d8853c35d4f194addaeb90964f550c0',1,'type.h']]],
+  ['ptrconstellipseshared_410',['PtrConstEllipseShared',['../Ellipse_8h.html#a32fab1ea926efe5a74b48a313e2bd880',1,'Ellipse.h']]],
+  ['ptrconstgeometricdataholder_411',['PtrConstGeometricDataHolder',['../GeometricDataHolder_8h.html#a6a1c0cdd5743fd6cde3292035e430e51',1,'GeometricDataHolder.h']]],
+  ['ptrconstpolygon2dshared_412',['PtrConstPolygon2DShared',['../type_8h.html#ab3a6f4092b599b6e43d53a8e354c053d',1,'type.h']]],
+  ['ptrconstpolygon2dunique_413',['PtrConstPolygon2DUnique',['../type_8h.html#a9fceaa37a4a4317754b64e24bd85331c',1,'type.h']]],
+  ['ptrconstpolyhedron3dshared_414',['PtrConstPolyhedron3DShared',['../type_8h.html#a87478871be4c6bb93c29f60f4d09f849',1,'type.h']]],
+  ['ptrconstpolyhedron3dunique_415',['PtrConstPolyhedron3DUnique',['../type_8h.html#a1b87c627040b298506d7711138e74c23',1,'type.h']]],
+  ['ptrconstrectangleshared_416',['PtrConstRectangleShared',['../Rectangle_8h.html#a852c7baf239f5b35ed7c34b493fdbdba',1,'Rectangle.h']]],
+  ['ptrconstshape_417',['PtrConstShape',['../Shape_8h.html#abdc284ca3fcc9116e7ea0598610a7419',1,'Shape.h']]],
+  ['ptrconstshape2dshared_418',['PtrConstShape2DShared',['../Shape2D_8h.html#a157730de96f23932a8264929e5de8771',1,'Shape2D.h']]],
+  ['ptrconststarshared_419',['PtrConstStarShared',['../Star_8h.html#a40c4a8fa4f5e8b48dca68301b8325514',1,'Star.h']]],
+  ['ptrellipseshared_420',['PtrEllipseShared',['../Ellipse_8h.html#a87cc8d9da24081d41f3c35198f1d4a4a',1,'Ellipse.h']]],
+  ['ptrgeometricdataholder_421',['PtrGeometricDataHolder',['../GeometricDataHolder_8h.html#a41840718bff48f61d2740a5852aac4af',1,'GeometricDataHolder.h']]],
+  ['ptrpolygon2dshared_422',['PtrPolygon2DShared',['../type_8h.html#a150152fb4dec782b1657b9671b953696',1,'type.h']]],
+  ['ptrpolygon2dunique_423',['PtrPolygon2DUnique',['../type_8h.html#ad97931d5a7087276b5055a4513e5317e',1,'type.h']]],
+  ['ptrpolyhedron3dshared_424',['PtrPolyhedron3DShared',['../type_8h.html#acdc6bfdce3364dadc6439c1faad11ddb',1,'type.h']]],
+  ['ptrpolyhedron3dunique_425',['PtrPolyhedron3DUnique',['../type_8h.html#ad5b809059aadf025572a67ba20c1189b',1,'type.h']]],
+  ['ptrrectangleshared_426',['PtrRectangleShared',['../Rectangle_8h.html#a57277590a8133f6e156b97135e9b5ce2',1,'Rectangle.h']]],
+  ['ptrshape_427',['PtrShape',['../Shape_8h.html#acb4af223493a6842f39f80a4c786bfe5',1,'Shape.h']]],
+  ['ptrshape2dshared_428',['PtrShape2DShared',['../Shape2D_8h.html#a5f91639d82bdc0090cb31957ba64d5d4',1,'Shape2D.h']]],
+  ['ptrstarshared_429',['PtrStarShared',['../Star_8h.html#a677df3e6c2895477a5ccd8e21defcbad',1,'Star.h']]]
+];

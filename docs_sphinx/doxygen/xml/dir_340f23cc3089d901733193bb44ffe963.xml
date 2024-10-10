@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_340f23cc3089d901733193bb44ffe963" kind="dir">
+    <compoundname>src/VoronoiMeshMaker/Nodes/Nodes2D</compoundname>
+    <innerfile refid="Nodes2D_8cpp">Nodes2D.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/VoronoiMeshMaker/Nodes/Nodes2D/"/>
+  </compounddef>
+</doxygen>

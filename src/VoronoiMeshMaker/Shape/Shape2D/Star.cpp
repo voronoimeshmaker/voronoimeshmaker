@@ -86,7 +86,7 @@ VecPoint2D      vertex = {  Point2D(0, *radius)
     
 
 
-    ptrPolygon2D_ =  std::make_unique<gtp::Polygon2D>(
+    ptrPolygon2DShared_ =  std::make_shared<gtp::Polygon2D>(
         std::begin(vertex), std::end(vertex)
     );
     vertex.clear();

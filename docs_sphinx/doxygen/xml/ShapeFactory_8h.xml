@@ -1,0 +1,196 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="ShapeFactory_8h" kind="file" language="C++">
+    <compoundname>ShapeFactory.h</compoundname>
+    <includes local="no">map</includes>
+    <includes local="no">functional</includes>
+    <includes local="no">memory</includes>
+    <includes local="no">stdexcept</includes>
+    <includes refid="Shape_8h" local="no">VoronoiMeshMaker/Shape/Shape.h</includes>
+    <includes refid="GeometricDataHolder_8h" local="no">VoronoiMeshMaker/Parameters/GeometricDataHolder.h</includes>
+    <includedby refid="Ellipse_8cpp" local="no">src/VoronoiMeshMaker/Shape/Shape2D/Ellipse.cpp</includedby>
+    <includedby refid="Rectangle_8cpp" local="no">src/VoronoiMeshMaker/Shape/Shape2D/Rectangle.cpp</includedby>
+    <includedby refid="Star_8cpp" local="no">src/VoronoiMeshMaker/Shape/Shape2D/Star.cpp</includedby>
+    <includedby refid="ShapeFactory_8cpp" local="no">src/VoronoiMeshMaker/Shape/ShapeFactory.cpp</includedby>
+    <incdepgraph>
+      <node id="13">
+        <label>list</label>
+      </node>
+      <node id="3">
+        <label>functional</label>
+      </node>
+      <node id="8">
+        <label>VoronoiMeshMaker/Misc/ID.h</label>
+      </node>
+      <node id="5">
+        <label>stdexcept</label>
+      </node>
+      <node id="2">
+        <label>map</label>
+      </node>
+      <node id="6">
+        <label>VoronoiMeshMaker/Shape/Shape.h</label>
+        <link refid="Shape_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>VoronoiMeshMaker/Parameters/GeometricDataHolder.tpp</label>
+        <link refid="GeometricDataHolder_8tpp"/>
+      </node>
+      <node id="14">
+        <label>vector</label>
+      </node>
+      <node id="17">
+        <label>CGAL/Polyhedron_3.h</label>
+      </node>
+      <node id="18">
+        <label>VoronoiMeshMaker/Misc/namespace.h</label>
+        <link refid="namespace_8h"/>
+      </node>
+      <node id="16">
+        <label>CGAL/Polygon_2.h</label>
+      </node>
+      <node id="7">
+        <label>iostream</label>
+      </node>
+      <node id="11">
+        <label>VoronoiMeshMaker/Parameters/GeometricDataTraits.h</label>
+        <link refid="GeometricDataTraits_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>VoronoiMeshMaker/Misc/type.h</label>
+        <link refid="type_8h"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>execution</label>
+      </node>
+      <node id="1">
+        <label>include/VoronoiMeshMaker/Shape/ShapeFactory.h</label>
+        <link refid="ShapeFactory_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>memory</label>
+      </node>
+      <node id="9">
+        <label>VoronoiMeshMaker/Parameters/GeometricDataHolder.h</label>
+        <link refid="GeometricDataHolder_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>CGAL/Exact_predicates_inexact_constructions_kernel.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>src/VoronoiMeshMaker/Shape/Shape2D/Rectangle.cpp</label>
+        <link refid="Rectangle_8cpp"/>
+      </node>
+      <node id="5">
+        <label>src/VoronoiMeshMaker/Shape/ShapeFactory.cpp</label>
+        <link refid="ShapeFactory_8cpp"/>
+      </node>
+      <node id="2">
+        <label>src/VoronoiMeshMaker/Shape/Shape2D/Ellipse.cpp</label>
+        <link refid="Ellipse_8cpp"/>
+      </node>
+      <node id="4">
+        <label>src/VoronoiMeshMaker/Shape/Shape2D/Star.cpp</label>
+        <link refid="Star_8cpp"/>
+      </node>
+      <node id="1">
+        <label>include/VoronoiMeshMaker/Shape/ShapeFactory.h</label>
+        <link refid="ShapeFactory_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespaceShapeFactory">ShapeFactory</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>__VORONOIMESHMAKER_SHAPEFACTORY_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__VORONOIMESHMAKER_SHAPEFACTORY_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;map&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;functional&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdexcept&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="Shape_8h" kindref="compound">VoronoiMeshMaker/Shape/Shape.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="GeometricDataHolder_8h" kindref="compound">VoronoiMeshMaker/Parameters/GeometricDataHolder.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="namespaceShapeFactory" refkind="compound"><highlight class="normal"><ref refid="namespace_8h_1a0850a440be7718d521600f120ee783e5" kindref="member">VORMAKER_NAMESPACE_OPEN</ref></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="namespaceShapeFactory" kindref="compound">ShapeFactory</ref><sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>registerShape()<sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>static_assert(std::is_base_of&lt;Shape,<sp/>T&gt;::value,<sp/></highlight><highlight class="stringliteral">&quot;T<sp/>must<sp/>derive<sp/>from<sp/>Shape&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>shapeRegistry[T::getClassID()]<sp/>=<sp/>[](</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classGeometricDataHolder" kindref="compound">GeometricDataHolder</ref>&amp;<sp/>data)<sp/>-&gt;<sp/>std::unique_ptr&lt;Shape&gt;<sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::make_unique&lt;T&gt;(data);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::unique_ptr&lt;Shape&gt;<sp/>createShape(<ref refid="namespaceClassID" kindref="compound">ClassID</ref><sp/><ref refid="namespaceShape_1aa16b693ea1cd2fe7ecf68e79160f62cc" kindref="member">classID</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classGeometricDataHolder" kindref="compound">GeometricDataHolder</ref>&amp;<sp/>data);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::map&lt;ClassID,<sp/>std::function&lt;std::unique_ptr&lt;Shape&gt;(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classGeometricDataHolder" kindref="compound">GeometricDataHolder</ref>&amp;)&gt;&gt;<sp/>shapeRegistry;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><ref refid="namespace_8h_1a79d315e8c3400ea5f4ad4175a85d291c" kindref="member">VORMAKER_NAMESPACE_CLOSE</ref></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>__VORONOIMESHMAKER_SHAPEFACTORY_H__</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/VoronoiMeshMaker/Shape/ShapeFactory.h"/>
+  </compounddef>
+</doxygen>

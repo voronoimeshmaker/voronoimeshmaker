@@ -42,6 +42,7 @@
 #ifndef __VORONOIMESHMAKER_DATAHOLDER_H__
 #define __VORONOIMESHMAKER_DATAHOLDER_H__
 
+#include <execution>
 
 //==============================================================================
 //  VoronoiMeshMaker includes

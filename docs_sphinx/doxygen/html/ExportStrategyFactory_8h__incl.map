@@ -1,0 +1,10 @@
+<map id="include/VoronoiMeshMaker/DataExporter/ExportStrategyFactory.h" name="include/VoronoiMeshMaker/DataExporter/ExportStrategyFactory.h">
+<area shape="rect" id="node1" title="Factory class for creating export strategies based on the specified format." alt="" coords="109,5,379,47"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,102,83,129"/>
+<area shape="rect" id="node3" title=" " alt="" coords="107,102,194,129"/>
+<area shape="rect" id="node4" href="$VTKExportStrategy_8h.html" title="Defines the VTK export strategy for geometric data." alt="" coords="219,95,456,136"/>
+<area shape="rect" id="node8" href="$HDF5ExportStrategy_8h.html" title="Defines the HDF5 export strategy for geometric data." alt="" coords="480,95,717,136"/>
+<area shape="rect" id="node5" href="$ExportStrategy_8h.html" title="Defines the interface for exporting geometric data in various formats." alt="" coords="349,184,587,225"/>
+<area shape="rect" id="node6" title=" " alt="" coords="360,273,419,300"/>
+<area shape="rect" id="node7" title=" " alt="" coords="443,273,653,300"/>
+</map>

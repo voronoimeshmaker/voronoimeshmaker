@@ -1,0 +1,6 @@
+<map id="include/VoronoiMeshMaker/DataExporter/VTKExportStrategy.h" name="include/VoronoiMeshMaker/DataExporter/VTKExportStrategy.h">
+<area shape="rect" id="node1" title="Defines the VTKExportStrategy class for exporting Shape2D to VTK format." alt="" coords="309,5,558,47"/>
+<area shape="rect" id="node2" href="$VoronoiDataExporter_8h.html" title="Defines the VoronoiDataExporter class for exporting data in different formats." alt="" coords="5,95,269,136"/>
+<area shape="rect" id="node3" href="$VoronoiDataExporter_8cpp.html" title=" " alt="" coords="294,95,573,136"/>
+<area shape="rect" id="node4" href="$VTKExportStrategy_8cpp.html" title="Implements the export strategy for exporting Shape2D to VTK format." alt="" coords="597,95,861,136"/>
+</map>

@@ -108,8 +108,8 @@ public:
 // Typedefs
 //==============================================================================
 
-using PtrRectangle = std::shared_ptr<Rectangle>;
-using PtrConstRectangle = std::shared_ptr<const Rectangle>;
+using PtrRectangleShared = std::shared_ptr<Rectangle>; ///< Smart pointer type for Rectangle
+using PtrConstRectangleShared = std::shared_ptr<const Rectangle>; ///< Smart pointer type for constant Rectangle
 
 VORMAKER_NAMESPACE_CLOSE
 

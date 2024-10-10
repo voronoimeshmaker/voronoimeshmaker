@@ -1,0 +1,4 @@
+<map id="include/VoronoiMeshMaker/DataExporter/DataExporter.h" name="include/VoronoiMeshMaker/DataExporter/DataExporter.h">
+<area shape="rect" id="node1" title="Defines the DataExporter class responsible for exporting geometric data in various formats." alt="" coords="13,5,227,47"/>
+<area shape="rect" id="node2" href="$DataExporter_8cpp.html" title="Implements the DataExporter class, handling the export of geometric data." alt="" coords="5,95,235,136"/>
+</map>

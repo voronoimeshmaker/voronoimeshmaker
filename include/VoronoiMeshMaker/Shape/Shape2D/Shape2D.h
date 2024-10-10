@@ -11,6 +11,7 @@
 /**
  * @file Shape2D.h
  * @brief Defines the Shape2D class, which represents 2D geometric shapes.
+ * 
  * This class provides methods for calculating area, perimeter, and handling
  * rotation and translation of the shape.
  *
@@ -23,10 +24,6 @@
 #ifndef __VORONOIMESHMAKER_SHAPE2D_H__
 #define __VORONOIMESHMAKER_SHAPE2D_H__
 
-
-//#include <CGAL/Polygon_2.h>
-
-
 //==============================================================================
 //  VoronoiMeshMaker includes
 //==============================================================================
@@ -35,12 +32,29 @@
 
 VORMAKER_NAMESPACE_OPEN
 
+/**
+ * @class Shape2D
+ * @brief Represents a 2D geometric shape.
+ * 
+ * The Shape2D class is derived from the Shape class and provides methods
+ * for manipulating and calculating properties of 2D shapes, such as area,
+ * perimeter, rotation, and translation.
+ */
 class Shape2D : public Shape {
     
 public:
     
+    /**
+     * @brief Overloads the output stream operator for Shape2D.
+     * 
+     * This allows the Shape2D objects to be printed directly to output streams.
+     * 
+     * @param os The output stream.
+     * @param holder The Shape2D object to be printed.
+     * @return The output stream after printing the Shape2D.
+     */
     friend std::ostream& operator<<(std::ostream& os, const Shape2D& holder) {
-        return os;
+        return os; // Implementar a saída conforme necessário
     }
 
     
@@ -51,7 +65,7 @@ public:
 public:       
     /**
      * @brief Get the class name.
-     *
+     * 
      * @return A string view representing the name of this class.
      */
     virtual std::string_view className() const noexcept override {
@@ -60,7 +74,7 @@ public:
 
     /**
      * @brief Get the class ID.
-     *
+     * 
      * @return A ClassID enum representing the unique ID of this class.
      */
     virtual ClassID classID() const noexcept override {
@@ -69,31 +83,81 @@ public:
     
 public:
     
-    Shape2D() noexcept = default;
-    Shape2D(const Shape2D&) noexcept = default;
-    Shape2D(Shape2D&&) noexcept = default;
+    Shape2D() noexcept = default; ///< Default constructor
+    Shape2D(const Shape2D&) noexcept = default; ///< Copy constructor
+    Shape2D(Shape2D&&) noexcept = default; ///< Move constructor
 
-    ~Shape2D() noexcept = default;
+    ~Shape2D() noexcept = default; ///< Destructor
     
-    Shape2D& operator=(const Shape2D& other) noexcept = default;
-    Shape2D& operator=(Shape2D&& other) noexcept = default;
+    Shape2D& operator=(const Shape2D& other) noexcept = default; ///< Copy assignment
+    Shape2D& operator=(Shape2D&& other) noexcept = default; ///< Move assignment
     
+    /**
+     * @brief Constructs a Shape2D object using a GeometricDataHolder.
+     * 
+     * This constructor initializes the Shape2D object based on the data provided
+     * in the GeometricDataHolder.
+     * 
+     * @param data The GeometricDataHolder containing the shape parameters.
+     */
     Shape2D(const GeometricDataHolder& data);
     
+    /**
+     * @brief Rotates the shape based on the provided data.
+     * 
+     * @param data The GeometricDataHolder containing rotation parameters.
+     * @return True if the rotation was successful, false otherwise.
+     */
     bool rotate(const GeometricDataHolder& data) override;
+
+    /**
+     * @brief Translates the shape based on the provided data.
+     * 
+     * @param data The GeometricDataHolder containing translation parameters.
+     * @return True if the translation was successful, false otherwise.
+     */
     bool translate(const GeometricDataHolder& data) override;
+
+    /**
+     * @brief Calculates the area of the shape.
+     * 
+     * @return The area of the shape.
+     */
     double area() const override;
-    double volume() const override; // Should return 0 for 2D shapes
+
+    /**
+     * @brief Returns the volume of the shape.
+     * 
+     * Since this is a 2D shape, it returns 0.
+     * 
+     * @return The volume, which is 0 for 2D shapes.
+     */
+    double volume() const override; 
+
+    /**
+     * @brief Calculates the perimeter of the shape.
+     * 
+     * @return The perimeter of the shape.
+     */
     double perimeter() const override;
+
+    /**
+     * @brief Gets the polygon pointer of the shape.
+     * 
+     * @return A constant reference to the PtrPolygon2DShared.
+     */
+    inline const gtp::PtrPolygon2DShared& getPtrPolygonShared() const {
+            return ptrPolygon2DShared_;
+    }
 
 protected:
     
-    gtp::PtrPolygon2D  ptrPolygon2D_;
+    gtp::PtrPolygon2DShared  ptrPolygon2DShared_; ///< Pointer to the polygon representation of the shape
 
 };
 
-using PtrShape2D = std::unique_ptr<Shape2D>;
-using PtrConstShape2D = std::unique_ptr<const Shape2D>;
+using PtrShape2DShared = std::shared_ptr<Shape2D>; ///< Smart pointer type for Shape2D
+using PtrConstShape2DShared = std::shared_ptr<const Shape2D>; ///< Smart pointer type for constant Shape2D
 
 VORMAKER_NAMESPACE_CLOSE
 

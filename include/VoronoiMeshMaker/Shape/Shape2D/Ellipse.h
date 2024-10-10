@@ -108,8 +108,8 @@ public:
 // Typedefs
 //==============================================================================
 
-using PtrEllipse = std::shared_ptr<Ellipse>;
-using PtrConstEllipse = std::shared_ptr<const Ellipse>;
+using PtrEllipseShared = std::shared_ptr<Ellipse>; ///< Smart pointer type for Ellipse
+using PtrConstEllipseShared = std::shared_ptr<const Ellipse>; ///< Smart pointer type for constant Ellipse
 
 VORMAKER_NAMESPACE_CLOSE
 

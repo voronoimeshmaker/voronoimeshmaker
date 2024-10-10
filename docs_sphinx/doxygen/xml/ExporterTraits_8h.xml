@@ -1,0 +1,275 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="ExporterTraits_8h" kind="file" language="C++">
+    <compoundname>ExporterTraits.h</compoundname>
+    <includes local="no">VoronoiMeshMaker/Misc/namespace_config.h</includes>
+    <includes local="no">VoronoiMeshMaker/Shape/Shape2D.h</includes>
+    <includes local="no">VoronoiMeshMaker/Shape/Shape3D.h</includes>
+    <includes refid="Nodes2D_8h" local="no">VoronoiMeshMaker/Nodes/Nodes2D/Nodes2D.h</includes>
+    <includes refid="Nodes3D_8h" local="no">VoronoiMeshMaker/Nodes/Nodes3D/Nodes3D.h</includes>
+    <includes refid="Voronoi2D_8h" local="no">VoronoiMeshMaker/Voronoi/Voronoi2D/Voronoi2D.h</includes>
+    <includes refid="Voronoi3D_8h" local="no">VoronoiMeshMaker/Voronoi/Voronoi3D/Voronoi3D.h</includes>
+    <includes local="no">VoronoiMeshMaker/Misc/ExportOptions.h</includes>
+    <includes local="no">VoronoiMeshMaker/Formats/VTKFormat.h</includes>
+    <includes local="no">VoronoiMeshMaker/Formats/HDF5Format.h</includes>
+    <includedby refid="Exporter_8h" local="no">include/VoronoiMeshMaker/Exporter/Exporter.h</includedby>
+    <incdepgraph>
+      <node id="9">
+        <label>list</label>
+      </node>
+      <node id="19">
+        <label>VoronoiMeshMaker/Misc/ExportOptions.h</label>
+      </node>
+      <node id="5">
+        <label>VoronoiMeshMaker/Nodes/Nodes2D/Nodes2D.h</label>
+        <link refid="Nodes2D_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>VoronoiMeshMaker/Formats/VTKFormat.h</label>
+      </node>
+      <node id="2">
+        <label>VoronoiMeshMaker/Misc/namespace_config.h</label>
+      </node>
+      <node id="18">
+        <label>VoronoiMeshMaker/Voronoi/Voronoi3D/Voronoi3D.h</label>
+        <link refid="Voronoi3D_8h"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>VoronoiMeshMaker/Voronoi/Voronoi2D/Voronoi2D.h</label>
+        <link refid="Voronoi2D_8h"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>VoronoiMeshMaker/Shape/Shape2D.h</label>
+      </node>
+      <node id="4">
+        <label>VoronoiMeshMaker/Shape/Shape3D.h</label>
+      </node>
+      <node id="17">
+        <label>VoronoiMeshMaker/Voronoi/Voronoi.h</label>
+        <link refid="Voronoi_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>vector</label>
+      </node>
+      <node id="14">
+        <label>CGAL/Polyhedron_3.h</label>
+      </node>
+      <node id="1">
+        <label>include/VoronoiMeshMaker/Exporter/ExporterTraits.h</label>
+        <link refid="ExporterTraits_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>VoronoiMeshMaker/Misc/namespace.h</label>
+        <link refid="namespace_8h"/>
+      </node>
+      <node id="13">
+        <label>CGAL/Polygon_2.h</label>
+      </node>
+      <node id="6">
+        <label>VoronoiMeshMaker/Nodes/Nodes.h</label>
+        <link refid="Nodes_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>VoronoiMeshMaker/Misc/type.h</label>
+        <link refid="type_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="21">
+        <label>VoronoiMeshMaker/Formats/HDF5Format.h</label>
+      </node>
+      <node id="15">
+        <label>VoronoiMeshMaker/Nodes/Nodes3D/Nodes3D.h</label>
+        <link refid="Nodes3D_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>memory</label>
+      </node>
+      <node id="12">
+        <label>CGAL/Exact_predicates_inexact_constructions_kernel.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>include/VoronoiMeshMaker/Exporter/ExporterTraits.h</label>
+        <link refid="ExporterTraits_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>include/VoronoiMeshMaker/Exporter/Exporter.h</label>
+        <link refid="Exporter_8h"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structExporterTraits_3_01Shape2D_00_01VTKFormat_01_4" prot="public">ExporterTraits&lt; Shape2D, VTKFormat &gt;</innerclass>
+    <innerclass refid="structExporterTraits_3_01Shape2D_00_01HDF5Format_01_4" prot="public">ExporterTraits&lt; Shape2D, HDF5Format &gt;</innerclass>
+    <innerclass refid="structExporterTraits_3_01Shape3D_00_01VTKFormat_01_4" prot="public">ExporterTraits&lt; Shape3D, VTKFormat &gt;</innerclass>
+    <innerclass refid="structExporterTraits_3_01Shape3D_00_01HDF5Format_01_4" prot="public">ExporterTraits&lt; Shape3D, HDF5Format &gt;</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="ExporterTraits_8h_1a9fda72ea7442b6055fe6a9248acf3aa3" prot="public" static="no" mutable="no">
+        <type>namespace template&lt; typename <ref refid="GeometricDataHolder_8h_1ad6954cf9876f13551cedf6d7ea4a7615" kindref="member">DataType</ref>, typename Format &gt; struct</type>
+        <definition>namespace template&lt; typename DataType, typename Format &gt; struct ExporterTraits</definition>
+        <argsstring></argsstring>
+        <name>ExporterTraits</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Exporter/ExporterTraits.h" line="1" column="0" bodyfile="include/VoronoiMeshMaker/Exporter/ExporterTraits.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Declares the ExporterTraits struct for data exporting. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This file contains specializations of the ExporterTraits struct for different combinations of data types and export formats. It enables the <ref refid="namespaceExporter" kindref="compound">Exporter</ref> class to adapt its behavior based on the data type and export format.</para>
+<para><simplesect kind="version"><para>1.0 </para>
+</simplesect>
+<simplesect kind="date"><para>2024 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="ExporterTraits_8h_1a9fda72ea7442b6055fe6a9248acf3aa3" refkind="member"><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Name<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>ExporterTraits.h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Author<sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>Joao<sp/>Flavio<sp/>Vieira<sp/>de<sp/>Vasconcellos</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Version<sp/><sp/><sp/><sp/><sp/>:<sp/>1.0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Description<sp/>:<sp/>Declares<sp/>the<sp/>ExporterTraits<sp/>struct<sp/>for<sp/>data<sp/>exporting.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>This<sp/>file<sp/>contains<sp/>specializations<sp/>of<sp/>the<sp/>ExporterTraits<sp/>struct</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>for<sp/>different<sp/>combinations<sp/>of<sp/>data<sp/>types<sp/>and<sp/>export<sp/>formats.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//<sp/>License<sp/><sp/><sp/><sp/><sp/>:<sp/>GNU<sp/>General<sp/>Public<sp/>License<sp/>v3.0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__VORONOIMESHMAKER_EXPORTERTRAITS_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__VORONOIMESHMAKER_EXPORTERTRAITS_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>VoronoiMeshMaker<sp/>includes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;VoronoiMeshMaker/Misc/namespace_config.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;VoronoiMeshMaker/Shape/Shape2D.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;VoronoiMeshMaker/Shape/Shape3D.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="Nodes2D_8h" kindref="compound">VoronoiMeshMaker/Nodes/Nodes2D/Nodes2D.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="Nodes3D_8h" kindref="compound">VoronoiMeshMaker/Nodes/Nodes3D/Nodes3D.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="Voronoi2D_8h" kindref="compound">VoronoiMeshMaker/Voronoi/Voronoi2D/Voronoi2D.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="Voronoi3D_8h" kindref="compound">VoronoiMeshMaker/Voronoi/Voronoi3D/Voronoi3D.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;VoronoiMeshMaker/Misc/ExportOptions.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Formatos<sp/>de<sp/>exportação</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;VoronoiMeshMaker/Formats/VTKFormat.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;VoronoiMeshMaker/Formats/HDF5Format.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><ref refid="namespace_8h_1a0850a440be7718d521600f120ee783e5" kindref="member">VORMAKER_NAMESPACE_OPEN</ref></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>DataType,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Format&gt;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="ExporterTraits_8h_1a9fda72ea7442b6055fe6a9248acf3aa3" kindref="member">ExporterTraits</ref>;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Specializations<sp/>for<sp/>Shape2D</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;&gt;</highlight></codeline>
+<codeline lineno="70" refid="structExporterTraits_3_01Shape2D_00_01VTKFormat_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="ExporterTraits_8h_1a9fda72ea7442b6055fe6a9248acf3aa3" kindref="member">ExporterTraits</ref>&lt;<ref refid="namespaceShape2D" kindref="compound">Shape2D</ref>,<sp/>VTKFormat&gt;<sp/>{</highlight></codeline>
+<codeline lineno="71" refid="structExporterTraits_3_01Shape2D_00_01VTKFormat_01_4_1a73cbe92054e5d6d3d88361b474a408bc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structExporterTraits_3_01Shape2D_00_01VTKFormat_01_4_1a73cbe92054e5d6d3d88361b474a408bc" kindref="member">exportData</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceShape2D" kindref="compound">Shape2D</ref>&amp;<sp/>data,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>filename,<sp/>ExportOptions<sp/>options)<sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Call<sp/>the<sp/>specific<sp/>exporter<sp/>for<sp/>Shape2D<sp/>and<sp/>VTK</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ExporterVTK2D::exportShape(data,<sp/>filename,<sp/>options);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;&gt;</highlight></codeline>
+<codeline lineno="81" refid="structExporterTraits_3_01Shape2D_00_01HDF5Format_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="ExporterTraits_8h_1a9fda72ea7442b6055fe6a9248acf3aa3" kindref="member">ExporterTraits</ref>&lt;<ref refid="namespaceShape2D" kindref="compound">Shape2D</ref>,<sp/>HDF5Format&gt;<sp/>{</highlight></codeline>
+<codeline lineno="82" refid="structExporterTraits_3_01Shape2D_00_01HDF5Format_01_4_1a3c89c40d16fd8473995a20cb4efc52f1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structExporterTraits_3_01Shape2D_00_01HDF5Format_01_4_1a3c89c40d16fd8473995a20cb4efc52f1" kindref="member">exportData</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceShape2D" kindref="compound">Shape2D</ref>&amp;<sp/>data,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>filename,<sp/>ExportOptions<sp/>options)<sp/>{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Call<sp/>the<sp/>specific<sp/>exporter<sp/>for<sp/>Shape2D<sp/>and<sp/>HDF5</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ExporterHDF52D::exportShape(data,<sp/>filename,<sp/>options);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Specializations<sp/>for<sp/>Shape3D</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;&gt;</highlight></codeline>
+<codeline lineno="96" refid="structExporterTraits_3_01Shape3D_00_01VTKFormat_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="ExporterTraits_8h_1a9fda72ea7442b6055fe6a9248acf3aa3" kindref="member">ExporterTraits</ref>&lt;Shape3D,<sp/>VTKFormat&gt;<sp/>{</highlight></codeline>
+<codeline lineno="97" refid="structExporterTraits_3_01Shape3D_00_01VTKFormat_01_4_1a0395b3b01e1a4b0c35c4574c2a2d37ca" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structExporterTraits_3_01Shape3D_00_01VTKFormat_01_4_1a0395b3b01e1a4b0c35c4574c2a2d37ca" kindref="member">exportData</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Shape3D&amp;<sp/>data,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>filename,<sp/>ExportOptions<sp/>options)<sp/>{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Call<sp/>the<sp/>specific<sp/>exporter<sp/>for<sp/>Shape3D<sp/>and<sp/>VTK</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ExporterVTK3D::exportShape(data,<sp/>filename,<sp/>options);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;&gt;</highlight></codeline>
+<codeline lineno="107" refid="structExporterTraits_3_01Shape3D_00_01HDF5Format_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="ExporterTraits_8h_1a9fda72ea7442b6055fe6a9248acf3aa3" kindref="member">ExporterTraits</ref>&lt;Shape3D,<sp/>HDF5Format&gt;<sp/>{</highlight></codeline>
+<codeline lineno="108" refid="structExporterTraits_3_01Shape3D_00_01HDF5Format_01_4_1aed06dc0bb701457c313bfaea486f5a26" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structExporterTraits_3_01Shape3D_00_01HDF5Format_01_4_1aed06dc0bb701457c313bfaea486f5a26" kindref="member">exportData</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Shape3D&amp;<sp/>data,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>filename,<sp/>ExportOptions<sp/>options)<sp/>{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Call<sp/>the<sp/>specific<sp/>exporter<sp/>for<sp/>Shape3D<sp/>and<sp/>HDF5</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ExporterHDF53D::exportShape(data,<sp/>filename,<sp/>options);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="112"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>Additional<sp/>specializations<sp/>can<sp/>be<sp/>added<sp/>here<sp/>for<sp/>Nodes2D,<sp/>Nodes3D,<sp/>Voronoi2D,<sp/>Voronoi3D</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><ref refid="namespace_8h_1a79d315e8c3400ea5f4ad4175a85d291c" kindref="member">VORMAKER_NAMESPACE_CLOSE</ref></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>__VORONOIMESHMAKER_EXPORTERTRAITS_H__</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/VoronoiMeshMaker/Exporter/ExporterTraits.h"/>
+  </compounddef>
+</doxygen>

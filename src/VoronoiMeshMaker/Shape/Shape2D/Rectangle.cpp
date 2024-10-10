@@ -86,7 +86,7 @@ LstPoint2D lstPoint2D =     {   corner
                             ,   Point2D(corner.x() + *lx, corner.y())
                             };
 
-    ptrPolygon2D_ =  std::make_unique<gtp::Polygon2D>(
+    ptrPolygon2DShared_ =  std::make_shared<gtp::Polygon2D>(
         std::begin(lstPoint2D), std::end(lstPoint2D)
     );
 

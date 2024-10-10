@@ -1,0 +1,505 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="misc_8h" kind="file" language="C++">
+    <compoundname>misc.h</compoundname>
+    <includes local="no">filesystem</includes>
+    <includes local="no">memory</includes>
+    <includes refid="configure_8h" local="no">VoronoiMeshMaker/Misc/configure.h</includes>
+    <includedby refid="misc_8cpp" local="no">src/VoronoiMeshMaker/Misc/misc.cpp</includedby>
+    <includedby refid="CommaSeparatedValues_8cpp" local="no">src/VoronoiMeshMaker/Shape/Shape2D/CommaSeparatedValues.cpp</includedby>
+    <incdepgraph>
+      <node id="6">
+        <label>list</label>
+      </node>
+      <node id="4">
+        <label>VoronoiMeshMaker/Misc/configure.h</label>
+        <link refid="configure_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>filesystem</label>
+      </node>
+      <node id="7">
+        <label>vector</label>
+      </node>
+      <node id="10">
+        <label>CGAL/Polyhedron_3.h</label>
+      </node>
+      <node id="11">
+        <label>VoronoiMeshMaker/Misc/namespace.h</label>
+        <link refid="namespace_8h"/>
+      </node>
+      <node id="9">
+        <label>CGAL/Polygon_2.h</label>
+      </node>
+      <node id="5">
+        <label>VoronoiMeshMaker/Misc/type.h</label>
+        <link refid="type_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/VoronoiMeshMaker/Misc/misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>memory</label>
+      </node>
+      <node id="8">
+        <label>CGAL/Exact_predicates_inexact_constructions_kernel.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3">
+        <label>src/VoronoiMeshMaker/Shape/Shape2D/CommaSeparatedValues.cpp</label>
+        <link refid="CommaSeparatedValues_8cpp"/>
+      </node>
+      <node id="2">
+        <label>src/VoronoiMeshMaker/Misc/misc.cpp</label>
+        <link refid="misc_8cpp"/>
+      </node>
+      <node id="1">
+        <label>include/VoronoiMeshMaker/Misc/misc.h</label>
+        <link refid="misc_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="misc_8h_1a1e1a6417cc2321840ad1fa47890b6c8e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>namespace void</type>
+        <definition>namespace void PrintLine</definition>
+        <argsstring>(std::ostream &amp;os, const unsigned &amp;length=LSIZE)</argsstring>
+        <name>PrintLine</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>os</declname>
+        </param>
+        <param>
+          <type>const unsigned &amp;</type>
+          <declname>length</declname>
+          <defval><ref refid="configure_8h_1ace67d58aeca08c1b8e7700c58654e4b1" kindref="member">LSIZE</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Misc/misc.h" line="1" column="0" bodyfile="src/VoronoiMeshMaker/Misc/misc.cpp" bodystart="27" bodyend="40" declfile="include/VoronoiMeshMaker/Misc/misc.h" declline="1" declcolumn="0"/>
+      </memberdef>
+      <memberdef kind="function" id="misc_8h_1adc6b5e473a877c277a1dbd598e4e8f0f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool string2bool</definition>
+        <argsstring>(const std::string &amp;str)</argsstring>
+        <name>string2bool</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+<para>Converts a string to a boolean value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function attempts to convert a string representation of a boolean value (e.g., &quot;true&quot;, &quot;false&quot;, &quot;1&quot;, &quot;0&quot;) into a boolean.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>str</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The string to be converted. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the string represents a true value, false otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Misc/misc.h" line="80" column="7" declfile="include/VoronoiMeshMaker/Misc/misc.h" declline="80" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="misc_8h_1a9e891519e444259a82f8abce71405a3b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::filesystem::path</type>
+        <definition>std::filesystem::path getCurrentWorkingDirectory</definition>
+        <argsstring>()</argsstring>
+        <name>getCurrentWorkingDirectory</name>
+        <briefdescription>
+<para>Gets the current working directory. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function retrieves the current working directory using the <computeroutput>std::filesystem</computeroutput> library.</para>
+<para><simplesect kind="return"><para>A <computeroutput>std::filesystem::path</computeroutput> object representing the current working directory.</para>
+</simplesect>
+This function retrieves the current working directory of the process.</para>
+<para><simplesect kind="return"><para>The current working directory as a path object. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Misc/misc.h" line="90" column="24" bodyfile="src/VoronoiMeshMaker/Misc/misc.cpp" bodystart="69" bodyend="72" declfile="include/VoronoiMeshMaker/Misc/misc.h" declline="90" declcolumn="24"/>
+      </memberdef>
+      <memberdef kind="function" id="misc_8h_1ac3f7f2f48530ce2151cc46d3f3bc8fb9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string getFullPath</definition>
+        <argsstring>(const std::string &amp;path)</argsstring>
+        <name>getFullPath</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+<para>Converts a relative or absolute path to its full, absolute form. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function takes a relative or absolute path and converts it to an absolute path.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>path</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The path to be converted. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The full path as a string. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Misc/misc.h" line="101" column="14" declfile="include/VoronoiMeshMaker/Misc/misc.h" declline="101" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="misc_8h_1a928e7038b45787d3a09286ed47c21e75" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string RenameFile</definition>
+        <argsstring>(const std::string &amp;oldName, const std::string &amp;newName)</argsstring>
+        <name>RenameFile</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>oldName</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>newName</declname>
+        </param>
+        <briefdescription>
+<para>Renames a file from its old name to a new name. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function renames a file in the filesystem by changing its current name to a new one.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>oldName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The current name of the file. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>newName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The new name for the file. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The new name of the file as a string. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Misc/misc.h" line="113" column="14" declfile="include/VoronoiMeshMaker/Misc/misc.h" declline="113" declcolumn="14"/>
+      </memberdef>
+      <memberdef kind="function" id="misc_8h_1ad07a6b9447503e1f662108c0411b1785" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CreateDirectoryIfNotExists</definition>
+        <argsstring>(const std::string &amp;path)</argsstring>
+        <name>CreateDirectoryIfNotExists</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+<para>Creates a directory if it does not already exist. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function checks if a directory exists at the given path. If the directory does not exist, it is created.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>path</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The path where the directory should be created. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the directory was successfully created or already exists, false otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Misc/misc.h" line="125" column="7" declfile="include/VoronoiMeshMaker/Misc/misc.h" declline="125" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="misc_8h_1a5e80476970fb70e43f2d269940e73cb6" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>constexpr unsigned int</type>
+        <definition>constexpr unsigned int str2int</definition>
+        <argsstring>(const char *_str, const int &amp;_h=0)</argsstring>
+        <name>str2int</name>
+        <param>
+          <type>const char *</type>
+          <declname>_str</declname>
+        </param>
+        <param>
+          <type>const int &amp;</type>
+          <declname>_h</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Converts a string to an unsigned integer using a hash function. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function implements a simple hash function to convert a string to an unsigned integer. It is primarily used for quick lookups and classifications.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>_str</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The C-style string to convert. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>_h</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The current hash value, default is 0. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The computed hash value as an unsigned integer. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Misc/misc.h" line="138" column="24" bodyfile="include/VoronoiMeshMaker/Misc/misc.h" bodystart="138" bodyend="140"/>
+      </memberdef>
+      <memberdef kind="function" id="misc_8h_1a1ff2f28150b96579cd2ad94e7278867d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool IsBlank</definition>
+        <argsstring>(const std::string &amp;str)</argsstring>
+        <name>IsBlank</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+<para>Checks if a string contains only whitespace. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function returns true if the given string contains only whitespace characters.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>str</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The string to check. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the string is blank, false otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Misc/misc.h" line="151" column="6" declfile="include/VoronoiMeshMaker/Misc/misc.h" declline="151" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="misc_8h_1a7da62ec7d169506bd67706e5f0c8aba3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool IsEmptyOrBlank</definition>
+        <argsstring>(const std::string &amp;str)</argsstring>
+        <name>IsEmptyOrBlank</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+<para>Checks if a string is empty or contains only whitespace. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function returns true if the given string is either empty or contains only whitespace characters.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>str</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The string to check. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the string is empty or blank, false otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Misc/misc.h" line="162" column="6" declfile="include/VoronoiMeshMaker/Misc/misc.h" declline="162" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="misc_8h_1ab90280b9b084abe832968b712400aefc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>std::shared_ptr&lt; T &gt;</type>
+        <definition>std::shared_ptr&lt;T&gt; convertToShared</definition>
+        <argsstring>(std::unique_ptr&lt; T &gt; &amp;&amp;uniquePtr)</argsstring>
+        <name>convertToShared</name>
+        <param>
+          <type>std::unique_ptr&lt; T &gt; &amp;&amp;</type>
+          <declname>uniquePtr</declname>
+        </param>
+        <briefdescription>
+<para>Converts a std::unique_ptr to a std::shared_ptr. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function takes a std::unique_ptr and returns a std::shared_ptr to the same object.</para>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The type of the object being managed by the pointer. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>uniquePtr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The std::unique_ptr to convert. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A std::shared_ptr managing the same object. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Misc/misc.h" line="175" column="18" bodyfile="include/VoronoiMeshMaker/Misc/misc.h" bodystart="175" bodyend="177"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides general-purpose utility functions for the VoronoiMeshMaker library. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This file defines utility functions used throughout the VoronoiMeshMaker library, including functions for printing lines, manipulating strings, handling file paths, and converting smart pointers. These functions are part of the &quot;misc&quot; group of utility components.</para>
+<para><simplesect kind="version"><para>1.0 </para>
+</simplesect>
+<simplesect kind="date"><para>2024</para>
+</simplesect>
+Licensed under the GNU General Public License, version 3. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Name<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>misc.h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Author<sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>Joao<sp/>Flavio<sp/>Vieira<sp/>de<sp/>Vasconcellos</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Version<sp/><sp/><sp/><sp/><sp/>:<sp/>1.0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Description<sp/>:<sp/>Header<sp/>file<sp/>with<sp/>utility<sp/>definitions<sp/>used<sp/>across<sp/>the<sp/>library.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Part<sp/>of<sp/>the<sp/>&apos;misc&apos;<sp/>group<sp/>of<sp/>utility<sp/>files.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Copyright<sp/><sp/><sp/>:<sp/>Copyright<sp/>(C)<sp/>2024<sp/>Joao<sp/>Flavio<sp/>Vieira<sp/>de<sp/>Vasconcellos</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(jflavio<sp/>at<sp/>iprj.uerj.br)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>program<sp/>is<sp/>free<sp/>software:<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//<sp/>it<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,<sp/>either<sp/>version<sp/>3<sp/>of<sp/>the<sp/>License.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>program<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//<sp/>but<sp/>WITHOUT<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>MERCHANTABILITY<sp/>or<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/>See<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>GNU<sp/>General<sp/>Public<sp/>License<sp/>for<sp/>more<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>General<sp/>Public<sp/>License</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/>along<sp/>with<sp/>this<sp/>program.<sp/>If<sp/>not,<sp/>see<sp/>&lt;http://www.gnu.org/licenses/&gt;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__VORONOMESHVMAKER_MISC_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__VORONOMESHVMAKER_MISC_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>C++<sp/>includes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;filesystem&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>VoronoiMeshMaker<sp/>includes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="configure_8h" kindref="compound">VoronoiMeshMaker/Misc/configure.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><ref refid="namespace_8h_1a0850a440be7718d521600f120ee783e5" kindref="member">VORMAKER_NAMESPACE_OPEN</ref></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="misc_8h_1a1e1a6417cc2321840ad1fa47890b6c8e" kindref="member">PrintLine</ref>(std::ostream&amp;<sp/>os,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal">&amp;<sp/>length<sp/>=<sp/><ref refid="configure_8h_1ace67d58aeca08c1b8e7700c58654e4b1" kindref="member">LSIZE</ref>);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="misc_8h_1adc6b5e473a877c277a1dbd598e4e8f0f" refkind="member"><highlight class="normal">[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="misc_8h_1adc6b5e473a877c277a1dbd598e4e8f0f" kindref="member">string2bool</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>str);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal">[[nodiscard]]<sp/>std::filesystem::path<sp/><ref refid="misc_8h_1a9e891519e444259a82f8abce71405a3b" kindref="member">getCurrentWorkingDirectory</ref>();</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101" refid="misc_8h_1ac3f7f2f48530ce2151cc46d3f3bc8fb9" refkind="member"><highlight class="normal">[[nodiscard]]<sp/>std::string<sp/><ref refid="misc_8h_1ac3f7f2f48530ce2151cc46d3f3bc8fb9" kindref="member">getFullPath</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>path);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113" refid="misc_8h_1a928e7038b45787d3a09286ed47c21e75" refkind="member"><highlight class="normal">[[nodiscard]]<sp/>std::string<sp/><ref refid="misc_8h_1a928e7038b45787d3a09286ed47c21e75" kindref="member">RenameFile</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>oldName,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>newName);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125" refid="misc_8h_1ad07a6b9447503e1f662108c0411b1785" refkind="member"><highlight class="normal">[[nodiscard]]<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="misc_8h_1ad07a6b9447503e1f662108c0411b1785" kindref="member">CreateDirectoryIfNotExists</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>path);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138" refid="misc_8h_1a5e80476970fb70e43f2d269940e73cb6" refkind="member"><highlight class="normal">constexpr<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="misc_8h_1a5e80476970fb70e43f2d269940e73cb6" kindref="member">str2int</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>_str,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&amp;<sp/>_h<sp/>=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!_str[_h]<sp/>?<sp/>5381<sp/>:<sp/>(<ref refid="misc_8h_1a5e80476970fb70e43f2d269940e73cb6" kindref="member">str2int</ref>(_str,<sp/>_h<sp/>+<sp/>1)<sp/>*<sp/>33)<sp/>^<sp/>_str[_h];</highlight></codeline>
+<codeline lineno="140"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151" refid="misc_8h_1a1ff2f28150b96579cd2ad94e7278867d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="misc_8h_1a1ff2f28150b96579cd2ad94e7278867d" kindref="member">IsBlank</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>str);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162" refid="misc_8h_1a7da62ec7d169506bd67706e5f0c8aba3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="misc_8h_1a7da62ec7d169506bd67706e5f0c8aba3" kindref="member">IsEmptyOrBlank</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>str);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>T&gt;</highlight></codeline>
+<codeline lineno="175" refid="misc_8h_1ab90280b9b084abe832968b712400aefc" refkind="member"><highlight class="normal">[[nodiscard]]<sp/>std::shared_ptr&lt;T&gt;<sp/><ref refid="misc_8h_1ab90280b9b084abe832968b712400aefc" kindref="member">convertToShared</ref>(std::unique_ptr&lt;T&gt;&amp;&amp;<sp/>uniquePtr)<sp/>{</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::shared_ptr&lt;T&gt;(std::move(uniquePtr));</highlight></codeline>
+<codeline lineno="177"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><ref refid="namespace_8h_1a79d315e8c3400ea5f4ad4175a85d291c" kindref="member">VORMAKER_NAMESPACE_CLOSE</ref></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>__VORONOMESHVMAKER_MISC_H__</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/VoronoiMeshMaker/Misc/misc.h"/>
+  </compounddef>
+</doxygen>

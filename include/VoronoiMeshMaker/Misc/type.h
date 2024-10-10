@@ -36,15 +36,15 @@
  * Licensed under the GNU General Public License, version 3.
  */
 
-#ifndef __VORONOIFVMAKER_TYPE_H__
-#define __VORONOIFVMAKER_TYPE_H__
+#ifndef __VORONOIMESHMAKER_TYPE_H__
+#define __VORONOIMESHMAKER_TYPE_H__
 
 //==============================================================================
 //  C++ includes
 //==============================================================================
 
-#include <memory>
 #include <list>
+#include <memory>
 #include <vector>
 
 //==============================================================================
@@ -97,17 +97,29 @@ using Polygon2D = CGAL::Polygon_2<Kernel>;
 /// 3D polyhedron type.
 using Polyhedron3D = CGAL::Polyhedron_3<Kernel>;
 
-/// Smart pointer to 2D polygon.
-using PtrPolygon2D = std::unique_ptr<Polygon2D>;
+/// Unique pointer to 2D polygon.
+using PtrPolygon2DUnique = std::unique_ptr<Polygon2D>;
 
-/// Smart pointer to 3D polyhedron.
-using PtrPolyhedron3D = std::unique_ptr<Polyhedron3D>;
+/// Unique pointer to 3D polyhedron.
+using PtrPolyhedron3DUnique = std::unique_ptr<Polyhedron3D>;
 
-/// Smart pointer to const 2D polygon.
-using PtrConstPolygon2D = std::unique_ptr<const Polygon2D>;
+/// Unique pointer to const 2D polygon.
+using PtrConstPolygon2DUnique = std::unique_ptr<const Polygon2D>;
 
-/// Smart pointer to const 3D polyhedron.
-using PtrConstPolyhedron3D = std::unique_ptr<const Polyhedron3D>;
+/// Unique pointer to const 3D polyhedron.
+using PtrConstPolyhedron3DUnique = std::unique_ptr<const Polyhedron3D>;
+
+/// Shared pointer to 2D polygon.
+using PtrPolygon2DShared = std::shared_ptr<Polygon2D>;
+
+/// Shared pointer to 3D polyhedron.
+using PtrPolyhedron3DShared = std::shared_ptr<Polyhedron3D>;
+
+/// Shared pointer to const 2D polygon.
+using PtrConstPolygon2DShared = std::shared_ptr<const Polygon2D>;
+
+/// Shared pointer to const 3D polyhedron.
+using PtrConstPolyhedron3DShared = std::shared_ptr<const Polyhedron3D>;
 
 /// List of 2D points.
 using LstPoint2D = std::list<Point2D>;
@@ -129,16 +141,16 @@ using VecPoint3D = std::vector<Point3D>;
  * objects in the VoronoiMeshMaker library.
  */
 enum class GeometryType {
-    Point2D,   ///< 2D point type.
-    Point3D,   ///< 3D point type.
-    Segment2D, ///< 2D segment type.
-    Segment3D, ///< 3D segment type.
-    Ray2D,     ///< 2D ray type.
-    Ray3D,     ///< 3D ray type.
-    Vector2D,  ///< 2D vector type.
-    Vector3D,  ///< 3D vector type.
-    Polygon2D, ///< 2D polygon type.
-    Polyhedron3D ///< 3D polyhedron type.
+    Point2D,       ///< 2D point type.
+    Point3D,       ///< 3D point type.
+    Segment2D,     ///< 2D segment type.
+    Segment3D,     ///< 3D segment type.
+    Ray2D,         ///< 2D ray type.
+    Ray3D,         ///< 3D ray type.
+    Vector2D,      ///< 2D vector type.
+    Vector3D,      ///< 3D vector type.
+    Polygon2D,     ///< 2D polygon type.
+    Polyhedron3D   ///< 3D polyhedron type.
 };
 
 GEOTYPES_NAMESPACE_CLOSE
@@ -159,4 +171,4 @@ using LstReal = std::list<Real>;
 /// Vector of Real numbers.
 using VecReal = std::vector<Real>;
 
-#endif // __VORONOIFVMAKER_TYPE_H__
+#endif // __VORONOIMESHMAKER_TYPE_H__

@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structGeometricDataTraits_3_01std_1_1vector_3_01gtp_1_1Point2D_01_4_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>GeometricDataTraits&lt; std::vector&lt; gtp::Point2D &gt; &gt;</compoundname>
+    <includes refid="GeometricDataTraits_8h" local="no">include/VoronoiMeshMaker/Parameters/GeometricDataTraits.h</includes>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structGeometricDataTraits_3_01std_1_1vector_3_01gtp_1_1Point2D_01_4_01_4_1afa480f08c6ad5d5e0cb7aed7af3a5404" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>static const char* GeometricDataTraits&lt; std::vector&lt; gtp::Point2D &gt; &gt;::name</definition>
+        <argsstring>()</argsstring>
+        <name>name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Parameters/GeometricDataTraits.h" line="164" column="23" bodyfile="include/VoronoiMeshMaker/Parameters/GeometricDataTraits.h" bodystart="164" bodyend="166"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/VoronoiMeshMaker/Parameters/GeometricDataTraits.h" line="163" column="1" bodyfile="include/VoronoiMeshMaker/Parameters/GeometricDataTraits.h" bodystart="163" bodyend="167"/>
+    <listofallmembers>
+      <member refid="structGeometricDataTraits_3_01std_1_1vector_3_01gtp_1_1Point2D_01_4_01_4_1afa480f08c6ad5d5e0cb7aed7af3a5404" prot="public" virt="non-virtual"><scope>GeometricDataTraits&lt; std::vector&lt; gtp::Point2D &gt; &gt;</scope><name>name</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

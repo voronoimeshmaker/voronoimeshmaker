@@ -1,89 +1,120 @@
 # VoronoiMeshMaker
 
-**Version:** 1.0 (In Development)
-
-[![License](https://img.shields.io/badge/license-GPL-blue)](https://www.gnu.org/licenses/gpl-3.0.html)
-
-## Description
-
-VoronoiMeshMaker is a Voronoi mesh generator designed for discretizing both 2D and 3D geometries. It is primarily intended for use in programs that apply finite volume methods for solving equations differential equations.
-
 ## Table of Contents
-
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Configuration](#configuration)
-- [Documentation](#documentation)
-- [Tests](#tests)
-- [Contributing](#contributing)
+- [Overview](#overview)
+- [Features](#features)
+- [Dependencies](#dependencies)
+  - [Installing Dependencies](#installing-dependencies)
+- [How to Build VoronoiMeshMaker and Examples](#how-to-build-voronoimeshmaker-and-examples)
+  - [Cloning the Repository](#cloning-the-repository)
+  - [Building the Library](#building-the-library)
+  - [Building Examples](#building-examples)
+  - [Running Examples](#running-examples)
+  - [Building and Running Tests](#building-and-running-tests)
 - [License](#license)
-- [Authors and Acknowledgments](#authors-and-acknowledgments)
-- [Roadmap](#roadmap)
-- [Changelog](#changelog)
 - [Contact](#contact)
-- [Credits](#credits)
 
-## Requirements
+## Overview
+VoronoiMeshMaker is a library designed to generate Voronoi meshes, which can be used to discretize both two-dimensional and three-dimensional geometries. The library is primarily intended for use in finite volume methods for solving partial differential equations. The current version of the library is 1.0 and it is in active development.
 
-- **CGAL**
-- **VTK**
-- **TBB** (Threading Building Blocks)
-- **CMake** (required for configuring and building the project)
+## Features
+- Generate Voronoi meshes in 2D and 3D.
+- Support for finite volume discretization.
+- Integration with external visualization tools.
 
-> VoronoiMeshMaker is developed on WSL Ubuntu. Ensure that CMake is installed.
+## Dependencies
+To use VoronoiMeshMaker, the following libraries must be pre-installed on your system:
+- **CGAL**: Required for geometric operations. Ensure you have the latest version installed.
+- **VTK**: Required for visualization support.
+- **TBB**: Required for parallelism.
+- **GMP** and **MPFR**: Required for numerical precision in geometric calculations.
+- **CMake** (version 3.10 or later): Required for building the project.
 
-## Installation
+If you plan to run tests, the following library is also required:
+- **Google Test (GTest)**: Required for unit testing.
 
-Installation instructions will be provided when the first usable version is ready.
+### Installing Dependencies
+On Ubuntu-based systems, you can install most dependencies using the following commands:
 
-## Usage
+```bash
+sudo apt-get update
+sudo apt-get install libcgal-dev libvtk7-dev libtbb-dev libgmp-dev libmpfr-dev cmake
+```
+For Google Test:
 
-(Usage examples will be added in the stable release.)
+```bash
+sudo apt-get install libgtest-dev
+cd /usr/src/gtest
+sudo cmake .
+sudo make
+sudo mv libg* /usr/lib/
+```
 
-## Configuration
+## How to Build VoronoiMeshMaker and Examples
 
-(Any configuration steps will be detailed here, if needed.)
+### Cloning the Repository
+Start by cloning the repository:
 
-## Documentation
+```bash
+git clone https://github.com/username/VoronoiMeshMaker.git
+cd VoronoiMeshMaker
+```
 
-For detailed documentation, please refer to [Documentation Link] (link to be added later).
+### Building the Library
+To build the VoronoiMeshMaker library, you need to configure the build using CMake and then compile it.
 
-## Tests
+1. Create a build directory:
 
-(Instructions on how to run tests will be added here.)
+   ```bash
+   mkdir build
+   cd build
+   ```
 
-## Contributing
+2. Configure and build the library:
 
-We welcome contributions! To contribute, please follow these guidelines:
-- **Fork the repository**
-- **Create a new branch for your changes**
-- **Submit a pull request with a description of your changes**
+   ```bash
+   cmake ..
+   cmake --build .
+   ```
 
-For more details, see our [CONTRIBUTING.md](link to be added later).
+This will generate the shared library `libVoronoiMeshMaker.so` in the `lib` directory.
+
+### Building Examples
+To build the examples, enable the `BUILD_EXAMPLES` option during configuration:
+
+```bash
+cmake -S .. -B . -DBUILD_EXAMPLES=ON -DBUILD_TESTS=OFF
+cmake --build .
+```
+
+### Running Examples
+After building, the executables for examples will be available in the respective directories where their source files (`.cpp`) are located. Run them with:
+
+```bash
+./path/to/example/ExampleExecutable
+```
+
+### Building and Running Tests
+To build and run the tests, enable the `BUILD_TESTS` option during configuration:
+
+```bash
+cmake -S .. -B . -DBUILD_EXAMPLES=OFF -DBUILD_TESTS=ON
+cmake --build .
+ctest --output-on-failure
+```
 
 ## License
+VoronoiMeshMaker is distributed under the GNU General Public License (GPL). For more details, see the `LICENSE` file included in the repository.
 
-This project is licensed under the GNU General Public License (GPL). You can view the full license text in the `LICENSE` file located in this directory. For more information, visit the [GNU General Public License](https://www.gnu.org/licenses/gpl-3.0.html).
+## Credits
+
+(Any third-party tools, libraries, or resources used will be credited here.)
 
 ## Authors and Acknowledgments
 
 (Details of contributors or acknowledgments will be added here.)
 
-## Roadmap
-
-(Future plans or features to be added will be listed here.)
-
-## Changelog
-
-(History of changes for different versions will be maintained here.)
-
 ## Contact
-
 For support or feedback, please contact:
-- **Email:** [your-email@example.com](mailto:voronoimeshmaker@gmail.com)
+- **Email:** [voronoimeshmaker@gmail.com](mailto:voronoimeshmaker@gmail.com)
 - **GitHub Issues:** [Link to issues](https://github.com/voronoimeshmaker/voronoimeshmaker.git)
-
-## Credits
-
-(Any third-party tools, libraries, or resources used will be credited here.)

@@ -1,0 +1,175 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="Nodes3D_8h" kind="file" language="C++">
+    <compoundname>Nodes3D.h</compoundname>
+    <includes refid="Nodes_8h" local="no">VoronoiMeshMaker/Nodes/Nodes.h</includes>
+    <includedby refid="ExporterTraits_8h" local="no">include/VoronoiMeshMaker/Exporter/ExporterTraits.h</includedby>
+    <includedby refid="Nodes3D_8cpp" local="no">src/VoronoiMeshMaker/Nodes/Nodes3D/Nodes3D.cpp</includedby>
+    <incdepgraph>
+      <node id="5">
+        <label>list</label>
+      </node>
+      <node id="7">
+        <label>vector</label>
+      </node>
+      <node id="10">
+        <label>CGAL/Polyhedron_3.h</label>
+      </node>
+      <node id="3">
+        <label>VoronoiMeshMaker/Misc/namespace.h</label>
+        <link refid="namespace_8h"/>
+      </node>
+      <node id="9">
+        <label>CGAL/Polygon_2.h</label>
+      </node>
+      <node id="2">
+        <label>VoronoiMeshMaker/Nodes/Nodes.h</label>
+        <link refid="Nodes_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>VoronoiMeshMaker/Misc/type.h</label>
+        <link refid="type_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/VoronoiMeshMaker/Nodes/Nodes3D/Nodes3D.h</label>
+        <link refid="Nodes3D_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>memory</label>
+      </node>
+      <node id="8">
+        <label>CGAL/Exact_predicates_inexact_constructions_kernel.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="4">
+        <label>src/VoronoiMeshMaker/Nodes/Nodes3D/Nodes3D.cpp</label>
+        <link refid="Nodes3D_8cpp"/>
+      </node>
+      <node id="2">
+        <label>include/VoronoiMeshMaker/Exporter/ExporterTraits.h</label>
+        <link refid="ExporterTraits_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>include/VoronoiMeshMaker/Nodes/Nodes3D/Nodes3D.h</label>
+        <link refid="Nodes3D_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>include/VoronoiMeshMaker/Exporter/Exporter.h</label>
+        <link refid="Exporter_8h"/>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespaceNodes3D">Nodes3D</innernamespace>
+    <briefdescription>
+<para>Declares the <ref refid="namespaceNodes3D" kindref="compound">Nodes3D</ref> class for representing 3D nodes. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The <ref refid="namespaceNodes3D" kindref="compound">Nodes3D</ref> class provides methods for handling collections of nodes in 3D space.</para>
+<para><simplesect kind="version"><para>1.0 </para>
+</simplesect>
+<simplesect kind="date"><para>2024</para>
+</simplesect>
+Licensed under the GNU General Public License, version 3. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Name<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>Nodes3D.h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Author<sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>Joao<sp/>Flavio<sp/>Vieira<sp/>de<sp/>Vasconcellos</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Version<sp/><sp/><sp/><sp/><sp/>:<sp/>1.0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Description<sp/>:<sp/>Declares<sp/>the<sp/>Nodes3D<sp/>class,<sp/>derived<sp/>from<sp/>Nodes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/>[Informações<sp/>de<sp/>direitos<sp/>autorais<sp/>e<sp/>licença]</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__VORONOIMESHMAKER_NODES3D_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__VORONOIMESHMAKER_NODES3D_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>VoronoiMeshMaker<sp/>includes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="Nodes_8h" kindref="compound">VoronoiMeshMaker/Nodes/Nodes.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="namespaceNodes3D" refkind="compound"><highlight class="normal"><ref refid="namespace_8h_1a0850a440be7718d521600f120ee783e5" kindref="member">VORMAKER_NAMESPACE_OPEN</ref></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="namespaceNodes3D" kindref="compound">Nodes3D</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="namespaceNodes" kindref="compound">Nodes</ref><sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="namespaceNodes3D_1a20e4dad70ffc851cf326331fed93769e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceNodes3D_1a20e4dad70ffc851cf326331fed93769e" kindref="member">Nodes3D</ref>()<sp/>noexcept<sp/>=<sp/>default;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="48" refid="namespaceNodes3D_1a7b97000b7f4b0a9e680417b174215da6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceNodes3D" kindref="compound">Nodes3D</ref>(const<sp/><ref refid="namespaceNodes3D" kindref="compound">Nodes3D</ref>&amp;)<sp/>noexcept<sp/>=<sp/>default;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="49" refid="namespaceNodes3D_1a4c6adffda489e370980e610c86591885" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceNodes3D" kindref="compound">Nodes3D</ref>(<ref refid="namespaceNodes3D" kindref="compound">Nodes3D</ref>&amp;&amp;)<sp/>noexcept<sp/>=<sp/>default;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="namespaceNodes3D_1a7b7d885b5b3c25bf943116e69bb647ad" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>~<ref refid="namespaceNodes3D" kindref="compound">Nodes3D</ref>()<sp/>noexcept<sp/>override<sp/>=<sp/>default;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="namespaceNodes3D_1aabcb6b4ef97818f9a54e5ae65ed69c99" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceNodes3D" kindref="compound">Nodes3D</ref>&amp;<sp/>operator=(const<sp/><ref refid="namespaceNodes3D" kindref="compound">Nodes3D</ref>&amp;)<sp/>noexcept<sp/>=<sp/>default;<sp/></highlight></codeline>
+<codeline lineno="54" refid="namespaceNodes3D_1a1fcb818aa351a70ce6a9df5838f2552f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceNodes3D" kindref="compound">Nodes3D</ref>&amp;<sp/>operator=(<ref refid="namespaceNodes3D" kindref="compound">Nodes3D</ref>&amp;&amp;)<sp/>noexcept<sp/>=<sp/>default;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>/**</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>dimension<sp/>of<sp/>the<sp/>nodes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>The<sp/>dimension,<sp/>which<sp/>is<sp/>3<sp/>for<sp/>Nodes3D.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>int<sp/>dimension()<sp/>const<sp/>override;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>/**</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Returns<sp/>the<sp/>number<sp/>of<sp/>nodes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>The<sp/>number<sp/>of<sp/>nodes<sp/>in<sp/>the<sp/>collection.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>std::size_t<sp/>size()<sp/>const<sp/>override;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>/**</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Adds<sp/>a<sp/>node<sp/>to<sp/>the<sp/>collection.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>*<sp/>@param<sp/>point<sp/>The<sp/>3D<sp/>point<sp/>to<sp/>add.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>void<sp/>addNode(const<sp/>gtp::Point3D&amp;<sp/>point);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>/**</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>*<sp/>@brief<sp/>Gets<sp/>the<sp/>vector<sp/>of<sp/>nodes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>*</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>*<sp/>@return<sp/>A<sp/>constant<sp/>reference<sp/>to<sp/>the<sp/>vector<sp/>of<sp/>3D<sp/>points.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>const<sp/>gtp::VecPoint3D&amp;<sp/>getNodes()<sp/>const;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="comment">//protected:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>gtp::VecPoint3D<sp/>nodes_;<sp/><sp/><sp/>///&lt;<sp/>Vector<sp/>of<sp/>3D<sp/>nodes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><ref refid="namespace_8h_1a79d315e8c3400ea5f4ad4175a85d291c" kindref="member">VORMAKER_NAMESPACE_CLOSE</ref></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>__VORONOIMESHMAKER_NODES3D_H__</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/VoronoiMeshMaker/Nodes/Nodes3D/Nodes3D.h"/>
+  </compounddef>
+</doxygen>

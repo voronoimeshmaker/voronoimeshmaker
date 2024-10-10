@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structGeometricDataTraits_3_01gtp_1_1Vector2D_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>GeometricDataTraits&lt; gtp::Vector2D &gt;</compoundname>
+    <includes refid="GeometricDataTraits_8h" local="no">include/VoronoiMeshMaker/Parameters/GeometricDataTraits.h</includes>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="structGeometricDataTraits_3_01gtp_1_1Vector2D_01_4_1af45b3b67140e8cf03fc39dc0165d97a3" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>static const char* GeometricDataTraits&lt; gtp::Vector2D &gt;::name</definition>
+        <argsstring>()</argsstring>
+        <name>name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Parameters/GeometricDataTraits.h" line="108" column="23" bodyfile="include/VoronoiMeshMaker/Parameters/GeometricDataTraits.h" bodystart="108" bodyend="110"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/VoronoiMeshMaker/Parameters/GeometricDataTraits.h" line="107" column="1" bodyfile="include/VoronoiMeshMaker/Parameters/GeometricDataTraits.h" bodystart="107" bodyend="111"/>
+    <listofallmembers>
+      <member refid="structGeometricDataTraits_3_01gtp_1_1Vector2D_01_4_1af45b3b67140e8cf03fc39dc0165d97a3" prot="public" virt="non-virtual"><scope>GeometricDataTraits&lt; gtp::Vector2D &gt;</scope><name>name</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

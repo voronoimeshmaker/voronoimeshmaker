@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="md_README" kind="page">
+    <compoundname>md_README</compoundname>
+    <title>VoronoiMeshMaker</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><bold>Version:</bold> 1.0 (In Development)</para>
+<para><ulink url="https://www.gnu.org/licenses/gpl-3.0.html"><image type="html" name="https://img.shields.io/badge/license-GPL-blue" alt="License" inline="yes"></image>
+</ulink></para>
+<sect1 id="md_README_1autotoc_md1">
+<title>Description</title>
+<para>VoronoiMeshMaker is a <ref refid="namespaceVoronoi" kindref="compound">Voronoi</ref> mesh generator designed for discretizing both 2D and 3D geometries. It is primarily intended for use in programs that apply finite volume methods for solving equations differential equations.</para>
+</sect1>
+<sect1 id="md_README_1autotoc_md2">
+<title>Table of Contents</title>
+<para><itemizedlist>
+<listitem><para><ulink url="#requirements">Requirements</ulink></para>
+</listitem><listitem><para><ulink url="#installation">Installation</ulink></para>
+</listitem><listitem><para><ulink url="#usage">Usage</ulink></para>
+</listitem><listitem><para><ulink url="#configuration">Configuration</ulink></para>
+</listitem><listitem><para><ulink url="#documentation">Documentation</ulink></para>
+</listitem><listitem><para><ulink url="#tests">Tests</ulink></para>
+</listitem><listitem><para><ulink url="#contributing">Contributing</ulink></para>
+</listitem><listitem><para><ulink url="#license">License</ulink></para>
+</listitem><listitem><para><ulink url="#authors-and-acknowledgments">Authors and Acknowledgments</ulink></para>
+</listitem><listitem><para><ulink url="#roadmap">Roadmap</ulink></para>
+</listitem><listitem><para><ulink url="#changelog">Changelog</ulink></para>
+</listitem><listitem><para><ulink url="#contact">Contact</ulink></para>
+</listitem><listitem><para><ulink url="#credits">Credits</ulink></para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="md_README_1autotoc_md3">
+<title>Requirements</title>
+<para><itemizedlist>
+<listitem><para><bold>CGAL</bold></para>
+</listitem><listitem><para><bold>VTK</bold></para>
+</listitem><listitem><para><bold>TBB</bold> (Threading Building Blocks)</para>
+</listitem><listitem><para><bold>CMake</bold> (required for configuring and building the project)</para>
+</listitem></itemizedlist>
+</para>
+<para><blockquote><para>VoronoiMeshMaker is developed on WSL Ubuntu. Ensure that CMake is installed. </para>
+</blockquote></para>
+</sect1>
+<sect1 id="md_README_1autotoc_md4">
+<title>Installation</title>
+<para>Installation instructions will be provided when the first usable version is ready.</para>
+</sect1>
+<sect1 id="md_README_1autotoc_md5">
+<title>Usage</title>
+<para>(Usage examples will be added in the stable release.)</para>
+</sect1>
+<sect1 id="md_README_1autotoc_md6">
+<title>Configuration</title>
+<para>(Any configuration steps will be detailed here, if needed.)</para>
+</sect1>
+<sect1 id="md_README_1autotoc_md7">
+<title>Documentation</title>
+<para>For detailed documentation, please refer to [Documentation Link] (link to be added later).</para>
+</sect1>
+<sect1 id="md_README_1autotoc_md8">
+<title>Tests</title>
+<para>(Instructions on how to run tests will be added here.)</para>
+</sect1>
+<sect1 id="md_README_1autotoc_md9">
+<title>Contributing</title>
+<para>We welcome contributions! To contribute, please follow these guidelines:<itemizedlist>
+<listitem><para><bold>Fork the repository</bold></para>
+</listitem><listitem><para><bold>Create a new branch for your changes</bold></para>
+</listitem><listitem><para><bold>Submit a pull request with a description of your changes</bold></para>
+</listitem></itemizedlist>
+</para>
+<para>For more details, see our [CONTRIBUTING.md](link to be added later).</para>
+</sect1>
+<sect1 id="md_README_1autotoc_md10">
+<title>License</title>
+<para>This project is licensed under the GNU General Public License (GPL). You can view the full license text in the <computeroutput>LICENSE</computeroutput> file located in this directory. For more information, visit the <ulink url="https://www.gnu.org/licenses/gpl-3.0.html">GNU General Public License</ulink>.</para>
+</sect1>
+<sect1 id="md_README_1autotoc_md11">
+<title>Authors and Acknowledgments</title>
+<para>(Details of contributors or acknowledgments will be added here.)</para>
+</sect1>
+<sect1 id="md_README_1autotoc_md12">
+<title>Roadmap</title>
+<para>(Future plans or features to be added will be listed here.)</para>
+</sect1>
+<sect1 id="md_README_1autotoc_md13">
+<title>Changelog</title>
+<para>(History of changes for different versions will be maintained here.)</para>
+</sect1>
+<sect1 id="md_README_1autotoc_md14">
+<title>Contact</title>
+<para>For support or feedback, please contact:<itemizedlist>
+<listitem><para><bold>Email:</bold> <ulink url="mailto:voronoimeshmaker@gmail.com">your-email@example.com</ulink></para>
+</listitem><listitem><para><bold>GitHub Issues:</bold> <ulink url="https://github.com/voronoimeshmaker/voronoimeshmaker.git">Link to issues</ulink></para>
+</listitem></itemizedlist>
+</para>
+</sect1>
+<sect1 id="md_README_1autotoc_md15">
+<title>Credits</title>
+<para>(Any third-party tools, libraries, or resources used will be credited here.) </para>
+</sect1>
+    </detaileddescription>
+    <location file="README.md"/>
+  </compounddef>
+</doxygen>

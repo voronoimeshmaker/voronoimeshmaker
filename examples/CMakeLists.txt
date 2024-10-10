@@ -16,5 +16,3 @@ endfunction()
 
 # Recursively add all subdirectories
 add_subdirectories_recursive(${CMAKE_CURRENT_SOURCE_DIR})
-
-# Optional: Define common settings for examples (e.g., linking the library)

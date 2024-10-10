@@ -1,9 +1,6 @@
 # Define the minimum CMake version required
 cmake_minimum_required(VERSION 3.10)
 
-# Set policy to suppress warnings for Boost
-cmake_policy(SET CMP0167 NEW)
-
 # Set the project name and version
 project(VoronoiMeshMaker VERSION 1.0 LANGUAGES CXX)
 
@@ -16,12 +13,12 @@ if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE Release CACHE STRING "Build type" FORCE)
 endif()
 
-# Locate CGAL and VTK libraries
+# Locate CGAL, VTK, and TBB libraries
 find_package(CGAL REQUIRED)
 find_package(VTK REQUIRED)
 find_package(TBB REQUIRED)
 
-# Include directories for CGAL and VTK
+# Include directories for CGAL, VTK, and TBB
 include_directories(${CGAL_INCLUDE_DIRS})
 include_directories(${VTK_INCLUDE_DIRS})
 include_directories(${TBB_INCLUDE_DIRS})
@@ -35,9 +32,9 @@ file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.c
 # Create the shared library and set the output directory to "lib"
 add_library(VoronoiMeshMaker SHARED ${SOURCES})
 
-# Link the library with CGAL and VTK
+# Link the library with CGAL, VTK, and TBB
 target_link_libraries(VoronoiMeshMaker
-    PUBLIC  # Allow other projects to use the CGAL and VTK dependencies transitively
+    PUBLIC
     ${CGAL_LIBRARIES}
     ${VTK_LIBRARIES}
     ${TBB_LIBRARIES}
@@ -52,7 +49,6 @@ set_target_properties(VoronoiMeshMaker PROPERTIES
 
 # Set compiler flags for optimizations (adjust based on compiler)
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
-    # GCC/Clang specific optimizations
     target_compile_options(VoronoiMeshMaker PRIVATE 
         -O3                     # Optimization level 3
         -march=native           # Optimize for the current architecture
@@ -60,7 +56,6 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
         -fopenmp                # Enable OpenMP support for parallelism (if applicable)
     )
 elseif(MSVC)
-    # MSVC specific optimizations
     target_compile_options(VoronoiMeshMaker PRIVATE 
         /O2                     # Optimization level 2
         /GL                     # Enable Whole Program Optimization
@@ -72,7 +67,7 @@ endif()
 install(TARGETS VoronoiMeshMaker
     EXPORT VoronoiMeshMakerTargets
     LIBRARY DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/lib
-    ARCHIVE DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/lib  # For compatibility, though not used for shared libraries
+    ARCHIVE DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/lib
     RUNTIME DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/lib
 )
 
@@ -88,53 +83,49 @@ install(DIRECTORY src/
     FILES_MATCHING PATTERN "*.tpp"
 )
 
-# Add the examples directory if there are example programs
-add_subdirectory(examples)
-
-# Export the package configuration to the build directory
-export(EXPORT VoronoiMeshMakerTargets
-    FILE "${CMAKE_BINARY_DIR}/VoronoiMeshMakerTargets.cmake"
-)
-
-# Doxygen documentation
-find_package(Doxygen)
-
-if(DOXYGEN_FOUND)
-    # Set Doxygen options and output directory
-    set(DOXYGEN_OUTPUT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/docs_sphinx/doxygen)
-    set(DOXYFILE_IN ${CMAKE_CURRENT_SOURCE_DIR}/docs_sphinx/Doxyfile.in)
-    set(DOXYFILE_OUT ${CMAKE_CURRENT_SOURCE_DIR}/docs_sphinx/Doxyfile)
-
-    # Configure Doxygen with a template Doxyfile.in
-    configure_file(${DOXYFILE_IN} ${DOXYFILE_OUT} @ONLY)
-
-    # Add custom target for generating Doxygen documentation
-    add_custom_target(doxygen_doc ALL
-        COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYFILE_OUT}
-        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/docs_sphinx
-        COMMENT "Generating API documentation with Doxygen"
-        VERBATIM
+# Define a custom target to run all examples (define apenas uma vez na raiz)
+if(NOT TARGET run_examples)
+    add_custom_target(run_examples
+        COMMAND ${CMAKE_COMMAND} -E echo "Running all examples..."
     )
-else()
-    message(WARNING "Doxygen not found, API documentation will not be generated.")
 endif()
 
-# Sphinx documentation
-find_program(SPHINX_EXECUTABLE sphinx-build)
+# Function to add each example to the run_examples target
+function(add_example_target target_name)
+    if(TARGET run_examples)
+        add_dependencies(run_examples ${target_name})
+        add_custom_command(
+            TARGET ${target_name}
+            POST_BUILD
+            COMMAND ${CMAKE_CURRENT_BINARY_DIR}/${target_name}
+            COMMENT "Running example ${target_name}..."
+        )
+    endif()
+endfunction()
 
-if(SPHINX_EXECUTABLE)
-    # Add custom target for generating Sphinx documentation
-    add_custom_target(sphinx_doc ALL
-        COMMAND ${SPHINX_EXECUTABLE} -b html ${CMAKE_CURRENT_SOURCE_DIR}/docs_sphinx ${CMAKE_CURRENT_BINARY_DIR}/docs_sphinx
-        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/docs_sphinx
-        COMMENT "Generating documentation with Sphinx"
-        VERBATIM
-    )
+# Option to choose between building examples or tests
+option(BUILD_EXAMPLES "Build examples" OFF)
+option(BUILD_TESTS "Build tests" ON)
 
-    # Make sphinx_doc depend on doxygen_doc
-    add_dependencies(sphinx_doc doxygen_doc)
-else()
-    message(WARNING "Sphinx not found, Sphinx documentation will not be generated.")
+# Ensure only one option is enabled
+if(BUILD_EXAMPLES AND BUILD_TESTS)
+    message(FATAL_ERROR "You can only enable either BUILD_EXAMPLES or BUILD_TESTS, not both.")
+endif()
+
+# Add the examples directory if BUILD_EXAMPLES is ON
+if(BUILD_EXAMPLES)
+    message(STATUS "Building Examples...")
+    add_subdirectory(examples)
+endif()
+
+# Locate Google Test for testing
+if(BUILD_TESTS)
+    message(STATUS "Building Tests...")
+    find_package(GTest REQUIRED)
+    enable_testing()
+
+    # Add the tests directory
+    add_subdirectory(tests)
 endif()
 
 # Optional: Add a custom target to clean up generated files

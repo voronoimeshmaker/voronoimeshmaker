@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="namespaceExportStrategy" kind="namespace" language="C++">
+    <compoundname>ExportStrategy</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceExportStrategy_1a763418edadbda99832c2f46bf3b3a121" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual ExportStrategy::~ExportStrategy</definition>
+        <argsstring>()=default</argsstring>
+        <name>~ExportStrategy</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/DataExporter/ExportStrategy.h" line="59" column="13" declfile="include/VoronoiMeshMaker/DataExporter/ExportStrategy.h" declline="59" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceExportStrategy_1a2b20441bd4e954eeae199a764f18ec83" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ExportStrategy::exportData</definition>
+        <argsstring>(const Shape2D &amp;shape, const std::string &amp;filename) const =0</argsstring>
+        <name>exportData</name>
+        <param>
+          <type>const Shape2D &amp;</type>
+          <declname>shape</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>filename</declname>
+        </param>
+        <briefdescription>
+<para>Exports <ref refid="namespaceShape2D" kindref="compound">Shape2D</ref> data to a specific format. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>shape</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The 2D shape to be exported. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>filename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name of the output file. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/DataExporter/ExportStrategy.h" line="67" column="18" declfile="include/VoronoiMeshMaker/DataExporter/ExportStrategy.h" declline="67" declcolumn="18"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/VoronoiMeshMaker/DataExporter/ExportStrategy.h" line="48" column="1"/>
+  </compounddef>
+</doxygen>

@@ -1,92 +1,130 @@
+//==============================================================================
+// Name        : Ex_Shape2D.cpp
+// Author      : Joao Flavio Vieira de Vasconcellos
+// Version     : 1.0
+// Description : Main function for generating and exporting 2D shapes.
+//               Demonstrates the creation of different shapes and exporting
+//               them using the VoronoiDataExporter class.
+//
+// Copyright   : Copyright (C) 2024 Joao Flavio Vieira de Vasconcellos
+//               (jflavio at iprj.uerj.br)
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program. If not, see <http://www.gnu.org/licenses/>.
+//==============================================================================
+
+/**
+ * @file Ex_Shape2D.cpp
+ * @brief Demonstrates the generation of shapes and their exportation using VoronoiDataExporter.
+ * 
+ * This file shows how to create various 2D shapes (Ellipse, Rectangle, Star), fill a 
+ * GeometricDataHolder with appropriate values, and export the generated shape using the 
+ * VoronoiDataExporter class and the chosen export strategy (VTK or HDF5).
+ * 
+ * @date 2024
+ */
 
 #include <iostream>
 
-//#include <VoronoiMeshMaker/Shape/Shape2D/Shape2D.h>
+//==============================================================================
+// VoronoiMeshMaker includes
+//==============================================================================
+//#include <VoronoiMeshMaker/Parameters/GeometricDataHolder.h>
+//#include <VoronoiMeshMaker/Shape/ShapeFactory.h>
+//#include <VoronoiMeshMaker/Shape/Shape2D/Ellipse.h>
+//#include <VoronoiMeshMaker/Shape/Shape2D/Rectangle.h>
+//#include <VoronoiMeshMaker/Shape/Shape2D/Star.h>
+//#include <VoronoiMeshMaker/DataExporter/VoronoiDataExporter.h>
+//#include <VoronoiMeshMaker/DataExporter/ExportOptions.h>
+//
+//using vmm::gtp::Point2D;
+//using vmm::Shape2D;
 
-#include <VoronoiMeshMaker/Parameters/GeometricDataHolder.h>  
-#include <VoronoiMeshMaker/Shape/ShapeFactory.h>
+/**
+ * @enum Shape2DType
+ * @brief Enumerates the 2D shapes available for creation.
+ */
+enum class Shape2DType { RECTANGLE, STAR, ELLIPSE };
 
-#include <VoronoiMeshMaker/Shape/Shape2D/Ellipse.h>  
-#include <VoronoiMeshMaker/Shape/Shape2D/Rectangle.h>  
-#include <VoronoiMeshMaker/Shape/Shape2D/Star.h>  
-
-using vmm::gtp::Point2D;
-//using vmm::gtp::Vector2D;
-using vmm::Shape2D;
-
-
-enum SHAPE2D {RECTANGLE, STAR, ELLIPSE};
-
+/**
+ * @brief Main function for shape generation and exportation.
+ * 
+ * This function demonstrates how to create different 2D shapes (Ellipse, Rectangle, Star),
+ * fill a GeometricDataHolder with appropriate values, and export the generated shape
+ * in either VTK or HDF5 format using the respective export strategies.
+ * 
+ * @return int Exit status.
+ */
 int main() {
 
-    SHAPE2D testShape = ELLIPSE;
-    vmm::GeometricDataHolder geometricDataHolder;
-    vmm::PtrShape       ptrShape;
-     
-    switch (testShape) {
-        
-        case ELLIPSE :     geometricDataHolder.addValue("Length", 2.0);
-                            geometricDataHolder.addValue("Width", 2.0);
-                            geometricDataHolder.addValue("NPoints", 30);     
-                            std::cout << "Dados para a geração do ellipses\n";
-                            std::cout << geometricDataHolder << "\n";
-                            ptrShape = vmm::ShapeFactory::createShape(vmm::Ellipse::getClassID(), geometricDataHolder);
-                            break;
-
-        case RECTANGLE :    geometricDataHolder.addValue("Length", 2.0);
-                            geometricDataHolder.addValue("Width", 2.0);
-                            geometricDataHolder.addValue("BottomLeftCorner", Point2D(3,1));     // Este dado é opcional
-                            std::cout << "Dados para a geração do rectangle\n";
-                            std::cout << geometricDataHolder << "\n";
-                            ptrShape = vmm::ShapeFactory::createShape(vmm::Rectangle::getClassID(), geometricDataHolder);
-                            break;
-
-        case STAR :    geometricDataHolder.addValue("Radius", 2.0);
-                            std::cout << "Dados para a geração da star\n";
-                            std::cout << geometricDataHolder << "\n";
-                            ptrShape = vmm::ShapeFactory::createShape(vmm::Star::getClassID(), geometricDataHolder);
-
-                            break;
-        
-        default :           std::cout << "Opcao nao liberada" << "\n";
-                            exit (EXIT_FAILURE);
-    }
-    
-    
+//    Shape2DType testShape = Shape2DType::ELLIPSE;  ///< Selected shape type for testing.
+//    vmm::ExportFormat exportFormat = vmm::ExportFormat::VTK;  ///< Selected export format for testing.
+//    vmm::GeometricDataHolder geometricDataHolder;  ///< Data holder to store shape parameters.
+//    
+//    PtrShape2DShared ptrShape;  ///< Pointer to the generated shape.
+//     
+//    switch (testShape) {
+//        
+//        case Shape2DType::ELLIPSE:     
+//            geometricDataHolder.addValue("Length", 2.0);
+//            geometricDataHolder.addValue("Width", 2.0);
+//            geometricDataHolder.addValue("NPoints", 30);     
+//            std::cout << "Data for ellipse generation\n";
+//            std::cout << geometricDataHolder << "\n";
+//            ptrShape = vmm::ShapeFactory::createShape2D(vmm::Ellipse::getClassID(), geometricDataHolder);
+//            break;
 //
-////    // Adicionando diferentes tipos de dados
-//    geometricDataHolder.addValue("nPontos", 42);
-//    geometricDataHolder.addValue("nDados", 412);
-//    geometricDataHolder.addValue("dx", 0.1415);
-//    geometricDataHolder.addValue("dy", 0.3);
-//    geometricDataHolder.addValue("center", Point2D(1.0, 2.0));
-//    geometricDataHolder.addValue("center1", Point2D(-1.0, 2.0));
-//    geometricDataHolder.addValue("displacement", Vector2D(0.5, 1.5));
-//    geometricDataHolder.addValue("displacement1", Vector2D(1.5, -1.5));
+//        case Shape2DType::RECTANGLE:    
+//            geometricDataHolder.addValue("Length", 2.0);
+//            geometricDataHolder.addValue("Width", 2.0);
+//            geometricDataHolder.addValue("BottomLeftCorner", Point2D(3,1));  // Optional data
+//            std::cout << "Data for rectangle generation\n";
+//            std::cout << geometricDataHolder << "\n";
+//            ptrShape = vmm::ShapeFactory::createShape2D(vmm::Rectangle::getClassID(), geometricDataHolder);
+//            break;
 //
-//    // Imprimindo todas as variáveis
-//    std::cout << "Valores armazenados no GeometricDataHolder:" << std::endl;
-//    std::cout << geometricDataHolder;
-//
-//    
-//    
-//    
-//    
-//    // Recuperando valores de diferentes tipos
-//    if (auto intValue = geometricDataHolder.getValue<int>("intVar")) {
-//        std::cout << "Valor de 'intVar': " << *intValue << std::endl;
+//        case Shape2DType::STAR:    
+//            geometricDataHolder.addValue("Radius", 2.0);
+//            std::cout << "Data for star generation\n";
+//            std::cout << geometricDataHolder << "\n";
+//            ptrShape = vmm::ShapeFactory::createShape2D(vmm::Star::getClassID(), geometricDataHolder);
+//            break;
+//        
+//        default:           
+//            std::cerr << "Option not available\n";
+//            exit(EXIT_FAILURE);
 //    }
 //
-//    if (auto RealValue = geometricDataHolder.getValue<Real>("RealVar")) {
-//        std::cout << "Valor de 'RealVar': " << *RealValue << std::endl;
+//    // Check if shape creation was successful
+//    if (!ptrShape) {
+//        std::cerr << "Error: Shape creation failed!" << std::endl;
+//        exit(EXIT_FAILURE);
 //    }
 //
-//    if (auto pointValue = geometricDataHolder.getValue<Point2D>("pointVar")) {
-//        std::cout << "Valor de 'pointVar': (" << pointValue->x() << ", " << pointValue->y() << ")" << std::endl;
-//    }
+//    // Define export options: Export only shapes
+//    vmm::ExportOptions options = vmm::ExportOptions::SHAPES;
 //
-//    if (auto vectorValue = geometricDataHolder.getValue<Vector2D>("vectorVar")) {
-//        std::cout << "Valor de 'vectorVar': (" << vectorValue->x() << ", " << vectorValue->y() << ")" << std::endl;
+//    // Export the shape using the appropriate export format
+//    switch (exportFormat) {
+//        case vmm::ExportFormat::VTK:
+//            vmm::VoronoiDataExporter::exportData("output_directory", "shape_output", *ptrShape);  // Passando o ponteiro desreferenciado para exportar
+//            break;
+//        case vmm::ExportFormat::HDF5:
+//            // Assuming future HDF5 export functionality
+//            std::cout << "HDF5 export not implemented yet" << std::endl;
+//            break;
+//        default:
+//            std::cerr << "Unsupported export format" << std::endl;
+//            exit(EXIT_FAILURE);
 //    }
 
     return 0;

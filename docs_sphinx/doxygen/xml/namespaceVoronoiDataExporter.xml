@@ -1,0 +1,167 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="namespaceVoronoiDataExporter" kind="namespace" language="C++">
+    <compoundname>VoronoiDataExporter</compoundname>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceVoronoiDataExporter_1a793463f2d1111866cfdd69e7e4b6c360" prot="private" static="no" mutable="no">
+        <type>std::string_view</type>
+        <definition>std::string_view VoronoiDataExporter::directory_</definition>
+        <argsstring></argsstring>
+        <name>directory_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/DataExporter/VoronoiDataExporter.h" line="92" column="22" bodyfile="include/VoronoiMeshMaker/DataExporter/VoronoiDataExporter.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceVoronoiDataExporter_1a562ad9186d65b4736fb62f34f70d0966" prot="private" static="no" mutable="no">
+        <type>std::string_view</type>
+        <definition>std::string_view VoronoiDataExporter::fileName_</definition>
+        <argsstring></argsstring>
+        <name>fileName_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/DataExporter/VoronoiDataExporter.h" line="93" column="22" bodyfile="include/VoronoiMeshMaker/DataExporter/VoronoiDataExporter.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceVoronoiDataExporter_1a5a2da9d52eefd34ebc155e0288b49255" prot="private" static="no" mutable="no">
+        <type>std::unique_ptr&lt; ExportStrategy &gt;</type>
+        <definition>std::unique_ptr&lt;ExportStrategy&gt; VoronoiDataExporter::exportStrategy_</definition>
+        <argsstring></argsstring>
+        <name>exportStrategy_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/DataExporter/VoronoiDataExporter.h" line="94" column="21" bodyfile="include/VoronoiMeshMaker/DataExporter/VoronoiDataExporter.h" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceVoronoiDataExporter_1a81c445e5acdebe9773e53c2830b3b3a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>VoronoiDataExporter::VoronoiDataExporter</definition>
+        <argsstring>(std::string_view directory, std::string_view fileName)</argsstring>
+        <name>VoronoiDataExporter</name>
+        <param>
+          <type>std::string_view</type>
+          <declname>directory</declname>
+        </param>
+        <param>
+          <type>std::string_view</type>
+          <declname>fileName</declname>
+        </param>
+        <briefdescription>
+<para>Constructor that initializes the exporter with directory and file name. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>directory</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The directory where the file will be saved. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>fileName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name of the file to be saved. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/DataExporter/VoronoiDataExporter.h" line="73" column="5" declfile="include/VoronoiMeshMaker/DataExporter/VoronoiDataExporter.h" declline="73" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceVoronoiDataExporter_1aa4ecfc67df74923b7c784601e04777a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void VoronoiDataExporter::setExportStrategy</definition>
+        <argsstring>(std::unique_ptr&lt; ExportStrategy &gt; strategy)</argsstring>
+        <name>setExportStrategy</name>
+        <param>
+          <type>std::unique_ptr&lt; ExportStrategy &gt;</type>
+          <declname>strategy</declname>
+        </param>
+        <briefdescription>
+<para>Sets the export strategy based on the desired format. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>strategy</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A unique pointer to the export strategy (VTK, HDF5, etc.). </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/DataExporter/VoronoiDataExporter.h" line="80" column="10" declfile="include/VoronoiMeshMaker/DataExporter/VoronoiDataExporter.h" declline="80" declcolumn="10"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceVoronoiDataExporter_1a2c78bababe4ca170386f85a6b452c845" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void VoronoiDataExporter::exportData</definition>
+        <argsstring>(const T &amp;data, ExportOptions options)</argsstring>
+        <name>exportData</name>
+        <param>
+          <type>const T &amp;</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>ExportOptions</type>
+          <declname>options</declname>
+        </param>
+        <briefdescription>
+<para>Exports the data based on the selected export options. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The data to export (e.g., <ref refid="namespaceShape2D" kindref="compound">Shape2D</ref>, MeshVor). </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>options</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Flags specifying what components to export. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/DataExporter/VoronoiDataExporter.h" line="89" column="10" declfile="include/VoronoiMeshMaker/DataExporter/VoronoiDataExporter.h" declline="89" declcolumn="10"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/VoronoiMeshMaker/DataExporter/VoronoiDataExporter.h" line="55" column="1"/>
+  </compounddef>
+</doxygen>

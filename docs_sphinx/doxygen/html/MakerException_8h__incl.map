@@ -1,0 +1,19 @@
+<map id="include/VoronoiMeshMaker/Error/MakerException.h" name="include/VoronoiMeshMaker/Error/MakerException.h">
+<area shape="rect" id="node1" title=" " alt="" coords="138,5,337,47"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,102,64,129"/>
+<area shape="rect" id="node3" title=" " alt="" coords="89,102,175,129"/>
+<area shape="rect" id="node4" title=" " alt="" coords="199,102,275,129"/>
+<area shape="rect" id="node5" href="$id_8h.html" title=" " alt="" coords="299,102,509,129"/>
+<area shape="rect" id="node16" href="$sourceinfo_8h.html" title="Provides information about the source of an error or event in a function." alt="" coords="533,95,715,136"/>
+<area shape="rect" id="node6" title=" " alt="" coords="465,191,562,218"/>
+<area shape="rect" id="node7" href="$configure_8h.html" title="Defines common constants used across the VoronoiMeshMaker library." alt="" coords="259,184,440,225"/>
+<area shape="rect" id="node8" href="$type_8h.html" title="Defines common geometric and numeric types used in the VoronoiMeshMaker library." alt="" coords="259,273,440,315"/>
+<area shape="rect" id="node9" title=" " alt="" coords="8,377,51,404"/>
+<area shape="rect" id="node10" title=" " alt="" coords="75,377,152,404"/>
+<area shape="rect" id="node11" title=" " alt="" coords="177,377,239,404"/>
+<area shape="rect" id="node12" title=" " alt="" coords="263,363,435,419"/>
+<area shape="rect" id="node13" title=" " alt="" coords="459,377,599,404"/>
+<area shape="rect" id="node14" title=" " alt="" coords="623,377,785,404"/>
+<area shape="rect" id="node15" href="$namespace_8h.html" title=" " alt="" coords="809,370,991,411"/>
+<area shape="rect" id="node17" title=" " alt="" coords="587,184,768,225"/>
+</map>

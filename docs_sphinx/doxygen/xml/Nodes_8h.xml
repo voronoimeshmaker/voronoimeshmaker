@@ -1,0 +1,186 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="Nodes_8h" kind="file" language="C++">
+    <compoundname>Nodes.h</compoundname>
+    <includes refid="namespace_8h" local="no">VoronoiMeshMaker/Misc/namespace.h</includes>
+    <includes refid="type_8h" local="no">VoronoiMeshMaker/Misc/type.h</includes>
+    <includedby refid="Nodes2D_8h" local="no">include/VoronoiMeshMaker/Nodes/Nodes2D/Nodes2D.h</includedby>
+    <includedby refid="Nodes3D_8h" local="no">include/VoronoiMeshMaker/Nodes/Nodes3D/Nodes3D.h</includedby>
+    <includedby refid="Nodes_8cpp" local="no">src/VoronoiMeshMaker/Nodes/Nodes.cpp</includedby>
+    <incdepgraph>
+      <node id="4">
+        <label>list</label>
+      </node>
+      <node id="6">
+        <label>vector</label>
+      </node>
+      <node id="9">
+        <label>CGAL/Polyhedron_3.h</label>
+      </node>
+      <node id="2">
+        <label>VoronoiMeshMaker/Misc/namespace.h</label>
+        <link refid="namespace_8h"/>
+      </node>
+      <node id="8">
+        <label>CGAL/Polygon_2.h</label>
+      </node>
+      <node id="1">
+        <label>include/VoronoiMeshMaker/Nodes/Nodes.h</label>
+        <link refid="Nodes_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>VoronoiMeshMaker/Misc/type.h</label>
+        <link refid="type_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>memory</label>
+      </node>
+      <node id="7">
+        <label>CGAL/Exact_predicates_inexact_constructions_kernel.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="5">
+        <label>src/VoronoiMeshMaker/Nodes/Nodes2D/Nodes2D.cpp</label>
+        <link refid="Nodes2D_8cpp"/>
+      </node>
+      <node id="2">
+        <label>include/VoronoiMeshMaker/Nodes/Nodes2D/Nodes2D.h</label>
+        <link refid="Nodes2D_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>src/VoronoiMeshMaker/Nodes/Nodes3D/Nodes3D.cpp</label>
+        <link refid="Nodes3D_8cpp"/>
+      </node>
+      <node id="3">
+        <label>include/VoronoiMeshMaker/Exporter/ExporterTraits.h</label>
+        <link refid="ExporterTraits_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>src/VoronoiMeshMaker/Nodes/Nodes.cpp</label>
+        <link refid="Nodes_8cpp"/>
+      </node>
+      <node id="1">
+        <label>include/VoronoiMeshMaker/Nodes/Nodes.h</label>
+        <link refid="Nodes_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>include/VoronoiMeshMaker/Nodes/Nodes3D/Nodes3D.h</label>
+        <link refid="Nodes3D_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>include/VoronoiMeshMaker/Exporter/Exporter.h</label>
+        <link refid="Exporter_8h"/>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespaceNodes">Nodes</innernamespace>
+    <briefdescription>
+<para>Declares the <ref refid="namespaceNodes" kindref="compound">Nodes</ref> base class for representing collections of nodes. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This class serves as the base for <ref refid="namespaceNodes2D" kindref="compound">Nodes2D</ref> and <ref refid="namespaceNodes3D" kindref="compound">Nodes3D</ref> classes.</para>
+<para><simplesect kind="version"><para>1.0 </para>
+</simplesect>
+<simplesect kind="date"><para>2024</para>
+</simplesect>
+Licensed under the GNU General Public License, version 3. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Name<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>Nodes.h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Author<sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>Joao<sp/>Flavio<sp/>Vieira<sp/>de<sp/>Vasconcellos</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Version<sp/><sp/><sp/><sp/><sp/>:<sp/>1.0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Description<sp/>:<sp/>Declares<sp/>the<sp/>Nodes<sp/>base<sp/>class.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Copyright<sp/><sp/><sp/>:<sp/>Copyright<sp/>(C)<sp/>2024<sp/>Joao</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(jflavio<sp/>at<sp/>iprj.uerj.br)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>program<sp/>is<sp/>free<sp/>software:<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//<sp/>it<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,<sp/>either<sp/>version<sp/>3<sp/>of<sp/>the<sp/>License.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>program<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//<sp/>but<sp/>WITHOUT<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//<sp/>MERCHANTABILITY<sp/>or<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/>See<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>GNU<sp/>General<sp/>Public<sp/>License<sp/>for<sp/>more<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>General<sp/>Public<sp/>License</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//<sp/>along<sp/>with<sp/>this<sp/>program.<sp/>If<sp/>not,<sp/>see<sp/>&lt;http://www.gnu.org/licenses/&gt;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__VORONOIMESHMAKER_NODES_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__VORONOIMESHMAKER_NODES_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>VoronoiMeshMaker<sp/>includes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="namespace_8h" kindref="compound">VoronoiMeshMaker/Misc/namespace.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="type_8h" kindref="compound">VoronoiMeshMaker/Misc/type.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="namespaceNodes" refkind="compound"><highlight class="normal"><ref refid="namespace_8h_1a0850a440be7718d521600f120ee783e5" kindref="member">VORMAKER_NAMESPACE_OPEN</ref></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="namespaceNodes" kindref="compound">Nodes</ref><sp/>{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="namespaceNodes_1aad05ebb5dcd30ad765db70759c68b64a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceNodes_1aad05ebb5dcd30ad765db70759c68b64a" kindref="member">Nodes</ref>()<sp/>noexcept<sp/>=<sp/>default;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="60" refid="namespaceNodes_1a7f03335b032a1a790ce50ef4b6261f41" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceNodes" kindref="compound">Nodes</ref>(const<sp/><ref refid="namespaceNodes" kindref="compound">Nodes</ref>&amp;)<sp/>noexcept<sp/>=<sp/>default;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="61" refid="namespaceNodes_1aa04919e8f3da5584e9e57bbf48a8bb74" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceNodes" kindref="compound">Nodes</ref>(<ref refid="namespaceNodes" kindref="compound">Nodes</ref>&amp;&amp;)<sp/>noexcept<sp/>=<sp/>default;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="namespaceNodes_1a72effbe66af0be564bb1d358396d29c5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>virtual<sp/>~<ref refid="namespaceNodes" kindref="compound">Nodes</ref>()<sp/>noexcept<sp/>=<sp/>default;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="namespaceNodes_1a267ec8795ec1a2cda267d3da2c9cf540" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceNodes" kindref="compound">Nodes</ref>&amp;<sp/>operator=(const<sp/><ref refid="namespaceNodes" kindref="compound">Nodes</ref>&amp;)<sp/>noexcept<sp/>=<sp/>default;<sp/></highlight></codeline>
+<codeline lineno="66" refid="namespaceNodes_1a353063912295823fabe32a8a7145388f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceNodes" kindref="compound">Nodes</ref>&amp;<sp/>operator=(<ref refid="namespaceNodes" kindref="compound">Nodes</ref>&amp;&amp;)<sp/>noexcept<sp/>=<sp/>default;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="namespaceNodes_1a8e8d0be4cf491772c2f492fa6a5e407e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>virtual<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="namespaceNodes_1a8e8d0be4cf491772c2f492fa6a5e407e" kindref="member">dimension</ref>()<sp/>const<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84" refid="namespaceNodes_1a95b5c51d368f354fca7facd1b5b8bc6a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>virtual<sp/>std::</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="namespaceNodes_1a95b5c51d368f354fca7facd1b5b8bc6a" kindref="member">size</ref>()<sp/>const<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal">protected:</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Protected<sp/>members<sp/>can<sp/>be<sp/>added<sp/>here<sp/>in<sp/>the<sp/>future</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><ref refid="namespace_8h_1a79d315e8c3400ea5f4ad4175a85d291c" kindref="member">VORMAKER_NAMESPACE_CLOSE</ref></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>__VORONOIMESHMAKER_NODES_H__</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="include/VoronoiMeshMaker/Nodes/Nodes.h"/>
+  </compounddef>
+</doxygen>

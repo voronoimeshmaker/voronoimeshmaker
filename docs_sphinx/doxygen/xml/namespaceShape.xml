@@ -1,0 +1,237 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="namespaceShape" kind="namespace" language="C++">
+    <compoundname>Shape</compoundname>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceShape_1af10dc73b4b127681aadf43e86d69a892" prot="private" static="no" mutable="no">
+        <type><ref refid="GeometricDataHolder_8h_1a41840718bff48f61d2740a5852aac4af" kindref="member">PtrGeometricDataHolder</ref></type>
+        <definition>PtrGeometricDataHolder Shape::ptrDataHolder_</definition>
+        <argsstring></argsstring>
+        <name>ptrDataHolder_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Shape/Shape.h" line="66" column="29" bodyfile="include/VoronoiMeshMaker/Shape/Shape.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceShape_1a52cf99502307b6a9f8e1e15eb486901d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>Shape::Shape</definition>
+        <argsstring>() noexcept=default</argsstring>
+        <name>Shape</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Shape/Shape.h" line="41" column="5" declfile="include/VoronoiMeshMaker/Shape/Shape.h" declline="41" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceShape_1a99f020abdf3f9a2fabce756830121348" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>Shape::Shape</definition>
+        <argsstring>(const Shape &amp;) noexcept=default</argsstring>
+        <name>Shape</name>
+        <param>
+          <type>const Shape &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Shape/Shape.h" line="42" column="5" declfile="include/VoronoiMeshMaker/Shape/Shape.h" declline="42" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceShape_1a81293c5490684ca800476d63ecfe267a" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>Shape::Shape</definition>
+        <argsstring>(Shape &amp;&amp;other) noexcept=default</argsstring>
+        <name>Shape</name>
+        <param>
+          <type>Shape &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Shape/Shape.h" line="43" column="5" declfile="include/VoronoiMeshMaker/Shape/Shape.h" declline="43" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceShape_1a5f9e80d652786a93d8d549287b2c0b68" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>Shape::~Shape</definition>
+        <argsstring>() noexcept=default</argsstring>
+        <name>~Shape</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Shape/Shape.h" line="44" column="5" declfile="include/VoronoiMeshMaker/Shape/Shape.h" declline="44" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceShape_1adb88e18d3d4292217b500618e723b6f2" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="namespaceShape_1a52cf99502307b6a9f8e1e15eb486901d" kindref="member">Shape</ref> &amp;</type>
+        <definition>Shape&amp; Shape::operator=</definition>
+        <argsstring>(const Shape &amp;other) noexcept=default</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="namespaceShape_1a52cf99502307b6a9f8e1e15eb486901d" kindref="member">Shape</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Shape/Shape.h" line="46" column="11" declfile="include/VoronoiMeshMaker/Shape/Shape.h" declline="46" declcolumn="11"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceShape_1a3b2f1b51baaa81b600f564096e3debc0" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="namespaceShape_1a52cf99502307b6a9f8e1e15eb486901d" kindref="member">Shape</ref> &amp;</type>
+        <definition>Shape&amp; Shape::operator=</definition>
+        <argsstring>(Shape &amp;&amp;other) noexcept=default</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="namespaceShape_1a52cf99502307b6a9f8e1e15eb486901d" kindref="member">Shape</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Shape/Shape.h" line="47" column="11" declfile="include/VoronoiMeshMaker/Shape/Shape.h" declline="47" declcolumn="11"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceShape_1ac243986362d8f593722469eaae480127" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>namespace Shape::Shape</definition>
+        <argsstring>(const GeometricDataHolder &amp;)</argsstring>
+        <name>Shape</name>
+        <param>
+          <type>const <ref refid="classGeometricDataHolder" kindref="compound">GeometricDataHolder</ref> &amp;</type>
+          <defname>_dataHolder</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Shape/Shape.h" line="49" column="5" bodyfile="src/VoronoiMeshMaker/Shape/Shape.cpp" bodystart="15" bodyend="17" declfile="include/VoronoiMeshMaker/Shape/Shape.h" declline="49" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceShape_1aa9685aa2de7ca5af40013ad85137b191" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type>std::string_view</type>
+        <definition>virtual std::string_view Shape::className</definition>
+        <argsstring>() const noexcept override=0</argsstring>
+        <name>className</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Shape/Shape.h" line="54" column="30" declfile="include/VoronoiMeshMaker/Shape/Shape.h" declline="54" declcolumn="30"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceShape_1aa16b693ea1cd2fe7ecf68e79160f62cc" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type>ClassID</type>
+        <definition>virtual ClassID Shape::classID</definition>
+        <argsstring>() const noexcept override=0</argsstring>
+        <name>classID</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Shape/Shape.h" line="55" column="21" declfile="include/VoronoiMeshMaker/Shape/Shape.h" declline="55" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceShape_1a342818aa4ea24c525f7d928f25fb701a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool Shape::rotate</definition>
+        <argsstring>(const GeometricDataHolder &amp;data)=0</argsstring>
+        <name>rotate</name>
+        <param>
+          <type>const <ref refid="classGeometricDataHolder" kindref="compound">GeometricDataHolder</ref> &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Shape/Shape.h" line="57" column="18" declfile="include/VoronoiMeshMaker/Shape/Shape.h" declline="57" declcolumn="18"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceShape_1a87bf6731ab1c36c417b6581fbfd5bad5" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool Shape::translate</definition>
+        <argsstring>(const GeometricDataHolder &amp;data)=0</argsstring>
+        <name>translate</name>
+        <param>
+          <type>const <ref refid="classGeometricDataHolder" kindref="compound">GeometricDataHolder</ref> &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Shape/Shape.h" line="58" column="18" declfile="include/VoronoiMeshMaker/Shape/Shape.h" declline="58" declcolumn="18"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceShape_1afeee6df3afb921a347db5faa1349af4d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>double</type>
+        <definition>virtual double Shape::area</definition>
+        <argsstring>() const =0</argsstring>
+        <name>area</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Shape/Shape.h" line="59" column="20" declfile="include/VoronoiMeshMaker/Shape/Shape.h" declline="59" declcolumn="20"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceShape_1a4d5779a729935973c0952ebb21dc6550" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>double</type>
+        <definition>virtual double Shape::volume</definition>
+        <argsstring>() const =0</argsstring>
+        <name>volume</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Shape/Shape.h" line="60" column="20" declfile="include/VoronoiMeshMaker/Shape/Shape.h" declline="60" declcolumn="20"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceShape_1a56921fb8e6d0ad51dc38060fd22acfc5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>double</type>
+        <definition>virtual double Shape::perimeter</definition>
+        <argsstring>() const =0</argsstring>
+        <name>perimeter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Shape/Shape.h" line="61" column="20" declfile="include/VoronoiMeshMaker/Shape/Shape.h" declline="61" declcolumn="20"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/VoronoiMeshMaker/Shape/Shape.h" line="31" column="1"/>
+  </compounddef>
+</doxygen>

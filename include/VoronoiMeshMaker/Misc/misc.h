@@ -5,7 +5,7 @@
 // Description : Header file with utility definitions used across the library.
 //               Part of the 'misc' group of utility files.
 //
-// Copyright   : Copyright (C) 2024 Joao Flavio Vasconcellos
+// Copyright   : Copyright (C) 2024 Joao Flavio Vieira de Vasconcellos
 //               (jflavio at iprj.uerj.br)
 //
 // This program is free software: you can redistribute it and/or modify
@@ -26,7 +26,8 @@
  * @brief Provides general-purpose utility functions for the VoronoiMeshMaker library.
  * 
  * This file defines utility functions used throughout the VoronoiMeshMaker library,
- * including functions for printing lines, manipulating strings, and handling file paths.
+ * including functions for printing lines, manipulating strings, handling file paths,
+ * and converting smart pointers.
  * These functions are part of the "misc" group of utility components.
  * 
  * @ingroup misc
@@ -39,12 +40,12 @@
 #ifndef __VORONOMESHVMAKER_MISC_H__
 #define __VORONOMESHVMAKER_MISC_H__
 
-
 //==============================================================================
 //  C++ includes
 //==============================================================================
 
 #include <filesystem>
+#include <memory>
 
 //==============================================================================
 //  VoronoiMeshMaker includes
@@ -159,6 +160,21 @@ bool IsBlank(const std::string& str);
  * @return True if the string is empty or blank, false otherwise.
  */
 bool IsEmptyOrBlank(const std::string& str);
+
+/**
+ * @ingroup misc
+ * @brief Converts a std::unique_ptr to a std::shared_ptr.
+ * 
+ * This function takes a std::unique_ptr and returns a std::shared_ptr to the same object.
+ * 
+ * @tparam T The type of the object being managed by the pointer.
+ * @param uniquePtr The std::unique_ptr to convert.
+ * @return A std::shared_ptr managing the same object.
+ */
+template <typename T>
+[[nodiscard]] std::shared_ptr<T> convertToShared(std::unique_ptr<T>&& uniquePtr) {
+    return std::shared_ptr<T>(std::move(uniquePtr));
+}
 
 VORMAKER_NAMESPACE_CLOSE
 

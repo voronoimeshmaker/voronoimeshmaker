@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classID" kind="class" language="C++" prot="public">
+    <compoundname>ID</compoundname>
+    <derivedcompoundref refid="classGeometricDataHolder" prot="public" virt="non-virtual">GeometricDataHolder</derivedcompoundref>
+    <derivedcompoundref refid="classVMMException" prot="public" virt="non-virtual">VMMException</derivedcompoundref>
+    <includes refid="id_8h" local="no">include/VoronoiMeshMaker/Misc/id.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classID_1ac7c3a6f42b6d115da5456a47a690d14a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual ID::~ID</definition>
+        <argsstring>()=default</argsstring>
+        <name>~ID</name>
+        <briefdescription>
+<para>Virtual destructor to allow proper cleanup in derived classes. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Ensures that resources in derived classes are properly released when an object is destroyed. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Misc/id.h" line="94" column="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classID_1aa24a23fc35c047319634ca6693c671b6" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type>std::string_view</type>
+        <definition>virtual std::string_view ID::className</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>className</name>
+        <reimplementedby refid="classVMMException_1ab3a22a826faf143fa3cb4f4d03cbbe8c">className</reimplementedby>
+        <reimplementedby refid="classGeometricDataHolder_1a58d992e92bd7f6208a6ee7b8e1e6a224">className</reimplementedby>
+        <briefdescription>
+<para>Retrieves the name of the class. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function returns the name of the class as a string view. By default, it returns &quot;no class&quot; if not overridden by derived classes.</para>
+<para><simplesect kind="return"><para>A string view representing the class name. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Misc/id.h" line="104" column="30" bodyfile="include/VoronoiMeshMaker/Misc/id.h" bodystart="104" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="classID_1a0ebe5e78a0d04e6cd581e9099e25bb8f" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="virtual">
+        <type>ClassID</type>
+        <definition>virtual ClassID ID::classID</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>classID</name>
+        <reimplementedby refid="classVMMException_1ab83d7ec9ea7a83ebfd3ee6d860a70268">classID</reimplementedby>
+        <reimplementedby refid="classGeometricDataHolder_1ae6cc84ef17fb7fa914956417654199d3">classID</reimplementedby>
+        <briefdescription>
+<para>Retrieves the unique identifier (<ref refid="classID" kindref="compound">ID</ref>) for the class. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function returns the unique identifier for the class, represented by the <computeroutput><ref refid="namespaceClassID" kindref="compound">ClassID</ref></computeroutput> enum. By default, it returns <computeroutput><ref refid="namespaceClassID_1ab0fb1bfed3c5b91a6efef2d6bbf77917" kindref="member">ClassID::None</ref></computeroutput>.</para>
+<para><simplesect kind="return"><para>The unique class identifier as a <computeroutput><ref refid="namespaceClassID" kindref="compound">ClassID</ref></computeroutput> enum value. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Misc/id.h" line="116" column="21" bodyfile="include/VoronoiMeshMaker/Misc/id.h" bodystart="116" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="classID_1a97ae807633a588fe5418bfd18cb58549" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ID::sameClass</definition>
+        <argsstring>(const ID &amp;other) const noexcept</argsstring>
+        <name>sameClass</name>
+        <param>
+          <type>const <ref refid="classID" kindref="compound">ID</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Compares if two objects are of the same class. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function compares the class <ref refid="classID" kindref="compound">ID</ref> of the current object with another object that also inherits from <computeroutput><ref refid="classID" kindref="compound">ID</ref></computeroutput>. If the class IDs are the same, the two objects are considered to be of the same class.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The <computeroutput><ref refid="classID" kindref="compound">ID</ref></computeroutput> object to compare against. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if both objects have the same class <ref refid="classID" kindref="compound">ID</ref>, false otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Misc/id.h" line="130" column="10" bodyfile="include/VoronoiMeshMaker/Misc/id.h" bodystart="130" bodyend="132"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Base class to provide unique identification for derived classes. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>The <computeroutput><ref refid="classID" kindref="compound">ID</ref></computeroutput> class serves as a base class for all objects that require unique identification. It provides methods to retrieve the class name and class <ref refid="classID" kindref="compound">ID</ref>, which are then used to compare objects or retrieve metadata about them. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>ID</label>
+        <link refid="classID"/>
+      </node>
+      <node id="2">
+        <label>GeometricDataHolder</label>
+        <link refid="classGeometricDataHolder"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>VMMException</label>
+        <link refid="classVMMException"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="include/VoronoiMeshMaker/Misc/id.h" line="86" column="1" bodyfile="include/VoronoiMeshMaker/Misc/id.h" bodystart="86" bodyend="133"/>
+    <listofallmembers>
+      <member refid="classID_1a0ebe5e78a0d04e6cd581e9099e25bb8f" prot="public" virt="virtual"><scope>ID</scope><name>classID</name></member>
+      <member refid="classID_1aa24a23fc35c047319634ca6693c671b6" prot="public" virt="virtual"><scope>ID</scope><name>className</name></member>
+      <member refid="classID_1a97ae807633a588fe5418bfd18cb58549" prot="public" virt="non-virtual"><scope>ID</scope><name>sameClass</name></member>
+      <member refid="classID_1ac7c3a6f42b6d115da5456a47a690d14a" prot="public" virt="virtual"><scope>ID</scope><name>~ID</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

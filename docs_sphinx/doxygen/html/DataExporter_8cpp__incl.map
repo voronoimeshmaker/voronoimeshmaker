@@ -1,0 +1,25 @@
+<map id="src/VoronoiMeshMaker/DataExporter/DataExporter.cpp" name="src/VoronoiMeshMaker/DataExporter/DataExporter.cpp">
+<area shape="rect" id="node1" title="Implements the DataExporter class, handling the export of geometric data." alt="" coords="1133,5,1362,47"/>
+<area shape="rect" id="node2" href="$DataExporter_8h.html" title="Defines the DataExporter class responsible for exporting geometric data in various formats." alt="" coords="1129,95,1366,136"/>
+<area shape="rect" id="node3" title=" " alt="" coords="1249,645,1326,672"/>
+<area shape="rect" id="node4" title=" " alt="" coords="750,459,809,486"/>
+<area shape="rect" id="node5" title=" " alt="" coords="1232,281,1319,307"/>
+<area shape="rect" id="node6" href="$ExportStrategyFactory_8h.html" title="Factory class for creating export strategies based on the specified format." alt="" coords="970,184,1207,225"/>
+<area shape="rect" id="node11" href="$ExportTraits_8h.html" title="Defines traits for exporting different types of geometric data." alt="" coords="1285,184,1522,225"/>
+<area shape="rect" id="node7" href="$VTKExportStrategy_8h.html" title="Defines the VTK export strategy for geometric data." alt="" coords="709,273,946,315"/>
+<area shape="rect" id="node10" href="$HDF5ExportStrategy_8h.html" title="Defines the HDF5 export strategy for geometric data." alt="" coords="970,273,1207,315"/>
+<area shape="rect" id="node8" href="$ExportStrategy_8h.html" title="Defines the interface for exporting geometric data in various formats." alt="" coords="861,363,1098,404"/>
+<area shape="rect" id="node9" title=" " alt="" coords="874,459,1085,486"/>
+<area shape="rect" id="node12" title=" " alt="" coords="1205,370,1285,397"/>
+<area shape="rect" id="node13" href="$Shape_8h.html" title="Defines the Shape class, which serves as the abstract base class for all shapes. This class provides ..." alt="" coords="1445,273,1636,315"/>
+<area shape="rect" id="node14" href="$GeometricDataHolder_8h.html" title="Defines the GeometricDataHolder class and the DataTraits for handling multiple data types...." alt="" coords="1359,363,1586,404"/>
+<area shape="rect" id="node15" href="$GeometricDataTraits_8h.html" title="Defines the GeometricDataTraits structure used for type identification and operations on various data..." alt="" coords="1359,452,1586,493"/>
+<area shape="rect" id="node23" href="$GeometricDataHolder_8tpp.html" title=" " alt="" coords="1109,452,1335,493"/>
+<area shape="rect" id="node16" href="$type_8h.html" title="Defines common geometric and numeric types used in the VoronoiMeshMaker library." alt="" coords="453,541,634,583"/>
+<area shape="rect" id="node17" title=" " alt="" coords="757,645,799,672"/>
+<area shape="rect" id="node18" title=" " alt="" coords="824,645,887,672"/>
+<area shape="rect" id="node19" title=" " alt="" coords="5,631,177,687"/>
+<area shape="rect" id="node20" title=" " alt="" coords="201,645,341,672"/>
+<area shape="rect" id="node21" title=" " alt="" coords="365,645,527,672"/>
+<area shape="rect" id="node22" href="$namespace_8h.html" title=" " alt="" coords="551,638,733,679"/>
+</map>

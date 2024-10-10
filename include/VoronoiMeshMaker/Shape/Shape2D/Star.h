@@ -107,8 +107,8 @@ public:
 // Typedefs
 //==============================================================================
 
-using PtrStar = std::shared_ptr<Star>;
-using PtrConstStar = std::shared_ptr<const Star>;
+using PtrStarShared = std::shared_ptr<Star>; ///< Smart pointer type for Star
+using PtrConstStarShared = std::shared_ptr<const Star>; ///< Smart pointer type for constant Star
 
 VORMAKER_NAMESPACE_CLOSE
 

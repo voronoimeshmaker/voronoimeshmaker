@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="namespaceNodes3D" kind="namespace" language="C++">
+    <compoundname>Nodes3D</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceNodes3D_1a20e4dad70ffc851cf326331fed93769e" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>Nodes3D::Nodes3D</definition>
+        <argsstring>() noexcept=default</argsstring>
+        <name>Nodes3D</name>
+        <briefdescription>
+<para>Default constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Nodes/Nodes3D/Nodes3D.h" line="47" column="5" declfile="include/VoronoiMeshMaker/Nodes/Nodes3D/Nodes3D.h" declline="47" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceNodes3D_1a7b97000b7f4b0a9e680417b174215da6" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>Nodes3D::Nodes3D</definition>
+        <argsstring>(const Nodes3D &amp;) noexcept=default</argsstring>
+        <name>Nodes3D</name>
+        <param>
+          <type>const Nodes3D &amp;</type>
+        </param>
+        <briefdescription>
+<para>Copy constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Nodes/Nodes3D/Nodes3D.h" line="48" column="5" declfile="include/VoronoiMeshMaker/Nodes/Nodes3D/Nodes3D.h" declline="48" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceNodes3D_1a4c6adffda489e370980e610c86591885" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>Nodes3D::Nodes3D</definition>
+        <argsstring>(Nodes3D &amp;&amp;) noexcept=default</argsstring>
+        <name>Nodes3D</name>
+        <param>
+          <type>Nodes3D &amp;&amp;</type>
+        </param>
+        <briefdescription>
+<para>Move constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Nodes/Nodes3D/Nodes3D.h" line="49" column="5" declfile="include/VoronoiMeshMaker/Nodes/Nodes3D/Nodes3D.h" declline="49" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceNodes3D_1a7b7d885b5b3c25bf943116e69bb647ad" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>Nodes3D::~Nodes3D</definition>
+        <argsstring>() noexcept override=default</argsstring>
+        <name>~Nodes3D</name>
+        <briefdescription>
+<para>Destructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Nodes/Nodes3D/Nodes3D.h" line="51" column="5" declfile="include/VoronoiMeshMaker/Nodes/Nodes3D/Nodes3D.h" declline="51" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceNodes3D_1aabcb6b4ef97818f9a54e5ae65ed69c99" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="namespaceNodes3D_1a20e4dad70ffc851cf326331fed93769e" kindref="member">Nodes3D</ref> &amp;</type>
+        <definition>Nodes3D&amp; Nodes3D::operator=</definition>
+        <argsstring>(const Nodes3D &amp;) noexcept=default</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="namespaceNodes3D_1a20e4dad70ffc851cf326331fed93769e" kindref="member">Nodes3D</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Copy assignment. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Nodes/Nodes3D/Nodes3D.h" line="53" column="13" declfile="include/VoronoiMeshMaker/Nodes/Nodes3D/Nodes3D.h" declline="53" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceNodes3D_1a1fcb818aa351a70ce6a9df5838f2552f" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="namespaceNodes3D_1a20e4dad70ffc851cf326331fed93769e" kindref="member">Nodes3D</ref> &amp;</type>
+        <definition>Nodes3D&amp; Nodes3D::operator=</definition>
+        <argsstring>(Nodes3D &amp;&amp;) noexcept=default</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="namespaceNodes3D_1a20e4dad70ffc851cf326331fed93769e" kindref="member">Nodes3D</ref> &amp;&amp;</type>
+        </param>
+        <briefdescription>
+<para>Move assignment. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Nodes/Nodes3D/Nodes3D.h" line="54" column="13" declfile="include/VoronoiMeshMaker/Nodes/Nodes3D/Nodes3D.h" declline="54" declcolumn="13"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/VoronoiMeshMaker/Nodes/Nodes3D/Nodes3D.h" line="34" column="1"/>
+  </compounddef>
+</doxygen>

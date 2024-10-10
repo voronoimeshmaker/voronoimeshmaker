@@ -1,0 +1,4 @@
+<map id="include/VoronoiMeshMaker/DataExporter/ExportOptions.h" name="include/VoronoiMeshMaker/DataExporter/ExportOptions.h">
+<area shape="rect" id="node1" title="Defines flags for the various exportable components such as sites, shapes, Delaunay,..." alt="" coords="27,5,247,47"/>
+<area shape="rect" id="node2" href="$VoronoiDataExporter_8h.html" title="Defines the VoronoiDataExporter class for exporting geometric data such as Shape2D,..." alt="" coords="5,95,269,136"/>
+</map>

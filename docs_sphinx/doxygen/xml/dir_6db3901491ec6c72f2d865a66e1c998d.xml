@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_6db3901491ec6c72f2d865a66e1c998d" kind="dir">
+    <compoundname>include/VoronoiMeshMaker/Shape/Shape2D</compoundname>
+    <innerfile refid="CommaSeparatedValues_8h">CommaSeparatedValues.h</innerfile>
+    <innerfile refid="Ellipse_8h">Ellipse.h</innerfile>
+    <innerfile refid="Polygon_8h">Polygon.h</innerfile>
+    <innerfile refid="Rectangle_8h">Rectangle.h</innerfile>
+    <innerfile refid="Shape2D_8h">Shape2D.h</innerfile>
+    <innerfile refid="Star_8h">Star.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/VoronoiMeshMaker/Shape/Shape2D/"/>
+  </compounddef>
+</doxygen>

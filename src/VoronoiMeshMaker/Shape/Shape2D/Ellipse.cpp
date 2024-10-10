@@ -111,8 +111,8 @@ int                 tPoint = 0;
         vecPoint2D[idx] = Point2D(LX * cos(ang), LY * sin(ang));
     });
     
-    ptrPolygon2D_ = 
-                std::make_unique<Polygon2D> (   std::begin(vecPoint2D)
+    ptrPolygon2DShared_ = 
+                std::make_shared<Polygon2D> (   std::begin(vecPoint2D)
                                             ,   std::end(vecPoint2D)
                                             );
  

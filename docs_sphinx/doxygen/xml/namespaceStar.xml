@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="namespaceStar" kind="namespace" language="C++">
+    <compoundname>Star</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceStar_1a95d6210fdc3eac85b955facecf04b09a" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type>std::string_view</type>
+        <definition>virtual std::string_view Star::className</definition>
+        <argsstring>() const noexcept override</argsstring>
+        <name>className</name>
+        <briefdescription>
+<para>Get the class name. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A string view representing the name of this class. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Shape/Shape2D/Star.h" line="59" column="30" bodyfile="include/VoronoiMeshMaker/Shape/Shape2D/Star.h" bodystart="59" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceStar_1ad87b82ac7f7593c156c021e58dd1e96a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>ClassID</type>
+        <definition>static ClassID Star::getClassID</definition>
+        <argsstring>()</argsstring>
+        <name>getClassID</name>
+        <briefdescription>
+<para>Get the class <ref refid="classID" kindref="compound">ID</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A <ref refid="namespaceClassID" kindref="compound">ClassID</ref> enum representing the unique <ref refid="classID" kindref="compound">ID</ref> of this class. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Shape/Shape2D/Star.h" line="73" column="20" bodyfile="include/VoronoiMeshMaker/Shape/Shape2D/Star.h" bodystart="73" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceStar_1acf0943ab36c0825755a9ddbb89bd1830" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>Star::Star</definition>
+        <argsstring>() noexcept=default</argsstring>
+        <name>Star</name>
+        <briefdescription>
+<para>Default constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Shape/Shape2D/Star.h" line="85" column="5" declfile="include/VoronoiMeshMaker/Shape/Shape2D/Star.h" declline="85" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceStar_1a75d638def9e3cad7f3977ed5b79bf848" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>Star::Star</definition>
+        <argsstring>(const Star &amp;) noexcept=default</argsstring>
+        <name>Star</name>
+        <param>
+          <type>const Star &amp;</type>
+        </param>
+        <briefdescription>
+<para>Copy constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Shape/Shape2D/Star.h" line="90" column="5" declfile="include/VoronoiMeshMaker/Shape/Shape2D/Star.h" declline="90" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceStar_1ac938bdc6d6ca6281fbb646649b04b921" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>Star::Star</definition>
+        <argsstring>(Star &amp;&amp;) noexcept=default</argsstring>
+        <name>Star</name>
+        <param>
+          <type>Star &amp;&amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Shape/Shape2D/Star.h" line="91" column="5" declfile="include/VoronoiMeshMaker/Shape/Shape2D/Star.h" declline="91" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceStar_1abef9d74749a3aa1700b101eabf9d0e35" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="virtual">
+        <type></type>
+        <definition>virtual Star::~Star</definition>
+        <argsstring>() noexcept=default</argsstring>
+        <name>~Star</name>
+        <briefdescription>
+<para>Destructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Shape/Shape2D/Star.h" line="96" column="13" declfile="include/VoronoiMeshMaker/Shape/Shape2D/Star.h" declline="96" declcolumn="13"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceStar_1a301d69d084bbc75318036c0ebfd7f5bd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Star::Star</definition>
+        <argsstring>(const GeometricDataHolder &amp;)</argsstring>
+        <name>Star</name>
+        <param>
+          <type>const <ref refid="classGeometricDataHolder" kindref="compound">GeometricDataHolder</ref> &amp;</type>
+          <defname>_holder</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Shape/Shape2D/Star.h" line="98" column="5" bodyfile="src/VoronoiMeshMaker/Shape/Shape2D/Star.cpp" bodystart="39" bodyend="95" declfile="include/VoronoiMeshMaker/Shape/Shape2D/Star.h" declline="98" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceStar_1a8a93ab0dee9fc12eaded293e659c9948" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="namespaceStar_1acf0943ab36c0825755a9ddbb89bd1830" kindref="member">Star</ref> &amp;</type>
+        <definition>Star&amp; Star::operator=</definition>
+        <argsstring>(const Star &amp;other) noexcept=default</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="namespaceStar_1acf0943ab36c0825755a9ddbb89bd1830" kindref="member">Star</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Shape/Shape2D/Star.h" line="101" column="10" declfile="include/VoronoiMeshMaker/Shape/Shape2D/Star.h" declline="101" declcolumn="10"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceStar_1ab8fd24c253a6f2fddfdfc45c7dd11e95" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="namespaceStar_1acf0943ab36c0825755a9ddbb89bd1830" kindref="member">Star</ref> &amp;</type>
+        <definition>Star&amp; Star::operator=</definition>
+        <argsstring>(Star &amp;&amp;other) noexcept=default</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="namespaceStar_1acf0943ab36c0825755a9ddbb89bd1830" kindref="member">Star</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/VoronoiMeshMaker/Shape/Shape2D/Star.h" line="102" column="10" declfile="include/VoronoiMeshMaker/Shape/Shape2D/Star.h" declline="102" declcolumn="10"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/VoronoiMeshMaker/Shape/Shape2D/Star.h" line="34" column="1"/>
+  </compounddef>
+</doxygen>

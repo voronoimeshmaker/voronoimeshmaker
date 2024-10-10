@@ -1,10 +1,9 @@
-# Define the minimum CMake version required
 cmake_minimum_required(VERSION 3.10)
 
-# Set the project name
-project(Examples)
+# Define o nome do projeto
+project(ParametersExamples)
 
-# Function to add all subdirectories recursively
+# Função para adicionar todos os subdiretórios recursivamente
 function(add_subdirectories_recursive dir)
     file(GLOB SUBDIRS RELATIVE ${dir} ${dir}/*)
     foreach(subdir ${SUBDIRS})
@@ -14,7 +13,8 @@ function(add_subdirectories_recursive dir)
     endforeach()
 endfunction()
 
-# Recursively add all subdirectories
+# Adiciona todos os subdiretórios recursivamente
 add_subdirectories_recursive(${CMAKE_CURRENT_SOURCE_DIR})
 
-# Optional: Define common settings for examples (e.g., linking the library)
+# Mensagem indicando que não há programas diretamente nesta pasta
+message(STATUS "No programs in the Parameters directory itself. Adding subdirectories if they exist.")

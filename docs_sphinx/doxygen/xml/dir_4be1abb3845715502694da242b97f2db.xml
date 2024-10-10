@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_4be1abb3845715502694da242b97f2db" kind="dir">
+    <compoundname>include/VoronoiMeshMaker/Voronoi</compoundname>
+    <innerdir refid="dir_a45a759e27c51ccc6ab82540cf8cabb5">include/VoronoiMeshMaker/Voronoi/Voronoi2D</innerdir>
+    <innerdir refid="dir_0b53bac051ba99b60c051001ceb41c49">include/VoronoiMeshMaker/Voronoi/Voronoi3D</innerdir>
+    <innerfile refid="Voronoi_8h">Voronoi.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/VoronoiMeshMaker/Voronoi/"/>
+  </compounddef>
+</doxygen>

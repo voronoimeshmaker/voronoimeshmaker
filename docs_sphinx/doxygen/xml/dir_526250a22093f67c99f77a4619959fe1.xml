@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_526250a22093f67c99f77a4619959fe1" kind="dir">
+    <compoundname>include/VoronoiMeshMaker</compoundname>
+    <innerdir refid="dir_86ae38f54b8ba5f51461eef23c18dce5">include/VoronoiMeshMaker/Error</innerdir>
+    <innerdir refid="dir_e982a46383a30968e7c73eb6c0c677b9">include/VoronoiMeshMaker/Exporter</innerdir>
+    <innerdir refid="dir_76374d326cecb782421178f43b89279d">include/VoronoiMeshMaker/Misc</innerdir>
+    <innerdir refid="dir_a1343f8cc582df3ded07dc5cb31752d6">include/VoronoiMeshMaker/Nodes</innerdir>
+    <innerdir refid="dir_39406c9b1377dba74eb35adf166e43bc">include/VoronoiMeshMaker/Parameters</innerdir>
+    <innerdir refid="dir_ba79d34ef70f4b82a10cc41d3707f362">include/VoronoiMeshMaker/Shape</innerdir>
+    <innerdir refid="dir_4be1abb3845715502694da242b97f2db">include/VoronoiMeshMaker/Voronoi</innerdir>
+    <innerfile refid="VoronoiMeshMaker_8h">VoronoiMeshMaker.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/VoronoiMeshMaker/"/>
+  </compounddef>
+</doxygen>
