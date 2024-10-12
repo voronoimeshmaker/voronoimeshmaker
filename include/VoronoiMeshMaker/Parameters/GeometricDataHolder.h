@@ -1,146 +1,145 @@
 //==============================================================================
 // Name        : GeometricDataHolder.h
-// Author      : Joao Flavio Vieira de Vasconcellos
-// Version     : 1.0
+// Author      : João Flávio Vieira de Vasconcellos
+// Version     : 1.1
 // Description : Defines the GeometricDataHolder class and the DataTraits 
 //               for handling multiple data types.
 //
-// Copyright   : Copyright (C) 2024 Joao Flavio Vasconcellos
+// Copyright   : Copyright (C) 2024 João Flávio Vasconcellos
 //               (jflavio at iprj.uerj.br)
 //
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License.
+// License     : This program is free software: you can redistribute it and/or modify
+//               it under the terms of the GNU General Public License as published by
+//               the Free Software Foundation, either version 3 of the License, or
+//               (at your option) any later version.
 //
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU General Public License for more details.
+//               This program is distributed in the hope that it will be useful,
+//               but WITHOUT ANY WARRANTY; without even the implied warranty of
+//               MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+//               GNU General Public License for more details.
 //
-// You should have received a copy of the GNU General Public License
-// along with this program. If not, see <http://www.gnu.org/licenses/>.
+//               You should have received a copy of the GNU General Public License
+//               along with this program. If not, see <https://www.gnu.org/licenses/>.
 //==============================================================================
-
 
 /**
  * @file GeometricDataHolder.h
- * @brief Defines the GeometricDataHolder class and the DataTraits for handling multiple data types.
- * This class uses std::variant to store different types and allows access through string keys.
- * The DataTraits structure provides type identification for the supported data types.
+ * @brief Defines the GeometricDataHolder class and DataTraits for handling multiple data types.
  *
- * @ingroup parameters
- * 
- * This file is part of the "parameters" group, which defines classes and traits to handle
- * multiple types of parameters for computational geometry and other operations.
- * 
- * @version 1.0
+ * This file contains the definition of the GeometricDataHolder class, which is part
+ * of the Parameters module of the VoronoiMeshMaker library. The class provides a
+ * flexible mechanism to store and manage geometric parameters, supporting multiple
+ * data types such as integers, doubles, strings, and CGAL geometric types.
+ *
+ * The class uses a map to store data in a key-value pair format, with thread-safe
+ * access using shared and unique locks. It also provides explicit template instantiations
+ * for CGAL types like Point_2, Vector_2, Point_3, and Vector_3.
+ *
+ * @author João Flávio Vieira de Vasconcellos
+ * @version 1.1
  * @date 2024
- * 
- * Licensed under the GNU General Public License, version 3.
+ * @copyright GNU General Public License v3.0
  */
 
-#ifndef __VORONOIMESHMAKER_DATAHOLDER_H__
-#define __VORONOIMESHMAKER_DATAHOLDER_H__
-
-#include <execution>
+#ifndef VORONOI_MESH_MAKER_PARAMETERS_GEOMETRIC_DATA_HOLDER_H
+#define VORONOI_MESH_MAKER_PARAMETERS_GEOMETRIC_DATA_HOLDER_H
 
 //==============================================================================
-//  VoronoiMeshMaker includes
+// Includes from C++ Standard Library
 //==============================================================================
 
-//#include <VoronoiMeshMaker/Misc/type.h>
-#include <VoronoiMeshMaker/Misc/ID.h>                   // class ID
-#include <VoronoiMeshMaker/Parameters/GeometricDataTraits.h>
+#include <shared_mutex>
+
+//==============================================================================
+// Namespace for VoronoiMeshMaker
+//==============================================================================
+
+#include <VoronoiMeshMaker/Misc/type.h>
 
 VORMAKER_NAMESPACE_OPEN
 
-        
-/**
- * @typedef DataType
- * @brief Defines the variant type that can store different data types, such as int, Real, and geometric points.
- */
-using DataType = std::variant<
-    int, Real, gtp::Point2D, gtp::Point3D, gtp::Vector2D, gtp::Vector3D, 
-    LstInt, LstReal, gtp::LstPoint2D, gtp::LstPoint3D, 
-    VecInt, VecReal, gtp::VecPoint2D, gtp::VecPoint3D
->;
-
 /**
  * @class GeometricDataHolder
- * @brief Stores multiple variables of different types using a map where each variable is identified by a string key.
- * 
- * The class uses std::variant to store different types of data and provides methods to add, retrieve, and print variables.
- * This class is part of the "parameters" group and inherits from the ID class for identification purposes.
+ * @brief Class to store and manage geometric parameters using a flexible data structure.
+ *
+ * This class allows storing various types of geometric data using a key-value approach,
+ * where keys are strings and values can be of multiple data types, such as integers,
+ * doubles, strings, CGAL points, and vectors.
  */
-class GeometricDataHolder : public ID {
+class GeometricDataHolder {
 public:
-    /**
-     * @brief Get the class name.
-     *
-     * @return A string view representing the name of this class.
-     */
-    virtual std::string_view className() const noexcept override {
-        return "GeometricDataHolder";
-    }
+    GeometricDataHolder() = default;
+    GeometricDataHolder(const GeometricDataHolder&) = delete;
+    GeometricDataHolder& operator=(const GeometricDataHolder&) = delete;
+    GeometricDataHolder(GeometricDataHolder&&) noexcept = default;
+    GeometricDataHolder& operator=(GeometricDataHolder&&) noexcept = default;
+    ~GeometricDataHolder() = default;
 
     /**
-     * @brief Get the class ID.
+     * @brief Sets a value for a given key.
      *
-     * @return A ClassID enum representing the unique ID of this class.
-     */
-    virtual ClassID classID() const noexcept override {
-        return ClassID::GeometricDataHolder;
-    }
-
-    /**
-     * @brief Adds a value to the GeometricDataHolder.
-     * @tparam T The type of the value to be added.
-     * @param key The string key associated with the value.
+     * @tparam T The type of the value.
+     * @param key The key associated with the value.
      * @param value The value to be stored.
-     * 
-     * This method allows you to store any supported data type using a string as the key.
      */
-    template<typename T>
-    void addValue(const std::string& key, T value);
+    template <typename T>
+    void set(std::string_view key, T value) {
+        std::unique_lock lock(mutex_);
+        data_[std::string(key)] = value;
+    }
 
     /**
-     * @brief Retrieves a value from the GeometricDataHolder.
-     * @tparam T The type of the value to be retrieved.
-     * @param key The string key associated with the value.
-     * @return std::optional<T> The value if found and of the correct type, or std::nullopt if not found or of the wrong type.
-     * 
-     * Use this method to access stored values by their string key and ensure the correct type is returned.
+     * @brief Gets the value associated with a given key.
+     *
+     * @tparam T The expected type of the value.
+     * @param key The key whose associated value is to be returned.
+     * @return An optional containing the value if the key exists and the type matches, otherwise std::nullopt.
      */
-    template<typename T>
-    [[nodiscard]] std::optional<T> getValue(const std::string& key) const;
+    template <typename T>
+    [[nodiscard]] std::optional<T> get(std::string_view key) const {
+        std::shared_lock lock(mutex_);
+        auto it = data_.find(std::string(key));
+        if (it != data_.end()) {
+            if (auto val = std::get_if<T>(&it->second)) {
+                return *val;
+            }
+        }
+        return std::nullopt;
+    }
 
     /**
-     * @brief Prints all stored values in the GeometricDataHolder.
-     * @param os The output stream to which the values will be printed.
-     * @param holder The GeometricDataHolder object containing the values.
-     * @return std::ostream& The output stream after printing the values.
-     * 
-     * This operator overload allows printing all variables stored in the GeometricDataHolder.
+     * @brief Gets the mutex for thread-safe operations.
+     *
+     * @return A reference to the shared mutex.
      */
-    friend std::ostream& operator<<(std::ostream& os, const GeometricDataHolder& holder);
+    std::shared_mutex& getMutex() { return mutex_; }
+    const std::shared_mutex& getMutex() const { return mutex_; }
+
+    /**
+     * @brief Friend function to allow streaming the GeometricDataHolder to an output stream.
+     *
+     * @param os The output stream.
+     * @param holder The GeometricDataHolder to be streamed.
+     * @return A reference to the output stream.
+     */
+    friend std::ostream& operator<<(std::ostream& os, GeometricDataHolder& holder);
 
 private:
-    /**
-     * @brief The internal map storing the variables, where each variable is identified by a string key.
-     */
-    std::map<std::string, DataType> data_;  // Map to store named variables
+    
+    std::map<std::string, std::variant<int, Real, std::string,
+                                       gtp::Point2D, gtp::Vector2D,
+                                       gtp::Point3D, gtp::Vector3D,
+                                       std::list<int>, std::list<Real>>> data_;
+    mutable std::shared_mutex mutex_;
 };
+
+//==============================================================================
+// Type Definitions
+//==============================================================================
+
+using PtrGeometricDataHolder = std::shared_ptr<GeometricDataHolder>;
+using PtrConstGeometricDataHolder = std::shared_ptr<GeometricDataHolder const>;
 
 VORMAKER_NAMESPACE_CLOSE
 
-#include <VoronoiMeshMaker/Parameters/GeometricDataHolder.tpp>
-
-        
-//==============================================================================
-// Typedefs
-//==============================================================================
-
-using PtrGeometricDataHolder = std::unique_ptr<vmm::GeometricDataHolder>;
-using PtrConstGeometricDataHolder = std::unique_ptr<vmm::GeometricDataHolder const>;
-        
-#endif // __VORONOIMESHMAKER_DATAHOLDER_H__
+#endif // VORONOI_MESH_MAKER_PARAMETERS_GEOMETRIC_DATA_HOLDER_H

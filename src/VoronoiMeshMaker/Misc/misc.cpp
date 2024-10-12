@@ -150,4 +150,25 @@ constexpr bool IsEmptyOrBlank(std::string_view str)
     return str.empty() || IsBlank(str);
 }
 
+// Overload operator<< for CGAL types
+std::ostream& operator<<(std::ostream& os, const vmm::gtp::Point2D& point) {
+    os << "Point_2(" << point.x() << ", " << point.y() << ")";
+    return os;
+}
+
+std::ostream& operator<<(std::ostream& os, const vmm::gtp::Vector2D& vector) {
+    os << "Vector_2(" << vector.x() << ", " << vector.y() << ")";
+    return os;
+}
+
+std::ostream& operator<<(std::ostream& os, const vmm::gtp::Point3D& point) {
+    os << "Point_3(" << point.x() << ", " << point.y() << ", " << point.z() << ")";
+    return os;
+}
+
+std::ostream& operator<<(std::ostream& os, const vmm::gtp::Vector3D& vector) {
+    os << "Vector_3(" << vector.x() << ", " << vector.y() << ", " << vector.z() << ")";
+    return os;
+}
+
 VORMAKER_NAMESPACE_CLOSE

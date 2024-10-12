@@ -53,6 +53,7 @@
 
 #include <VoronoiMeshMaker/Misc/configure.h>
 
+
 VORMAKER_NAMESPACE_OPEN
 
 /**
@@ -175,6 +176,13 @@ template <typename T>
 [[nodiscard]] std::shared_ptr<T> convertToShared(std::unique_ptr<T>&& uniquePtr) {
     return std::shared_ptr<T>(std::move(uniquePtr));
 }
+
+// Overload operator<< for CGAL types
+std::ostream& operator<<(std::ostream&, const vmm::gtp::Point2D&);
+std::ostream& operator<<(std::ostream&, const vmm::gtp::Vector2D&);
+std::ostream& operator<<(std::ostream&, const vmm::gtp::Point3D&);
+std::ostream& operator<<(std::ostream&, const vmm::gtp::Vector3D&);
+
 
 VORMAKER_NAMESPACE_CLOSE
 

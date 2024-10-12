@@ -104,8 +104,8 @@ function(add_example_target target_name)
 endfunction()
 
 # Option to choose between building examples or tests
-option(BUILD_EXAMPLES "Build examples" OFF)
-option(BUILD_TESTS "Build tests" ON)
+option(BUILD_EXAMPLES "Build examples" ON)
+option(BUILD_TESTS "Build tests" OFF)
 
 # Ensure only one option is enabled
 if(BUILD_EXAMPLES AND BUILD_TESTS)
@@ -126,6 +126,43 @@ if(BUILD_TESTS)
 
     # Add the tests directory
     add_subdirectory(tests)
+endif()
+
+# Option to build Doxygen and Sphinx documentation
+option(BUILD_DOCUMENTATION "Build Doxygen and Sphinx documentation" OFF)
+
+if(BUILD_DOCUMENTATION)
+    find_package(Doxygen REQUIRED)
+    if(DOXYGEN_FOUND)
+        # Correcting the path to the Doxyfile.in
+        set(DOXYGEN_IN ${CMAKE_CURRENT_SOURCE_DIR}/docs_sphinx/Doxyfile.in)
+        if(EXISTS ${DOXYGEN_IN})
+            set(DOXYGEN_OUT ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile)
+
+            configure_file(${DOXYGEN_IN} ${DOXYGEN_OUT} @ONLY)
+
+            add_custom_target(doc_doxygen ALL
+                COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_OUT}
+                WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+                COMMENT "Generating Doxygen documentation"
+                VERBATIM)
+        else()
+            message(FATAL_ERROR "Doxyfile.in not found at ${DOXYGEN_IN}. Please check the path.")
+        endif()
+    else()
+        message(WARNING "Doxygen not found. Documentation will not be generated.")
+    endif()
+
+    # Add custom target to build Sphinx documentation
+    find_program(SPHINX_EXECUTABLE sphinx-build)
+    if(SPHINX_EXECUTABLE)
+        add_custom_target(doc_sphinx ALL
+            COMMAND ${SPHINX_EXECUTABLE} -b html ${CMAKE_CURRENT_SOURCE_DIR}/docs_sphinx ${CMAKE_CURRENT_BINARY_DIR}/sphinx
+            COMMENT "Generating Sphinx documentation with HTML output"
+            VERBATIM)
+    else()
+        message(WARNING "Sphinx not found. Sphinx documentation will not be generated.")
+    endif()
 endif()
 
 # Optional: Add a custom target to clean up generated files
