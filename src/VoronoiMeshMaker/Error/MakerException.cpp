@@ -26,7 +26,8 @@ static const std::string VMMExceptionStr[] = {
     "Failed to open the file in IOTools::ReadParameters.",
     "File not found in IOTools::ReadParameters.",
     "Parameter not found in IOTools::Unpack.",
-    "Missing data in GeometricDataHolder variable."
+    "Missing data in GeometricDataHolder variable.",
+    "Shape with ClassID not found in registry."
 };
 
 // Constructors

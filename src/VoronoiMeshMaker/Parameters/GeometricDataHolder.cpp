@@ -2,7 +2,7 @@
 // Name        : GeometricDataHolder.cpp
 // Author      : João Flávio Vieira de Vasconcellos
 // Version     : 1.1
-// Description : Implementation of the GeometricDataHolder class methods.
+// Description : Implementation of methods for GeometricDataHolder class.
 //
 // Copyright   : Copyright (C) 2024 João Flávio Vasconcellos
 //               (jflavio at iprj.uerj.br)
@@ -21,34 +21,27 @@
 //               along with this program. If not, see <https://www.gnu.org/licenses/>.
 //==============================================================================
 
-/**
- * @file GeometricDataHolder.cpp
- * @brief Implementation of the GeometricDataHolder class methods.
- *
- * This file contains the implementation of the methods of the GeometricDataHolder class,
- * which is part of the Parameters module of the VoronoiMeshMaker library. The implementation
- * provides thread-safe storage and retrieval of various geometric data types, including CGAL types.
- *
- * The file also defines the overloaded stream output operator for printing the contents of
- * GeometricDataHolder in a readable format, with values sorted by key.
- *
- * @author João Flávio Vieira de Vasconcellos
- * @version 1.1
- * @date 2024
- * @copyright GNU General Public License v3.0
- */
-
 //==============================================================================
 // Includes from VoronoiMeshMaker library
 //==============================================================================
-
 #include <VoronoiMeshMaker/Parameters/GeometricDataHolder.h>
 
 VORMAKER_NAMESPACE_OPEN
 
-std::ostream& operator<<(std::ostream& os, GeometricDataHolder& holder) {
-    std::shared_lock lock(holder.getMutex());
-
+/**
+ * @brief Overloaded output stream operator for GeometricDataHolder.
+ * 
+ * This operator allows the contents of GeometricDataHolder to be printed
+ * in a readable format, primarily for debugging purposes.
+ * 
+ * The keys are sorted alphabetically to provide consistent output.
+ * The output aligns keys and values for easier readability.
+ * 
+ * @param os The output stream to which the data will be printed.
+ * @param holder The GeometricDataHolder instance to be printed.
+ * @return Reference to the output stream.
+ */
+std::ostream& operator<<(std::ostream& os, const GeometricDataHolder& holder) {
     // Sort the data by key for ordered output
     std::vector<std::pair<std::string, std::variant<int, Real, std::string,
                                                      gtp::Point2D, gtp::Vector2D,
@@ -67,9 +60,7 @@ std::ostream& operator<<(std::ostream& os, GeometricDataHolder& holder) {
     // Print each key-value pair in a formatted manner
     for (const auto& [key, value] : sorted_data) {
         os << std::left << std::setw(max_key_length + 2) << key << ": ";
-        std::visit([
-            &os
-        ](const auto& val) {
+        std::visit([&os](const auto& val) {
             using T = std::decay_t<decltype(val)>;
             if constexpr (std::is_same_v<T, std::list<int>> || std::is_same_v<T, std::list<Real>>) {
                 os << "[ ";
@@ -83,34 +74,69 @@ std::ostream& operator<<(std::ostream& os, GeometricDataHolder& holder) {
         }, value);
         os << '\n';
     }
-
     return os;
 }
 
 // Explicit template instantiations for CGAL types
 
-// Point_2
+/**
+ * @brief Explicit instantiation for setting a Point2D value.
+ */
 template void GeometricDataHolder::set<gtp::Point2D>(std::string_view, gtp::Point2D);
+
+/**
+ * @brief Explicit instantiation for getting a Point2D value.
+ */
 template std::optional<gtp::Point2D> GeometricDataHolder::get<gtp::Point2D>(std::string_view) const;
 
-// Vector_2
+/**
+ * @brief Explicit instantiation for setting a Vector2D value.
+ */
 template void GeometricDataHolder::set<gtp::Vector2D>(std::string_view, gtp::Vector2D);
+
+/**
+ * @brief Explicit instantiation for getting a Vector2D value.
+ */
 template std::optional<gtp::Vector2D> GeometricDataHolder::get<gtp::Vector2D>(std::string_view) const;
 
-// Point_3
+/**
+ * @brief Explicit instantiation for setting a Point3D value.
+ */
 template void GeometricDataHolder::set<gtp::Point3D>(std::string_view, gtp::Point3D);
+
+/**
+ * @brief Explicit instantiation for getting a Point3D value.
+ */
 template std::optional<gtp::Point3D> GeometricDataHolder::get<gtp::Point3D>(std::string_view) const;
 
-// Vector_3
+/**
+ * @brief Explicit instantiation for setting a Vector3D value.
+ */
 template void GeometricDataHolder::set<gtp::Vector3D>(std::string_view, gtp::Vector3D);
+
+/**
+ * @brief Explicit instantiation for getting a Vector3D value.
+ */
 template std::optional<gtp::Vector3D> GeometricDataHolder::get<gtp::Vector3D>(std::string_view) const;
 
-// List of integers
+/**
+ * @brief Explicit instantiation for setting a list of integers.
+ */
 template void GeometricDataHolder::set<std::list<int>>(std::string_view, std::list<int>);
+
+/**
+ * @brief Explicit instantiation for getting a list of integers.
+ */
 template std::optional<std::list<int>> GeometricDataHolder::get<std::list<int>>(std::string_view) const;
 
-// List of Reals
+/**
+ * @brief Explicit instantiation for setting a list of Real values.
+ */
 template void GeometricDataHolder::set<std::list<Real>>(std::string_view, std::list<Real>);
+
+/**
+ * @brief Explicit instantiation for getting a list of Real values.
+ */
 template std::optional<std::list<Real>> GeometricDataHolder::get<std::list<Real>>(std::string_view) const;
 
 VORMAKER_NAMESPACE_CLOSE

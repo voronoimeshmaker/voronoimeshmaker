@@ -141,26 +141,33 @@ constexpr unsigned int str2int(const char* _str, const int& _h = 0) {
 }
 
 /**
- * @ingroup misc
- * @brief Checks if a string contains only whitespace.
+ * @brief Checks if a string contains only whitespace characters.
  * 
- * This function returns true if the given string contains only whitespace characters.
+ * This function returns true if the string contains only whitespace characters (e.g., spaces, tabs).
  * 
  * @param str The string to check.
  * @return True if the string is blank, false otherwise.
  */
-bool IsBlank(const std::string& str);
+constexpr bool IsBlank(const std::string_view& str) 
+{
+    return std::all_of(str.begin(), str.end(), [](unsigned char ch) {
+        return std::isspace(ch);
+    });
+}
+
 
 /**
- * @ingroup misc
- * @brief Checks if a string is empty or contains only whitespace.
+ * @brief Checks if a string is empty or contains only whitespace characters.
  * 
- * This function returns true if the given string is either empty or contains only whitespace characters.
+ * This function returns true if the string is either empty or contains only whitespace characters.
  * 
  * @param str The string to check.
  * @return True if the string is empty or blank, false otherwise.
  */
-bool IsEmptyOrBlank(const std::string& str);
+constexpr bool IsEmptyOrBlank(const std::string_view& str) 
+{
+    return str.empty() || IsBlank(str);
+}
 
 /**
  * @ingroup misc

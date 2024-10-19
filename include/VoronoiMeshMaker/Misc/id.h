@@ -71,7 +71,8 @@ enum class ClassID {
     Rectangle,                          ///< Identifier for the Rectangle class.
     Shape2D,                            ///< Identifier for the Shape2D class.
     Star,                               ///< Identifier for the Star class.
-    MarkerException                     ///< Identifier for the MarkerException class.
+    PolygonCSV,                         ///< Identifier for the PolygonCSV class.
+    MakerException                      ///< Identifier for the MakerException class.
     // Add other class IDs here as needed.
 };
 

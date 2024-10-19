@@ -122,33 +122,8 @@ bool CreateDirectoryIfNotExists(std::string_view path)
     return std::filesystem::exists(path) || std::filesystem::create_directory(path);
 }
 
-/**
- * @brief Checks if a string contains only whitespace characters.
- * 
- * This function returns true if the string contains only whitespace characters (e.g., spaces, tabs).
- * 
- * @param str The string to check.
- * @return True if the string is blank, false otherwise.
- */
-constexpr bool IsBlank(std::string_view str) 
-{
-    return std::all_of(str.begin(), str.end(), [](unsigned char ch) {
-        return std::isspace(ch);
-    });
-}
 
-/**
- * @brief Checks if a string is empty or contains only whitespace characters.
- * 
- * This function returns true if the string is either empty or contains only whitespace characters.
- * 
- * @param str The string to check.
- * @return True if the string is empty or blank, false otherwise.
- */
-constexpr bool IsEmptyOrBlank(std::string_view str) 
-{
-    return str.empty() || IsBlank(str);
-}
+
 
 // Overload operator<< for CGAL types
 std::ostream& operator<<(std::ostream& os, const vmm::gtp::Point2D& point) {

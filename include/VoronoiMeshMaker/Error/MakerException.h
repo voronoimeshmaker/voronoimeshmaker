@@ -56,7 +56,8 @@ enum class VMMExceptionIndex {
     IOToolsFail,
     IOToolsFileMissing,
     IOToolsNotFound,
-    DATANOTAVAILABLE
+    DATANOTAVAILABLE,
+    SHAPENOTFOUNDREGISTRY
 };
 
 /**
@@ -90,7 +91,7 @@ public:
      * @return A ClassID enum representing the unique ID of this class.
      */
     virtual ClassID classID() const noexcept override {
-        return ClassID::MarkerException;
+        return ClassID::MakerException;
     }
 
     /**
