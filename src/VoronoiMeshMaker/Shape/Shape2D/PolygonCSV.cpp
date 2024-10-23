@@ -55,15 +55,9 @@ VORMAKER_NAMESPACE_OPEN
  * @param _filename The name of the CSV file containing the polygon coordinates.
  */
 PolygonCSV::PolygonCSV(const std::string& _filename) : filename_(_filename) {
-    try {
+    
         readCSV();
-    } catch (const VMMException& e) {
-        std::cerr << e;
-        exit(EXIT_FAILURE);
-    } catch (const std::runtime_error& e) {
-        std::cerr << "Runtime error: " << e.what() << '\n';
-        exit(EXIT_FAILURE);
-    }
+
 }
 
 //==============================================================================
@@ -77,6 +71,8 @@ PolygonCSV::PolygonCSV(const std::string& _filename) : filename_(_filename) {
  * the polygon coordinates contained within.
  */
 void PolygonCSV::readCSV() {
+    
+    
     auto split = [](const std::string& s, char delimiter) -> std::vector<std::string> {
         std::vector<std::string> tokens;
         std::string token;
@@ -115,9 +111,6 @@ void PolygonCSV::readCSV() {
         }
     } catch (const VMMException& e) {
         std::cerr << e;
-        exit(EXIT_FAILURE);
-    } catch (const std::runtime_error& e) {
-        std::cerr << "Runtime error: " << e.what() << '\n';
         exit(EXIT_FAILURE);
     }
 

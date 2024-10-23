@@ -1,7 +1,0 @@
-<map id="include/VoronoiMeshMaker/Shape/ShapeFactory.h" name="include/VoronoiMeshMaker/Shape/ShapeFactory.h">
-<area shape="rect" id="node1" title=" " alt="" coords="359,5,558,47"/>
-<area shape="rect" id="node2" href="$Ellipse_8cpp.html" title=" " alt="" coords="5,95,208,136"/>
-<area shape="rect" id="node3" href="$Rectangle_8cpp.html" title=" " alt="" coords="232,95,456,136"/>
-<area shape="rect" id="node4" href="$Star_8cpp.html" title=" " alt="" coords="481,95,666,136"/>
-<area shape="rect" id="node5" href="$ShapeFactory_8cpp.html" title="Implements the ShapeFactory methods for creating shape objects. This file contains the registration a..." alt="" coords="690,95,873,136"/>
-</map>

@@ -43,8 +43,6 @@
 #include <VoronoiMeshMaker/Shape/Shape2D/Ellipse.h>
 #include <VoronoiMeshMaker/Shape/Shape2D/Rectangle.h>
 #include <VoronoiMeshMaker/Shape/Shape2D/Star.h>
-//#include <VoronoiMeshMaker/DataExporter/VoronoiDataExporter.h>
-//#include <VoronoiMeshMaker/DataExporter/ExportOptions.h>
 
 using vmm::gtp::Point2D;
 using vmm::Shape2D;

@@ -1,5 +1,375 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.9.1" xml:lang="en-US">
+  <compound refid="classID" kind="class"><name>ID</name>
+    <member refid="classID_1ac7c3a6f42b6d115da5456a47a690d14a" kind="function"><name>~ID</name></member>
+    <member refid="classID_1aa24a23fc35c047319634ca6693c671b6" kind="function"><name>className</name></member>
+    <member refid="classID_1a0ebe5e78a0d04e6cd581e9099e25bb8f" kind="function"><name>classID</name></member>
+    <member refid="classID_1a97ae807633a588fe5418bfd18cb58549" kind="function"><name>sameClass</name></member>
+  </compound>
+  <compound refid="classVMMException" kind="class"><name>VMMException</name>
+    <member refid="classVMMException_1a5389d8420f99c3e43d561c99fbe00ad7" kind="variable"><name>displayErrorMessage</name></member>
+    <member refid="classVMMException_1adcf74448d2c5bd8869292989875475e7" kind="variable"><name>sourceInfo</name></member>
+    <member refid="classVMMException_1a6b186907907679921b3081adb88d0dee" kind="variable"><name>exceptionIndex</name></member>
+    <member refid="classVMMException_1ae699ef27aa71d46927af09517473fd52" kind="variable"><name>errorMsg</name></member>
+    <member refid="classVMMException_1a8b9fc76be9e9171f0e0f4e45bb17d45d" kind="variable"><name>flagAbort</name></member>
+    <member refid="classVMMException_1aa471683079d3dc10d00a134d3df2ed7c" kind="friend"><name>operator&lt;&lt;</name></member>
+    <member refid="classVMMException_1ab3a22a826faf143fa3cb4f4d03cbbe8c" kind="function"><name>className</name></member>
+    <member refid="classVMMException_1ab83d7ec9ea7a83ebfd3ee6d860a70268" kind="function"><name>classID</name></member>
+    <member refid="classVMMException_1a847c9aa2401e4c1d78c0a4ccaaf6ede6" kind="function"><name>VMMException</name></member>
+    <member refid="classVMMException_1aecb2e1429a7aa04f38e132ee9074ef52" kind="function"><name>VMMException</name></member>
+    <member refid="classVMMException_1abd7f913fb61590e7545b30eaa4e8ae68" kind="function"><name>~VMMException</name></member>
+    <member refid="classVMMException_1a8abdfc7c7ad24da2ce290e8bf00b87f9" kind="function"><name>what</name></member>
+    <member refid="classVMMException_1a434b4d609731f698ca4428e47e805264" kind="function"><name>VORAbort</name></member>
+    <member refid="classID_1a97ae807633a588fe5418bfd18cb58549" kind="function"><name>sameClass</name></member>
+    <member refid="classVMMException_1ad6d073b526cdcda269b1db60409abc14" kind="function"><name>shouldDisplayMessage</name></member>
+    <member refid="classVMMException_1a17a5b5d417dd0b9e05c4dc79468a118e" kind="function"><name>setDisplayMessage</name></member>
+  </compound>
+  <compound refid="namespaceClassID" kind="namespace"><name>ClassID</name>
+    <member refid="namespaceClassID_1ab0fb1bfed3c5b91a6efef2d6bbf77917" kind="variable"><name>None</name></member>
+    <member refid="namespaceClassID_1afc0b0654d49a99552174d98a90eb8dff" kind="variable"><name>Ellipse</name></member>
+    <member refid="namespaceClassID_1a728679b8619a32c058656f850361d954" kind="variable"><name>ExportStrategy</name></member>
+    <member refid="namespaceClassID_1a47a6921442f4732edd9e925d6ad369e5" kind="variable"><name>GeometricDataHolder</name></member>
+    <member refid="namespaceClassID_1a5856cf9f6954e72153e2e882cee99a5c" kind="variable"><name>Rectangle</name></member>
+    <member refid="namespaceClassID_1a2fb68e6e32540509d2fa6bd23bbae5f0" kind="variable"><name>Shape2D</name></member>
+    <member refid="namespaceClassID_1a78989163fb1aba800049094a35c6cce6" kind="variable"><name>Star</name></member>
+    <member refid="namespaceClassID_1a7d1a37c1a6d87365454b7b88470f92e0" kind="variable"><name>PolygonCSV</name></member>
+  </compound>
+  <compound refid="namespaceEllipse" kind="namespace"><name>Ellipse</name>
+    <member refid="namespaceEllipse_1aa45620a9004bd2d752a4578d6071f036" kind="function"><name>className</name></member>
+    <member refid="namespaceEllipse_1a48f785621b17176a53b5c5a4c949a8c8" kind="function"><name>getClassID</name></member>
+    <member refid="namespaceEllipse_1a016bccdd97757ca8243e7d9f60324d37" kind="function"><name>Ellipse</name></member>
+    <member refid="namespaceEllipse_1a5123ccdace8341037ab4fd78ccec2119" kind="function"><name>Ellipse</name></member>
+    <member refid="namespaceEllipse_1aa844516f13a4d27f538e4e296b23f35b" kind="function"><name>Ellipse</name></member>
+    <member refid="namespaceEllipse_1a9abe69ac6dfe6b5ad6fba26552b296d4" kind="function"><name>~Ellipse</name></member>
+    <member refid="namespaceEllipse_1a5f9d1ce8bbd5dabf4a3c8649aba9ec94" kind="function"><name>Ellipse</name></member>
+    <member refid="namespaceEllipse_1aafeb3b134067fc5ec99f53c8bfa25266" kind="function"><name>operator=</name></member>
+    <member refid="namespaceEllipse_1a9db4f99143db55911da77735cbc9b86c" kind="function"><name>operator=</name></member>
+  </compound>
+  <compound refid="namespaceGeometricDataHolder" kind="namespace"><name>GeometricDataHolder</name>
+    <member refid="namespaceGeometricDataHolder_1ab8430ec01baae88f97def7e7fad92cad" kind="variable"><name>data_</name></member>
+    <member refid="namespaceGeometricDataHolder_1acd2950d2380c2e9a599a1806cbb7b747" kind="function"><name>GeometricDataHolder</name></member>
+    <member refid="namespaceGeometricDataHolder_1a559e1f59327e9f2d6d35e03abd4c06ac" kind="function"><name>GeometricDataHolder</name></member>
+    <member refid="namespaceGeometricDataHolder_1ab9a5f379bc45d6974576d7df2c02ff1b" kind="function"><name>GeometricDataHolder</name></member>
+    <member refid="namespaceGeometricDataHolder_1ac90489195765ecd55ff82dfa6efd895e" kind="function"><name>operator=</name></member>
+    <member refid="namespaceGeometricDataHolder_1a446f54deee1c666ca3dd7e1bb8129ade" kind="function"><name>operator=</name></member>
+    <member refid="namespaceGeometricDataHolder_1a3bb191141bd4fe9efd3296a74577d2b5" kind="function"><name>set</name></member>
+    <member refid="namespaceGeometricDataHolder_1a9471c29c520c507c3d359f7212fa216e" kind="function"><name>get</name></member>
+    <member refid="namespaceGeometricDataHolder_1a6294fea82ceac60094602c92e285d409" kind="function"><name>operator&lt;&lt;</name></member>
+  </compound>
+  <compound refid="namespacePolygonCSV" kind="namespace"><name>PolygonCSV</name>
+    <member refid="namespacePolygonCSV_1a6dbe228002e571427f57de0c6929cc08" kind="variable"><name>filename_</name></member>
+    <member refid="namespacePolygonCSV_1a2131803f38800c160ddd1229fb8b49d8" kind="variable"><name>ptrBoundaryPolygon_</name></member>
+    <member refid="namespacePolygonCSV_1a72c148b5441c363502905bfac47f3e3f" kind="function"><name>PolygonCSV</name></member>
+    <member refid="namespacePolygonCSV_1ae36859a284be114bb2fb801be374b57d" kind="function"><name>PolygonCSV</name></member>
+    <member refid="namespacePolygonCSV_1a958bb2a1125dd17db7fc4ac6381942a9" kind="function"><name>PolygonCSV</name></member>
+    <member refid="namespacePolygonCSV_1acfcad8a8833843ad1408c9eee1f04294" kind="function"><name>PolygonCSV</name></member>
+    <member refid="namespacePolygonCSV_1a77891009063669c133d2316a3b8c8211" kind="function"><name>~PolygonCSV</name></member>
+    <member refid="namespacePolygonCSV_1a550d6ae2ae2f511221b65b3758efda1b" kind="function"><name>readCSV</name></member>
+    <member refid="namespacePolygonCSV_1aa0e77dad04d6e419aa31ff1aab8b29ba" kind="function"><name>className</name></member>
+    <member refid="namespacePolygonCSV_1af004b4861e048c4338a836e28a83c16b" kind="function"><name>classID</name></member>
+  </compound>
+  <compound refid="namespaceRectangle" kind="namespace"><name>Rectangle</name>
+    <member refid="namespaceRectangle_1a334c511a0822d755085df08cb7ca1ae6" kind="function"><name>className</name></member>
+    <member refid="namespaceRectangle_1a80aea775cc5513addd36f1b3f7b1c670" kind="function"><name>getClassID</name></member>
+    <member refid="namespaceRectangle_1aa3fdb1ecdfc3712c694ffb7f3d8431f2" kind="function"><name>Rectangle</name></member>
+    <member refid="namespaceRectangle_1a0b56371edf97e472aa7717a6e67b7b98" kind="function"><name>Rectangle</name></member>
+    <member refid="namespaceRectangle_1af20024b9abc5bdfb2ef5c5a80cd10040" kind="function"><name>Rectangle</name></member>
+    <member refid="namespaceRectangle_1ac071b488a4cea3a7822b32fd6601943b" kind="function"><name>~Rectangle</name></member>
+    <member refid="namespaceRectangle_1aa5d8d7eceba09d34c1121de57ca01136" kind="function"><name>Rectangle</name></member>
+    <member refid="namespaceRectangle_1adc5ea8388cb7f8d7abb2e13a1a8845cc" kind="function"><name>operator=</name></member>
+    <member refid="namespaceRectangle_1a730e001d034dd5a9ae25c9ca451b2de7" kind="function"><name>operator=</name></member>
+  </compound>
+  <compound refid="namespaceRectangle2D" kind="namespace"><name>Rectangle2D</name>
+  </compound>
+  <compound refid="namespaceShape" kind="namespace"><name>Shape</name>
+    <member refid="namespaceShape_1af10dc73b4b127681aadf43e86d69a892" kind="variable"><name>ptrDataHolder_</name></member>
+    <member refid="namespaceShape_1a52cf99502307b6a9f8e1e15eb486901d" kind="function"><name>Shape</name></member>
+    <member refid="namespaceShape_1aee2142850ef6c6810a2f4c56fc0b0100" kind="function"><name>Shape</name></member>
+    <member refid="namespaceShape_1a81293c5490684ca800476d63ecfe267a" kind="function"><name>Shape</name></member>
+    <member refid="namespaceShape_1a5f9e80d652786a93d8d549287b2c0b68" kind="function"><name>~Shape</name></member>
+    <member refid="namespaceShape_1adb88e18d3d4292217b500618e723b6f2" kind="function"><name>operator=</name></member>
+    <member refid="namespaceShape_1a3b2f1b51baaa81b600f564096e3debc0" kind="function"><name>operator=</name></member>
+    <member refid="namespaceShape_1abf6d70b75416231e6af843e0d66ebc47" kind="function"><name>Shape</name></member>
+    <member refid="namespaceShape_1aa9685aa2de7ca5af40013ad85137b191" kind="function"><name>className</name></member>
+    <member refid="namespaceShape_1aa16b693ea1cd2fe7ecf68e79160f62cc" kind="function"><name>classID</name></member>
+    <member refid="namespaceShape_1a342818aa4ea24c525f7d928f25fb701a" kind="function"><name>rotate</name></member>
+    <member refid="namespaceShape_1a87bf6731ab1c36c417b6581fbfd5bad5" kind="function"><name>translate</name></member>
+    <member refid="namespaceShape_1a27e817584ba11d5426581f35db65fc43" kind="function"><name>area</name></member>
+    <member refid="namespaceShape_1a9ce307a94e7bd2a6bda7aa1c1b985a26" kind="function"><name>volume</name></member>
+    <member refid="namespaceShape_1a73b6278c00ef93adff002bf763e87898" kind="function"><name>perimeter</name></member>
+  </compound>
+  <compound refid="namespaceShape2D" kind="namespace"><name>Shape2D</name>
+    <member refid="namespaceShape2D_1a1b37ce7a7d00ecc98567a809993a29b8" kind="variable"><name>ptrPolygon2DShared_</name></member>
+    <member refid="namespaceShape2D_1a3d8f80e1931a383b54728ccee4ed40b1" kind="function"><name>operator&lt;&lt;</name></member>
+    <member refid="namespaceShape2D_1a0589f6a029e7fdf25dbed824cc293ce4" kind="function"><name>className</name></member>
+    <member refid="namespaceShape2D_1a59feba2b0e60720ffd32a3407d1fc5c3" kind="function"><name>classID</name></member>
+    <member refid="namespaceShape2D_1a6d799541bfb12f05a0c88eb196243ef4" kind="function"><name>Shape2D</name></member>
+    <member refid="namespaceShape2D_1aa4a4e3287f334152110d2b639e8bf937" kind="function"><name>Shape2D</name></member>
+    <member refid="namespaceShape2D_1aebd5eba61c59853b292f8a4047a22750" kind="function"><name>Shape2D</name></member>
+    <member refid="namespaceShape2D_1a0552ea297ad10360549952cdbb758f69" kind="function"><name>~Shape2D</name></member>
+    <member refid="namespaceShape2D_1a15673ddb15fb48c51d0e882fb982874b" kind="function"><name>operator=</name></member>
+    <member refid="namespaceShape2D_1a8fb87054fd9d9926410e4f3178991e29" kind="function"><name>operator=</name></member>
+    <member refid="namespaceShape2D_1a5caced7fba0e97aca6d24ab13e820dfc" kind="function"><name>Shape2D</name></member>
+    <member refid="namespaceShape2D_1a5461d01e454f3068055757b0de7cf261" kind="function"><name>rotate</name></member>
+    <member refid="namespaceShape2D_1a5cd905a95042beffe0cf7b5513464de2" kind="function"><name>translate</name></member>
+    <member refid="namespaceShape2D_1a3224acd77ce2bfeb8fd657608c7498b1" kind="function"><name>area</name></member>
+    <member refid="namespaceShape2D_1a0c9239159c43f00a585220d8e9769b2c" kind="function"><name>volume</name></member>
+    <member refid="namespaceShape2D_1a5c4917a69bdde2404c8fa7d15c851c48" kind="function"><name>perimeter</name></member>
+    <member refid="namespaceShape2D_1a16de02582055dd9a4c3d64fddd304f17" kind="function"><name>getPtrPolygonShared</name></member>
+  </compound>
+  <compound refid="namespaceShapeFactory" kind="namespace"><name>ShapeFactory</name>
+    <member refid="namespaceShapeFactory_1a495f0014db753978ce1364099deadfe2" kind="variable"><name>shapeRegistry</name></member>
+    <member refid="namespaceShapeFactory_1a5c4a56e76762fae068353f05c4d2f364" kind="function"><name>registerShape</name></member>
+    <member refid="namespaceShapeFactory_1aa2f74fd2cca4387407b168a73299bc85" kind="function"><name>createShape</name></member>
+  </compound>
+  <compound refid="namespaceSourceInfo" kind="namespace"><name>SourceInfo</name>
+    <member refid="namespaceSourceInfo_1a11c8cca41cfb690a38c0837aba3336a8" kind="variable"><name>fileLocation</name></member>
+    <member refid="namespaceSourceInfo_1a1b2a6dcb66554b88ea00166afa4e1093" kind="variable"><name>lineLocation</name></member>
+    <member refid="namespaceSourceInfo_1aa98f29c81e7429ded8d615c7d05b5c13" kind="variable"><name>functionName</name></member>
+    <member refid="namespaceSourceInfo_1a6e1cfd28040030158782360a53f701fa" kind="function"><name>SourceInfo</name></member>
+    <member refid="namespaceSourceInfo_1a8589fdec4581b5a8f8cee3e9394753cb" kind="function"><name>SourceInfo</name></member>
+    <member refid="namespaceSourceInfo_1aab672dae8989c0b398c93da4eb6747d6" kind="function"><name>FileLocation</name></member>
+    <member refid="namespaceSourceInfo_1aaa7e8c7722a8e633775922b702c57a5c" kind="function"><name>LineNumber</name></member>
+    <member refid="namespaceSourceInfo_1aaac3e99161c3c32331076dd48f12f8c2" kind="function"><name>FunctionName</name></member>
+  </compound>
+  <compound refid="namespaceStar" kind="namespace"><name>Star</name>
+    <member refid="namespaceStar_1a95d6210fdc3eac85b955facecf04b09a" kind="function"><name>className</name></member>
+    <member refid="namespaceStar_1ad87b82ac7f7593c156c021e58dd1e96a" kind="function"><name>getClassID</name></member>
+    <member refid="namespaceStar_1acf0943ab36c0825755a9ddbb89bd1830" kind="function"><name>Star</name></member>
+    <member refid="namespaceStar_1a75d638def9e3cad7f3977ed5b79bf848" kind="function"><name>Star</name></member>
+    <member refid="namespaceStar_1ac938bdc6d6ca6281fbb646649b04b921" kind="function"><name>Star</name></member>
+    <member refid="namespaceStar_1abef9d74749a3aa1700b101eabf9d0e35" kind="function"><name>~Star</name></member>
+    <member refid="namespaceStar_1a301d69d084bbc75318036c0ebfd7f5bd" kind="function"><name>Star</name></member>
+    <member refid="namespaceStar_1a8a93ab0dee9fc12eaded293e659c9948" kind="function"><name>operator=</name></member>
+    <member refid="namespaceStar_1ab8fd24c253a6f2fddfdfc45c7dd11e95" kind="function"><name>operator=</name></member>
+  </compound>
   <compound refid="namespacestd" kind="namespace"><name>std</name>
+  </compound>
+  <compound refid="namespaceVMMExceptionIndex" kind="namespace"><name>VMMExceptionIndex</name>
+    <member refid="namespaceVMMExceptionIndex_1a73b7f73fba43d97cad4ea5eb2a34ed4c" kind="variable"><name>FileNotFound</name></member>
+    <member refid="namespaceVMMExceptionIndex_1a1112bc788778e8ac228afb42da3886f4" kind="variable"><name>FileReadProblem</name></member>
+    <member refid="namespaceVMMExceptionIndex_1aba8a062377c2116db68c7410b4383663" kind="variable"><name>FileSystemError</name></member>
+    <member refid="namespaceVMMExceptionIndex_1a1760a906f5271c002ee4e417ef6eb698" kind="variable"><name>IsNotPolygon</name></member>
+    <member refid="namespaceVMMExceptionIndex_1a9f4f3d4a88240e37a12286ba02222aa9" kind="variable"><name>IsNotSimplePolygon</name></member>
+    <member refid="namespaceVMMExceptionIndex_1a3504241412beafaed367008138372124" kind="variable"><name>NullNodes</name></member>
+    <member refid="namespaceVMMExceptionIndex_1a2734d1783efe4efd728d8014b408e1c4" kind="variable"><name>NullPolygon</name></member>
+    <member refid="namespaceVMMExceptionIndex_1af62b16dec8ff21b39581e143a0659515" kind="variable"><name>NullBoundary2D</name></member>
+    <member refid="namespaceVMMExceptionIndex_1a69a70062c748879b9aec88a3e8598732" kind="variable"><name>WrongAlpha</name></member>
+    <member refid="namespaceVMMExceptionIndex_1ab8fbe1f51b1d11b6b261fbcc0d7c0cff" kind="variable"><name>WrongDelta</name></member>
+    <member refid="namespaceVMMExceptionIndex_1a8754ca63604b111a2c7dfc07b0896529" kind="variable"><name>WrongNNodes</name></member>
+    <member refid="namespaceVMMExceptionIndex_1addb7170747b2188a7a8d05810eb73386" kind="variable"><name>NEGATIVELENGHT</name></member>
+    <member refid="namespaceVMMExceptionIndex_1a9740f583577389567ac35281b6dfd520" kind="variable"><name>WrongNPoints</name></member>
+    <member refid="namespaceVMMExceptionIndex_1a3e5caaf84018132497a3745bd425dd94" kind="variable"><name>GridGenerationProblem</name></member>
+    <member refid="namespaceVMMExceptionIndex_1a0df23761c9e946e071eb438ee647fcaa" kind="variable"><name>NullOffsetPolygon</name></member>
+    <member refid="namespaceVMMExceptionIndex_1ad18303c2985f82e3416ddf83612bbc46" kind="variable"><name>IOToolsDuplicateKey</name></member>
+    <member refid="namespaceVMMExceptionIndex_1af091447d787028ebdf0f77bbf07fd125" kind="variable"><name>IOToolsFail</name></member>
+    <member refid="namespaceVMMExceptionIndex_1a644d1335bddb68e2d597203a9758ce1e" kind="variable"><name>IOToolsFileMissing</name></member>
+    <member refid="namespaceVMMExceptionIndex_1ae52a6363650b322dc58697bcd6ac0280" kind="variable"><name>IOToolsNotFound</name></member>
+    <member refid="namespaceVMMExceptionIndex_1a7b419e3e0c6a673159f6544ee7123505" kind="variable"><name>DATANOTAVAILABLE</name></member>
+  </compound>
+  <compound refid="MakerException_8h" kind="file"><name>MakerException.h</name>
+    <member refid="MakerException_8h_1a6ab3194c03b08c87d0bce61b11a70d08" kind="function"><name>ErrorType</name></member>
+  </compound>
+  <compound refid="configure_8h" kind="file"><name>configure.h</name>
+    <member refid="configure_8h_1ae99777fcb171f5d4087dbed2afc87087" kind="variable"><name>ZERO</name></member>
+    <member refid="configure_8h_1af85c21b426cef70e63790e991a9b95e3" kind="variable"><name>LIMIT</name></member>
+    <member refid="configure_8h_1a4ce5cf8783282cc25f508841d8cb49dd" kind="variable"><name>EPSILON</name></member>
+    <member refid="configure_8h_1ace67d58aeca08c1b8e7700c58654e4b1" kind="variable"><name>LSIZE</name></member>
+    <member refid="configure_8h_1a34523b6f9caf9d8ab79575f5867767f1" kind="function"><name>Pi</name></member>
+  </compound>
+  <compound refid="id_8h" kind="file"><name>id.h</name>
+  </compound>
+  <compound refid="misc_8h" kind="file"><name>misc.h</name>
+    <member refid="misc_8h_1a1e1a6417cc2321840ad1fa47890b6c8e" kind="function"><name>PrintLine</name></member>
+    <member refid="misc_8h_1adc6b5e473a877c277a1dbd598e4e8f0f" kind="function"><name>string2bool</name></member>
+    <member refid="misc_8h_1a9e891519e444259a82f8abce71405a3b" kind="function"><name>getCurrentWorkingDirectory</name></member>
+    <member refid="misc_8h_1ac3f7f2f48530ce2151cc46d3f3bc8fb9" kind="function"><name>getFullPath</name></member>
+    <member refid="misc_8h_1a928e7038b45787d3a09286ed47c21e75" kind="function"><name>RenameFile</name></member>
+    <member refid="misc_8h_1ad07a6b9447503e1f662108c0411b1785" kind="function"><name>CreateDirectoryIfNotExists</name></member>
+    <member refid="misc_8h_1a5e80476970fb70e43f2d269940e73cb6" kind="function"><name>str2int</name></member>
+    <member refid="misc_8h_1ac9f19f927a16861ed37cf709034cf14e" kind="function"><name>IsBlank</name></member>
+    <member refid="misc_8h_1a9eb5721b3d402224ea370e07907f6543" kind="function"><name>IsEmptyOrBlank</name></member>
+    <member refid="misc_8h_1ab90280b9b084abe832968b712400aefc" kind="function"><name>convertToShared</name></member>
+    <member refid="misc_8h_1ab5d50214eaa60011eaef4793b47349f5" kind="function"><name>operator&lt;&lt;</name></member>
+    <member refid="misc_8h_1a10a37d37f94780ea96c706897d60104e" kind="function"><name>operator&lt;&lt;</name></member>
+    <member refid="misc_8h_1a40daedeec8ea792ccfe7f9f60c068690" kind="function"><name>operator&lt;&lt;</name></member>
+    <member refid="misc_8h_1a1c97012f9b2b0f7a6fdb22b39756ccd4" kind="function"><name>operator&lt;&lt;</name></member>
+  </compound>
+  <compound refid="namespace_8h" kind="file"><name>namespace.h</name>
+    <member refid="namespace_8h_1a0850a440be7718d521600f120ee783e5" kind="define"><name>VORMAKER_NAMESPACE_OPEN</name></member>
+    <member refid="namespace_8h_1a79d315e8c3400ea5f4ad4175a85d291c" kind="define"><name>VORMAKER_NAMESPACE_CLOSE</name></member>
+    <member refid="namespace_8h_1a32e6a082952ff95523312c3afe5c3bfc" kind="define"><name>GEOTYPES_NAMESPACE_OPEN</name></member>
+    <member refid="namespace_8h_1a5a5dcea9712168ab41387f1591d8bb71" kind="define"><name>GEOTYPES_NAMESPACE_CLOSE</name></member>
+  </compound>
+  <compound refid="sourceinfo_8h" kind="file"><name>sourceinfo.h</name>
+    <member refid="sourceinfo_8h_1ae9f0903473528f1adc27128e16c7176e" kind="function"><name>CaptureSourceInfo</name></member>
+  </compound>
+  <compound refid="type_8h" kind="file"><name>type.h</name>
+    <member refid="type_8h_1a1b753fd9c2659910ca1a042a05b56be6" kind="enum"><name>GeometryType</name></member>
+    <member refid="type_8h_1a1b753fd9c2659910ca1a042a05b56be6a380e147fdd03a8304fb1bfc1450ff23e" kind="enumvalue"><name>Point2D</name></member>
+    <member refid="type_8h_1a1b753fd9c2659910ca1a042a05b56be6a1685c4cb9754df6a8c65c8564d8d0d74" kind="enumvalue"><name>Point3D</name></member>
+    <member refid="type_8h_1a1b753fd9c2659910ca1a042a05b56be6ab544bcb0cac3b7d613faebff979d5f57" kind="enumvalue"><name>Segment2D</name></member>
+    <member refid="type_8h_1a1b753fd9c2659910ca1a042a05b56be6aefe49184247e986eef8b84a6f45f9ab3" kind="enumvalue"><name>Segment3D</name></member>
+    <member refid="type_8h_1a1b753fd9c2659910ca1a042a05b56be6a8fd520d02c1f69fa67238871db0db9df" kind="enumvalue"><name>Ray2D</name></member>
+    <member refid="type_8h_1a1b753fd9c2659910ca1a042a05b56be6a1d2c62018c62778c026455cba1cefde3" kind="enumvalue"><name>Ray3D</name></member>
+    <member refid="type_8h_1a1b753fd9c2659910ca1a042a05b56be6a4d3bc1733d8e5810f06604007e787bb2" kind="enumvalue"><name>Vector2D</name></member>
+    <member refid="type_8h_1a1b753fd9c2659910ca1a042a05b56be6a11d6d4839c41bcd39255a062482c2628" kind="enumvalue"><name>Vector3D</name></member>
+    <member refid="type_8h_1a1b753fd9c2659910ca1a042a05b56be6a274b92943fbe8a432927b64d4815b5d0" kind="enumvalue"><name>Polygon2D</name></member>
+    <member refid="type_8h_1a1b753fd9c2659910ca1a042a05b56be6ae39e6c220ebaf3f124bb6ae21833b0b7" kind="enumvalue"><name>Polyhedron3D</name></member>
+    <member refid="type_8h_1aaaf5a4f3fcdfb59de2f926961baa8ad9" kind="typedef"><name>Point2D</name></member>
+    <member refid="type_8h_1ac7e02506cf8ef76c662fc459a35bc5f6" kind="typedef"><name>Point3D</name></member>
+    <member refid="type_8h_1a6b802c726af16015b8293b694c04c775" kind="typedef"><name>Segment2D</name></member>
+    <member refid="type_8h_1a80a25de984b2caba2025c2d6e239b0c6" kind="typedef"><name>Segment3D</name></member>
+    <member refid="type_8h_1ad70e24f51d49fd8c6ef307a123562450" kind="typedef"><name>Ray2D</name></member>
+    <member refid="type_8h_1a2e3fd6278129b37cd9791d65d0cf8c07" kind="typedef"><name>Ray3D</name></member>
+    <member refid="type_8h_1ac4223c9df6fc9e13ce379144da5b09aa" kind="typedef"><name>Vector2D</name></member>
+    <member refid="type_8h_1a7724755c44fb4913c5f7a3dc1a00c7c3" kind="typedef"><name>Vector3D</name></member>
+    <member refid="type_8h_1a4bb42cc64e4df443b3a4782605a546f6" kind="typedef"><name>Polygon2D</name></member>
+    <member refid="type_8h_1a8d8853c35d4f194addaeb90964f550c0" kind="typedef"><name>Polyhedron3D</name></member>
+    <member refid="type_8h_1ad97931d5a7087276b5055a4513e5317e" kind="typedef"><name>PtrPolygon2DUnique</name></member>
+    <member refid="type_8h_1ad5b809059aadf025572a67ba20c1189b" kind="typedef"><name>PtrPolyhedron3DUnique</name></member>
+    <member refid="type_8h_1a9fceaa37a4a4317754b64e24bd85331c" kind="typedef"><name>PtrConstPolygon2DUnique</name></member>
+    <member refid="type_8h_1a1b87c627040b298506d7711138e74c23" kind="typedef"><name>PtrConstPolyhedron3DUnique</name></member>
+    <member refid="type_8h_1a150152fb4dec782b1657b9671b953696" kind="typedef"><name>PtrPolygon2DShared</name></member>
+    <member refid="type_8h_1acdc6bfdce3364dadc6439c1faad11ddb" kind="typedef"><name>PtrPolyhedron3DShared</name></member>
+    <member refid="type_8h_1ab3a6f4092b599b6e43d53a8e354c053d" kind="typedef"><name>PtrConstPolygon2DShared</name></member>
+    <member refid="type_8h_1a87478871be4c6bb93c29f60f4d09f849" kind="typedef"><name>PtrConstPolyhedron3DShared</name></member>
+    <member refid="type_8h_1a4ffe89b522a377368b9c674abaa2f649" kind="typedef"><name>LstPoint2D</name></member>
+    <member refid="type_8h_1aa272cfe8160141a5b0eda7a80da90510" kind="typedef"><name>LstPoint3D</name></member>
+    <member refid="type_8h_1a4ea8c90a4f779e8dcbc287ad92574521" kind="typedef"><name>VecPoint2D</name></member>
+    <member refid="type_8h_1a4cc53dee5bec7aa91a9e9a9826c81a27" kind="typedef"><name>VecPoint3D</name></member>
+    <member refid="type_8h_1a072dccfc5a1d0d1857f478d50044f66f" kind="typedef"><name>Real</name></member>
+    <member refid="type_8h_1a12c802d521455d5688eb696655f62053" kind="typedef"><name>LstInt</name></member>
+    <member refid="type_8h_1a5bff96dd090b9d0996ef42a88aa322a6" kind="typedef"><name>VecInt</name></member>
+    <member refid="type_8h_1ade413d7e07d3e52ade8c54de69f4a3a4" kind="typedef"><name>LstReal</name></member>
+    <member refid="type_8h_1a348df6b420217d4d2281495ddf4165c4" kind="typedef"><name>VecReal</name></member>
+    <member refid="type_8h_1a37b200e229d66a6eff801a43e46447ef" kind="variable"><name>Kernel</name></member>
+  </compound>
+  <compound refid="GeometricDataHolder_8h" kind="file"><name>GeometricDataHolder.h</name>
+  </compound>
+  <compound refid="GeometricDataHolder_8tpp" kind="file"><name>GeometricDataHolder.tpp</name>
+  </compound>
+  <compound refid="Shape_8h" kind="file"><name>Shape.h</name>
+    <member refid="Shape_8h_1a5dbd04afd9458d99f867eaa377ac8ac3" kind="typedef"><name>PtrShapeShared</name></member>
+    <member refid="Shape_8h_1afe78e26c40210d0764457171a8eab62f" kind="typedef"><name>PtrConstShapeShared</name></member>
+  </compound>
+  <compound refid="Ellipse_8h" kind="file"><name>Ellipse.h</name>
+    <member refid="Ellipse_8h_1adac4d92ae1553915da20f3ccb5529625" kind="typedef"><name>PtrEllipseShared</name></member>
+    <member refid="Ellipse_8h_1a94ec3971b305d99624c615f3de0fb56b" kind="typedef"><name>PtrConstEllipseShared</name></member>
+  </compound>
+  <compound refid="Polygon_8h" kind="file"><name>Polygon.h</name>
+  </compound>
+  <compound refid="PolygonCSV_8h" kind="file"><name>PolygonCSV.h</name>
+    <member refid="PolygonCSV_8h_1a8ca3277c431fd7b266420bfa5b3895be" kind="typedef"><name>PtrPolygonCSVShared</name></member>
+    <member refid="PolygonCSV_8h_1aca62d25c3d6ce5c542155e9cf6ccbb1b" kind="typedef"><name>PtrConstPolygonCSVShared</name></member>
+  </compound>
+  <compound refid="Rectangle_8h" kind="file"><name>Rectangle.h</name>
+    <member refid="Rectangle_8h_1a57277590a8133f6e156b97135e9b5ce2" kind="typedef"><name>PtrRectangleShared</name></member>
+    <member refid="Rectangle_8h_1a852c7baf239f5b35ed7c34b493fdbdba" kind="typedef"><name>PtrConstRectangleShared</name></member>
+  </compound>
+  <compound refid="Shape2D_8h" kind="file"><name>Shape2D.h</name>
+    <member refid="Shape2D_8h_1a679107fa10ae1f2b8be3f935411e15cc" kind="typedef"><name>PtrShape2DShared</name></member>
+    <member refid="Shape2D_8h_1aad110722acf3a437dea2d82238c0bbbe" kind="typedef"><name>PtrConstShape2DShared</name></member>
+  </compound>
+  <compound refid="Star_8h" kind="file"><name>Star.h</name>
+    <member refid="Star_8h_1a677df3e6c2895477a5ccd8e21defcbad" kind="typedef"><name>PtrStarShared</name></member>
+    <member refid="Star_8h_1a40c4a8fa4f5e8b48dca68301b8325514" kind="typedef"><name>PtrConstStarShared</name></member>
+  </compound>
+  <compound refid="Shape3D_8h" kind="file"><name>Shape3D.h</name>
+  </compound>
+  <compound refid="ShapeFactory_8h" kind="file"><name>ShapeFactory.h</name>
+    <member refid="ShapeFactory_8h_1a0883ace577b59185cdb8e3ba8c10778a" kind="typedef"><name>PtrShapeFactoryShared</name></member>
+    <member refid="ShapeFactory_8h_1a6025e475118117652c70276915155ab2" kind="typedef"><name>PtrConstShapeFactoryShared</name></member>
+  </compound>
+  <compound refid="VoronoiMeshMaker_8h" kind="file"><name>VoronoiMeshMaker.h</name>
+  </compound>
+  <compound refid="README_8md" kind="file"><name>README.md</name>
+  </compound>
+  <compound refid="MakerException_8cpp" kind="file"><name>MakerException.cpp</name>
+    <member refid="MakerException_8cpp_1a2f807fe74642b054e92ba60f920cd7be" kind="variable"><name>VMMExceptionStr</name></member>
+    <member refid="MakerException_8cpp_1a6ab3194c03b08c87d0bce61b11a70d08" kind="function"><name>ErrorType</name></member>
+    <member refid="MakerException_8cpp_1a202bbc17fc11ed6e970c46aa67ce6a09" kind="function"><name>operator&lt;&lt;</name></member>
+  </compound>
+  <compound refid="misc_8cpp" kind="file"><name>misc.cpp</name>
+    <member refid="misc_8cpp_1ac407497aa96cd593f82054cb1d0f9d44" kind="function"><name>PrintLine</name></member>
+    <member refid="misc_8cpp_1a985265b46460da20cbf001822766d647" kind="function"><name>string2bool</name></member>
+    <member refid="misc_8cpp_1a9e891519e444259a82f8abce71405a3b" kind="function"><name>getCurrentWorkingDirectory</name></member>
+    <member refid="misc_8cpp_1ac9806cd378f037c83ab3aceb1a19feb4" kind="function"><name>getFullPath</name></member>
+    <member refid="misc_8cpp_1a646152adfcdba3667d3bc35943d9b27f" kind="function"><name>RenameFile</name></member>
+    <member refid="misc_8cpp_1aa73ff0099786430ee5e37374a3276f82" kind="function"><name>CreateDirectoryIfNotExists</name></member>
+    <member refid="misc_8cpp_1ac2076ea4e93e8f09a8dfb314c52627f1" kind="function"><name>operator&lt;&lt;</name></member>
+    <member refid="misc_8cpp_1a5e11faa81d5a76e8106d3290e6b4aecb" kind="function"><name>operator&lt;&lt;</name></member>
+    <member refid="misc_8cpp_1a396299ffedb95df48937ebf72b0d5f4a" kind="function"><name>operator&lt;&lt;</name></member>
+    <member refid="misc_8cpp_1a29889402c621a0670392fdbc084c90ff" kind="function"><name>operator&lt;&lt;</name></member>
+  </compound>
+  <compound refid="GeometricDataHolder_8cpp" kind="file"><name>GeometricDataHolder.cpp</name>
+    <member refid="GeometricDataHolder_8cpp_1ac8955cb10cca7e7b0c9d9f89e5af0394" kind="function"><name>operator&lt;&lt;</name></member>
+    <member refid="GeometricDataHolder_8cpp_1a71dad13c95ea1494c073d550ae248c63" kind="function"><name>GeometricDataHolder::set&lt; gtp::Point2D &gt;</name></member>
+    <member refid="GeometricDataHolder_8cpp_1a534b4e0639863b3c5f8ef6099606cb7f" kind="function"><name>GeometricDataHolder::get&lt; gtp::Point2D &gt;</name></member>
+    <member refid="GeometricDataHolder_8cpp_1ad98e53c68c1b0ec2b31c97a53a0b8371" kind="function"><name>GeometricDataHolder::set&lt; gtp::Vector2D &gt;</name></member>
+    <member refid="GeometricDataHolder_8cpp_1a8ef160d409cb5d1ec90f8b1101cb2d79" kind="function"><name>GeometricDataHolder::get&lt; gtp::Vector2D &gt;</name></member>
+    <member refid="GeometricDataHolder_8cpp_1ab568dfd91e960be56a027b2a525fb763" kind="function"><name>GeometricDataHolder::set&lt; gtp::Point3D &gt;</name></member>
+    <member refid="GeometricDataHolder_8cpp_1a6c916ec90f8cdf7542a3e71634b9ba9a" kind="function"><name>GeometricDataHolder::get&lt; gtp::Point3D &gt;</name></member>
+    <member refid="GeometricDataHolder_8cpp_1aa375a4dbb14d5c33cc59b2df91058545" kind="function"><name>GeometricDataHolder::set&lt; gtp::Vector3D &gt;</name></member>
+    <member refid="GeometricDataHolder_8cpp_1a5d136ef1707ffd419d3a94b9ed1192b7" kind="function"><name>GeometricDataHolder::get&lt; gtp::Vector3D &gt;</name></member>
+    <member refid="GeometricDataHolder_8cpp_1afd99df0a88fb382d6e4833dbcfce1fcc" kind="function"><name>GeometricDataHolder::set&lt; std::list&lt; int &gt; &gt;</name></member>
+    <member refid="GeometricDataHolder_8cpp_1a37de3cdd35dc7d2bf8df58a6eb084315" kind="function"><name>GeometricDataHolder::get&lt; std::list&lt; int &gt; &gt;</name></member>
+    <member refid="GeometricDataHolder_8cpp_1a3f9422529e30d6e5c7514d686e6952b2" kind="function"><name>GeometricDataHolder::set&lt; std::list&lt; Real &gt; &gt;</name></member>
+    <member refid="GeometricDataHolder_8cpp_1a97e256a7b91540f400a9c44da85ead1c" kind="function"><name>GeometricDataHolder::get&lt; std::list&lt; Real &gt; &gt;</name></member>
+  </compound>
+  <compound refid="Shape_8cpp" kind="file"><name>Shape.cpp</name>
+  </compound>
+  <compound refid="Ellipse_8cpp" kind="file"><name>Ellipse.cpp</name>
+    <member refid="Ellipse_8cpp_1a5e1e6caee1b981f5df7bb93e7ceb1534" kind="variable"><name>registeredEllipse</name></member>
+  </compound>
+  <compound refid="Polygon_8cpp" kind="file"><name>Polygon.cpp</name>
+  </compound>
+  <compound refid="PolygonCSV_8cpp" kind="file"><name>PolygonCSV.cpp</name>
+  </compound>
+  <compound refid="Rectangle_8cpp" kind="file"><name>Rectangle.cpp</name>
+    <member refid="Rectangle_8cpp_1a866914eba7c26a92b40418bd0e0baf4c" kind="variable"><name>registeredRectangle</name></member>
+  </compound>
+  <compound refid="Shape2D_8cpp" kind="file"><name>Shape2D.cpp</name>
+  </compound>
+  <compound refid="Star_8cpp" kind="file"><name>Star.cpp</name>
+    <member refid="Star_8cpp_1a62291ec1e0d710e59f15a84876d6952f" kind="variable"><name>registeredStar</name></member>
+  </compound>
+  <compound refid="ShapeFactory_8cpp" kind="file"><name>ShapeFactory.cpp</name>
+  </compound>
+  <compound refid="VoronoiMeshMaker_8cpp" kind="file"><name>VoronoiMeshMaker.cpp</name>
+  </compound>
+  <compound refid="md_VoronoiMeshMaker_README" kind="page"><name>md_VoronoiMeshMaker_README</name>
+  </compound>
+  <compound refid="dir_0795aa6079c9c5e4875381072dfaa60a" kind="dir"><name>VoronoiMeshMaker/include/VoronoiMeshMaker/Error</name>
+  </compound>
+  <compound refid="dir_7a7ddf677f3a0a5fb7fdc74763c9d25c" kind="dir"><name>VoronoiMeshMaker/src/VoronoiMeshMaker/Error</name>
+  </compound>
+  <compound refid="dir_3d76d392fc864399b71d61d55d21af57" kind="dir"><name>VoronoiMeshMaker/include</name>
+  </compound>
+  <compound refid="dir_76bf7ccb57fc843010ca00f87a33bb5d" kind="dir"><name>VoronoiMeshMaker/include/VoronoiMeshMaker/Misc</name>
+  </compound>
+  <compound refid="dir_9b3aa4669936d2358fd4c29ce856fdde" kind="dir"><name>VoronoiMeshMaker/src/VoronoiMeshMaker/Misc</name>
+  </compound>
+  <compound refid="dir_f876b286619456c93d57aaa692879dc8" kind="dir"><name>VoronoiMeshMaker/include/VoronoiMeshMaker/Parameters</name>
+  </compound>
+  <compound refid="dir_3c39122fa3489942e99198c0224bbac1" kind="dir"><name>VoronoiMeshMaker/src/VoronoiMeshMaker/Parameters</name>
+  </compound>
+  <compound refid="dir_86c97043b29e68d0dd6da0fd7dd9a604" kind="dir"><name>VoronoiMeshMaker/include/VoronoiMeshMaker/Shape</name>
+  </compound>
+  <compound refid="dir_df471b08699de772abda48d5dbf37edb" kind="dir"><name>VoronoiMeshMaker/src/VoronoiMeshMaker/Shape</name>
+  </compound>
+  <compound refid="dir_be3b075f4d3e3a37aadd6e3c4e22a87f" kind="dir"><name>VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape2D</name>
+  </compound>
+  <compound refid="dir_f571f78f354a186b04e4a462412ff232" kind="dir"><name>VoronoiMeshMaker/src/VoronoiMeshMaker/Shape/Shape2D</name>
+  </compound>
+  <compound refid="dir_8cddf64d52c7f27ec31295c723a04b6a" kind="dir"><name>VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape3D</name>
+  </compound>
+  <compound refid="dir_8ad10daabed8df44e925c43ae90eb5d4" kind="dir"><name>VoronoiMeshMaker/src</name>
+  </compound>
+  <compound refid="dir_c74dfd3e163c9900408c50e82c70a93b" kind="dir"><name>VoronoiMeshMaker</name>
+  </compound>
+  <compound refid="dir_a166c128cee399a6c56f1021b36b4e9a" kind="dir"><name>VoronoiMeshMaker/include/VoronoiMeshMaker</name>
+  </compound>
+  <compound refid="dir_1243ef2b1690351902c3c8b500b42814" kind="dir"><name>VoronoiMeshMaker/src/VoronoiMeshMaker</name>
   </compound>
 </doxygenindex>

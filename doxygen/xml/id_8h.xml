@@ -1,0 +1,205 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="id_8h" kind="file" language="C++">
+    <compoundname>id.h</compoundname>
+    <includes local="no">string_view</includes>
+    <includes refid="configure_8h" local="no">VoronoiMeshMaker/Misc/configure.h</includes>
+    <includedby refid="MakerException_8h" local="no">VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h</includedby>
+    <incdepgraph>
+      <node id="5">
+        <label>list</label>
+      </node>
+      <node id="1">
+        <label>VoronoiMeshMaker/include/VoronoiMeshMaker/Misc/id.h</label>
+        <link refid="id_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>VoronoiMeshMaker/Misc/configure.h</label>
+        <link refid="configure_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>string_view</label>
+      </node>
+      <node id="7">
+        <label>vector</label>
+      </node>
+      <node id="10">
+        <label>CGAL/Polyhedron_3.h</label>
+      </node>
+      <node id="11">
+        <label>VoronoiMeshMaker/Misc/namespace.h</label>
+        <link refid="namespace_8h"/>
+      </node>
+      <node id="9">
+        <label>CGAL/Polygon_2.h</label>
+      </node>
+      <node id="4">
+        <label>VoronoiMeshMaker/Misc/type.h</label>
+        <link refid="type_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>memory</label>
+      </node>
+      <node id="8">
+        <label>CGAL/Exact_predicates_inexact_constructions_kernel.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>VoronoiMeshMaker/include/VoronoiMeshMaker/Misc/id.h</label>
+        <link refid="id_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h</label>
+        <link refid="MakerException_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>VoronoiMeshMaker/src/VoronoiMeshMaker/Error/MakerException.cpp</label>
+        <link refid="MakerException_8cpp"/>
+      </node>
+      <node id="7">
+        <label>VoronoiMeshMaker/src/VoronoiMeshMaker/Shape/Shape2D/Rectangle.cpp</label>
+        <link refid="Rectangle_8cpp"/>
+      </node>
+      <node id="9">
+        <label>VoronoiMeshMaker/src/VoronoiMeshMaker/Shape/ShapeFactory.cpp</label>
+        <link refid="ShapeFactory_8cpp"/>
+      </node>
+      <node id="5">
+        <label>VoronoiMeshMaker/src/VoronoiMeshMaker/Shape/Shape2D/Polygon.cpp</label>
+        <link refid="Polygon_8cpp"/>
+      </node>
+      <node id="4">
+        <label>VoronoiMeshMaker/src/VoronoiMeshMaker/Shape/Shape2D/Ellipse.cpp</label>
+        <link refid="Ellipse_8cpp"/>
+      </node>
+      <node id="6">
+        <label>VoronoiMeshMaker/src/VoronoiMeshMaker/Shape/Shape2D/PolygonCSV.cpp</label>
+        <link refid="PolygonCSV_8cpp"/>
+      </node>
+      <node id="8">
+        <label>VoronoiMeshMaker/src/VoronoiMeshMaker/Shape/Shape2D/Star.cpp</label>
+        <link refid="Star_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classID" prot="public">ID</innerclass>
+    <innernamespace refid="namespaceClassID">ClassID</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Name<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>ID.h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Author<sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>Joao<sp/>Flavio<sp/>Vieira<sp/>de<sp/>Vasconcellos</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Version<sp/><sp/><sp/><sp/><sp/>:<sp/>1.0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Description<sp/>:<sp/>Header<sp/>file<sp/>for<sp/>identifying<sp/>each<sp/>class<sp/>in<sp/>the<sp/>library.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Part<sp/>of<sp/>the<sp/>&apos;misc&apos;<sp/>group<sp/>of<sp/>utility<sp/>files.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Copyright<sp/><sp/><sp/>:<sp/>Copyright<sp/>(C)<sp/>2024<sp/>Joao<sp/>Flavio<sp/>Vasconcellos</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(jflavio<sp/>at<sp/>iprj.uerj.br)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>program<sp/>is<sp/>free<sp/>software:<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//<sp/>it<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,<sp/>either<sp/>version<sp/>3<sp/>of<sp/>the<sp/>License.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>program<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//<sp/>but<sp/>WITHOUT<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>MERCHANTABILITY<sp/>or<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/>See<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>GNU<sp/>General<sp/>Public<sp/>License<sp/>for<sp/>more<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>General<sp/>Public<sp/>License</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/>along<sp/>with<sp/>this<sp/>program.<sp/>If<sp/>not,<sp/>see<sp/>&lt;http://www.gnu.org/licenses/&gt;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__VORONOMESHVMAKER_ID_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__VORONOMESHVMAKER_ID_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>C++<sp/>includes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string_view&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>VoronoiMeshMaker<sp/>includes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="configure_8h" kindref="compound">VoronoiMeshMaker/Misc/configure.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="namespaceClassID" refkind="compound"><highlight class="normal"><ref refid="namespace_8h_1a0850a440be7718d521600f120ee783e5" kindref="member">VORMAKER_NAMESPACE_OPEN</ref></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="namespaceClassID" kindref="compound">ClassID</ref><sp/>{</highlight></codeline>
+<codeline lineno="67" refid="namespaceClassID_1ab0fb1bfed3c5b91a6efef2d6bbf77917" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceClassID_1ab0fb1bfed3c5b91a6efef2d6bbf77917" kindref="member">None</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="68" refid="namespaceClassID_1afc0b0654d49a99552174d98a90eb8dff" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceClassID_1afc0b0654d49a99552174d98a90eb8dff" kindref="member">Ellipse</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="69" refid="namespaceClassID_1a728679b8619a32c058656f850361d954" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceClassID_1a728679b8619a32c058656f850361d954" kindref="member">ExportStrategy</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="70" refid="namespaceClassID_1a47a6921442f4732edd9e925d6ad369e5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceClassID_1a47a6921442f4732edd9e925d6ad369e5" kindref="member">GeometricDataHolder</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="71" refid="namespaceClassID_1a5856cf9f6954e72153e2e882cee99a5c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceClassID_1a5856cf9f6954e72153e2e882cee99a5c" kindref="member">Rectangle</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="72" refid="namespaceClassID_1a2fb68e6e32540509d2fa6bd23bbae5f0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceClassID_1a2fb68e6e32540509d2fa6bd23bbae5f0" kindref="member">Shape2D</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="73" refid="namespaceClassID_1a78989163fb1aba800049094a35c6cce6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceClassID_1a78989163fb1aba800049094a35c6cce6" kindref="member">Star</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="74" refid="namespaceClassID_1a7d1a37c1a6d87365454b7b88470f92e0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceClassID_1a7d1a37c1a6d87365454b7b88470f92e0" kindref="member">PolygonCSV</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>MakerException<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Add<sp/>other<sp/>class<sp/>IDs<sp/>here<sp/>as<sp/>needed.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="classID" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classID" kindref="compound">ID</ref><sp/>{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="95" refid="classID_1ac7c3a6f42b6d115da5456a47a690d14a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classID_1ac7c3a6f42b6d115da5456a47a690d14a" kindref="member">~ID</ref>()<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105" refid="classID_1aa24a23fc35c047319634ca6693c671b6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>std::string_view<sp/><ref refid="classID_1aa24a23fc35c047319634ca6693c671b6" kindref="member">className</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;no<sp/>class&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117" refid="classID_1a0ebe5e78a0d04e6cd581e9099e25bb8f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="namespaceClassID" kindref="compound">ClassID</ref><sp/><ref refid="classID_1a0ebe5e78a0d04e6cd581e9099e25bb8f" kindref="member">classID</ref>()<sp/>const<sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceClassID_1ab0fb1bfed3c5b91a6efef2d6bbf77917" kindref="member">ClassID::None</ref>;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131" refid="classID_1a97ae807633a588fe5418bfd18cb58549" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classID_1a97ae807633a588fe5418bfd18cb58549" kindref="member">sameClass</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classID" kindref="compound">ID</ref>&amp;<sp/>other)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>noexcept<sp/>{</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classID_1a0ebe5e78a0d04e6cd581e9099e25bb8f" kindref="member">classID</ref>()<sp/>==<sp/>other.classID();</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><ref refid="namespace_8h_1a79d315e8c3400ea5f4ad4175a85d291c" kindref="member">VORMAKER_NAMESPACE_CLOSE</ref></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">//<sp/>__VORONOMESHVMAKER_ID_H__</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Misc/id.h"/>
+  </compounddef>
+</doxygen>

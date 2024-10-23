@@ -1,0 +1,274 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="namespaceVMMExceptionIndex" kind="namespace" language="C++">
+    <compoundname>VMMExceptionIndex</compoundname>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceVMMExceptionIndex_1a73b7f73fba43d97cad4ea5eb2a34ed4c" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>VMMExceptionIndex::FileNotFound</definition>
+        <argsstring></argsstring>
+        <name>FileNotFound</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" line="40" column="5" bodyfile="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceVMMExceptionIndex_1a1112bc788778e8ac228afb42da3886f4" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>VMMExceptionIndex::FileReadProblem</definition>
+        <argsstring></argsstring>
+        <name>FileReadProblem</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" line="41" column="5" bodyfile="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceVMMExceptionIndex_1aba8a062377c2116db68c7410b4383663" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>VMMExceptionIndex::FileSystemError</definition>
+        <argsstring></argsstring>
+        <name>FileSystemError</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" line="42" column="5" bodyfile="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" bodystart="42" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceVMMExceptionIndex_1a1760a906f5271c002ee4e417ef6eb698" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>VMMExceptionIndex::IsNotPolygon</definition>
+        <argsstring></argsstring>
+        <name>IsNotPolygon</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" line="43" column="5" bodyfile="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceVMMExceptionIndex_1a9f4f3d4a88240e37a12286ba02222aa9" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>VMMExceptionIndex::IsNotSimplePolygon</definition>
+        <argsstring></argsstring>
+        <name>IsNotSimplePolygon</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" line="44" column="5" bodyfile="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceVMMExceptionIndex_1a3504241412beafaed367008138372124" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>VMMExceptionIndex::NullNodes</definition>
+        <argsstring></argsstring>
+        <name>NullNodes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" line="45" column="5" bodyfile="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceVMMExceptionIndex_1a2734d1783efe4efd728d8014b408e1c4" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>VMMExceptionIndex::NullPolygon</definition>
+        <argsstring></argsstring>
+        <name>NullPolygon</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" line="46" column="5" bodyfile="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceVMMExceptionIndex_1af62b16dec8ff21b39581e143a0659515" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>VMMExceptionIndex::NullBoundary2D</definition>
+        <argsstring></argsstring>
+        <name>NullBoundary2D</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" line="47" column="5" bodyfile="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceVMMExceptionIndex_1a69a70062c748879b9aec88a3e8598732" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>VMMExceptionIndex::WrongAlpha</definition>
+        <argsstring></argsstring>
+        <name>WrongAlpha</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" line="48" column="5" bodyfile="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceVMMExceptionIndex_1ab8fbe1f51b1d11b6b261fbcc0d7c0cff" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>VMMExceptionIndex::WrongDelta</definition>
+        <argsstring></argsstring>
+        <name>WrongDelta</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" line="49" column="5" bodyfile="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceVMMExceptionIndex_1a8754ca63604b111a2c7dfc07b0896529" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>VMMExceptionIndex::WrongNNodes</definition>
+        <argsstring></argsstring>
+        <name>WrongNNodes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" line="50" column="5" bodyfile="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceVMMExceptionIndex_1addb7170747b2188a7a8d05810eb73386" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>VMMExceptionIndex::NEGATIVELENGHT</definition>
+        <argsstring></argsstring>
+        <name>NEGATIVELENGHT</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" line="51" column="5" bodyfile="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceVMMExceptionIndex_1a9740f583577389567ac35281b6dfd520" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>VMMExceptionIndex::WrongNPoints</definition>
+        <argsstring></argsstring>
+        <name>WrongNPoints</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" line="52" column="5" bodyfile="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceVMMExceptionIndex_1a3e5caaf84018132497a3745bd425dd94" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>VMMExceptionIndex::GridGenerationProblem</definition>
+        <argsstring></argsstring>
+        <name>GridGenerationProblem</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" line="53" column="5" bodyfile="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceVMMExceptionIndex_1a0df23761c9e946e071eb438ee647fcaa" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>VMMExceptionIndex::NullOffsetPolygon</definition>
+        <argsstring></argsstring>
+        <name>NullOffsetPolygon</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" line="54" column="5" bodyfile="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceVMMExceptionIndex_1ad18303c2985f82e3416ddf83612bbc46" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>VMMExceptionIndex::IOToolsDuplicateKey</definition>
+        <argsstring></argsstring>
+        <name>IOToolsDuplicateKey</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" line="55" column="5" bodyfile="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceVMMExceptionIndex_1af091447d787028ebdf0f77bbf07fd125" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>VMMExceptionIndex::IOToolsFail</definition>
+        <argsstring></argsstring>
+        <name>IOToolsFail</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" line="56" column="5" bodyfile="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceVMMExceptionIndex_1a644d1335bddb68e2d597203a9758ce1e" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>VMMExceptionIndex::IOToolsFileMissing</definition>
+        <argsstring></argsstring>
+        <name>IOToolsFileMissing</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" line="57" column="5" bodyfile="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceVMMExceptionIndex_1ae52a6363650b322dc58697bcd6ac0280" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>VMMExceptionIndex::IOToolsNotFound</definition>
+        <argsstring></argsstring>
+        <name>IOToolsNotFound</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" line="58" column="5" bodyfile="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceVMMExceptionIndex_1a7b419e3e0c6a673159f6544ee7123505" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>VMMExceptionIndex::DATANOTAVAILABLE</definition>
+        <argsstring></argsstring>
+        <name>DATANOTAVAILABLE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" line="59" column="5" bodyfile="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h" line="22" column="1"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,253 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="Polygon_8cpp" kind="file" language="C++">
+    <compoundname>Polygon.cpp</compoundname>
+    <includes refid="Polygon_8h" local="no">VoronoiMeshMaker/Shape/Shape2D/Polygon.h</includes>
+    <includes refid="MakerException_8h" local="no">VoronoiMeshMaker/Error/MakerException.h</includes>
+    <incdepgraph>
+      <node id="11">
+        <label>list</label>
+      </node>
+      <node id="23">
+        <label>VoronoiMeshMaker/Misc/id.h</label>
+        <link refid="id_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>VoronoiMeshMaker/Misc/ID.h</label>
+      </node>
+      <node id="24">
+        <label>VoronoiMeshMaker/Misc/configure.h</label>
+        <link refid="configure_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>VoronoiMeshMaker/Shape/Shape2D/Polygon.h</label>
+        <link refid="Polygon_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>VoronoiMeshMaker/Error/MakerException.h</label>
+        <link refid="MakerException_8h"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>variant</label>
+      </node>
+      <node id="20">
+        <label>string</label>
+      </node>
+      <node id="7">
+        <label>map</label>
+      </node>
+      <node id="21">
+        <label>exception</label>
+      </node>
+      <node id="22">
+        <label>ostream</label>
+      </node>
+      <node id="3">
+        <label>VoronoiMeshMaker/Shape/Shape2D/Shape2D.h</label>
+        <link refid="Shape2D_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>VoronoiMeshMaker/Misc/sourceinfo.h</label>
+        <link refid="sourceinfo_8h"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>VoronoiMeshMaker/Misc/Misc.h</label>
+      </node>
+      <node id="1">
+        <label>VoronoiMeshMaker/src/VoronoiMeshMaker/Shape/Shape2D/Polygon.cpp</label>
+        <link refid="Polygon_8cpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>string_view</label>
+      </node>
+      <node id="4">
+        <label>VoronoiMeshMaker/Shape/Shape.h</label>
+        <link refid="Shape_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>VoronoiMeshMaker/Parameters/GeometricDataHolder.tpp</label>
+        <link refid="GeometricDataHolder_8tpp"/>
+      </node>
+      <node id="13">
+        <label>vector</label>
+      </node>
+      <node id="16">
+        <label>CGAL/Polyhedron_3.h</label>
+      </node>
+      <node id="17">
+        <label>VoronoiMeshMaker/Misc/namespace.h</label>
+        <link refid="namespace_8h"/>
+      </node>
+      <node id="15">
+        <label>CGAL/Polygon_2.h</label>
+      </node>
+      <node id="10">
+        <label>VoronoiMeshMaker/Misc/type.h</label>
+        <link refid="type_8h"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>memory</label>
+      </node>
+      <node id="6">
+        <label>VoronoiMeshMaker/Parameters/GeometricDataHolder.h</label>
+        <link refid="GeometricDataHolder_8h"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>CGAL/Exact_predicates_inexact_constructions_kernel.h</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Name<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>Rectangle2D.cpp</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Author<sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>Joao<sp/>Flavio<sp/>Vieira<sp/>de<sp/>Vasconcellos</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Version<sp/><sp/><sp/><sp/><sp/>:<sp/>1.0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Description<sp/>:<sp/>Class<sp/>for<sp/>handling<sp/>two-dimensional<sp/>surfaces<sp/>in<sp/>the<sp/>form<sp/>of<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>a<sp/>rectangle</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Copyright<sp/><sp/><sp/>:<sp/>Copyright<sp/>(C)<sp/>&lt;2024&gt;<sp/><sp/>Joao<sp/>Flavio<sp/>Vasconcellos<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(jflavio<sp/>at<sp/>iprj.uerj.br)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>program<sp/>is<sp/>free<sp/>software:<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//<sp/>it<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,<sp/>either<sp/>version<sp/>3<sp/>of<sp/>the<sp/>License.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>program<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//<sp/>but<sp/>WITHOUT<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>MERCHANTABILITY<sp/>or<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/><sp/>See<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>GNU<sp/>General<sp/>Public<sp/>License<sp/>for<sp/>more<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>General<sp/>Public<sp/>License</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/>along<sp/>with<sp/>this<sp/>program.<sp/><sp/>If<sp/>not,<sp/>see<sp/>&lt;http://www.gnu.org/licenses/&gt;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Includes<sp/>da<sp/>biblioteca<sp/>VoronoiMeshMaker</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="Polygon_8h" kindref="compound">VoronoiMeshMaker/Shape/Shape2D/Polygon.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="MakerException_8h" kindref="compound">VoronoiMeshMaker/Error/MakerException.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><ref refid="namespace_8h_1a0850a440be7718d521600f120ee783e5" kindref="member">VORMAKER_NAMESPACE_OPEN</ref></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="comment">//<sp/>*<sp/>@brief<sp/>Constructs<sp/>a<sp/>Rectangle2D<sp/>with<sp/>given<sp/>dimensions<sp/>and<sp/>position.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>@param<sp/>_lx<sp/>Length<sp/>in<sp/>the<sp/>x-direction.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>@param<sp/>_ly<sp/>Length<sp/>in<sp/>the<sp/>y-direction.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>@param<sp/>_cornerPoint<sp/>Upper<sp/>left<sp/>corner<sp/>of<sp/>the<sp/>rectangle<sp/>(default<sp/>is<sp/>origin).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">//Rectangle2D::Rectangle2D(const<sp/>Real&amp;<sp/>_lx,<sp/>const<sp/>Real&amp;<sp/>_ly,<sp/>const<sp/>Point2D&amp;<sp/>_cornerPoint)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>:<sp/>lx_(_lx),<sp/>ly_(_ly),<sp/>upperLeft_(_cornerPoint)<sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>try<sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(lx_<sp/>&lt;=<sp/>0<sp/>||<sp/>ly_<sp/>&lt;=<sp/>0)<sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>VMMException(</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SourceInfo(__FILE__,<sp/>__LINE__,<sp/>__func__),</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vmm::NEGATIVELENGHT,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>true</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(!GenerateBoundary2D())<sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>throw<sp/>VMMException(</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SourceInfo(__FILE__,<sp/>__LINE__,<sp/>__func__),</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vmm::NULLPOLYGON,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>true</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>}<sp/>catch<sp/>(const<sp/>VMMException&amp;<sp/>exception)<sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/>exception;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::exit(EXIT_FAILURE);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>auto<sp/>flag<sp/>=<sp/>TestBoundary2D();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="comment">//}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="comment">//</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"></highlight><highlight class="comment">//<sp/>*<sp/>@brief<sp/>Generates<sp/>the<sp/>boundary<sp/>points<sp/>for<sp/>the<sp/>rectangle.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*<sp/>@return<sp/>True<sp/>if<sp/>the<sp/>boundary<sp/>is<sp/>successfully<sp/>generated.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="comment">//bool<sp/>Rectangle2D::GenerateBoundary2D()<sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>LstPoint2D<sp/>lstPoint2D;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>lstPoint2D.push_back(upperLeft_);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Lower<sp/>left<sp/>corner<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>lstPoint2D.push_back(Point2D(upperLeft_.x(),<sp/>upperLeft_.y()<sp/>+<sp/>ly_));<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Upper<sp/>left<sp/>corner</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>lstPoint2D.push_back(Point2D(upperLeft_.x()<sp/>+<sp/>lx_,<sp/>upperLeft_.y()<sp/>+<sp/>ly_));<sp/><sp/><sp/>//<sp/>Upper<sp/>right<sp/>corner</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>lstPoint2D.push_back(Point2D(upperLeft_.x()<sp/>+<sp/>lx_,<sp/>upperLeft_.y()));<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>Lower<sp/>right<sp/>corner</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>ptrBoundaryPolygon_<sp/>=<sp/>std::make_shared&lt;Polygon2D&gt;(</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::begin(lstPoint2D),<sp/>std::end(lstPoint2D)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>lstPoint2D.clear();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>return<sp/>true;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="comment">//}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><ref refid="namespace_8h_1a79d315e8c3400ea5f4ad4175a85d291c" kindref="member">VORMAKER_NAMESPACE_CLOSE</ref></highlight></codeline>
+    </programlisting>
+    <location file="VoronoiMeshMaker/src/VoronoiMeshMaker/Shape/Shape2D/Polygon.cpp"/>
+  </compounddef>
+</doxygen>

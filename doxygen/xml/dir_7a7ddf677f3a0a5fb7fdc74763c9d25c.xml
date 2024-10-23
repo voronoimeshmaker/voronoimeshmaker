@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_7a7ddf677f3a0a5fb7fdc74763c9d25c" kind="dir">
+    <compoundname>VoronoiMeshMaker/src/VoronoiMeshMaker/Error</compoundname>
+    <innerfile refid="MakerException_8cpp">MakerException.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="VoronoiMeshMaker/src/VoronoiMeshMaker/Error/"/>
+  </compounddef>
+</doxygen>

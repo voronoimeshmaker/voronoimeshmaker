@@ -1,6 +1,0 @@
-<map id="include/VoronoiMeshMaker/Voronoi/Voronoi3D/Voronoi3D.h" name="include/VoronoiMeshMaker/Voronoi/Voronoi3D/Voronoi3D.h">
-<area shape="rect" id="node1" title="Declares the Voronoi3D class for representing 3D Voronoi diagrams." alt="" coords="102,5,334,47"/>
-<area shape="rect" id="node2" href="$ExporterTraits_8h.html" title="Declares the ExporterTraits struct for data exporting." alt="" coords="5,102,204,143"/>
-<area shape="rect" id="node4" href="$Voronoi3D_8cpp.html" title="Implements the Voronoi3D class methods." alt="" coords="227,95,438,151"/>
-<area shape="rect" id="node3" href="$Exporter_8h.html" title="Declares the template class Exporter for data exporting." alt="" coords="5,199,204,240"/>
-</map>

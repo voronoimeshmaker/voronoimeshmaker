@@ -205,21 +205,21 @@ private:
 //==============================================================================
 
 /**
- * @typedef PtrShape
+ * @typedef PtrShapeShared
  * @brief Defines a shared pointer to a Shape.
  *
  * This type is useful when multiple entities need to share ownership of a Shape instance.
  */
-using PtrShape = std::shared_ptr<Shape>;
+using PtrShapeShared = std::shared_ptr<Shape>;
 
 /**
- * @typedef PtrConstShape
+ * @typedef PtrConstShapeShared
  * @brief Defines a shared pointer to a const Shape.
  *
  * This type is useful when multiple entities need to share ownership of a const Shape instance,
  * ensuring that none of them can modify the instance.
  */
-using PtrConstShape = std::shared_ptr<Shape const>;
+using PtrConstShapeShared = std::shared_ptr<Shape const>;
 
 VORMAKER_NAMESPACE_CLOSE
 

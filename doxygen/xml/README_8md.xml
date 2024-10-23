@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="README_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>VoronoiMeshMaker</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Table<sp/>of<sp/>Contents</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[Overview](#overview)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[Features](#features)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[Dependencies](#dependencies)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>[Installing<sp/>Dependencies](#installing-dependencies)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[How<sp/>to<sp/>Build<sp/>VoronoiMeshMaker<sp/>and<sp/>Examples](#how-to-build-voronoimeshmaker-and-examples)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>[Cloning<sp/>the<sp/>Repository](#cloning-the-repository)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>[Building<sp/>the<sp/>Library](#building-the-library)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>[Building<sp/>Examples](#building-examples)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>[Running<sp/>Examples](#running-examples)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>[Building<sp/>and<sp/>Running<sp/>Tests](#building-and-running-tests)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[License](#license)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>[Contact](#contact)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Overview</highlight></codeline>
+<codeline><highlight class="normal">VoronoiMeshMaker<sp/>is<sp/>a<sp/>library<sp/>designed<sp/>to<sp/>generate<sp/>Voronoi<sp/>meshes,<sp/>which<sp/>can<sp/>be<sp/>used<sp/>to<sp/>discretize<sp/>both<sp/>two-dimensional<sp/>and<sp/>three-dimensional<sp/>geometries.<sp/>The<sp/>library<sp/>is<sp/>primarily<sp/>intended<sp/>for<sp/>use<sp/>in<sp/>finite<sp/>volume<sp/>methods<sp/>for<sp/>solving<sp/>partial<sp/>differential<sp/>equations.<sp/>The<sp/>current<sp/>version<sp/>of<sp/>the<sp/>library<sp/>is<sp/>1.0<sp/>and<sp/>it<sp/>is<sp/>in<sp/>active<sp/>development.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Features</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Generate<sp/>Voronoi<sp/>meshes<sp/>in<sp/>2D<sp/>and<sp/>3D.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Support<sp/>for<sp/>finite<sp/>volume<sp/>discretization.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Integration<sp/>with<sp/>external<sp/>visualization<sp/>tools.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Dependencies</highlight></codeline>
+<codeline><highlight class="normal">To<sp/>use<sp/>VoronoiMeshMaker,<sp/>the<sp/>following<sp/>libraries<sp/>must<sp/>be<sp/>pre-installed<sp/>on<sp/>your<sp/>system:</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**CGAL**:<sp/>Required<sp/>for<sp/>geometric<sp/>operations.<sp/>Ensure<sp/>you<sp/>have<sp/>the<sp/>latest<sp/>version<sp/>installed.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**VTK**:<sp/>Required<sp/>for<sp/>visualization<sp/>support.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**TBB**:<sp/>Required<sp/>for<sp/>parallelism.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**GMP**<sp/>and<sp/>**MPFR**:<sp/>Required<sp/>for<sp/>numerical<sp/>precision<sp/>in<sp/>geometric<sp/>calculations.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**CMake**<sp/>(version<sp/>3.10<sp/>or<sp/>later):<sp/>Required<sp/>for<sp/>building<sp/>the<sp/>project.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">If<sp/>you<sp/>plan<sp/>to<sp/>run<sp/>tests,<sp/>the<sp/>following<sp/>library<sp/>is<sp/>also<sp/>required:</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Google<sp/>Test<sp/>(GTest)**:<sp/>Required<sp/>for<sp/>unit<sp/>testing.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Installing<sp/>Dependencies</highlight></codeline>
+<codeline><highlight class="normal">On<sp/>Ubuntu-based<sp/>systems,<sp/>you<sp/>can<sp/>install<sp/>most<sp/>dependencies<sp/>using<sp/>the<sp/>following<sp/>commands:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>update</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>install<sp/>libcgal-dev<sp/>libvtk7-dev<sp/>libtbb-dev<sp/>libgmp-dev<sp/>libmpfr-dev<sp/>cmake</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">For<sp/>Google<sp/>Test:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>apt-get<sp/>install<sp/>libgtest-dev</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>/usr/src/gtest</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>cmake<sp/>.</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>make</highlight></codeline>
+<codeline><highlight class="normal">sudo<sp/>mv<sp/>libg*<sp/>/usr/lib/</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>How<sp/>to<sp/>Build<sp/>VoronoiMeshMaker<sp/>and<sp/>Examples</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Cloning<sp/>the<sp/>Repository</highlight></codeline>
+<codeline><highlight class="normal">Start<sp/>by<sp/>cloning<sp/>the<sp/>repository:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">git<sp/>clone<sp/>https://github.com/username/VoronoiMeshMaker.git</highlight></codeline>
+<codeline><highlight class="normal">cd<sp/>VoronoiMeshMaker</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Building<sp/>the<sp/>Library</highlight></codeline>
+<codeline><highlight class="normal">To<sp/>build<sp/>the<sp/>VoronoiMeshMaker<sp/>library,<sp/>you<sp/>need<sp/>to<sp/>configure<sp/>the<sp/>build<sp/>using<sp/>CMake<sp/>and<sp/>then<sp/>compile<sp/>it.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">1.<sp/>Create<sp/>a<sp/>build<sp/>directory:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>```bash</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>mkdir<sp/>build</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>cd<sp/>build</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">2.<sp/>Configure<sp/>and<sp/>build<sp/>the<sp/>library:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>```bash</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>cmake<sp/>..</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>cmake<sp/>--build<sp/>.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>will<sp/>generate<sp/>the<sp/>shared<sp/>library<sp/>`libVoronoiMeshMaker.so`<sp/>in<sp/>the<sp/>`lib`<sp/>directory.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Building<sp/>Examples</highlight></codeline>
+<codeline><highlight class="normal">To<sp/>build<sp/>the<sp/>examples,<sp/>enable<sp/>the<sp/>`BUILD_EXAMPLES`<sp/>option<sp/>during<sp/>configuration:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>-S<sp/>..<sp/>-B<sp/>.<sp/>-DBUILD_EXAMPLES=ON<sp/>-DBUILD_TESTS=OFF</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>--build<sp/>.</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Running<sp/>Examples</highlight></codeline>
+<codeline><highlight class="normal">After<sp/>building,<sp/>the<sp/>executables<sp/>for<sp/>examples<sp/>will<sp/>be<sp/>available<sp/>in<sp/>the<sp/>respective<sp/>directories<sp/>where<sp/>their<sp/>source<sp/>files<sp/>(`.cpp`)<sp/>are<sp/>located.<sp/>Run<sp/>them<sp/>with:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">./path/to/example/ExampleExecutable</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Building<sp/>and<sp/>Running<sp/>Tests</highlight></codeline>
+<codeline><highlight class="normal">To<sp/>build<sp/>and<sp/>run<sp/>the<sp/>tests,<sp/>enable<sp/>the<sp/>`BUILD_TESTS`<sp/>option<sp/>during<sp/>configuration:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```bash</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>-S<sp/>..<sp/>-B<sp/>.<sp/>-DBUILD_EXAMPLES=OFF<sp/>-DBUILD_TESTS=ON</highlight></codeline>
+<codeline><highlight class="normal">cmake<sp/>--build<sp/>.</highlight></codeline>
+<codeline><highlight class="normal">ctest<sp/>--output-on-failure</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>License</highlight></codeline>
+<codeline><highlight class="normal">VoronoiMeshMaker<sp/>is<sp/>distributed<sp/>under<sp/>the<sp/>GNU<sp/>General<sp/>Public<sp/>License<sp/>(GPL).<sp/>For<sp/>more<sp/>details,<sp/>see<sp/>the<sp/>`LICENSE`<sp/>file<sp/>included<sp/>in<sp/>the<sp/>repository.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Credits</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">(Any<sp/>third-party<sp/>tools,<sp/>libraries,<sp/>or<sp/>resources<sp/>used<sp/>will<sp/>be<sp/>credited<sp/>here.)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Authors<sp/>and<sp/>Acknowledgments</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">(Details<sp/>of<sp/>contributors<sp/>or<sp/>acknowledgments<sp/>will<sp/>be<sp/>added<sp/>here.)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Contact</highlight></codeline>
+<codeline><highlight class="normal">For<sp/>support<sp/>or<sp/>feedback,<sp/>please<sp/>contact:</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**Email:**<sp/>[voronoimeshmaker@gmail.com](mailto:voronoimeshmaker@gmail.com)</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>**GitHub<sp/>Issues:**<sp/>[Link<sp/>to<sp/>issues](https://github.com/voronoimeshmaker/voronoimeshmaker.git)</highlight></codeline>
+    </programlisting>
+    <location file="VoronoiMeshMaker/README.md"/>
+  </compounddef>
+</doxygen>

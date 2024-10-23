@@ -1,0 +1,233 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="GeometricDataHolder_8tpp" kind="file" language="C++">
+    <compoundname>GeometricDataHolder.tpp</compoundname>
+    <includedby refid="GeometricDataHolder_8h" local="no">VoronoiMeshMaker/include/VoronoiMeshMaker/Parameters/GeometricDataHolder.h</includedby>
+    <invincdepgraph>
+      <node id="7">
+        <label>VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape2D/Polygon.h</label>
+        <link refid="Polygon_8h"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>VoronoiMeshMaker/src/VoronoiMeshMaker/Shape/Shape2D/Rectangle.cpp</label>
+        <link refid="Rectangle_8cpp"/>
+      </node>
+      <node id="18">
+        <label>VoronoiMeshMaker/src/VoronoiMeshMaker/Shape/Shape.cpp</label>
+        <link refid="Shape_8cpp"/>
+      </node>
+      <node id="11">
+        <label>VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape2D/Rectangle.h</label>
+        <link refid="Rectangle_8h"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>VoronoiMeshMaker/src/VoronoiMeshMaker/Shape/ShapeFactory.cpp</label>
+        <link refid="ShapeFactory_8cpp"/>
+      </node>
+      <node id="9">
+        <label>VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape2D/PolygonCSV.h</label>
+        <link refid="PolygonCSV_8h"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>VoronoiMeshMaker/src/VoronoiMeshMaker/Parameters/GeometricDataHolder.cpp</label>
+        <link refid="GeometricDataHolder_8cpp"/>
+      </node>
+      <node id="4">
+        <label>VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape2D/Shape2D.h</label>
+        <link refid="Shape2D_8h"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape2D/Ellipse.h</label>
+        <link refid="Ellipse_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>VoronoiMeshMaker/src/VoronoiMeshMaker/Shape/Shape2D/Polygon.cpp</label>
+        <link refid="Polygon_8cpp"/>
+      </node>
+      <node id="3">
+        <label>VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape.h</label>
+        <link refid="Shape_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>VoronoiMeshMaker/include/VoronoiMeshMaker/Parameters/GeometricDataHolder.tpp</label>
+        <link refid="GeometricDataHolder_8tpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>VoronoiMeshMaker/src/VoronoiMeshMaker/Shape/Shape2D/Ellipse.cpp</label>
+        <link refid="Ellipse_8cpp"/>
+      </node>
+      <node id="10">
+        <label>VoronoiMeshMaker/src/VoronoiMeshMaker/Shape/Shape2D/PolygonCSV.cpp</label>
+        <link refid="PolygonCSV_8cpp"/>
+      </node>
+      <node id="14">
+        <label>VoronoiMeshMaker/src/VoronoiMeshMaker/Shape/Shape2D/Star.cpp</label>
+        <link refid="Star_8cpp"/>
+      </node>
+      <node id="15">
+        <label>VoronoiMeshMaker/src/VoronoiMeshMaker/Shape/Shape2D/Shape2D.cpp</label>
+        <link refid="Shape2D_8cpp"/>
+      </node>
+      <node id="13">
+        <label>VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape2D/Star.h</label>
+        <link refid="Star_8h"/>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/ShapeFactory.h</label>
+        <link refid="ShapeFactory_8h"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>VoronoiMeshMaker/include/VoronoiMeshMaker/Parameters/GeometricDataHolder.h</label>
+        <link refid="GeometricDataHolder_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">//==============================================================================</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Name<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>GeometricDataHolder.tpp</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Author<sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>João<sp/>Flávio<sp/>Vieira<sp/>de<sp/>Vasconcellos</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Version<sp/><sp/><sp/><sp/><sp/>:<sp/>1.1</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Description<sp/>:<sp/>Template<sp/>implementations<sp/>for<sp/>GeometricDataHolder<sp/>class<sp/>methods.</highlight></codeline>
+<codeline><highlight class="normal">//</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Copyright<sp/><sp/><sp/>:<sp/>Copyright<sp/>(C)<sp/>2024<sp/>João<sp/>Flávio<sp/>Vasconcellos</highlight></codeline>
+<codeline><highlight class="normal">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(jflavio<sp/>at<sp/>iprj.uerj.br)</highlight></codeline>
+<codeline><highlight class="normal">//</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>License<sp/><sp/><sp/><sp/><sp/>:<sp/>This<sp/>program<sp/>is<sp/>free<sp/>software:<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify</highlight></codeline>
+<codeline><highlight class="normal">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>it<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight></codeline>
+<codeline><highlight class="normal">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>the<sp/>Free<sp/>Software<sp/>Foundation,<sp/>either<sp/>version<sp/>3<sp/>of<sp/>the<sp/>License,<sp/>or</highlight></codeline>
+<codeline><highlight class="normal">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(at<sp/>your<sp/>option)<sp/>any<sp/>later<sp/>version.</highlight></codeline>
+<codeline><highlight class="normal">//</highlight></codeline>
+<codeline><highlight class="normal">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>This<sp/>program<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,</highlight></codeline>
+<codeline><highlight class="normal">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>but<sp/>WITHOUT<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of</highlight></codeline>
+<codeline><highlight class="normal">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>MERCHANTABILITY<sp/>or<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/>See<sp/>the</highlight></codeline>
+<codeline><highlight class="normal">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GNU<sp/>General<sp/>Public<sp/>License<sp/>for<sp/>more<sp/>details.</highlight></codeline>
+<codeline><highlight class="normal">//</highlight></codeline>
+<codeline><highlight class="normal">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>General<sp/>Public<sp/>License</highlight></codeline>
+<codeline><highlight class="normal">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>along<sp/>with<sp/>this<sp/>program.<sp/>If<sp/>not,<sp/>see<sp/>&lt;https://www.gnu.org/licenses/&gt;.</highlight></codeline>
+<codeline><highlight class="normal">//==============================================================================</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#ifndef<sp/>VORONOI_MESH_MAKER_PARAMETERS_GEOMETRICDATAHOLDER_TPP</highlight></codeline>
+<codeline><highlight class="normal">#define<sp/>VORONOI_MESH_MAKER_PARAMETERS_GEOMETRICDATAHOLDER_TPP</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//==============================================================================</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Includes<sp/>from<sp/>VoronoiMeshMaker<sp/>library</highlight></codeline>
+<codeline><highlight class="normal">//==============================================================================</highlight></codeline>
+<codeline><highlight class="normal">#include<sp/>&lt;VoronoiMeshMaker/Parameters/GeometricDataHolder.h&gt;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">VORMAKER_NAMESPACE_OPEN</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">/**</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>@brief<sp/>Sets<sp/>a<sp/>value<sp/>associated<sp/>with<sp/>a<sp/>given<sp/>key.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>@tparam<sp/>T<sp/>The<sp/>type<sp/>of<sp/>the<sp/>value<sp/>to<sp/>store.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>@param<sp/>key<sp/>The<sp/>key<sp/>to<sp/>associate<sp/>the<sp/>value<sp/>with.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>@param<sp/>value<sp/>The<sp/>value<sp/>to<sp/>store.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>This<sp/>method<sp/>allows<sp/>you<sp/>to<sp/>store<sp/>a<sp/>value<sp/>in<sp/>the<sp/>internal<sp/>data<sp/>map<sp/>of<sp/>the</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>GeometricDataHolder<sp/>class,<sp/>associating<sp/>it<sp/>with<sp/>a<sp/>given<sp/>key.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>If<sp/>the<sp/>key<sp/>already<sp/>exists,<sp/>the<sp/>existing<sp/>value<sp/>will<sp/>be<sp/>replaced.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*/</highlight></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">void<sp/>GeometricDataHolder::set(std::string_view<sp/>key,<sp/>T<sp/>value)<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>data_[std::string(key)]<sp/>=<sp/>value;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">/**</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>@brief<sp/>Gets<sp/>a<sp/>value<sp/>associated<sp/>with<sp/>a<sp/>given<sp/>key.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>@tparam<sp/>T<sp/>The<sp/>type<sp/>of<sp/>the<sp/>value<sp/>expected.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>@param<sp/>key<sp/>The<sp/>key<sp/>associated<sp/>with<sp/>the<sp/>value.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>@return<sp/>An<sp/>optional<sp/>containing<sp/>the<sp/>value<sp/>if<sp/>the<sp/>key<sp/>exists<sp/>and<sp/>the<sp/>type<sp/>matches,<sp/>otherwise<sp/>std::nullopt.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>This<sp/>method<sp/>retrieves<sp/>a<sp/>value<sp/>from<sp/>the<sp/>data<sp/>map<sp/>using<sp/>the<sp/>provided<sp/>key.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>If<sp/>the<sp/>key<sp/>does<sp/>not<sp/>exist<sp/>or<sp/>if<sp/>the<sp/>type<sp/>of<sp/>the<sp/>stored<sp/>value<sp/>does<sp/>not<sp/>match<sp/>the<sp/>expected<sp/>type,</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>this<sp/>method<sp/>returns<sp/>std::nullopt<sp/>to<sp/>ensure<sp/>type<sp/>safety<sp/>and<sp/>avoid<sp/>runtime<sp/>errors.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*/</highlight></codeline>
+<codeline><highlight class="normal">template<sp/>&lt;typename<sp/>T&gt;</highlight></codeline>
+<codeline><highlight class="normal">std::optional&lt;T&gt;<sp/>GeometricDataHolder::get(std::string_view<sp/>key)<sp/>const<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>auto<sp/>it<sp/>=<sp/>data_.find(std::string(key));</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>(it<sp/>!=<sp/>data_.end())<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(auto<sp/>val<sp/>=<sp/>std::get_if&lt;T&gt;(&amp;it-&gt;second))<sp/>{</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return<sp/>*val;</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>return<sp/>std::nullopt;</highlight></codeline>
+<codeline><highlight class="normal">}</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">//==============================================================================</highlight></codeline>
+<codeline><highlight class="normal">//<sp/>Type<sp/>Definitions</highlight></codeline>
+<codeline><highlight class="normal">//==============================================================================</highlight></codeline>
+<codeline><highlight class="normal">/**</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>@typedef<sp/>PtrGeometricDataHolder</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>@brief<sp/>Defines<sp/>a<sp/>shared<sp/>pointer<sp/>to<sp/>a<sp/>GeometricDataHolder.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>This<sp/>type<sp/>definition<sp/>is<sp/>useful<sp/>when<sp/>multiple<sp/>entities<sp/>need<sp/>to<sp/>share<sp/>ownership</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>of<sp/>a<sp/>GeometricDataHolder<sp/>instance,<sp/>ensuring<sp/>proper<sp/>memory<sp/>management<sp/>through</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>reference<sp/>counting.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*/</highlight></codeline>
+<codeline><highlight class="normal">using<sp/>PtrGeometricDataHolder<sp/>=<sp/>std::shared_ptr&lt;GeometricDataHolder&gt;;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">/**</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>@typedef<sp/>PtrConstGeometricDataHolder</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>@brief<sp/>Defines<sp/>a<sp/>shared<sp/>pointer<sp/>to<sp/>a<sp/>const<sp/>GeometricDataHolder.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>This<sp/>type<sp/>definition<sp/>is<sp/>used<sp/>when<sp/>multiple<sp/>entities<sp/>need<sp/>to<sp/>share<sp/>ownership</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>of<sp/>a<sp/>const<sp/>GeometricDataHolder<sp/>instance,<sp/>ensuring<sp/>that<sp/>none<sp/>of<sp/>the<sp/>shared<sp/>entities</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*<sp/>can<sp/>modify<sp/>the<sp/>instance.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>*/</highlight></codeline>
+<codeline><highlight class="normal">using<sp/>PtrConstGeometricDataHolder<sp/>=<sp/>std::shared_ptr&lt;GeometricDataHolder<sp/>const&gt;;</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">VORMAKER_NAMESPACE_CLOSE</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#endif<sp/>//<sp/>VORONOI_MESH_MAKER_PARAMETERS_GEOMETRICDATAHOLDER_TPP</highlight></codeline>
+    </programlisting>
+    <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Parameters/GeometricDataHolder.tpp"/>
+  </compounddef>
+</doxygen>

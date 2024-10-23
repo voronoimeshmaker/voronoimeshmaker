@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_8cddf64d52c7f27ec31295c723a04b6a" kind="dir">
+    <compoundname>VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape3D</compoundname>
+    <innerfile refid="Shape3D_8h">Shape3D.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape3D/"/>
+  </compounddef>
+</doxygen>

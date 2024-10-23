@@ -1,0 +1,218 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="sourceinfo_8h" kind="file" language="C++">
+    <compoundname>sourceinfo.h</compoundname>
+    <includes local="no">string_view</includes>
+    <includes local="no">VoronoiMeshMaker/Misc/Misc.h</includes>
+    <includedby refid="MakerException_8h" local="no">VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h</includedby>
+    <incdepgraph>
+      <node id="1">
+        <label>VoronoiMeshMaker/include/VoronoiMeshMaker/Misc/sourceinfo.h</label>
+        <link refid="sourceinfo_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>VoronoiMeshMaker/Misc/Misc.h</label>
+      </node>
+      <node id="2">
+        <label>string_view</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>VoronoiMeshMaker/include/VoronoiMeshMaker/Error/MakerException.h</label>
+        <link refid="MakerException_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>VoronoiMeshMaker/src/VoronoiMeshMaker/Error/MakerException.cpp</label>
+        <link refid="MakerException_8cpp"/>
+      </node>
+      <node id="7">
+        <label>VoronoiMeshMaker/src/VoronoiMeshMaker/Shape/Shape2D/Rectangle.cpp</label>
+        <link refid="Rectangle_8cpp"/>
+      </node>
+      <node id="9">
+        <label>VoronoiMeshMaker/src/VoronoiMeshMaker/Shape/ShapeFactory.cpp</label>
+        <link refid="ShapeFactory_8cpp"/>
+      </node>
+      <node id="1">
+        <label>VoronoiMeshMaker/include/VoronoiMeshMaker/Misc/sourceinfo.h</label>
+        <link refid="sourceinfo_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>VoronoiMeshMaker/src/VoronoiMeshMaker/Shape/Shape2D/Polygon.cpp</label>
+        <link refid="Polygon_8cpp"/>
+      </node>
+      <node id="4">
+        <label>VoronoiMeshMaker/src/VoronoiMeshMaker/Shape/Shape2D/Ellipse.cpp</label>
+        <link refid="Ellipse_8cpp"/>
+      </node>
+      <node id="6">
+        <label>VoronoiMeshMaker/src/VoronoiMeshMaker/Shape/Shape2D/PolygonCSV.cpp</label>
+        <link refid="PolygonCSV_8cpp"/>
+      </node>
+      <node id="8">
+        <label>VoronoiMeshMaker/src/VoronoiMeshMaker/Shape/Shape2D/Star.cpp</label>
+        <link refid="Star_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespaceSourceInfo">SourceInfo</innernamespace>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="sourceinfo_8h_1ae9f0903473528f1adc27128e16c7176e" prot="public" static="no" constexpr="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>constexpr SourceInfo</type>
+        <definition>constexpr SourceInfo CaptureSourceInfo</definition>
+        <argsstring>(const char *file, int line, const char *function)</argsstring>
+        <name>CaptureSourceInfo</name>
+        <param>
+          <type>const char *</type>
+          <declname>file</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>line</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>function</declname>
+        </param>
+        <briefdescription>
+<para>Captures the current file, line, and function information. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This function uses predefined macros (<computeroutput>__FILE__</computeroutput>, <computeroutput>__LINE__</computeroutput>, <computeroutput>__func__</computeroutput>) to capture the current source information and return a <ref refid="namespaceSourceInfo" kindref="compound">SourceInfo</ref> object.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>file</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name of the file. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>line</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The line number. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>function</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The name of the function. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A <ref refid="namespaceSourceInfo" kindref="compound">SourceInfo</ref> object with the captured information. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Misc/sourceinfo.h" line="120" column="22" bodyfile="VoronoiMeshMaker/include/VoronoiMeshMaker/Misc/sourceinfo.h" bodystart="120" bodyend="122"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Provides information about the source of an error or event in a function. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>This file defines the <ref refid="namespaceSourceInfo" kindref="compound">SourceInfo</ref> class, which captures and stores file, line, and function information to aid in debugging and tracing errors in the library.</para>
+<para><simplesect kind="version"><para>1.0 </para>
+</simplesect>
+<simplesect kind="date"><para>2024</para>
+</simplesect>
+Licensed under the GNU General Public License, version 3. </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Name<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>sourceinfo.h</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Author<sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>Joao<sp/>Flavio<sp/>Vieira<sp/>de<sp/>Vasconcellos</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Version<sp/><sp/><sp/><sp/><sp/>:<sp/>1.0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Description<sp/>:<sp/>Provides<sp/>information<sp/>about<sp/>the<sp/>source<sp/>of<sp/>an<sp/>error<sp/>in<sp/>a<sp/>function.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Part<sp/>of<sp/>the<sp/>&apos;misc&apos;<sp/>group<sp/>of<sp/>utility<sp/>files.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Copyright<sp/><sp/><sp/>:<sp/>Copyright<sp/>(C)<sp/>2024<sp/>Joao<sp/>Flavio<sp/>Vasconcellos</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(jflavio<sp/>at<sp/>iprj.uerj.br)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>program<sp/>is<sp/>free<sp/>software:<sp/>you<sp/>can<sp/>redistribute<sp/>it<sp/>and/or<sp/>modify</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//<sp/>it<sp/>under<sp/>the<sp/>terms<sp/>of<sp/>the<sp/>GNU<sp/>General<sp/>Public<sp/>License<sp/>as<sp/>published<sp/>by</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//<sp/>the<sp/>Free<sp/>Software<sp/>Foundation,<sp/>either<sp/>version<sp/>3<sp/>of<sp/>the<sp/>License.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>program<sp/>is<sp/>distributed<sp/>in<sp/>the<sp/>hope<sp/>that<sp/>it<sp/>will<sp/>be<sp/>useful,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//<sp/>but<sp/>WITHOUT<sp/>ANY<sp/>WARRANTY;<sp/>without<sp/>even<sp/>the<sp/>implied<sp/>warranty<sp/>of</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>MERCHANTABILITY<sp/>or<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE.<sp/>See<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>GNU<sp/>General<sp/>Public<sp/>License<sp/>for<sp/>more<sp/>details.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>GNU<sp/>General<sp/>Public<sp/>License</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/>along<sp/>with<sp/>this<sp/>program.<sp/>If<sp/>not,<sp/>see<sp/>&lt;http://www.gnu.org/licenses/&gt;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__VORONOIFVMAKER_SOURCEINFO_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__VORONOIFVMAKER_SOURCEINFO_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>C++<sp/>includes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string_view&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/>VoronoiMeshMaker<sp/>includes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">//==============================================================================</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;VoronoiMeshMaker/Misc/Misc.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="namespaceSourceInfo" refkind="compound"><highlight class="normal"><ref refid="namespace_8h_1a0850a440be7718d521600f120ee783e5" kindref="member">VORMAKER_NAMESPACE_OPEN</ref></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="namespaceSourceInfo" kindref="compound">SourceInfo</ref><sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="70" refid="namespaceSourceInfo_1a6e1cfd28040030158782360a53f701fa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/><ref refid="namespaceSourceInfo_1a6e1cfd28040030158782360a53f701fa" kindref="member">SourceInfo</ref>()<sp/>noexcept<sp/>=<sp/>default;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79" refid="namespaceSourceInfo_1a8589fdec4581b5a8f8cee3e9394753cb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>constexpr<sp/><ref refid="namespaceSourceInfo" kindref="compound">SourceInfo</ref>(std::string_view<sp/>file,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>line,<sp/>std::string_view<sp/>function)</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="namespaceSourceInfo_1a11c8cca41cfb690a38c0837aba3336a8" kindref="member">fileLocation</ref>(file),<sp/><ref refid="namespaceSourceInfo_1a1b2a6dcb66554b88ea00166afa4e1093" kindref="member">lineLocation</ref>(line),<sp/><ref refid="namespaceSourceInfo_1aa98f29c81e7429ded8d615c7d05b5c13" kindref="member">functionName</ref>(function)<sp/>{}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="namespaceSourceInfo_1aab672dae8989c0b398c93da4eb6747d6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>constexpr<sp/>std::string_view<sp/><ref refid="namespaceSourceInfo_1aab672dae8989c0b398c93da4eb6747d6" kindref="member">FileLocation</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceSourceInfo_1a11c8cca41cfb690a38c0837aba3336a8" kindref="member">fileLocation</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94" refid="namespaceSourceInfo_1aaa7e8c7722a8e633775922b702c57a5c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>constexpr<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="namespaceSourceInfo_1aaa7e8c7722a8e633775922b702c57a5c" kindref="member">LineNumber</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceSourceInfo_1a1b2a6dcb66554b88ea00166afa4e1093" kindref="member">lineLocation</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101" refid="namespaceSourceInfo_1aaac3e99161c3c32331076dd48f12f8c2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[[nodiscard]]<sp/>constexpr<sp/>std::string_view<sp/><ref refid="namespaceSourceInfo_1aaac3e99161c3c32331076dd48f12f8c2" kindref="member">FunctionName</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceSourceInfo_1aa98f29c81e7429ded8d615c7d05b5c13" kindref="member">functionName</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="104" refid="namespaceSourceInfo_1a11c8cca41cfb690a38c0837aba3336a8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string_view<sp/><ref refid="namespaceSourceInfo_1a11c8cca41cfb690a38c0837aba3336a8" kindref="member">fileLocation</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="105" refid="namespaceSourceInfo_1a1b2a6dcb66554b88ea00166afa4e1093" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="namespaceSourceInfo_1a1b2a6dcb66554b88ea00166afa4e1093" kindref="member">lineLocation</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="106" refid="namespaceSourceInfo_1aa98f29c81e7429ded8d615c7d05b5c13" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string_view<sp/><ref refid="namespaceSourceInfo_1aa98f29c81e7429ded8d615c7d05b5c13" kindref="member">functionName</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="107"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120" refid="sourceinfo_8h_1ae9f0903473528f1adc27128e16c7176e" refkind="member"><highlight class="normal">constexpr<sp/><ref refid="namespaceSourceInfo" kindref="compound">SourceInfo</ref><sp/><ref refid="sourceinfo_8h_1ae9f0903473528f1adc27128e16c7176e" kindref="member">CaptureSourceInfo</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>file,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>line,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceSourceInfo_1a8589fdec4581b5a8f8cee3e9394753cb" kindref="member">SourceInfo</ref>(file,<sp/>line,<sp/></highlight><highlight class="keyword">function</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><ref refid="namespace_8h_1a79d315e8c3400ea5f4ad4175a85d291c" kindref="member">VORMAKER_NAMESPACE_CLOSE</ref></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">/*<sp/><sp/>__VORONOIFVMAKER_SOURCEINFO_H__<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Misc/sourceinfo.h"/>
+  </compounddef>
+</doxygen>

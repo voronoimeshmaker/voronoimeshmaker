@@ -1,0 +1,357 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="namespaceShape" kind="namespace" language="C++">
+    <compoundname>Shape</compoundname>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceShape_1af10dc73b4b127681aadf43e86d69a892" prot="private" static="no" mutable="no">
+        <type>PtrGeometricDataHolder</type>
+        <definition>PtrGeometricDataHolder Shape::ptrDataHolder_</definition>
+        <argsstring></argsstring>
+        <name>ptrDataHolder_</name>
+        <briefdescription>
+<para>Pointer to <ref refid="namespaceGeometricDataHolder" kindref="compound">GeometricDataHolder</ref>. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This pointer holds the geometric data associated with the shape. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape.h" line="200" column="28" bodyfile="VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape.h" bodystart="200" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceShape_1a52cf99502307b6a9f8e1e15eb486901d" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>Shape::Shape</definition>
+        <argsstring>() noexcept=default</argsstring>
+        <name>Shape</name>
+        <briefdescription>
+<para>Default constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape.h" line="68" column="5" declfile="VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape.h" declline="68" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceShape_1aee2142850ef6c6810a2f4c56fc0b0100" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>Shape::Shape</definition>
+        <argsstring>(const Shape &amp;other) noexcept=default</argsstring>
+        <name>Shape</name>
+        <param>
+          <type>const Shape &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Initializes a new instance by copying the data from another <ref refid="namespaceShape" kindref="compound">Shape</ref> instance.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The other <ref refid="namespaceShape" kindref="compound">Shape</ref> instance to copy from. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape.h" line="77" column="5" declfile="VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape.h" declline="77" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceShape_1a81293c5490684ca800476d63ecfe267a" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>Shape::Shape</definition>
+        <argsstring>(Shape &amp;&amp;other) noexcept=default</argsstring>
+        <name>Shape</name>
+        <param>
+          <type>Shape &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Initializes a new instance by moving the data from another <ref refid="namespaceShape" kindref="compound">Shape</ref> instance.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The other <ref refid="namespaceShape" kindref="compound">Shape</ref> instance to move from. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape.h" line="86" column="5" declfile="VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape.h" declline="86" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceShape_1a5f9e80d652786a93d8d549287b2c0b68" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type></type>
+        <definition>Shape::~Shape</definition>
+        <argsstring>() noexcept=default</argsstring>
+        <name>~Shape</name>
+        <briefdescription>
+<para>Destructor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Destroys the <ref refid="namespaceShape" kindref="compound">Shape</ref> instance. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape.h" line="93" column="5" declfile="VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape.h" declline="93" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceShape_1adb88e18d3d4292217b500618e723b6f2" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="namespaceShape_1a52cf99502307b6a9f8e1e15eb486901d" kindref="member">Shape</ref> &amp;</type>
+        <definition>Shape&amp; Shape::operator=</definition>
+        <argsstring>(const Shape &amp;other) noexcept=default</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="namespaceShape_1a52cf99502307b6a9f8e1e15eb486901d" kindref="member">Shape</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Copy assignment operator. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Assigns the data from another <ref refid="namespaceShape" kindref="compound">Shape</ref> instance to this instance.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The other <ref refid="namespaceShape" kindref="compound">Shape</ref> instance to copy from. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Reference to the updated <ref refid="namespaceShape" kindref="compound">Shape</ref>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape.h" line="103" column="11" declfile="VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape.h" declline="103" declcolumn="11"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceShape_1a3b2f1b51baaa81b600f564096e3debc0" prot="public" static="no" const="no" explicit="no" inline="no" noexcept="yes" virt="non-virtual">
+        <type><ref refid="namespaceShape_1a52cf99502307b6a9f8e1e15eb486901d" kindref="member">Shape</ref> &amp;</type>
+        <definition>Shape&amp; Shape::operator=</definition>
+        <argsstring>(Shape &amp;&amp;other) noexcept=default</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="namespaceShape_1a52cf99502307b6a9f8e1e15eb486901d" kindref="member">Shape</ref> &amp;&amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Move assignment operator. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Moves the data from another <ref refid="namespaceShape" kindref="compound">Shape</ref> instance to this instance.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The other <ref refid="namespaceShape" kindref="compound">Shape</ref> instance to move from. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Reference to the updated <ref refid="namespaceShape" kindref="compound">Shape</ref>. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape.h" line="113" column="11" declfile="VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape.h" declline="113" declcolumn="11"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceShape_1abf6d70b75416231e6af843e0d66ebc47" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>namespace Shape::Shape</definition>
+        <argsstring>(const GeometricDataHolder &amp;_dataHolder)</argsstring>
+        <name>Shape</name>
+        <param>
+          <type>const GeometricDataHolder &amp;</type>
+          <declname>_dataHolder</declname>
+        </param>
+        <briefdescription>
+<para>Constructs a <ref refid="namespaceShape" kindref="compound">Shape</ref> with the given geometric data. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>_dataHolder</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to a <ref refid="namespaceGeometricDataHolder" kindref="compound">GeometricDataHolder</ref> containing geometric data. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape.h" line="120" column="5" bodyfile="VoronoiMeshMaker/src/VoronoiMeshMaker/Shape/Shape.cpp" bodystart="58" bodyend="60" declfile="VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape.h" declline="120" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceShape_1aa9685aa2de7ca5af40013ad85137b191" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type>std::string_view</type>
+        <definition>virtual std::string_view Shape::className</definition>
+        <argsstring>() const noexcept override=0</argsstring>
+        <name>className</name>
+        <briefdescription>
+<para>Returns the name of the class. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This method must be overridden by all derived classes to provide the name of the specific shape class.</para>
+<para><simplesect kind="return"><para>A string view representing the name of the class. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape.h" line="135" column="30" declfile="VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape.h" declline="135" declcolumn="30"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceShape_1aa16b693ea1cd2fe7ecf68e79160f62cc" prot="public" static="no" const="yes" explicit="no" inline="no" noexcept="yes" virt="pure-virtual">
+        <type>ClassID</type>
+        <definition>virtual ClassID Shape::classID</definition>
+        <argsstring>() const noexcept override=0</argsstring>
+        <name>classID</name>
+        <briefdescription>
+<para>Returns the unique <ref refid="classID" kindref="compound">ID</ref> of the class. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This method must be overridden by all derived classes to provide a unique identifier for each shape type.</para>
+<para><simplesect kind="return"><para>A <ref refid="namespaceClassID" kindref="compound">ClassID</ref> representing the unique identifier of the class. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape.h" line="145" column="21" declfile="VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape.h" declline="145" declcolumn="21"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceShape_1a342818aa4ea24c525f7d928f25fb701a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool Shape::rotate</definition>
+        <argsstring>(const GeometricDataHolder &amp;data)=0</argsstring>
+        <name>rotate</name>
+        <param>
+          <type>const GeometricDataHolder &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Rotates the shape based on the provided geometric data. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to <ref refid="namespaceGeometricDataHolder" kindref="compound">GeometricDataHolder</ref> containing rotation parameters. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the rotation was successful, false otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape.h" line="153" column="18" declfile="VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape.h" declline="153" declcolumn="18"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceShape_1a87bf6731ab1c36c417b6581fbfd5bad5" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool Shape::translate</definition>
+        <argsstring>(const GeometricDataHolder &amp;data)=0</argsstring>
+        <name>translate</name>
+        <param>
+          <type>const GeometricDataHolder &amp;</type>
+          <declname>data</declname>
+        </param>
+        <briefdescription>
+<para>Translates the shape based on the provided geometric data. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>data</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A reference to <ref refid="namespaceGeometricDataHolder" kindref="compound">GeometricDataHolder</ref> containing translation parameters. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>True if the translation was successful, false otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape.h" line="161" column="18" declfile="VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape.h" declline="161" declcolumn="18"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceShape_1a27e817584ba11d5426581f35db65fc43" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="type_8h_1a072dccfc5a1d0d1857f478d50044f66f" kindref="member">Real</ref></type>
+        <definition>virtual Real Shape::area</definition>
+        <argsstring>() const =0</argsstring>
+        <name>area</name>
+        <briefdescription>
+<para>Calculates the area of the shape. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This method must be implemented by all derived classes that represent shapes with an area.</para>
+<para><simplesect kind="return"><para>The area of the shape. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape.h" line="170" column="18" declfile="VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape.h" declline="170" declcolumn="18"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceShape_1a9ce307a94e7bd2a6bda7aa1c1b985a26" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="type_8h_1a072dccfc5a1d0d1857f478d50044f66f" kindref="member">Real</ref></type>
+        <definition>virtual Real Shape::volume</definition>
+        <argsstring>() const =0</argsstring>
+        <name>volume</name>
+        <briefdescription>
+<para>Calculates the volume of the shape. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This method must be implemented by all derived classes that represent three-dimensional shapes.</para>
+<para><simplesect kind="return"><para>The volume of the shape. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape.h" line="179" column="18" declfile="VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape.h" declline="179" declcolumn="18"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceShape_1a73b6278c00ef93adff002bf763e87898" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="type_8h_1a072dccfc5a1d0d1857f478d50044f66f" kindref="member">Real</ref></type>
+        <definition>virtual Real Shape::perimeter</definition>
+        <argsstring>() const =0</argsstring>
+        <name>perimeter</name>
+        <briefdescription>
+<para>Calculates the perimeter of the shape. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This method must be implemented by all derived classes that represent shapes with a perimeter.</para>
+<para><simplesect kind="return"><para>The perimeter of the shape. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape.h" line="188" column="18" declfile="VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape.h" declline="188" declcolumn="18"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape.h" line="49" column="1"/>
+  </compounddef>
+</doxygen>

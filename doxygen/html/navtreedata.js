@@ -24,12 +24,63 @@
 */
 var NAVTREE =
 [
-  [ "VoronoiMeshMaker", "index.html", ]
+  [ "VoronoiMeshMaker", "index.html", [
+    [ "VoronoiMeshMaker", "md_VoronoiMeshMaker_README.html", [
+      [ "Table of Contents", "md_VoronoiMeshMaker_README.html#autotoc_md1", null ],
+      [ "Overview", "md_VoronoiMeshMaker_README.html#autotoc_md2", null ],
+      [ "Features", "md_VoronoiMeshMaker_README.html#autotoc_md3", null ],
+      [ "Dependencies", "md_VoronoiMeshMaker_README.html#autotoc_md4", [
+        [ "Installing Dependencies", "md_VoronoiMeshMaker_README.html#autotoc_md5", null ]
+      ] ],
+      [ "How to Build VoronoiMeshMaker and Examples", "md_VoronoiMeshMaker_README.html#autotoc_md6", [
+        [ "Cloning the Repository", "md_VoronoiMeshMaker_README.html#autotoc_md7", null ],
+        [ "Building the Library", "md_VoronoiMeshMaker_README.html#autotoc_md8", null ],
+        [ "Building Examples", "md_VoronoiMeshMaker_README.html#autotoc_md9", null ],
+        [ "Running Examples", "md_VoronoiMeshMaker_README.html#autotoc_md10", null ],
+        [ "Building and Running Tests", "md_VoronoiMeshMaker_README.html#autotoc_md11", null ]
+      ] ],
+      [ "License", "md_VoronoiMeshMaker_README.html#autotoc_md12", null ],
+      [ "Credits", "md_VoronoiMeshMaker_README.html#autotoc_md13", null ],
+      [ "Authors and Acknowledgments", "md_VoronoiMeshMaker_README.html#autotoc_md14", null ],
+      [ "Contact", "md_VoronoiMeshMaker_README.html#autotoc_md15", null ]
+    ] ],
+    [ "Namespaces", "namespaces.html", [
+      [ "Namespace List", "namespaces.html", "namespaces_dup" ],
+      [ "Namespace Members", "namespacemembers.html", [
+        [ "All", "namespacemembers.html", null ],
+        [ "Functions", "namespacemembers_func.html", null ],
+        [ "Variables", "namespacemembers_vars.html", null ]
+      ] ]
+    ] ],
+    [ "Classes", "annotated.html", [
+      [ "Class List", "annotated.html", "annotated_dup" ],
+      [ "Class Index", "classes.html", null ],
+      [ "Class Hierarchy", "hierarchy.html", "hierarchy" ],
+      [ "Class Members", "functions.html", [
+        [ "All", "functions.html", null ],
+        [ "Functions", "functions_func.html", null ],
+        [ "Variables", "functions_vars.html", null ],
+        [ "Related Functions", "functions_rela.html", null ]
+      ] ]
+    ] ],
+    [ "Files", "files.html", [
+      [ "File List", "files.html", "files_dup" ],
+      [ "File Members", "globals.html", [
+        [ "All", "globals.html", null ],
+        [ "Functions", "globals_func.html", null ],
+        [ "Variables", "globals_vars.html", null ],
+        [ "Typedefs", "globals_type.html", null ],
+        [ "Enumerations", "globals_enum.html", null ],
+        [ "Macros", "globals_defs.html", null ]
+      ] ]
+    ] ]
+  ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"index.html"
+"Ellipse_8cpp.html",
+"md_VoronoiMeshMaker_README.html#autotoc_md3"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

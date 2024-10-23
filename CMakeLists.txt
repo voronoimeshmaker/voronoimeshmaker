@@ -129,7 +129,7 @@ if(BUILD_TESTS)
 endif()
 
 # Option to build Doxygen and Sphinx documentation
-option(BUILD_DOCUMENTATION "Build Doxygen and Sphinx documentation" OFF)
+option(BUILD_DOCUMENTATION "Build Doxygen and Sphinx documentation" ON)
 
 if(BUILD_DOCUMENTATION)
     find_package(Doxygen REQUIRED)
@@ -153,16 +153,16 @@ if(BUILD_DOCUMENTATION)
         message(WARNING "Doxygen not found. Documentation will not be generated.")
     endif()
 
-    # Add custom target to build Sphinx documentation
-    find_program(SPHINX_EXECUTABLE sphinx-build)
-    if(SPHINX_EXECUTABLE)
-        add_custom_target(doc_sphinx ALL
-            COMMAND ${SPHINX_EXECUTABLE} -b html ${CMAKE_CURRENT_SOURCE_DIR}/docs_sphinx ${CMAKE_CURRENT_BINARY_DIR}/sphinx
-            COMMENT "Generating Sphinx documentation with HTML output"
-            VERBATIM)
-    else()
-        message(WARNING "Sphinx not found. Sphinx documentation will not be generated.")
-    endif()
+# Add custom target to build Sphinx documentation
+find_program(SPHINX_EXECUTABLE sphinx-build)
+if(SPHINX_EXECUTABLE)
+    add_custom_target(doc_sphinx ALL
+        COMMAND ${SPHINX_EXECUTABLE} -b html ${CMAKE_CURRENT_SOURCE_DIR}/docs_sphinx ${CMAKE_CURRENT_SOURCE_DIR}/sphinx
+        COMMENT "Generating Sphinx documentation with HTML output"
+        VERBATIM)
+else()
+    message(WARNING "Sphinx not found. Sphinx documentation will not be generated.")
+endif()
 endif()
 
 # Optional: Add a custom target to clean up generated files

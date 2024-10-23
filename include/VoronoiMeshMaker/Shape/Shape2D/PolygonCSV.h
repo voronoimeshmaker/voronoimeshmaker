@@ -98,9 +98,9 @@ public:
     }
 
 private:
-    std::string filename_; ///< Name of the CSV file containing polygon coordinates.
     
-    gtp::PtrPolygon2DShared ptrBoundaryPolygon_ = nullptr; ///< Shared pointer to the polygon representation of the boundary.
+    std::string                 filename_; ///< Name of the CSV file containing polygon coordinates.
+    gtp::PtrPolygon2DShared     ptrBoundaryPolygon_ = nullptr; ///< Shared pointer to the polygon representation of the boundary.
 
 };
 
@@ -114,7 +114,7 @@ private:
  * 
  * This typedef is useful for managing the shared ownership of PolygonCSV instances.
  */
-using PtrPolygonCSV = std::shared_ptr<PolygonCSV>;
+using PtrPolygonCSVShared = std::shared_ptr<PolygonCSV>;
 
 /**
  * @typedef PtrConstPolygonCSV
@@ -122,7 +122,7 @@ using PtrPolygonCSV = std::shared_ptr<PolygonCSV>;
  * 
  * This typedef is used when the shared ownership of a constant PolygonCSV instance is required.
  */
-using PtrConstPolygonCSV = std::shared_ptr<const PolygonCSV>;
+using PtrConstPolygonCSVShared = std::shared_ptr<const PolygonCSV>;
 
 VORMAKER_NAMESPACE_CLOSE
 

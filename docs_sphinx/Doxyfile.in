@@ -24,8 +24,8 @@ SHOW_NAMESPACES        = YES
 
 # Build related configuration options
 EXTRACT_ALL            = YES
-EXTRACT_PRIVATE        = NO
-EXTRACT_STATIC         = NO
+EXTRACT_PRIVATE        = YES
+EXTRACT_STATIC         = YES
 EXTRACT_LOCAL_METHODS  = YES
 EXTRACT_ANON_NSPACES   = YES
 HIDE_UNDOC_MEMBERS     = NO
@@ -56,7 +56,7 @@ PREDEFINED             = \
     VORMAKER_NAMESPACE_CLOSE=}
 
 # Input and output
-INPUT                  = ../include ../src ../README.md
+INPUT                  = @CMAKE_SOURCE_DIR@/include @CMAKE_SOURCE_DIR@/src @CMAKE_SOURCE_DIR@/README.md
 FILE_PATTERNS          = *.h *.hpp *.cpp *.tpp *.md
 RECURSIVE              = YES
 EXCLUDE                = 
@@ -68,8 +68,6 @@ EXAMPLE_PATTERNS       =
 EXAMPLE_RECURSIVE      = NO
 IMAGE_PATH             = 
 INPUT_ENCODING         = UTF-8
-# Output directory
-
 
 # Output formats
 GENERATE_HTML          = YES
@@ -82,11 +80,6 @@ HTML_DYNAMIC_SECTIONS  = YES
 GENERATE_DOCSET        = NO
 GENERATE_HTMLHELP      = NO
 GENERATE_QHP           = NO
-QCH_FILE               = 
-QHP_NAMESPACE          = 
-QHP_VIRTUAL_FOLDER     = 
-QHP_CUST_FILTER_NAME   = 
-QHP_CUST_FILTER_ATTRS  = 
 GENERATE_ECLIPSEHELP   = NO
 DISABLE_INDEX          = NO
 GENERATE_TREEVIEW      = YES
@@ -107,10 +100,6 @@ XML_OUTPUT             = xml
 HAVE_DOT               = YES
 DOT_NUM_THREADS        = 4
 DOT_IMAGE_FORMAT       = svg
-DOT_PATH               = 
-DOTFILE_DIRS           = 
-MAX_DOT_GRAPH_WIDTH    = 1024
-MAX_DOT_GRAPH_HEIGHT   = 1024
 DOT_TRANSPARENT        = YES
 DOT_MULTI_TARGETS      = YES
 GENERATE_LEGEND        = YES

@@ -1,0 +1,19 @@
+<map id="VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape2D/Ellipse.h" name="VoronoiMeshMaker/include/VoronoiMeshMaker/Shape/Shape2D/Ellipse.h">
+<area shape="rect" id="node1" title=" " alt="" coords="133,5,331,61"/>
+<area shape="rect" id="node2" href="$Shape2D_8h.html" title="Defines the Shape2D class, which represents 2D geometric shapes." alt="" coords="137,109,327,151"/>
+<area shape="rect" id="node3" href="$Shape_8h.html" title="Defines the Shape class, which serves as the abstract base class for all shapes." alt="" coords="137,199,327,240"/>
+<area shape="rect" id="node4" title=" " alt="" coords="5,295,216,322"/>
+<area shape="rect" id="node5" href="$GeometricDataHolder_8h.html" title=" " alt="" coords="240,288,467,329"/>
+<area shape="rect" id="node6" title=" " alt="" coords="137,385,188,411"/>
+<area shape="rect" id="node7" title=" " alt="" coords="213,385,281,411"/>
+<area shape="rect" id="node8" title=" " alt="" coords="305,385,402,411"/>
+<area shape="rect" id="node9" href="$type_8h.html" title="Defines common geometric and numeric types used in the VoronoiMeshMaker library." alt="" coords="427,377,608,419"/>
+<area shape="rect" id="node17" href="$GeometricDataHolder_8tpp.html" title=" " alt="" coords="632,377,859,419"/>
+<area shape="rect" id="node10" title=" " alt="" coords="176,481,219,508"/>
+<area shape="rect" id="node11" title=" " alt="" coords="243,481,320,508"/>
+<area shape="rect" id="node12" title=" " alt="" coords="345,481,407,508"/>
+<area shape="rect" id="node13" title=" " alt="" coords="431,467,603,523"/>
+<area shape="rect" id="node14" title=" " alt="" coords="627,481,767,508"/>
+<area shape="rect" id="node15" title=" " alt="" coords="791,481,953,508"/>
+<area shape="rect" id="node16" href="$namespace_8h.html" title=" " alt="" coords="977,474,1159,515"/>
+</map>

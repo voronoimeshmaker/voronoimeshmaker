@@ -60,15 +60,6 @@ public:
         return "Star";
     }
 
-    /**
-     * @brief Get the class ID.
-     *
-     * @return A ClassID enum representing the unique ID of this class.
-     */
-//    virtual ClassID classID() const noexcept override {
-//        return ClassID::Rectangle;
-//    }
-    
     // Método estático que retorna o ClassID do Rectangle
     static ClassID getClassID() {
         return ClassID::Star; 

@@ -25,15 +25,6 @@
 #define __VORONOIMESHMAKER_SHAPEFACTORY_H__
 
 //==============================================================================
-// Includes from C++ Standard Library
-//==============================================================================
-
-//#include <map>
-#include <functional>
-#include <memory>
-#include <stdexcept>
-
-//==============================================================================
 // Includes from VoronoiMeshMaker library
 //==============================================================================
 
@@ -98,20 +89,20 @@ private:
 //==============================================================================
 
 /**
- * @typedef PtrShapeFactory
+ * @typedef PtrShapeFactoryShared
  * @brief Defines a shared pointer to a ShapeFactory object.
  * 
  * This typedef is useful for managing shared ownership of ShapeFactory instances.
  */
-using PtrShapeFactory = std::shared_ptr<ShapeFactory>;
+using PtrShapeFactoryShared = std::shared_ptr<ShapeFactory>;
 
 /**
- * @typedef PtrConstShapeFactory
+ * @typedef PtrConstShapeFactoryShared
  * @brief Defines a shared pointer to a const ShapeFactory object.
  * 
  * This typedef is used when shared ownership of a constant ShapeFactory instance is required.
  */
-using PtrConstShapeFactory = std::shared_ptr<const ShapeFactory>;
+using PtrConstShapeFactoryShared = std::shared_ptr<const ShapeFactory>;
 
 VORMAKER_NAMESPACE_CLOSE
 

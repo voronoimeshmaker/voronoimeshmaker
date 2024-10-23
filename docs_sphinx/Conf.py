@@ -2,6 +2,7 @@
 
 import os
 import sys
+from pathlib import Path
 
 # Adicionar o diretório raiz do projeto ao sys.path (se necessário)
 sys.path.insert(0, os.path.abspath('../src'))
@@ -37,7 +38,10 @@ exclude_patterns = []
 # -- Options for HTML output -------------------------------------------------
 
 html_theme = 'sphinxdoc'
-html_static_path = ['_static']
+html_static_path = []  # Removido, crie a pasta _static se necessário
+
+# Define o diretório de saída para a documentação do Sphinx
+html_output_dir = Path(__file__).resolve().parent.parent / 'sphinx'
 
 # Base URL for the sitemap (importante para gerar sitemap)
 html_baseurl = 'https://voronoimeshmaker.github.io/voronoimeshmaker/'
@@ -46,7 +50,7 @@ html_baseurl = 'https://voronoimeshmaker.github.io/voronoimeshmaker/'
 
 # Define o caminho para o XML gerado pelo Doxygen
 breathe_projects = {
-    "VoronoiMeshMaker": "../build/doxygen/xml"  # Caminho para a saída XML gerada pelo Doxygen
+    "VoronoiMeshMaker": str(Path(__file__).resolve().parent.parent / "doxygen/xml")  # Caminho para a saída XML gerada pelo Doxygen
 }
 breathe_default_project = "VoronoiMeshMaker"
 

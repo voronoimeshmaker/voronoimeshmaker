@@ -1,9 +1,0 @@
-var searchData=
-[
-  ['vmmexception_345',['VMMException',['../classVMMException.html#a847c9aa2401e4c1d78c0a4ccaaf6ede6',1,'VMMException::VMMException(const SourceInfo &amp;_sourceInfo, const VMMExceptionIndex &amp;_errorIndex, bool _flagAbort)'],['../classVMMException.html#aecb2e1429a7aa04f38e132ee9074ef52',1,'VMMException::VMMException(const SourceInfo &amp;_sourceInfo, const VMMExceptionIndex &amp;_errorIndex, const std::string &amp;_errorMsg, bool _flagAbort)']]],
-  ['volume_346',['volume',['../namespaceShape.html#a4d5779a729935973c0952ebb21dc6550',1,'Shape::volume()'],['../namespaceShape2D.html#a0c9239159c43f00a585220d8e9769b2c',1,'Shape2D::volume()']]],
-  ['vorabort_347',['VORAbort',['../classVMMException.html#a434b4d609731f698ca4428e47e805264',1,'VMMException']]],
-  ['voronoi_348',['Voronoi',['../namespaceVoronoi.html#ade6f9aa39db91f41f0f96ef7a6b1ebfe',1,'Voronoi::Voronoi() noexcept=default'],['../namespaceVoronoi.html#a287757a23b44326e7d3ef6119ec60794',1,'Voronoi::Voronoi(const Voronoi &amp;) noexcept=default'],['../namespaceVoronoi.html#a174c4f870a9e7148c7fbb92666ebe7b0',1,'Voronoi::Voronoi(Voronoi &amp;&amp;) noexcept=default']]],
-  ['voronoi2d_349',['Voronoi2D',['../namespaceVoronoi2D.html#a4da675f6b01ba34802f8409e49fc342a',1,'Voronoi2D::Voronoi2D() noexcept=default'],['../namespaceVoronoi2D.html#a47818582bf56851bf2388d995a43f00f',1,'Voronoi2D::Voronoi2D(const Voronoi2D &amp;) noexcept=default'],['../namespaceVoronoi2D.html#ad878d050a7d626591e8aada70b527ebc',1,'Voronoi2D::Voronoi2D(Voronoi2D &amp;&amp;) noexcept=default']]],
-  ['voronoi3d_350',['Voronoi3D',['../namespaceVoronoi3D.html#a16b0bb0995a40ef50f67b2d2a8491014',1,'Voronoi3D::Voronoi3D() noexcept=default'],['../namespaceVoronoi3D.html#ace389ef451bede9d80682812ade66099',1,'Voronoi3D::Voronoi3D(const Voronoi3D &amp;) noexcept=default'],['../namespaceVoronoi3D.html#ab57b2e9787101cbf39b3be4ff6fc6760',1,'Voronoi3D::Voronoi3D(Voronoi3D &amp;&amp;) noexcept=default']]]
-];

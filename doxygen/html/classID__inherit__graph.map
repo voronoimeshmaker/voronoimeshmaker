@@ -1,0 +1,4 @@
+<map id="ID" name="ID">
+<area shape="rect" id="node1" title="Base class to provide unique identification for derived classes." alt="" coords="45,5,84,32"/>
+<area shape="rect" id="node2" href="$classVMMException.html" title="Exception class for handling errors in VoronoiMeshMaker." alt="" coords="5,80,124,107"/>
+</map>
