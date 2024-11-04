@@ -190,6 +190,24 @@ std::ostream& operator<<(std::ostream&, const vmm::gtp::Vector2D&);
 std::ostream& operator<<(std::ostream&, const vmm::gtp::Point3D&);
 std::ostream& operator<<(std::ostream&, const vmm::gtp::Vector3D&);
 
+/**
+ * @ingroup misc
+ * @brief Extracts the file name from a file path.
+ * 
+ * This function takes a file path as input and returns only the file name,
+ * excluding the directory path.
+ * 
+ * @param filePath The full file path as a C-style string.
+ * @return The file name extracted from the file path.
+ */
+constexpr std::string getFileName(const char* filePath) {
+    std::string pathStr(filePath);
+    size_t pos = pathStr.find_last_of("/\\");
+    if (pos != std::string::npos) {
+        return pathStr.substr(pos + 1);
+    }
+    return pathStr;
+}
 
 VORMAKER_NAMESPACE_CLOSE
 

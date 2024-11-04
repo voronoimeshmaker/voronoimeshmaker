@@ -106,7 +106,7 @@ public:
      * the existing value will be replaced.
      */
     template <typename T>
-    void set(std::string_view key, T value);
+    void set(const std::string_view& key, T value);
 
     /**
      * @brief Gets a value associated with a given key.
@@ -119,7 +119,7 @@ public:
      * exist or the type does not match, it returns std::nullopt.
      */
     template <typename T>
-    std::optional<T> get(std::string_view key) const;
+    std::optional<T> get(const std::string_view& key) const;
 
     /**
      * @brief Overloaded output stream operator for GeometricDataHolder.
@@ -148,11 +148,19 @@ private:
      * Each entry in the map is associated with a key that allows for easy retrieval
      * and modification of the stored values.
      */
-    std::map<std::string, std::variant<int, Real, std::string,
-                                       gtp::Point2D, gtp::Vector2D,
-                                       gtp::Point3D, gtp::Vector3D,
-                                       std::list<int>, std::list<Real>>> data_;
+    std::map    <std::string, std::variant  <   int
+                                            ,   Real
+                                            ,   std::string
+                                            ,   gtp::Point2D
+                                            ,   gtp::Vector2D
+                                            ,   gtp::Point3D
+                                            ,   gtp::Vector3D
+                                            ,   LstInt
+                                            ,   LstReal
+                                            >
+                > data_;
 };
+
 
 VORMAKER_NAMESPACE_CLOSE
 

@@ -24,6 +24,7 @@
 //==============================================================================
 // Includes from VoronoiMeshMaker library
 //==============================================================================
+
 #include <VoronoiMeshMaker/Parameters/GeometricDataHolder.h>
 
 VORMAKER_NAMESPACE_OPEN
@@ -82,61 +83,61 @@ std::ostream& operator<<(std::ostream& os, const GeometricDataHolder& holder) {
 /**
  * @brief Explicit instantiation for setting a Point2D value.
  */
-template void GeometricDataHolder::set<gtp::Point2D>(std::string_view, gtp::Point2D);
+template void GeometricDataHolder::set<gtp::Point2D>(const std::string_view&, gtp::Point2D);
 
 /**
  * @brief Explicit instantiation for getting a Point2D value.
  */
-template std::optional<gtp::Point2D> GeometricDataHolder::get<gtp::Point2D>(std::string_view) const;
+template std::optional<gtp::Point2D> GeometricDataHolder::get<gtp::Point2D>(const std::string_view&) const;
 
 /**
  * @brief Explicit instantiation for setting a Vector2D value.
  */
-template void GeometricDataHolder::set<gtp::Vector2D>(std::string_view, gtp::Vector2D);
+template void GeometricDataHolder::set<gtp::Vector2D>(const std::string_view&, gtp::Vector2D);
 
 /**
  * @brief Explicit instantiation for getting a Vector2D value.
  */
-template std::optional<gtp::Vector2D> GeometricDataHolder::get<gtp::Vector2D>(std::string_view) const;
+template std::optional<gtp::Vector2D> GeometricDataHolder::get<gtp::Vector2D>(const std::string_view&) const;
 
 /**
  * @brief Explicit instantiation for setting a Point3D value.
  */
-template void GeometricDataHolder::set<gtp::Point3D>(std::string_view, gtp::Point3D);
+template void GeometricDataHolder::set<gtp::Point3D>(const std::string_view&, gtp::Point3D);
 
 /**
  * @brief Explicit instantiation for getting a Point3D value.
  */
-template std::optional<gtp::Point3D> GeometricDataHolder::get<gtp::Point3D>(std::string_view) const;
+template std::optional<gtp::Point3D> GeometricDataHolder::get<gtp::Point3D>(const std::string_view&) const;
 
 /**
  * @brief Explicit instantiation for setting a Vector3D value.
  */
-template void GeometricDataHolder::set<gtp::Vector3D>(std::string_view, gtp::Vector3D);
+template void GeometricDataHolder::set<gtp::Vector3D>(const std::string_view&, gtp::Vector3D);
 
 /**
  * @brief Explicit instantiation for getting a Vector3D value.
  */
-template std::optional<gtp::Vector3D> GeometricDataHolder::get<gtp::Vector3D>(std::string_view) const;
+template std::optional<gtp::Vector3D> GeometricDataHolder::get<gtp::Vector3D>(const std::string_view&) const;
 
 /**
  * @brief Explicit instantiation for setting a list of integers.
  */
-template void GeometricDataHolder::set<std::list<int>>(std::string_view, std::list<int>);
+template void GeometricDataHolder::set<LstInt>(const std::string_view&, LstInt);
 
 /**
  * @brief Explicit instantiation for getting a list of integers.
  */
-template std::optional<std::list<int>> GeometricDataHolder::get<std::list<int>>(std::string_view) const;
+template std::optional<LstInt> GeometricDataHolder::get<LstInt>(const std::string_view&) const;
 
 /**
  * @brief Explicit instantiation for setting a list of Real values.
  */
-template void GeometricDataHolder::set<std::list<Real>>(std::string_view, std::list<Real>);
+template void GeometricDataHolder::set<LstReal>(const std::string_view&, LstReal);
 
 /**
  * @brief Explicit instantiation for getting a list of Real values.
  */
-template std::optional<std::list<Real>> GeometricDataHolder::get<std::list<Real>>(std::string_view) const;
+template std::optional<LstReal> GeometricDataHolder::get<LstReal>(const std::string_view&) const;
 
 VORMAKER_NAMESPACE_CLOSE

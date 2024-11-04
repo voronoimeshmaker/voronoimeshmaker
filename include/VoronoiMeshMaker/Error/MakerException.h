@@ -1,169 +1,141 @@
-#ifndef __VORONOMESHVMAKER_MAKEREXCEPTION_H__
-#define __VORONOMESHVMAKER_MAKEREXCEPTION_H__
-
-
-//==============================================================================
-//  C++ include
-//==============================================================================
-
-#include <string>
-#include <exception>
-#include <ostream>
-
+#ifndef __VORMAKER_EXCEPTION_H__
+#define __VORMAKER_EXCEPTION_H__
 
 //==============================================================================
-//  VoronoiMeshMaker include
+// Nome        : MakerException.h
+// Autor       : Joao Flavio Vieira de Vasconcellos
+// Versão     : 2.0
+// Descrição  : Tratamento de exceções para a biblioteca VoronoiMeshMaker.
+//                Parte do grupo 'error' para gerenciamento robusto de erros.
+//
+// Este programa é software livre: você pode redistribuí-lo e/ou modificá-lo
+// sob os termos da GNU General Public License como publicada pela
+// Free Software Foundation, versão 3 da Licença.
+//
+// Este programa é distribuído na esperança de que seja útil,
+// mas SEM QUALQUER GARANTIA; sem sequer a garantia implícita de
+// COMERCIALIZAÇÃO ou ADEQUAÇÃO A QUALQUER PROPÓSITO EM PARTICULAR. Consulte a
+// GNU General Public License para mais detalhes.
 //==============================================================================
 
-#include <VoronoiMeshMaker/Misc/id.h>
-#include <VoronoiMeshMaker/Misc/sourceinfo.h>
+/**
+ * @file MakerException.h
+ * @brief Define a classe MakerException, que fornece capacidades robustas de tratamento de erros para a biblioteca VoronoiMeshMaker.
+ *
+ * A classe MakerException captura informações detalhadas sobre erros, incluindo arquivo, linha e função
+ * onde ocorreram, além de suportar mensagens de erro personalizadas e mecanismos de tratamento.
+ * Esta classe faz parte do grupo 'error' na biblioteca VoronoiMeshMaker.
+ *
+ * @ingroup error
+ *
+ * @version 2.0
+ * @date 2024
+ * @author
+ * Joao Flavio Vieira de Vasconcellos
+ * (jflavio at iprj.uerj.br)
+ */
 
+//==============================================================================
+// Includes da biblioteca padrão do C++
+//==============================================================================
+#include <format>
+
+//==============================================================================
+// Includes da biblioteca VoronoiMeshMaker
+//==============================================================================
+#include <VoronoiMeshMaker/Error/MakerLogger.h>
+#include <VoronoiMeshMaker/Misc/namespace.h>
+
+//==============================================================================
+// Declaração do namespace
+//==============================================================================
 
 VORMAKER_NAMESPACE_OPEN
 
 /**
- * @defgroup ErrorAnalysis Error Handling and Analysis
- * @brief This group contains classes and utilities for error handling and exception management.
+ * @ingroup error
+ * @enum MakerErrorCode
+ * @brief Enumeração dos possíveis códigos de erro na biblioteca VoronoiMeshMaker.
  *
- * The 'ErrorAnalysis' group focuses on managing errors in the VoronoiMeshMaker library.
- * It provides detailed exception handling mechanisms to ensure robustness in error-prone areas.
+ * Este enum representa os diversos tipos de erros que podem ocorrer na biblioteca VoronoiMeshMaker.
  */
-
-/**
- * @ingroup ErrorAnalysis
- * @enum VMMExceptionIndex
- * @brief Enumeration of possible exception types in the VoronoiMeshMaker library.
- * 
- * This enum represents various types of exceptions that can be raised in the VoronoiMeshMaker library.
- */
-enum class VMMExceptionIndex {
+enum class MakerErrorCode {
     FileNotFound = 0,
-    FileReadProblem,
-    FileSystemError,
-    IsNotPolygon,
-    IsNotSimplePolygon,
-    NullNodes,
-    NullPolygon,
-    NullBoundary2D,
-    WrongAlpha,
-    WrongDelta,
-    WrongNNodes,
-    NEGATIVELENGHT,
-    WrongNPoints,
-    GridGenerationProblem,
-    NullOffsetPolygon,
-    IOToolsDuplicateKey,
-    IOToolsFail,
-    IOToolsFileMissing,
-    IOToolsNotFound,
-    DATANOTAVAILABLE,
-    SHAPENOTFOUNDREGISTRY
+    InvalidPolygon,
+    NullPointer,
+    // Adicione outros códigos de erro conforme necessário
 };
 
 /**
- * @ingroup ErrorAnalysis
- * @class VMMException
- * @brief Exception class for handling errors in VoronoiMeshMaker.
+ * @ingroup error
+ * @class MakerException
+ * @brief Classe de exceção para tratamento de erros na biblioteca VoronoiMeshMaker.
  *
- * This class captures detailed error information, including the function, file, and line
- * where the exception was thrown. It supports custom error messages and flags to indicate
- * whether execution should abort.
- * 
- * The class inherits from ID for identification purposes.
+ * Esta classe captura informações detalhadas sobre erros, incluindo a função, arquivo e linha
+ * onde a exceção foi lançada. Suporta mensagens de erro personalizadas e se integra ao MakerLogger
+ * para fornecer um caminho de execução do programa que levou ao erro.
  */
-class VMMException : public std::exception, public ID {
-
-    friend std::ostream& operator<<(std::ostream&, const VMMException&);
+class MakerException : public std::exception {
 
 public:
     /**
-     * @brief Get the class name.
+     * @brief Construtor para criar uma exceção com o código de erro.
      *
-     * @return A string view representing the name of this class.
+     * @param errorCode O tipo de erro (baseado em MakerErrorCode).
+     * @param message Uma mensagem de erro personalizada para fornecer informações adicionais.
+     * @param location Localização da origem do erro (padrão: localização atual).
      */
-    virtual std::string_view className() const noexcept override {
-        return "MakerException";
-    }
+    
+    MakerException  (   const MakerErrorCode& errorCode
+                    ,   const std::string_view message = ""
+                    ,   const std::source_location& location = std::source_location::current());
 
     /**
-     * @brief Get the class ID.
+     * @brief Obtém uma descrição da exceção.
      *
-     * @return A ClassID enum representing the unique ID of this class.
-     */
-    virtual ClassID classID() const noexcept override {
-        return ClassID::MakerException;
-    }
-
-    /**
-     * @brief Constructor to create an exception with the source info, error index, and abort flag.
-     *
-     * @param _sourceInfo The location in the code where the exception was thrown.
-     * @param _errorIndex The type of error (based on VMMExceptionIndex).
-     * @param _flagAbort Indicates whether the program should abort after the exception.
-     */
-    VMMException(const SourceInfo& _sourceInfo, const VMMExceptionIndex& _errorIndex, bool _flagAbort);
-
-    /**
-     * @brief Constructor to create an exception with the source info, error index, custom message, and abort flag.
-     *
-     * @param _sourceInfo The location in the code where the exception was thrown.
-     * @param _errorIndex The type of error (based on VMMExceptionIndex).
-     * @param _errorMsg A custom error message to provide additional information.
-     * @param _flagAbort Indicates whether the program should abort after the exception.
-     */
-    VMMException(const SourceInfo& _sourceInfo, const VMMExceptionIndex& _errorIndex, const std::string& _errorMsg, bool _flagAbort);
-
-    /**
-     * @brief Default virtual destructor.
-     */
-    virtual ~VMMException() = default;
-
-    /**
-     * @brief Get a description of the exception.
-     *
-     * @return A C-style string containing the error message.
+     * @return Uma string no estilo C contendo a mensagem de erro.
      */
     virtual const char* what() const noexcept override;
 
     /**
-     * @brief Check if the exception should cause an abort.
+     * @brief Obtém o código de erro.
      *
-     * @return True if the program should abort, false otherwise.
+     * @return O MakerErrorCode associado a esta exceção.
      */
-    [[nodiscard]] bool VORAbort() const;
+    MakerErrorCode errorCode() const noexcept;
 
     /**
-     * @brief Check if the error message should be displayed.
+     * @brief Obtém a localização de origem onde a exceção foi lançada.
      *
-     * @return True if the error message should be displayed, false otherwise.
+     * @return Uma referência para o objeto de localização de origem.
      */
-    static bool shouldDisplayMessage();
-
-    /**
-     * @brief Set whether the error message should be displayed.
-     *
-     * @param value The new value for the `displayErrorMessage` flag.
-     */
-    static void setDisplayMessage(bool value);
+    const std::source_location& location() const noexcept;
 
 private:
-    static bool displayErrorMessage;  ///< Controls whether the error message should be displayed.
+    
+    MakerErrorCode errorCode_;                 ///< Enum que representa o tipo de erro.
+    std::string message_;                      ///< Mensagem de erro personalizada.
+    std::source_location location_;            ///< Localização da origem do erro.
+    std::string fullMessage_;                  ///< Mensagem de erro formatada completa.
 
-    SourceInfo sourceInfo;             ///< Stores the source information (file, line, function).
-    VMMExceptionIndex exceptionIndex;  ///< Enum representing the type of exception.
-    std::string errorMsg;              ///< Custom error message.
-    bool flagAbort;                    ///< Indicates whether the program should abort.
+    /**
+     * @brief Formata a mensagem completa de erro.
+     */
+    void formatMessage();
+
+    /**
+     * @brief Registra a exceção usando o MakerLogger.
+     */
+    void logException() const;
+
+    /**
+     * @brief Retorna o mapeamento dos códigos de erro para suas representações em string.
+     *
+     * @return Uma referência para o unordered_map contendo códigos de erro e suas mensagens.
+     */
+    static const std::unordered_map<MakerErrorCode, std::string>& errorCodeMap();
 };
-
-/**
- * @brief Function to get the string representation of an error type.
- *
- * @param _index The error index corresponding to a specific error.
- * @return The string description of the error.
- */
-std::string ErrorType(const VMMExceptionIndex& _index);
-
 
 VORMAKER_NAMESPACE_CLOSE
 
-#endif // __VORONOMESHVMAKER_MAKEREXCEPTION_H__
+#endif // __VORMAKER_EXCEPTION_H__

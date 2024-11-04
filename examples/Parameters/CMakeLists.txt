@@ -1,20 +1,15 @@
-cmake_minimum_required(VERSION 3.10)
+# examples/Parameters/CMakeLists.txt
 
-# Define o nome do projeto
-project(ParametersExamples)
+message(STATUS "Processing examples in ${CMAKE_CURRENT_SOURCE_DIR}")
 
-# Função para adicionar todos os subdiretórios recursivamente
-function(add_subdirectories_recursive dir)
-    file(GLOB SUBDIRS RELATIVE ${dir} ${dir}/*)
-    foreach(subdir ${SUBDIRS})
-        if(IS_DIRECTORY ${dir}/${subdir})
-            add_subdirectory(${dir}/${subdir})
-        endif()
-    endforeach()
-endfunction()
+# Add examples in the current directory
+add_examples_in_directory("${CMAKE_CURRENT_SOURCE_DIR}")
 
-# Adiciona todos os subdiretórios recursivamente
-add_subdirectories_recursive(${CMAKE_CURRENT_SOURCE_DIR})
-
-# Mensagem indicando que não há programas diretamente nesta pasta
-message(STATUS "No programs in the Parameters directory itself. Adding subdirectories if they exist.")
+# Recursively add subdirectories
+file(GLOB SUBDIRS CONFIGURE_DEPENDS LIST_DIRECTORIES true RELATIVE "${CMAKE_CURRENT_SOURCE_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}/*")
+foreach(subdir ${SUBDIRS})
+    if(IS_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/${subdir}")
+        # Add the subdirectory
+        add_subdirectory("${subdir}")
+    endif()
+endforeach()

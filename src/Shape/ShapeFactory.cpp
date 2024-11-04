@@ -38,7 +38,6 @@
 #include <VoronoiMeshMaker/Error/MakerException.h>
 #include <VoronoiMeshMaker/Shape/ShapeFactory.h>
 
-
 VORMAKER_NAMESPACE_OPEN
 
 //==============================================================================
@@ -62,29 +61,20 @@ std::map<ClassID, std::function<std::shared_ptr<Shape>(const GeometricDataHolder
  * @param classID The shared ID of the shape to create.
  * @param data The geometric data used to initialize the shape.
  * @return std::shared_ptr<Shape> A shared pointer to the created shape.
- * @throws std::runtime_error if the ClassID is not found in the registry.
+ * @throws MakerException if the ClassID is not found in the registry.
  */
 std::shared_ptr<Shape> ShapeFactory::createShape(ClassID classID, const GeometricDataHolder& data) {
     auto it = shapeRegistry.find(classID);
     
-    try {    
     if (it != shapeRegistry.end()) {
         return it->second(data);
     } else {
-//        throw std::runtime_error("Shape with ClassID not found in registry.");
-            throw VMMException(
-                SourceInfo(__FILE__, __LINE__, __func__),
-                VMMExceptionIndex::SHAPENOTFOUNDREGISTRY,
-                true
-            );        
+        throw MakerException(
+            MakerErrorCode::InvalidPolygon,
+            "Shape with ClassID not found in registry.",
+            std::source_location::current()
+        );
     }
-    } catch (const VMMException& exception) {
-        
-        std::cerr << "\n";
-        std::cerr << exception;
-        std::exit(EXIT_FAILURE);
-    }    
-    
 }
 
 VORMAKER_NAMESPACE_CLOSE

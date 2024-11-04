@@ -33,16 +33,23 @@
  * @date 2024
  */
 
+//==============================================================================
+// C++ includes
+//==============================================================================
+
 #include <iostream>
 
 //==============================================================================
 // VoronoiMeshMaker includes
 //==============================================================================
+
 #include <VoronoiMeshMaker/Parameters/GeometricDataHolder.h>
 #include <VoronoiMeshMaker/Shape/ShapeFactory.h>
 #include <VoronoiMeshMaker/Shape/Shape2D/Ellipse.h>
 #include <VoronoiMeshMaker/Shape/Shape2D/Rectangle.h>
 #include <VoronoiMeshMaker/Shape/Shape2D/Star.h>
+#include <VoronoiMeshMaker/Shape/Shape2D/PolygonCSV.h>
+
 
 using vmm::gtp::Point2D;
 using vmm::Shape2D;
@@ -51,7 +58,7 @@ using vmm::Shape2D;
  * @enum Shape2DType
  * @brief Enumerates the 2D shapes available for creation.
  */
-enum class Shape2DType { RECTANGLE, STAR, ELLIPSE };
+enum class Shape2DType { RECTANGLE, STAR, ELLIPSE, POLYGONCSV };
 
 /**
  * @brief Main function for shape generation and exportation.
@@ -72,23 +79,23 @@ int main() {
      
     switch (testShape) {
         
-        case Shape2DType::ELLIPSE:     
-            geometricDataHolder.set("Length", 2.0);
-            geometricDataHolder.set("Width", 2.0);
-            geometricDataHolder.set("NPoints", 30);     
-            std::cout << "Data for ellipse generation\n";
-            std::cout << geometricDataHolder << "\n";
-            ptrShape = std::dynamic_pointer_cast<vmm::Shape2D>(vmm::ShapeFactory::createShape(vmm::Ellipse::getClassID(), geometricDataHolder));
-            break;
+//        case Shape2DType::ELLIPSE:     
+//            geometricDataHolder.set("Length", 2.0);
+//            geometricDataHolder.set("Width", 2.0);
+//            geometricDataHolder.set("NPoints", 30);     
+//            std::cout << "Data for ellipse generation\n";
+//            std::cout << geometricDataHolder << "\n";
+//            ptrShape = std::dynamic_pointer_cast<vmm::Shape2D>(vmm::ShapeFactory::createShape(vmm::Ellipse::getClassID(), geometricDataHolder));
+//            break;
 
-        case Shape2DType::RECTANGLE:    
-            geometricDataHolder.set("Length", 2.0);
-            geometricDataHolder.set("Width", 2.0);
-            geometricDataHolder.set("BottomLeftCorner", Point2D(3,1));  // Optional data
-            std::cout << "Data for rectangle generation\n";
-            std::cout << geometricDataHolder << "\n";
-            ptrShape = std::dynamic_pointer_cast<vmm::Shape2D>(vmm::ShapeFactory::createShape(vmm::Rectangle::getClassID(), geometricDataHolder));
-            break;
+//        case Shape2DType::RECTANGLE:    
+//            geometricDataHolder.set("Length", 2.0);
+//            geometricDataHolder.set("Width", 2.0);
+//            geometricDataHolder.set("BottomLeftCorner", Point2D(3,1));  // Optional data
+//            std::cout << "Data for rectangle generation\n";
+//            std::cout << geometricDataHolder << "\n";
+//            ptrShape = std::dynamic_pointer_cast<vmm::Shape2D>(vmm::ShapeFactory::createShape(vmm::Rectangle::getClassID(), geometricDataHolder));
+//            break;
 
         case Shape2DType::STAR:    
             geometricDataHolder.set("Radius", 2.0);
@@ -96,6 +103,13 @@ int main() {
             std::cout << geometricDataHolder << "\n";
             ptrShape = std::dynamic_pointer_cast<vmm::Shape2D>(vmm::ShapeFactory::createShape(vmm::Star::getClassID(), geometricDataHolder));
             break;
+
+//        case Shape2DType::POLYGONCSV:    
+////            geometricDataHolder.set("Radius", 2.0);
+////            std::cout << "Data for star generation\n";
+////            std::cout << geometricDataHolder << "\n";
+//            ptrShape = std::dynamic_pointer_cast<vmm::Shape2D>(vmm::ShapeFactory::createShape(vmm::PolygonCSV::getClassID(), geometricDataHolder));
+//            break;
         
         default:           
             std::cerr << "Option not available\n";

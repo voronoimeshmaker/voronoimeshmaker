@@ -27,6 +27,8 @@
 //==============================================================================
 // Includes from VoronoiMeshMaker library
 //==============================================================================
+
+#include <VoronoiMeshMaker/Error/FunctionLogger.h>
 #include <VoronoiMeshMaker/Parameters/GeometricDataHolder.h>
 
 VORMAKER_NAMESPACE_OPEN
@@ -43,7 +45,8 @@ VORMAKER_NAMESPACE_OPEN
  * If the key already exists, the existing value will be replaced.
  */
 template <typename T>
-void GeometricDataHolder::set(std::string_view key, T value) {
+void GeometricDataHolder::set(const std::string_view& key, T value) {
+    FunctionLogger functionLogger; 
     data_[std::string(key)] = value;
 }
 
@@ -59,7 +62,7 @@ void GeometricDataHolder::set(std::string_view key, T value) {
  * this method returns std::nullopt to ensure type safety and avoid runtime errors.
  */
 template <typename T>
-std::optional<T> GeometricDataHolder::get(std::string_view key) const {
+std::optional<T> GeometricDataHolder::get(const std::string_view& key) const {
     auto it = data_.find(std::string(key));
     if (it != data_.end()) {
         if (auto val = std::get_if<T>(&it->second)) {
