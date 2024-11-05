@@ -2,35 +2,35 @@
 #define VORMAKER_FUNCTIONNULL_LOGGER_H
 
 //==============================================================================
-// Nome        : FunctionLoggerNull.h
-// Autor       : João Flávio Vieira de Vasconcellos
-// Versão      : 2.1
-// Descrição   : Implementação nula do logger de fluxo de função para a biblioteca VoronoiMeshMaker.
-//               Parte do grupo 'debug' para rastreamento de entrada e saída de funções.
+// Name        : FunctionLoggerNull.h
+// Author      : João Flávio Vieira de Vasconcellos
+// Version     : 2.1
+// Description : Null implementation of function flow logger for the VoronoiMeshMaker library.
+//               Part of the 'debug' group for tracking function entry and exit.
 //
-// Este programa é software livre: você pode redistribuí-lo e/ou modificá-lo
-// sob os termos da Licença Pública Geral GNU como publicada pela
-// Free Software Foundation, versão 3 da Licença, ou (a seu critério)
-// qualquer versão posterior.
+// This program is free software: you can redistribute it and/or modify it
+// under the terms of the GNU General Public License as published by the
+// Free Software Foundation, version 3 of the License, or (at your option)
+// any later version.
 //
-// Este programa é distribuído na esperança de que seja útil,
-// mas SEM QUALQUER GARANTIA; sem mesmo a garantia implícita de
-// COMERCIABILIDADE ou ADEQUAÇÃO A UM DETERMINADO FIM. Consulte a
-// Licença Pública Geral GNU para mais detalhes.
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// GNU General Public License for more details.
 //==============================================================================
 
 /**
  * @file FunctionLoggerNull.h
- * @brief Define a implementação nula da classe FunctionLogger para a biblioteca VoronoiMeshMaker.
+ * @brief Defines the null implementation of the FunctionLogger class for the VoronoiMeshMaker library.
  *
- * A classe FunctionLogger, nesta versão nula, é utilizada em builds de release onde o
- * rastreamento de entrada e saída de funções é desativado para evitar sobrecarga de desempenho.
- * Esta implementação assegura que o código que utiliza FunctionLogger possa ser compilado sem
- * alterações, mas não realizará nenhuma ação em tempo de execução.
+ * The FunctionLogger class, in this null version, is used in release builds where the
+ * tracking of function entry and exit is disabled to avoid performance overhead.
+ * This implementation ensures that code using FunctionLogger can be compiled without
+ * modifications, but it will not perform any action at runtime.
  *
- * O comportamento é controlado pela macro `NDEBUG1`. Se `NDEBUG1` for definida,
- * esta implementação nula será utilizada. Caso contrário, a implementação completa
- * em `FunctionLoggerFull.h` será utilizada para fornecer informações detalhadas de log.
+ * The behavior is controlled by the `NDEBUG1` macro. If `NDEBUG1` is defined,
+ * this null implementation will be used. Otherwise, the full implementation
+ * in `FunctionLoggerFull.h` will be used to provide detailed logging information.
  *
  * @ingroup debug
  * @version 2.1
@@ -41,33 +41,31 @@
  */
 
 //==============================================================================
-// Inclusões da Biblioteca VoronoiMeshMaker
+// VoronoiMeshMaker Library Includes
 //==============================================================================
 #include <VoronoiMeshMaker/Misc/namespace.h>
 
 VORMAKER_NAMESPACE_OPEN
 
-#pragma message("FunctionLoggerNull.h has been included")
-
 /**
  * @ingroup debug
  * @class FunctionLogger
- * @brief Implementação vazia para builds de release da biblioteca VoronoiMeshMaker.
+ * @brief Empty implementation for release builds of the VoronoiMeshMaker library.
  *
- * Em modo release, a classe FunctionLogger é definida, mas não realiza nenhuma ação,
- * garantindo que não haja sobrecarga em tempo de execução.
+ * In release mode, the FunctionLogger class is defined but performs no action,
+ * ensuring there is no runtime overhead.
  */
 class FunctionLogger {
 public:
     /**
-     * @brief Construtor padrão que não realiza nenhuma ação.
+     * @brief Default constructor that performs no action.
      *
-     * @param location Parâmetro opcional para compatibilidade, não utilizado nesta implementação.
+     * @param location Optional parameter for compatibility, not used in this implementation.
      */
     FunctionLogger(const std::source_location& = std::source_location::current()) {}
 
     /**
-     * @brief Destrutor padrão que não realiza nenhuma ação.
+     * @brief Default destructor that performs no action.
      */
     ~FunctionLogger() {}
 };

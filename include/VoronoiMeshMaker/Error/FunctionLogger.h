@@ -2,36 +2,37 @@
 #define VORMAKER_FUNCTION_LOGGER_H
 
 //==============================================================================
-// Nome        : FunctionLogger.h
-// Autor       : João Flávio Vieira de Vasconcellos
-// Versão      : 2.1
-// Descrição   : Logger de fluxo de função para a biblioteca VoronoiMeshMaker.
-//               Parte do grupo 'debug' para rastreamento de entrada e saída de funções.
+// Name        : FunctionLogger.h
+// Author      : João Flávio Vieira de Vasconcellos
+// Version     : 2.1
+// Description : Function flow logger for the VoronoiMeshMaker library.
+//               Part of the 'debug' group for tracking function entry and exit.
 //
-// Este programa é software livre: você pode redistribuí-lo e/ou modificá-lo
-// sob os termos da Licença Pública Geral GNU como publicada pela
-// Free Software Foundation, versão 3 da Licença, ou (a seu critério)
-// qualquer versão posterior.
+// This program is free software: you can redistribute it and/or modify it
+// under the terms of the GNU General Public License as published by the
+// Free Software Foundation, version 3 of the License, or (at your option)
+// any later version.
 //
-// Este programa é distribuído na esperança de que seja útil,
-// mas SEM QUALQUER GARANTIA; sem mesmo a garantia implícita de
-// COMERCIABILIDADE ou ADEQUAÇÃO A UM DETERMINADO FIM. Consulte a
-// Licença Pública Geral GNU para mais detalhes.
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// GNU General Public License for more details.
 //==============================================================================
 
 /**
  * @file FunctionLogger.h
- * @brief Define a classe FunctionLogger, que fornece rastreamento automático
- * de entrada e saída de funções para a biblioteca VoronoiMeshMaker.
+ * @brief Defines the FunctionLogger class, which provides automatic tracking
+ * of function entry and exit for the VoronoiMeshMaker library.
  *
- * A classe FunctionLogger registra a entrada e saída de funções, capturando informações detalhadas
- * como arquivo, linha e nome da função. Suporta registro automatizado via RAII,
- * simplificando o rastreamento do fluxo do programa, especialmente em contextos de depuração
- * e tratamento de exceções.
+ * The FunctionLogger class logs function entry and exit, capturing detailed
+ * information such as file, line, and function name. It supports automated
+ * logging via RAII, simplifying program flow tracking, especially for debugging
+ * and exception handling contexts.
  *
- * O comportamento do FunctionLogger pode ser controlado via a macro `NDEBUG1`. Se `NDEBUG1` for definida,
- * o FunctionLogger terá uma implementação vazia para evitar sobrecarga em builds de release.
- * Caso contrário, a implementação completa é utilizada para fornecer informações detalhadas de log.
+ * The behavior of the FunctionLogger can be controlled via the `NDEBUG1` macro.
+ * If `NDEBUG1` is defined, the FunctionLogger will have an empty implementation
+ * to avoid overhead in release builds. Otherwise, the full implementation is used
+ * to provide detailed logging information.
  *
  * @ingroup debug
  * @version 2.1
@@ -41,11 +42,11 @@
  * (jflavio at iprj.uerj.br)
  */
 
-#undef NDEBUG1
+//#define NDEBUG1
 
-#ifndef NDEBUG1  // Versão de depuração: função de log ativa
+#ifndef NDEBUG1  // Debug version: active logging function
     #include <VoronoiMeshMaker/Error/FunctionLoggerFull.h>
-#else  // Versão de release: implementação vazia para evitar sobrecarga
+#else  // Release version: empty implementation to avoid overhead
     #include <VoronoiMeshMaker/Error/FunctionLoggerNull.h>
 #endif  
 

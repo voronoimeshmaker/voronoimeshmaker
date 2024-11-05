@@ -59,8 +59,6 @@
 
 VORMAKER_NAMESPACE_OPEN
 
-#pragma message("FunctionLoggerFull.h has been included")
-
 /**
  * @ingroup debug
  * @class FunctionLogger
