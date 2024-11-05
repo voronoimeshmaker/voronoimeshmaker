@@ -46,6 +46,7 @@ Shape2D::Shape2D(const GeometricDataHolder& _data) : Shape(_data) {}
  */
 Real Shape2D::area() const {
     // Implement area calculation using CGAL
+    vmm::FunctionLogger logger;
     return 0;
 }
 
@@ -59,6 +60,7 @@ Real Shape2D::area() const {
  */
 Real Shape2D::perimeter() const {
     // Implement perimeter calculation using CGAL
+    vmm::FunctionLogger logger;
     return 0;
 }
 
@@ -71,6 +73,7 @@ Real Shape2D::perimeter() const {
  */
 Real Shape2D::volume() const {
     // Volume is always 0 for 2D shapes
+    vmm::FunctionLogger logger;
     return 0;
 }
 
@@ -85,6 +88,7 @@ Real Shape2D::volume() const {
  */
 bool Shape2D::rotate(const GeometricDataHolder& data) {
     // Implement rotation using data
+    vmm::FunctionLogger logger;
     return true; // Return success/failure
 }
 
@@ -99,6 +103,7 @@ bool Shape2D::rotate(const GeometricDataHolder& data) {
  */
 bool Shape2D::translate(const GeometricDataHolder& data) {
     // Implement translation using data
+    vmm::FunctionLogger logger;
     return true; // Return success/failure
 }
 

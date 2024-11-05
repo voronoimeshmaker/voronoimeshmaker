@@ -71,7 +71,7 @@ enum class Shape2DType { RECTANGLE, STAR, ELLIPSE, POLYGONCSV };
  */
 int main() {
 
-    Shape2DType testShape = Shape2DType::STAR;  ///< Selected shape type for testing.
+    Shape2DType testShape = Shape2DType::ELLIPSE;  ///< Selected shape type for testing.
 //    vmm::ExportFormat exportFormat = vmm::ExportFormat::VTK;  ///< Selected export format for testing.
     vmm::GeometricDataHolder geometricDataHolder;  ///< Data holder to store shape parameters.
     
@@ -79,14 +79,14 @@ int main() {
      
     switch (testShape) {
         
-//        case Shape2DType::ELLIPSE:     
-//            geometricDataHolder.set("Length", 2.0);
-//            geometricDataHolder.set("Width", 2.0);
-//            geometricDataHolder.set("NPoints", 30);     
-//            std::cout << "Data for ellipse generation\n";
-//            std::cout << geometricDataHolder << "\n";
-//            ptrShape = std::dynamic_pointer_cast<vmm::Shape2D>(vmm::ShapeFactory::createShape(vmm::Ellipse::getClassID(), geometricDataHolder));
-//            break;
+        case Shape2DType::ELLIPSE:     
+            geometricDataHolder.set("Length", 2.0);
+            geometricDataHolder.set("Width", 2.0);
+            geometricDataHolder.set("NPoints", 30);     
+            std::cout << "Data for ellipse generation\n";
+            std::cout << geometricDataHolder << "\n";
+            ptrShape = std::dynamic_pointer_cast<vmm::Shape2D>(vmm::ShapeFactory::createShape(vmm::Ellipse::getClassID(), geometricDataHolder));
+            break;
 
 //        case Shape2DType::RECTANGLE:    
 //            geometricDataHolder.set("Length", 2.0);

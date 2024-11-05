@@ -64,6 +64,8 @@ std::map<ClassID, std::function<std::shared_ptr<Shape>(const GeometricDataHolder
  * @throws MakerException if the ClassID is not found in the registry.
  */
 std::shared_ptr<Shape> ShapeFactory::createShape(ClassID classID, const GeometricDataHolder& data) {
+    
+    vmm::FunctionLogger logger;
     auto it = shapeRegistry.find(classID);
     
     if (it != shapeRegistry.end()) {

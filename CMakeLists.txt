@@ -43,7 +43,7 @@ target_link_libraries(VoronoiMeshMaker
     PUBLIC
     ${CGAL_LIBRARIES}
     ${VTK_LIBRARIES}
-    ${TBB_LIBRARIES}
+    TBB::tbb
     Boost::log Boost::log_setup Boost::system Boost::thread
 )
 

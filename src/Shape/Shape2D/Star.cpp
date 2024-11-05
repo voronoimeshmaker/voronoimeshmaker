@@ -24,8 +24,6 @@
 //==============================================================================
 // Includes from VoronoiMeshMaker library
 //==============================================================================
-#include <VoronoiMeshMaker/Error/MakerException.h>
-#include <VoronoiMeshMaker/Error/FunctionLogger.h>
 #include <VoronoiMeshMaker/Shape/ShapeFactory.h>
 #include <VoronoiMeshMaker/Shape/Shape2D/Star.h>
 

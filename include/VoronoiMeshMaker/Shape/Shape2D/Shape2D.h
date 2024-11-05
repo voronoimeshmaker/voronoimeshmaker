@@ -29,6 +29,8 @@
 //==============================================================================
 
 #include <VoronoiMeshMaker/Shape/Shape.h>
+#include <VoronoiMeshMaker/Error/MakerException.h>
+#include <VoronoiMeshMaker/Error/FunctionLogger.h>
 
 VORMAKER_NAMESPACE_OPEN
 
