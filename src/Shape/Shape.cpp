@@ -56,6 +56,7 @@ VORMAKER_NAMESPACE_OPEN
  * @param _dataHolder A constant reference to a GeometricDataHolder containing geometric data.
  */
 Shape::Shape(const GeometricDataHolder& _dataHolder) {
+    FunctionLogger logger;
     ptrDataHolder_ = std::make_shared<GeometricDataHolder>(_dataHolder);
 }
 

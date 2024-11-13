@@ -6,12 +6,12 @@
 // Author      : João Flávio Vieira de Vasconcellos
 // Version     : 2.1
 // Description : Function flow logger for the VoronoiMeshMaker library.
-//               Part of the 'debug' group for tracking function entry and exit.
+//               Part of the 'debug' group for tracking function entry and
+//               exit.
 //
 // This program is free software: you can redistribute it and/or modify it
 // under the terms of the GNU General Public License as published by the
-// Free Software Foundation, version 3 of the License, or (at your option)
-// any later version.
+// Free Software Foundation, version 3 of the License.
 //
 // This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -22,17 +22,17 @@
 /**
  * @file FunctionLogger.h
  * @brief Defines the FunctionLogger class, which provides automatic tracking
- * of function entry and exit for the VoronoiMeshMaker library.
+ *        of function entry and exit for the VoronoiMeshMaker library.
  *
  * The FunctionLogger class logs function entry and exit, capturing detailed
  * information such as file, line, and function name. It supports automated
- * logging via RAII, simplifying program flow tracking, especially for debugging
- * and exception handling contexts.
+ * logging via RAII, simplifying program flow tracking, especially for
+ * debugging and exception handling contexts.
  *
- * The behavior of the FunctionLogger can be controlled via the `NDEBUG1` macro.
- * If `NDEBUG1` is defined, the FunctionLogger will have an empty implementation
- * to avoid overhead in release builds. Otherwise, the full implementation is used
- * to provide detailed logging information.
+ * The behavior of the FunctionLogger can be controlled via the `NDEBUG1`
+ * macro. If `NDEBUG1` is defined, the FunctionLogger will have an empty
+ * implementation to avoid overhead in release builds. Otherwise, the full
+ * implementation is used to provide detailed logging information.
  *
  * @ingroup debug
  * @version 2.1
@@ -48,6 +48,6 @@
     #include <VoronoiMeshMaker/Error/FunctionLoggerFull.h>
 #else  // Release version: empty implementation to avoid overhead
     #include <VoronoiMeshMaker/Error/FunctionLoggerNull.h>
-#endif  
+#endif
 
 #endif // VORMAKER_FUNCTION_LOGGER_H

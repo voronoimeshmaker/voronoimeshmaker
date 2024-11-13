@@ -1,28 +1,31 @@
 //==============================================================================
-// Nome        : MakerException.cpp
-// Autor       : Joao Flavio Vieira de Vasconcellos
-// Versão     : 2.0
-// Descrição  : Implementação da classe MakerException para tratamento de erros na biblioteca VoronoiMeshMaker.
-//              Parte do grupo 'error' para gerenciamento robusto de erros.
+// Name        : MakerException.cpp
+// Author      : Joao Flavio Vieira de Vasconcellos
+// Version     : 2.0
+// Description : Implementation of the MakerException class for error handling
+//               in the VoronoiMeshMaker library. Part of the 'error' group for
+//               robust error management.
 //
-// Este programa é software livre: você pode redistribuí-lo e/ou modificá-lo
-// sob os termos da GNU General Public License como publicada pela
-// Free Software Foundation, versão 3 da Licença.
+// This program is free software: you can redistribute it and/or modify it
+// under the terms of the GNU General Public License as published by the
+// Free Software Foundation, version 3 of the License.
 //
-// Este programa é distribuído na esperança de que seja útil,
-// mas SEM QUALQUER GARANTIA; sem sequer a garantia implícita de
-// COMERCIALIZAÇÃO ou ADEQUAÇÃO A QUALQUER PROPÓSITO EM PARTICULAR. Consulte a
-// GNU General Public License para mais detalhes.
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// GNU General Public License for more details.
 //==============================================================================
 
 /**
  * @file MakerException.cpp
- * @brief Implementa a classe MakerException para tratamento robusto de erros na biblioteca VoronoiMeshMaker.
+ * @brief Implements the MakerException class for robust error handling in the
+ *        VoronoiMeshMaker library.
  *
- * A classe MakerException captura informações detalhadas sobre erros, incluindo arquivo, linha e função
- * onde ocorreram, além de suportar mensagens de erro personalizadas e mecanismos de tratamento.
- * Este arquivo fornece a implementação dos métodos para rastrear e recuperar informações de erro,
- * incluindo o caminho de execução do programa até o erro.
+ * The MakerException class captures detailed information about errors,
+ * including file, line, and function where they occurred, and supports custom
+ * error messages and handling mechanisms. This file provides the implementation
+ * of methods to trace and retrieve error information, including the execution
+ * path to the error.
  *
  * @ingroup error
  * @version 2.0
@@ -33,109 +36,120 @@
  */
 
 //==============================================================================
-// Includes da biblioteca VoronoiMeshMaker
+// Standard C++ Library Includes
 //==============================================================================
+
+#include <format>
+#include <string_view>
+
+//==============================================================================
+// VoronoiMeshMaker Library Includes
+//==============================================================================
+
 #include <VoronoiMeshMaker/Error/MakerException.h>
+#include <VoronoiMeshMaker/Error/MakerLogger.h>
 #include <VoronoiMeshMaker/Misc/Misc.h>
 
 VORMAKER_NAMESPACE_OPEN
 
 //==============================================================================
-// Definições de membros estáticos
+// Static Member Definitions
 //==============================================================================
 
 /**
- * @brief Fornece um mapa de códigos de erro para mensagens correspondentes.
- * 
- * Esta função retorna um mapa estático que associa códigos de erro
- * (`MakerErrorCode`) às suas respectivas mensagens de erro (`std::string`).
- * 
- * @return Uma referência ao mapa contendo códigos de erro e mensagens.
+ * @brief Provides a map of error codes to corresponding messages.
+ *
+ * This function returns a static map that associates error codes
+ * (`MakerErrorCode`) with their respective error messages (`std::string_view`).
+ *
+ * @return A reference to the map containing error codes and messages.
  */
-const std::unordered_map<MakerErrorCode, std::string>& MakerException::errorCodeMap() {
-    static const std::unordered_map<MakerErrorCode, std::string> errorMap = {
-        {MakerErrorCode::FileNotFound, "Arquivo Não Encontrado"},
-        {MakerErrorCode::InvalidPolygon, "Polígono Inválido"},
-        {MakerErrorCode::NullPointer, "Ponteiro Nulo"},
-        // Adicione outros códigos de erro e mensagens aqui
+const std::unordered_map<MakerErrorCode, std::string_view>& MakerException::errorCodeMap() {
+    static const std::unordered_map<MakerErrorCode, std::string_view> errorMap = {
+        {MakerErrorCode::FileNotFound, "File Not Found"},
+        {MakerErrorCode::InvalidPolygon, "Invalid Polygon"},
+        {MakerErrorCode::NullPointer, "Null Pointer"},
+        // Add other error codes and messages here
     };
     return errorMap;
 }
 
 //==============================================================================
-// Construtor
+// Constructor
 //==============================================================================
 
 /**
- * @brief Constrói um novo objeto MakerException com um código de erro, mensagem e localização de origem.
- * 
- * Este construtor inicializa uma instância de MakerException com um código de erro fornecido,
- * uma mensagem personalizada e a localização de origem onde a exceção foi lançada.
- * 
- * @param errorCode O tipo de erro (baseado em `MakerErrorCode`).
- * @param message Uma mensagem de erro personalizada fornecendo detalhes adicionais.
- * @param location A localização de origem onde a exceção foi criada (padrão: localização atual).
+ * @brief Constructs a new MakerException object with an error code, message,
+ *        and source location.
+ *
+ * This constructor initializes an instance of MakerException with a given
+ * error code, a custom message, and the source location where the exception
+ * was thrown.
+ *
+ * @param errorCode The type of error (based on `MakerErrorCode`).
+ * @param message A custom error message providing additional details.
+ * @param location The source location where the exception was created
+ *                 (default: current location).
  */
-MakerException::MakerException  (   const MakerErrorCode& errorCode
-                                ,   const std::string_view message
-                                ,   const std::source_location& location
-                                )
-                                :   errorCode_(errorCode)
-                                ,   message_(message)
-                                ,   location_(location) {
+MakerException::MakerException(const MakerErrorCode& errorCode,
+                               const std::string_view message,
+                               const std::source_location& location)
+    : errorCode_(errorCode), message_(message), location_(location) {
     formatMessage();
     logException();
 }
 
 //==============================================================================
-// Funções públicas
+// Public Functions
 //==============================================================================
 
 /**
- * @brief Fornece uma descrição da exceção.
- * 
- * Esta função retorna uma string em estilo C contendo a mensagem completa de erro,
- * que inclui o código de erro, mensagem, arquivo, função e linha.
- * 
- * @return Uma string em estilo C representando a mensagem completa de erro.
+ * @brief Provides a description of the exception.
+ *
+ * This function returns a C-style string containing the full error message,
+ * which includes the error code, message, file, function, and line.
+ *
+ * @return A C-style string representing the full error message.
  */
 const char* MakerException::what() const noexcept {
     return fullMessage_.c_str();
 }
 
 /**
- * @brief Obtém o código de erro associado a esta exceção.
- * 
- * Esta função retorna o `MakerErrorCode` que representa o tipo de erro.
- * 
- * @return O código de erro como um `MakerErrorCode`.
+ * @brief Gets the error code associated with this exception.
+ *
+ * This function returns the `MakerErrorCode` that represents the type of error.
+ *
+ * @return The error code as a `MakerErrorCode`.
  */
 MakerErrorCode MakerException::errorCode() const noexcept {
     return errorCode_;
 }
 
 /**
- * @brief Obtém a localização de origem onde a exceção foi lançada.
- * 
- * Esta função retorna a localização de origem (`std::source_location`) onde a exceção
- * foi criada, fornecendo informações sobre o arquivo, função e número da linha.
- * 
- * @return Uma referência para o `std::source_location` onde a exceção ocorreu.
+ * @brief Gets the source location where the exception was thrown.
+ *
+ * This function returns the source location (`std::source_location`) where the
+ * exception was created, providing information about the file, function, and
+ * line number.
+ *
+ * @return A reference to the `std::source_location` where the exception occurred.
  */
 const std::source_location& MakerException::location() const noexcept {
     return location_;
 }
 
 //==============================================================================
-// Funções privadas
+// Private Functions
 //==============================================================================
 
 /**
- * @brief Formata a mensagem completa de erro, incluindo código de erro, mensagem e localização de origem.
- * 
- * Esta função cria a mensagem completa de erro que inclui detalhes como o código de erro,
- * mensagem personalizada, nome do arquivo, nome da função e número da linha.
- * A mensagem formatada é armazenada em `fullMessage_`.
+ * @brief Formats the full error message, including error code, message, and
+ *        source location.
+ *
+ * This function creates the full error message that includes details such as
+ * the error code, custom message, file name, function name, and line number.
+ * The formatted message is stored in `fullMessage_`.
  */
 void MakerException::formatMessage() {
     std::string errorCodeStr;
@@ -143,10 +157,10 @@ void MakerException::formatMessage() {
     if (it != errorCodeMap().end()) {
         errorCodeStr = it->second;
     } else {
-        errorCodeStr = "Erro Desconhecido";
+        errorCodeStr = "Unknown Error";
     }
 
-    fullMessage_ = std::format("Erro: {}\nMensagem: {}\nArquivo: {}\nFunção: {}\nLinha: {}\n",
+    fullMessage_ = std::format("Error: {}\nMessage: {}\nFile: {}\nFunction: {}\nLine: {}\n",
                                errorCodeStr,
                                message_,
                                getFileName(location_.file_name()),
@@ -155,17 +169,17 @@ void MakerException::formatMessage() {
 }
 
 /**
- * @brief Registra os detalhes da exceção usando o MakerLogger.
- * 
- * Esta função registra a mensagem completa de erro usando o `MakerLogger` e também
- * registra o caminho de execução do programa para fornecer contexto sobre o fluxo
- * do programa que levou à exceção.
+ * @brief Logs the exception details using MakerLogger.
+ *
+ * This function logs the full error message using the `MakerLogger` and also
+ * logs the execution path to provide context about the program flow leading to
+ * the exception.
  */
 void MakerException::logException() const {
-    // Registra a mensagem detalhada da exceção
+    // Logs the detailed exception message
     MakerLogger::error(fullMessage_, location_);
 
-    // Recupera e registra o caminho de execução
+    // Retrieves and logs the execution path
     std::string breadcrumbTrail = MakerLogger::getBreadcrumbTrail();
     MakerLogger::error(breadcrumbTrail, location_);
 }

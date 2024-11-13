@@ -71,7 +71,7 @@ enum class Shape2DType { RECTANGLE, STAR, ELLIPSE, POLYGONCSV };
  */
 int main() {
 
-    Shape2DType testShape = Shape2DType::ELLIPSE;  ///< Selected shape type for testing.
+    Shape2DType testShape = Shape2DType::POLYGONCSV;  ///< Selected shape type for testing.
 //    vmm::ExportFormat exportFormat = vmm::ExportFormat::VTK;  ///< Selected export format for testing.
     vmm::GeometricDataHolder geometricDataHolder;  ///< Data holder to store shape parameters.
     
@@ -88,28 +88,29 @@ int main() {
             ptrShape = std::dynamic_pointer_cast<vmm::Shape2D>(vmm::ShapeFactory::createShape(vmm::Ellipse::getClassID(), geometricDataHolder));
             break;
 
-//        case Shape2DType::RECTANGLE:    
-//            geometricDataHolder.set("Length", 2.0);
-//            geometricDataHolder.set("Width", 2.0);
-//            geometricDataHolder.set("BottomLeftCorner", Point2D(3,1));  // Optional data
-//            std::cout << "Data for rectangle generation\n";
-//            std::cout << geometricDataHolder << "\n";
-//            ptrShape = std::dynamic_pointer_cast<vmm::Shape2D>(vmm::ShapeFactory::createShape(vmm::Rectangle::getClassID(), geometricDataHolder));
-//            break;
+        case Shape2DType::RECTANGLE:    
+            geometricDataHolder.set("Length", 2.0);
+            geometricDataHolder.set("Width", 2.0);
+            geometricDataHolder.set("BottomLeftCorner", Point2D(3,1));  // Optional data
+            std::cout << "Data for rectangle generation\n";
+            std::cout << geometricDataHolder << "\n";
+            ptrShape = std::dynamic_pointer_cast<vmm::Shape2D>(vmm::ShapeFactory::createShape(vmm::Rectangle::getClassID(), geometricDataHolder));
+            break;
+
+        case Shape2DType::POLYGONCSV:    
+            geometricDataHolder.set("directory", "DataPolygonCSV"); //optional
+            geometricDataHolder.set("filename", "Polygon2D.csv");
+            std::cout << "Data for PolygonCSV generation\n";
+            std::cout << geometricDataHolder << "\n";
+            ptrShape = std::dynamic_pointer_cast<vmm::Shape2D>(vmm::ShapeFactory::createShape(vmm::PolygonCSV::getClassID(), geometricDataHolder));
+            break;
 
         case Shape2DType::STAR:    
             geometricDataHolder.set("Radius", 2.0);
-            std::cout << "Data for star generation\n";
+            std::cout << "Data for polygoncsv generation\n";
             std::cout << geometricDataHolder << "\n";
             ptrShape = std::dynamic_pointer_cast<vmm::Shape2D>(vmm::ShapeFactory::createShape(vmm::Star::getClassID(), geometricDataHolder));
             break;
-
-//        case Shape2DType::POLYGONCSV:    
-////            geometricDataHolder.set("Radius", 2.0);
-////            std::cout << "Data for star generation\n";
-////            std::cout << geometricDataHolder << "\n";
-//            ptrShape = std::dynamic_pointer_cast<vmm::Shape2D>(vmm::ShapeFactory::createShape(vmm::PolygonCSV::getClassID(), geometricDataHolder));
-//            break;
         
         default:           
             std::cerr << "Option not available\n";

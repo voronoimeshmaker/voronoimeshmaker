@@ -2,29 +2,31 @@
 #define __VORMAKER_EXCEPTION_H__
 
 //==============================================================================
-// Nome        : MakerException.h
-// Autor       : Joao Flavio Vieira de Vasconcellos
-// Versão     : 2.0
-// Descrição  : Tratamento de exceções para a biblioteca VoronoiMeshMaker.
-//                Parte do grupo 'error' para gerenciamento robusto de erros.
+// Name        : MakerException.h
+// Author      : Joao Flavio Vieira de Vasconcellos
+// Version     : 2.0
+// Description : Exception handling for the VoronoiMeshMaker library.
+//               Part of the 'error' group for robust error management.
 //
-// Este programa é software livre: você pode redistribuí-lo e/ou modificá-lo
-// sob os termos da GNU General Public License como publicada pela
-// Free Software Foundation, versão 3 da Licença.
+// This program is free software: you can redistribute it and/or modify it
+// under the terms of the GNU General Public License as published by the
+// Free Software Foundation, version 3 of the License.
 //
-// Este programa é distribuído na esperança de que seja útil,
-// mas SEM QUALQUER GARANTIA; sem sequer a garantia implícita de
-// COMERCIALIZAÇÃO ou ADEQUAÇÃO A QUALQUER PROPÓSITO EM PARTICULAR. Consulte a
-// GNU General Public License para mais detalhes.
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// GNU General Public License for more details.
 //==============================================================================
 
 /**
  * @file MakerException.h
- * @brief Define a classe MakerException, que fornece capacidades robustas de tratamento de erros para a biblioteca VoronoiMeshMaker.
+ * @brief Defines the MakerException class, providing robust error-handling
+ *        capabilities for the VoronoiMeshMaker library.
  *
- * A classe MakerException captura informações detalhadas sobre erros, incluindo arquivo, linha e função
- * onde ocorreram, além de suportar mensagens de erro personalizadas e mecanismos de tratamento.
- * Esta classe faz parte do grupo 'error' na biblioteca VoronoiMeshMaker.
+ * The MakerException class captures detailed information about errors,
+ * including the file, line, and function where they occurred, and supports
+ * custom error messages and handling mechanisms. This class is part of the
+ * 'error' group in the VoronoiMeshMaker library.
  *
  * @ingroup error
  *
@@ -36,18 +38,22 @@
  */
 
 //==============================================================================
-// Includes da biblioteca padrão do C++
+// Standard C++ Library Includes
 //==============================================================================
-#include <format>
+
+#include <unordered_map>
+#include <source_location>
+#include <string>
+
 
 //==============================================================================
-// Includes da biblioteca VoronoiMeshMaker
+// VoronoiMeshMaker Library Includes
 //==============================================================================
-#include <VoronoiMeshMaker/Error/MakerLogger.h>
+
 #include <VoronoiMeshMaker/Misc/namespace.h>
 
 //==============================================================================
-// Declaração do namespace
+// Namespace Declaration
 //==============================================================================
 
 VORMAKER_NAMESPACE_OPEN
@@ -55,85 +61,88 @@ VORMAKER_NAMESPACE_OPEN
 /**
  * @ingroup error
  * @enum MakerErrorCode
- * @brief Enumeração dos possíveis códigos de erro na biblioteca VoronoiMeshMaker.
+ * @brief Enumeration of possible error codes in the VoronoiMeshMaker library.
  *
- * Este enum representa os diversos tipos de erros que podem ocorrer na biblioteca VoronoiMeshMaker.
+ * This enum represents the various types of errors that can occur in the
+ * VoronoiMeshMaker library.
  */
 enum class MakerErrorCode {
     FileNotFound = 0,
     InvalidPolygon,
     NullPointer,
-    // Adicione outros códigos de erro conforme necessário
+    // Add other error codes as needed
 };
 
 /**
  * @ingroup error
  * @class MakerException
- * @brief Classe de exceção para tratamento de erros na biblioteca VoronoiMeshMaker.
+ * @brief Exception class for error handling in the VoronoiMeshMaker library.
  *
- * Esta classe captura informações detalhadas sobre erros, incluindo a função, arquivo e linha
- * onde a exceção foi lançada. Suporta mensagens de erro personalizadas e se integra ao MakerLogger
- * para fornecer um caminho de execução do programa que levou ao erro.
+ * This class captures detailed information about errors, including the
+ * function, file, and line where the exception was thrown. It supports custom
+ * error messages and integrates with MakerLogger to provide a trace of the
+ * program flow leading to the error.
  */
 class MakerException : public std::exception {
 
 public:
     /**
-     * @brief Construtor para criar uma exceção com o código de erro.
+     * @brief Constructor to create an exception with an error code.
      *
-     * @param errorCode O tipo de erro (baseado em MakerErrorCode).
-     * @param message Uma mensagem de erro personalizada para fornecer informações adicionais.
-     * @param location Localização da origem do erro (padrão: localização atual).
+     * @param errorCode The type of error (based on MakerErrorCode).
+     * @param message A custom error message to provide additional information.
+     * @param location The source location of the error (default: current
+     *                 location).
      */
-    
-    MakerException  (   const MakerErrorCode& errorCode
-                    ,   const std::string_view message = ""
-                    ,   const std::source_location& location = std::source_location::current());
+    MakerException(const MakerErrorCode& errorCode,
+                   const std::string_view message = "",
+                   const std::source_location& location =
+                       std::source_location::current());
 
     /**
-     * @brief Obtém uma descrição da exceção.
+     * @brief Gets a description of the exception.
      *
-     * @return Uma string no estilo C contendo a mensagem de erro.
+     * @return A C-style string containing the error message.
      */
     virtual const char* what() const noexcept override;
 
     /**
-     * @brief Obtém o código de erro.
+     * @brief Gets the error code.
      *
-     * @return O MakerErrorCode associado a esta exceção.
+     * @return The MakerErrorCode associated with this exception.
      */
     MakerErrorCode errorCode() const noexcept;
 
     /**
-     * @brief Obtém a localização de origem onde a exceção foi lançada.
+     * @brief Gets the source location where the exception was thrown.
      *
-     * @return Uma referência para o objeto de localização de origem.
+     * @return A reference to the source location object.
      */
     const std::source_location& location() const noexcept;
 
 private:
-    
-    MakerErrorCode errorCode_;                 ///< Enum que representa o tipo de erro.
-    std::string message_;                      ///< Mensagem de erro personalizada.
-    std::source_location location_;            ///< Localização da origem do erro.
-    std::string fullMessage_;                  ///< Mensagem de erro formatada completa.
+    MakerErrorCode errorCode_;       ///< Enum representing the type of error.
+    std::string message_;            ///< Custom error message.
+    std::source_location location_;  ///< Source location of the error.
+    std::string fullMessage_;        ///< Formatted full error message.
 
     /**
-     * @brief Formata a mensagem completa de erro.
+     * @brief Formats the full error message.
      */
     void formatMessage();
 
     /**
-     * @brief Registra a exceção usando o MakerLogger.
+     * @brief Logs the exception using MakerLogger.
      */
     void logException() const;
 
     /**
-     * @brief Retorna o mapeamento dos códigos de erro para suas representações em string.
+     * @brief Returns the mapping of error codes to their string representations.
      *
-     * @return Uma referência para o unordered_map contendo códigos de erro e suas mensagens.
+     * @return A reference to the unordered_map containing error codes and
+     *         their messages.
      */
-    static const std::unordered_map<MakerErrorCode, std::string>& errorCodeMap();
+    static const std::unordered_map<MakerErrorCode, std::string_view>& errorCodeMap();
 };
 
 VORMAKER_NAMESPACE_CLOSE

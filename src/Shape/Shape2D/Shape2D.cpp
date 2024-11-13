@@ -34,7 +34,9 @@ VORMAKER_NAMESPACE_OPEN
  *
  * @param _data The GeometricDataHolder containing the shape parameters.
  */
-Shape2D::Shape2D(const GeometricDataHolder& _data) : Shape(_data) {}
+Shape2D::Shape2D(const GeometricDataHolder& _data) : Shape(_data) {
+    vmm::FunctionLogger logger;
+}
 
 /**
  * @brief Calculates the area of the shape.

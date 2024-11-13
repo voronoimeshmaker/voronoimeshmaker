@@ -59,6 +59,7 @@ public:
      */
     template <typename T>
     static void registerShape() {
+        FunctionLogger logger;
         static_assert(std::is_base_of<Shape, T>::value, "T must derive from Shape");
 
         shapeRegistry[T::getClassID()] = [](const GeometricDataHolder& data) -> std::shared_ptr<Shape> {

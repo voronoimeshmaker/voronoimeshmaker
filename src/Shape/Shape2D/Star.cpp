@@ -1,11 +1,11 @@
 //==============================================================================
 // Name        : Star2D.cpp
-// Author      : Joao Flavio Vieira de Vasconcellos
+// Author      : João Flávio Vieira de Vasconcellos
 // Version     : 1.0
 // Description : Class for handling two-dimensional surfaces in the form of
 //               a star.
 //
-// Copyright   : Copyright (C) <2024> Joao Flavio Vieira de Vasconcellos
+// Copyright   : Copyright (C) 2024 João Flávio Vieira de Vasconcellos
 //               (jflavio at iprj.uerj.br)
 //
 // License     : This program is free software: you can redistribute it and/or modify
@@ -22,8 +22,16 @@
 //==============================================================================
 
 //==============================================================================
+// Includes from c++ library
+//==============================================================================
+
+#include <numbers>
+
+//==============================================================================
 // Includes from VoronoiMeshMaker library
 //==============================================================================
+
+#include <VoronoiMeshMaker/Misc/Misc.h>
 #include <VoronoiMeshMaker/Shape/ShapeFactory.h>
 #include <VoronoiMeshMaker/Shape/Shape2D/Star.h>
 
@@ -59,7 +67,7 @@ Star::Star(const GeometricDataHolder& _holder) : Shape2D(_holder)
     }
 
     // Define constants for vertex calculations
-    constexpr Real SQRT3 = sqrt(3);
+    constexpr Real SQRT3 = std::numbers::sqrt3;
     const auto R = *radius;
     const auto SQRT32 = 0.5 * SQRT3 * R;
     const auto SQRT36 = SQRT3 * R / 6;
