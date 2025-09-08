@@ -3,7 +3,7 @@
 // Author      : Joao Flavio Vieira de Vasconcellos
 // Version     : 1.2
 // Description : Numerical constants (thresholds and defaults) for the core of
-//               VoronoiMeshMaker. Single-responsibility: no state, no logic.
+//               VoronoiMeshMaker. 
 // License     : GNU GPL v3
 //------------------------------------------------------------------------------
 
@@ -30,7 +30,6 @@
 //  VoronoiMeshMaker includes
 //------------------------------------------------------------------------------
 
-#include <VoronoiMeshMaker/Core/namespace.h>            // For namespaces
 #include <VoronoiMeshMaker/Core/type.h>                 // for Real
 
 VORMAKER_NAMESPACE_OPEN
@@ -42,7 +41,7 @@ VORMAKER_NAMESPACE_OPEN
  * Keeping constants in a dedicated namespace avoids polluting the main API
  * while preserving simple names for frequent use.
  */
-namespace constants {
+CONSTANTS_NAMESPACE_OPEN
 
 //------------------------------------------------------------------------------
 // Typed constants (prefer these in new code)
@@ -79,7 +78,7 @@ inline constexpr int kDefaultSize = 0x50;
 inline constexpr Real kPi =
     static_cast<Real>(std::numbers::pi_v<long double>);
 
-}  // namespace constants
+CONSTANTS_NAMESPACE_CLOSE
 
 //------------------------------------------------------------------------------
 // Backwards-compatible aliases (kept to avoid breaking existing code)

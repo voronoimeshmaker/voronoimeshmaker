@@ -65,4 +65,90 @@
 #define GEOTYPES_NAMESPACE_CLOSE \
     }
 
+/**
+ * @brief Open the error sub-namespace (to be used *inside* vmm).
+ *
+ * Usage:
+ * @code
+ * VORMAKER_NAMESPACE_OPEN
+ * ERROR_NAMESPACE_OPEN
+ * // ... code inside namespace vmm::error ...
+ * ERROR_NAMESPACE_CLOSE
+ * VORMAKER_NAMESPACE_CLOSE
+ * @endcode
+ */
+#define ERROR_NAMESPACE_OPEN \
+    namespace error {
+
+/**
+ * @brief Close the error sub-namespace.
+ */
+#define ERROR_NAMESPACE_CLOSE \
+    }
+
+/**
+ * @brief Open the error sub-namespace (to be used *inside* error).
+ *
+ * Usage:
+ * @code
+ * VORMAKER_NAMESPACE_OPEN
+ * ERROR_NAMESPACE_OPEN
+ * DETAIL_NAMESPACE_OPEN
+ * // ... code inside namespace vmm::error::detail ...
+ * DETAIL_NAMESPACE_CLOSE
+ * ERROR_NAMESPACE_CLOSE
+ * VORMAKER_NAMESPACE_CLOSE
+ * @endcode
+ */
+#define DETAIL_NAMESPACE_OPEN \
+    namespace error {
+
+/**
+ * @brief Close the error sub-namespace.
+ */
+#define DETAIL_NAMESPACE_CLOSE \
+    }
+
+/**
+ * @brief Open the io sub-namespace (to be used *inside* vmm).
+ *
+ * Usage:
+ * @code
+ * VORMAKER_NAMESPACE_OPEN
+ * IO_NAMESPACE_OPEN
+ * // ... code inside namespace vmm::io ...
+ * IO_NAMESPACE_CLOSE
+ * VORMAKER_NAMESPACE_CLOSE
+ * @endcode
+ */
+#define IO_NAMESPACE_OPEN \
+    namespace io {
+
+/**
+ * @brief Close the io sub-namespace.
+ */
+#define IO_NAMESPACE_CLOSE \
+    }
+
+/**
+ * @brief Open the constants sub-namespace (to be used *inside* vmm).
+ *
+ * Usage:
+ * @code
+ * VORMAKER_NAMESPACE_OPEN
+ * CONSTANTS_NAMESPACE_OPEN
+ * // ... code inside namespace vmm::constants ...
+ * CONSTANTS_NAMESPACE_CLOSE
+ * VORMAKER_NAMESPACE_CLOSE
+ * @endcode
+ */
+#define CONSTANTS_NAMESPACE_OPEN \
+    namespace constants {
+
+/**
+ * @brief Close the constants sub-namespace.
+ */
+#define CONSTANTS_NAMESPACE_CLOSE \
+    }
+
 /** @} */  // end of core

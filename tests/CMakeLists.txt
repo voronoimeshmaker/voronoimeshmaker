@@ -7,6 +7,16 @@
 # ------------------------------------------------------------
 cmake_minimum_required(VERSION 3.16)
 
+# Se estiver usando CMake 3.24 ou superior
+if(POLICY CMP0167)
+  cmake_policy(SET CMP0167 NEW)
+endif()
+
+# Evita warning do FetchContent (CMP0135) ao extrair arquivos
+if(POLICY CMP0135)
+  cmake_policy(SET CMP0135 NEW)
+endif()
+
 # --- Modo standalone: se este CMakeLists for top-level, defina projeto e testing
 if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
   project(VoronoiMeshMakerTests LANGUAGES CXX)

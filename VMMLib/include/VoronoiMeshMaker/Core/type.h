@@ -109,11 +109,14 @@ enum class GeometryType {
 //------------------------------------------------------------------------------
 // Numeric type exposed at the vmm level (used by constants.h).
 //------------------------------------------------------------------------------
+
 using Real = gtp::Kernel::FT;
+using Int  = gtp::Kernel::RT;
 
 //--- Common integer/real containers (non-geometry) ----------------------------
-using LstInt  = std::list<int>;
-using VecInt  = std::vector<int>;
+
+using LstInt  = std::list<Int>;
+using VecInt  = std::vector<Int>;
 using LstReal = std::list<Real>;
 using VecReal = std::vector<Real>;
 

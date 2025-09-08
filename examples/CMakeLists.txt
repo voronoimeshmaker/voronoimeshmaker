@@ -8,12 +8,17 @@
 #     run_<target>      -> executa um específico (ex.: run_ex_core1)
 # - Cada binário é gerado ao lado do seu .cpp
 # ------------------------------------------------------------
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.30)
 
-# Silencia o aviso CMP0167 vindo do CGAL ao procurar Boost
+
+# Se estiver usando CMake 3.24 ou superior
 if(POLICY CMP0167)
-  cmake_policy(SET CMP0167 OLD)  # mantém compatibilidade com FindBoost
-  # ou: cmake_policy(SET CMP0167 NEW)  # se você tiver BoostConfig moderno (1.70+)
+  cmake_policy(SET CMP0167 NEW)
+endif()
+
+# Evita warning do FetchContent (CMP0135) ao extrair arquivos
+if(POLICY CMP0135)
+  cmake_policy(SET CMP0135 NEW)
 endif()
 
 # --- Modo standalone (se abrir esta pasta direto com cmake):
