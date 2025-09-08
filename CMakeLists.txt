@@ -1,137 +1,189 @@
-# Define the minimum required version of CMake
-cmake_minimum_required(VERSION 3.10)
+# ------------------------------------------------------------
+# CMake minimum version + policies
+# ------------------------------------------------------------
+cmake_minimum_required(VERSION 3.16)
+# Evita warning do FetchContent (CMP0135) ao extrair arquivos
+if(POLICY CMP0135)
+  cmake_policy(SET CMP0135 NEW)
+endif()
 
-# Set the project name and version
+
+if(POLICY CMP0167)
+  cmake_policy(SET CMP0167 OLD)  # silencia o aviso vindo dos cmake scripts do CGAL
+endif()
+
+# ------------------------------------------------------------
+# Project (ESSENCIAL: precisa existir no CMake raiz)
+# ------------------------------------------------------------
 project(VoronoiMeshMaker VERSION 1.0 LANGUAGES CXX)
 
-# Specify C++ standard
+# Debug: mostre claramente qual CMakeLists é o raiz
+message(STATUS "[Root] Source dir = ${CMAKE_SOURCE_DIR}")
+message(STATUS "[Root] Binary dir = ${CMAKE_BINARY_DIR}")
+
+# ------------------------------------------------------------
+# C++ standard
+# ------------------------------------------------------------
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Options to build documentation, examples, or tests
-option(BUILD_DOCUMENTATION "Build Doxygen and Sphinx documentation" OFF)
-option(BUILD_EXAMPLES "Build examples" ON)
-option(BUILD_TESTS "Build tests" OFF)
+# ------------------------------------------------------------
+# Options
+# ------------------------------------------------------------
+option(BUILD_DOCUMENTATION "Build Doxygen and Sphinx documentation"     OFF)
+option(BUILD_EXAMPLES      "Build examples"                             ON)
+option(BUILD_TESTS         "Build tests"                                OFF)
 
-# Set default build type to Release if not specified
+# ------------------------------------------------------------
+# Default build type (Release if not specified)
+# ------------------------------------------------------------
 if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Build type" FORCE)
 endif()
 
-# Locate CGAL, VTK, TBB, and Boost libraries
-find_package(CGAL REQUIRED)
-find_package(VTK REQUIRED)
-find_package(TBB REQUIRED)
-find_package(Boost REQUIRED COMPONENTS log log_setup system thread)
 
-# Include directories for CGAL, VTK, TBB, and Boost
-include_directories(${CGAL_INCLUDE_DIRS})
-include_directories(${VTK_INCLUDE_DIRS})
-include_directories(${TBB_INCLUDE_DIRS})
 
-# Include directories for your project headers
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 
-# Collect all source files from src directory and subdirectories
-file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
+# ------------------------------------------------------------
+# Library layout (all headers/sources live under VoronoiMeshMakerLib)
+# ------------------------------------------------------------
+set(VMMLib_DIR ${CMAKE_CURRENT_SOURCE_DIR}/VMMLib)
 
-# Create the shared library and set the output directory to "lib"
+# ------------------------------------------------------------
+# Output root (send binaries to ./bin)
+# ------------------------------------------------------------
+set(VMM_OUTPUT_BIN_DIR ${CMAKE_CURRENT_SOURCE_DIR}/bin)
+
+# ------------------------------------------------------------
+# Include directories (project headers)
+# ------------------------------------------------------------
+include_directories(${VMMLib_DIR}/include)
+
+# ------------------------------------------------------------
+# Sources: pick up every new .cpp recursively (no CMake edits required)
+# ------------------------------------------------------------
+file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS
+     "${VMMLib_DIR}/src/*.cpp")
+
+# ------------------------------------------------------------
+# Library (shared)
+# ------------------------------------------------------------
 add_library(VoronoiMeshMaker SHARED ${SOURCES})
 
-# Link the library with CGAL, VTK, TBB, and Boost
-target_link_libraries(VoronoiMeshMaker
-    PUBLIC
-    ${CGAL_LIBRARIES}
-    ${VTK_LIBRARIES}
-    TBB::tbb
-    Boost::log Boost::log_setup Boost::system Boost::thread
-)
+# Link dependencies here if/when needed:
+# target_link_libraries(MeshMaker PUBLIC Some::Dependency)
 
-# Set output directories for the library to the "lib" directory
+# ------------------------------------------------------------
+# Output directories (build artefacts to ./bin)
+# ------------------------------------------------------------
 set_target_properties(VoronoiMeshMaker PROPERTIES
-    ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib
-    LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib
-    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/lib
+    ARCHIVE_OUTPUT_DIRECTORY ${VMM_OUTPUT_BIN_DIR}
+    LIBRARY_OUTPUT_DIRECTORY ${VMM_OUTPUT_BIN_DIR}
+    RUNTIME_OUTPUT_DIRECTORY ${VMM_OUTPUT_BIN_DIR}
 )
 
-# Set compiler flags for optimizations
+
+find_package(CGAL REQUIRED COMPONENTS Core)
+
+# Torna a dependência transitiva para consumidores da lib
+target_link_libraries(VoronoiMeshMaker
+    PUBLIC CGAL::CGAL CGAL::CGAL_Core
+)
+
+
+# ------------------------------------------------------------
+# Compiler optimisations
+# ------------------------------------------------------------
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
     target_compile_options(VoronoiMeshMaker PRIVATE
-        -O3                     # Optimization level 3
-        -march=native           # Optimize for the current architecture
-        -flto                   # Enable Link Time Optimization
-        -fopenmp                # Enable OpenMP support if applicable
+        -O3
+        -march=native
+        -flto
+        -fopenmp
     )
 elseif(MSVC)
     target_compile_options(VoronoiMeshMaker PRIVATE
-        /O2                     # Optimization level 2
-        /GL                     # Enable Whole Program Optimization
+        /O2
+        /GL
     )
 endif()
 
-# Installation rules: Install the library and headers
+# ------------------------------------------------------------
+# Install rules
+# (keeps install lib inside ./bin and headers under ./include)
+# ------------------------------------------------------------
 install(TARGETS VoronoiMeshMaker
     EXPORT VoronoiMeshMakerTargets
-    LIBRARY DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/lib
-    ARCHIVE DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/lib
-    RUNTIME DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/lib
+    LIBRARY DESTINATION ${VMM_OUTPUT_BIN_DIR}
+    ARCHIVE DESTINATION ${VMM_OUTPUT_BIN_DIR}
+    RUNTIME DESTINATION ${VMM_OUTPUT_BIN_DIR}
 )
 
-# Install header files located in the "include" directory
-install(DIRECTORY include/
+# Install public headers from VMMLib/include
+install(DIRECTORY ${VMMLib_DIR}/include/
     DESTINATION include
     FILES_MATCHING PATTERN "*.h" PATTERN "*.hpp" PATTERN "*.tpp"
 )
 
-# Install template files (.tpp) located in the "src" directory
-install(DIRECTORY src/
+# If you keep template impls in src/, ship their .tpp as headers too
+install(DIRECTORY ${VMMLib_DIR}/src/
     DESTINATION include
     FILES_MATCHING PATTERN "*.tpp"
 )
 
-# Define a custom target to run all examples
+# ------------------------------------------------------------
+# Meta target to run all examples (used by the macro below)
+# ------------------------------------------------------------
 if(NOT TARGET run_examples)
     add_custom_target(run_examples
         COMMAND ${CMAKE_COMMAND} -E echo "Running all examples..."
     )
 endif()
 
-# Define the macro to add examples in a directory
+# ------------------------------------------------------------
+# Macro: build every *.cpp under a directory (recursively)
+# - Creates one executable per .cpp
+# - Links against VoronoiMeshMaker
+# - Emits the executable next to its source file
+# - Optionally runs it post-build
+# ------------------------------------------------------------
 macro(add_examples_in_directory dir)
-    # Collect all .cpp files in the specified directory and subdirectories
-    file(GLOB_RECURSE EXAMPLE_SOURCES CONFIGURE_DEPENDS RELATIVE "${dir}" "${dir}/*.cpp")
+    file(GLOB_RECURSE EXAMPLE_SOURCES CONFIGURE_DEPENDS
+         RELATIVE "${dir}" "${dir}/*.cpp")
     if(EXAMPLE_SOURCES)
         foreach(example_source ${EXAMPLE_SOURCES})
             message(STATUS "Found example source: ${example_source}")
-            # Construct the full path to the source file
             set(example_full_path "${dir}/${example_source}")
-            # Get the name of the executable without extension
             get_filename_component(example_name ${example_source} NAME_WE)
-            # Add the executable target
+
             add_executable(${example_name} "${example_full_path}")
-            # Link the executable with the VoronoiMeshMaker library
             target_link_libraries(${example_name} PRIVATE VoronoiMeshMaker)
-            # Include directories for headers
-            target_include_directories(${example_name} PRIVATE ${CMAKE_SOURCE_DIR}/include)
-            # Set compiler flags for optimizations
-            if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
-                target_compile_options(${example_name} PRIVATE -O3 -march=native -flto)
+            target_include_directories(${example_name} PRIVATE
+                ${VMMLIB_DIR}/include)
+
+            if(CMAKE_COMPILER_IS_GNUCXX OR
+               CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
+                target_compile_options(${example_name} PRIVATE
+                    -O3 -march=native -flto)
             elseif(MSVC)
                 target_compile_options(${example_name} PRIVATE /O2 /GL)
             endif()
-            # Set the output directory for the executable
-            get_filename_component(example_dir "${example_full_path}" DIRECTORY)
+
+            get_filename_component(example_dir
+                "${example_full_path}" DIRECTORY)
             set_target_properties(${example_name} PROPERTIES
                 RUNTIME_OUTPUT_DIRECTORY "${example_dir}"
             )
-            # Add the example to the run_examples target if it exists
+
             if(TARGET run_examples)
                 add_dependencies(run_examples ${example_name})
                 add_custom_command(
                     TARGET ${example_name}
                     POST_BUILD
-                    COMMAND ${CMAKE_COMMAND} -E echo "Executable ${example_name} successfully built!"
-                    COMMAND ${CMAKE_COMMAND} -E echo "Running example ${example_name}..."
+                    COMMAND ${CMAKE_COMMAND} -E echo
+                            "Executable ${example_name} successfully built!"
+                    COMMAND ${CMAKE_COMMAND} -E echo
+                            "Running example ${example_name}..."
                     COMMAND "${example_dir}/${example_name}"
                     WORKING_DIRECTORY "${example_dir}"
                     COMMENT "Running example ${example_name}..."
@@ -143,26 +195,46 @@ macro(add_examples_in_directory dir)
     endif()
 endmacro()
 
-# Ensure only one option is enabled
+# ------------------------------------------------------------
+# Mutual exclusion: examples vs tests
+# ------------------------------------------------------------
 if(BUILD_EXAMPLES AND BUILD_TESTS)
-    message(FATAL_ERROR "You can only enable either BUILD_EXAMPLES or BUILD_TESTS, not both.")
+    message(FATAL_ERROR
+        "You can only enable either BUILD_EXAMPLES or BUILD_TESTS, not both.")
 endif()
 
-# Add the examples directory if BUILD_EXAMPLES is ON
+# ------------------------------------------------------------
+# Examples
+# ------------------------------------------------------------
 if(BUILD_EXAMPLES)
     message(STATUS "Building Examples...")
     add_subdirectory(examples)
 endif()
 
-# Add the tests directory if BUILD_TESTS is ON
+# ------------------------------------------------------------
+# Tests (GoogleTest via FetchContent)  <<<<<< CORREÇÃO AQUI
+# ------------------------------------------------------------
 if(BUILD_TESTS)
     message(STATUS "Building Tests...")
-    find_package(GTest REQUIRED)
+    include(CTest)
     enable_testing()
+
+    include(FetchContent)
+    FetchContent_Declare(
+      googletest
+      URL https://github.com/google/googletest/archive/refs/tags/v1.14.0.zip
+    )
+    # Para MSVC multi-config (Visual Studio)
+    set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+    FetchContent_MakeAvailable(googletest)
+
+    # Agora os targets GTest::gtest e GTest::gtest_main existem
     add_subdirectory(tests)
 endif()
 
-# Optional: Add a custom target to clean up generated files
+# ------------------------------------------------------------
+# distclean (purge build-tree artefacts)
+# ------------------------------------------------------------
 add_custom_target(distclean
     COMMAND ${CMAKE_COMMAND} -E rm -rf
     ${CMAKE_BINARY_DIR}/*

@@ -1,120 +1,237 @@
-# VoronoiMeshMaker
+# SolidLab
 
-## Table of Contents
-- [Overview](#overview)
-- [Features](#features)
-- [Dependencies](#dependencies)
-  - [Installing Dependencies](#installing-dependencies)
-- [How to Build VoronoiMeshMaker and Examples](#how-to-build-voronoimeshmaker-and-examples)
-  - [Cloning the Repository](#cloning-the-repository)
-  - [Building the Library](#building-the-library)
-  - [Building Examples](#building-examples)
-  - [Running Examples](#running-examples)
-  - [Building and Running Tests](#building-and-running-tests)
-- [License](#license)
-- [Contact](#contact)
+Biblioteca didática em **C++20** para treinar **SOLID**, **TDD** e boas práticas.
+A API é mínima (classe `solidlab::SolidLab`) e o projeto já vem com:
 
-## Overview
-VoronoiMeshMaker is a library designed to generate Voronoi meshes, which can be used to discretize both two-dimensional and three-dimensional geometries. The library is primarily intended for use in finite volume methods for solving partial differential equations. The current version of the library is 1.0 and it is in active development.
+- **auto‑descoberta de exemplos** (`examples/` → alvos `exe_<pasta>`, `run_exe_<pasta>`, `run_all`)
+- **auto‑descoberta de testes** (`tests/` → alvos `ut_<pasta>`, `run_ut_<pasta>`, `run_all_tests`)
+- geração opcional de **documentação Doxygen**
 
-## Features
-- Generate Voronoi meshes in 2D and 3D.
-- Support for finite volume discretization.
-- Integration with external visualization tools.
-
-## Dependencies
-To use VoronoiMeshMaker, the following libraries must be pre-installed on your system:
-- **CGAL**: Required for geometric operations. Ensure you have the latest version installed.
-- **VTK**: Required for visualization support.
-- **TBB**: Required for parallelism.
-- **GMP** and **MPFR**: Required for numerical precision in geometric calculations.
-- **CMake** (version 3.10 or later): Required for building the project.
-
-If you plan to run tests, the following library is also required:
-- **Google Test (GTest)**: Required for unit testing.
-
-### Installing Dependencies
-On Ubuntu-based systems, you can install most dependencies using the following commands:
-
-```bash
-sudo apt-get update
-sudo apt-get install libcgal-dev libvtk7-dev libtbb-dev libgmp-dev libmpfr-dev cmake
+Durante a configuração você verá mensagens como:
 ```
-For Google Test:
-
-```bash
-sudo apt-get install libgtest-dev
-cd /usr/src/gtest
-sudo cmake .
-sudo make
-sudo mv libg* /usr/lib/
+-- Building Examples...
+--   [Examples] Exemplos detectados:
+--     - .../examples/hello  -> alvo: exe_hello
+-- Building Tests...
+--   [Tests] Testes detectados:
+--     - .../tests/SolidLab  -> alvo: ut_SolidLab
 ```
 
-## How to Build VoronoiMeshMaker and Examples
+---
 
-### Cloning the Repository
-Start by cloning the repository:
+## Estrutura do repositório
 
-```bash
-git clone https://github.com/username/VoronoiMeshMaker.git
-cd VoronoiMeshMaker
+```
+SolidLab/
+├─ CMakeLists.txt                  # raiz (lib, examples, tests, docs)
+├─ SolidLabLib/
+│  ├─ include/
+│  │  └─ SolidLab.hpp             # API pública (Doxygen completo)
+│  └─ src/
+│     └─ SolidLab.cpp
+├─ examples/                       # cada pasta com .cpp vira um executável
+│  └─ hello/
+│     └─ main.cpp
+├─ tests/                          # cada pasta com .cpp vira um executável de testes
+│  └─ SolidLab/
+│     └─ test_solidlab.cpp
+├─ docs/
+│  └─ mainpage.md                  # página principal do Doxygen (opcional)
+└─ bin/                            # saída da biblioteca (libSolidLab.so/.dll/.dylib/.a/.lib)
 ```
 
-### Building the Library
-To build the VoronoiMeshMaker library, you need to configure the build using CMake and then compile it.
+---
 
-1. Create a build directory:
+## Requisitos
 
-   ```bash
-   mkdir build
-   cd build
-   ```
+- **CMake ≥ 3.16** (usa `FetchContent` para baixar o GoogleTest)
+- **Compilador C++20**
+  - GCC ≥ 10 / Clang ≥ 10 / MSVC (VS 2019 16.10+)
+- **Make** ou **Ninja** (qualquer gerador suportado pelo CMake)
 
-2. Configure and build the library:
+> **OpenMP**: o `CMakeLists.txt` ativa `-fopenmp` **apenas** para GCC/Clang.  
+> - **Linux (GCC)**: normalmente já funciona (libgomp).  
+> - **macOS**: `brew install llvm libomp` e use o Clang do Homebrew (veja seção macOS).  
+> - **Windows (MSVC)**: OpenMP **não** é ativado por padrão.
 
-   ```bash
-   cmake ..
-   cmake --build .
-   ```
+---
 
-This will generate the shared library `libVoronoiMeshMaker.so` in the `lib` directory.
+## Instalação / Build
 
-### Building Examples
-To build the examples, enable the `BUILD_EXAMPLES` option during configuration:
+> **Importante:** por projeto, **Examples** e **Tests** são **mutuamente exclusivos** (evita compilar tudo ao mesmo tempo). Habilite **um** por vez.
 
+### Compilar **apenas exemplos**
 ```bash
-cmake -S .. -B . -DBUILD_EXAMPLES=ON -DBUILD_TESTS=OFF
-cmake --build .
+cmake -S . -B build -DBUILD_EXAMPLES=ON -DBUILD_TESTS=OFF
+cmake --build build -j
 ```
 
-### Running Examples
-After building, the executables for examples will be available in the respective directories where their source files (`.cpp`) are located. Run them with:
-
+### Compilar **apenas testes**
 ```bash
-./path/to/example/ExampleExecutable
+cmake -S . -B build -DBUILD_TESTS=ON -DBUILD_EXAMPLES=OFF
+cmake --build build -j
 ```
 
-### Building and Running Tests
-To build and run the tests, enable the `BUILD_TESTS` option during configuration:
+### Saída dos artefatos
+- A biblioteca **SolidLab** é emitida em `./bin/`.
+- Executáveis de **exemplos** são emitidos **ao lado** dos `.cpp` dentro de `examples/...`.
+- Executáveis de **testes** são emitidos **ao lado** dos `.cpp` dentro de `tests/...`.
 
+---
+
+## Executando **exemplos**
+
+O `examples/CMakeLists.txt` cria:
+- **um executável por diretório** com `.cpp` → **alvo** `exe_<nome_da_pasta>`
+- **um alvo para executar** cada um → `run_exe_<nome_da_pasta>`
+- **um alvo agregado** → `run_all` (executa todos em série)
+
+Comandos úteis:
 ```bash
-cmake -S .. -B . -DBUILD_EXAMPLES=OFF -DBUILD_TESTS=ON
-cmake --build .
-ctest --output-on-failure
+# compilar todos os exemplos
+cmake --build build --target examples
+
+# executar todos os exemplos
+cmake --build build --target run_all
+
+# executar um exemplo específico (pasta 'hello')
+cmake --build build --target run_exe_hello
+
+# binário gerado ao lado do fonte:
+./examples/hello/hello        # Linux/macOS
+# .\examples\hello\hello.exe  # Windows
 ```
 
-## License
-VoronoiMeshMaker is distributed under the GNU General Public License (GPL). For more details, see the `LICENSE` file included in the repository.
+### Adicionar um novo exemplo
+Crie uma pasta com um `.cpp` dentro de `examples/`:
+```
+examples/minha_demo/main.cpp
+```
+Na próxima configuração/compilação, surgirão os alvos `exe_minha_demo` e `run_exe_minha_demo` automaticamente.
 
-## Credits
+---
 
-(Any third-party tools, libraries, or resources used will be credited here.)
+## Executando **testes**
 
-## Authors and Acknowledgments
+Quando `-DBUILD_TESTS=ON`, o CMake raiz **baixa e configura** o **GoogleTest** via `FetchContent` (não precisa instalar no sistema).  
+O `tests/CMakeLists.txt` cria:
+- **um executável por diretório** em `tests/` → **alvo** `ut_<nome_da_pasta>`
+- **um alvo para rodar** cada um → `run_ut_<nome_da_pasta>`
+- **um alvo agregado** → `run_all_tests`
+- Integração com **CTest** via `gtest_discover_tests`
 
-(Details of contributors or acknowledgments will be added here.)
+Comandos úteis:
+```bash
+# compilar todos os testes
+cmake --build build --target tests -j
 
-## Contact
-For support or feedback, please contact:
-- **Email:** [voronoimeshmaker@gmail.com](mailto:voronoimeshmaker@gmail.com)
-- **GitHub Issues:** [Link to issues](https://github.com/voronoimeshmaker/voronoimeshmaker.git)
+# rodar todos os testes (alvo de conveniência)
+cmake --build build --target run_all_tests
+
+# alternativa via CTest (coleta tudo que foi descoberto)
+ctest --test-dir build --output-on-failure
+
+# rodar apenas os testes da pasta tests/SolidLab
+cmake --build build --target run_ut_SolidLab
+
+# rodar o binário diretamente (útil para filtros do GTest)
+./tests/SolidLab/SolidLab --gtest_filter=SolidLab_Join.*
+```
+
+### Adicionar um novo conjunto de testes
+Crie uma nova pasta dentro de `tests/` e adicione `.cpp`:
+```
+tests/Vector3/test_ops.cpp
+```
+Na próxima configuração/compilação, surgirão os alvos `ut_Vector3` e `run_ut_Vector3`.  
+Os testes também aparecem no CTest com prefixo `ut_Vector3:`.
+
+---
+
+## Documentação (Doxygen) — opcional
+
+- A API (`SolidLab.hpp`) possui comentários Doxygen detalhados.
+- A **página principal** fica em `docs/mainpage.md`.
+
+Gerar documentação:
+```bash
+cmake -S . -B build -DBUILD_DOCUMENTATION=ON
+cmake --build build --target docs
+# abra: build/docs/html/index.html
+```
+
+---
+
+## Uso mínimo da API
+
+```cpp
+#include "SolidLab.hpp"
+#include <iostream>
+using solidlab::SolidLab;
+
+int main() {
+  SolidLab lab;
+  lab.add_note("alpha");
+  lab.add_note("beta");
+  std::cout << "SolidLab v" << SolidLab::version() << "\n";
+  std::cout << "Joined: " << lab.join('-') << "\n"; // "alpha-beta"
+}
+```
+
+---
+
+## Plataformas / Notas específicas
+
+### macOS (Homebrew)
+```bash
+brew install cmake llvm libomp
+export CC=$(brew --prefix)/opt/llvm/bin/clang
+export CXX=$(brew --prefix)/opt/llvm/bin/clang++
+```
+
+### Windows (Visual Studio)
+Use **Developer PowerShell** ou **x64 Native Tools Prompt**:
+```powershell
+cmake -S . -B build -DBUILD_EXAMPLES=ON -DBUILD_TESTS=OFF
+cmake --build build --config Release --target run_all
+# ctest:
+ctest --test-dir build -C Release --output-on-failure
+```
+
+---
+
+## Limpeza / Alvos úteis
+
+```bash
+# limpar artefatos de build (equivalente a "make clean")
+cmake --build build --target clean
+
+# limpeza pesada (alvo customizado)
+cmake --build build --target distclean
+
+# listar alvos disponíveis
+cmake --build build --target help
+```
+
+---
+
+## Solução de problemas (FAQ)
+
+- **“You can only enable either BUILD_EXAMPLES or BUILD_TESTS”**  
+  Habilite apenas um dos dois flags ao configurar.
+
+- **“No rule to make target 'clear'”**  
+  Você executou `make clear`. Para limpar o terminal use `clear`.  
+  Para limpar o build: `cmake --build build --target clean`.
+
+- **Erros de OpenMP no macOS (GOMP/omp)**  
+  Instale `libomp` e use o Clang do Homebrew (veja a seção macOS).  
+  Em último caso, remova `-fopenmp` do `CMakeLists.txt`.
+
+- **Problemas de rede ao baixar GoogleTest (FetchContent)**  
+  Configure proxy/variáveis de ambiente ou baixe o zip e aponte `URL` para um caminho local.
+
+---
+
+## Licença
+Uso educativo. Se existir arquivo de licença no repositório, ele prevalece.
