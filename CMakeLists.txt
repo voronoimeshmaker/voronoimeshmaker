@@ -22,9 +22,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # ------------------------------------------------------------
 # Options
 # ------------------------------------------------------------
-option(BUILD_EXAMPLES "Build examples" ON)
+option(BUILD_EXAMPLES "Build examples" OFF)
 option(BUILD_TESTS    "Build tests"    ON)
-option(BUILD_DOCS     "Build docs (Doxygen + Sphinx)" ON)
+option(BUILD_DOCS     "Build docs (Doxygen + Sphinx)" OFF)
 
 # Default build type
 if(NOT CMAKE_BUILD_TYPE)
@@ -134,6 +134,18 @@ endif()
 # ------------------------------------------------------------
 # Documentation (Doxygen + Sphinx)
 # ------------------------------------------------------------
+
+# Forçar detecção do sphinx-build
+if(BUILD_DOCS AND NOT SPHINX_EXECUTABLE)
+    find_program(SPHINX_EXECUTABLE NAMES sphinx-build DOC "Sphinx documentation generator")
+    if(SPHINX_EXECUTABLE)
+        message(STATUS "Found sphinx-build: ${SPHINX_EXECUTABLE}")
+    else()
+        # Fallback para o caminho conhecido
+        set(SPHINX_EXECUTABLE "/usr/bin/sphinx-build" CACHE FILEPATH "Path to sphinx-build" FORCE)
+        message(STATUS "Using fallback sphinx-build: ${SPHINX_EXECUTABLE}")
+    endif()
+endif()
 
 # Sphinx source and build dirs
 set(SPHINX_SRC   "${CMAKE_SOURCE_DIR}/docs_sphinx")

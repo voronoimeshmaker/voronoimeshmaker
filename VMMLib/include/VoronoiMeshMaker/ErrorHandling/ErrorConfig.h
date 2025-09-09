@@ -9,9 +9,14 @@
 
 #pragma once
 
-#include <atomic>
+// -----------------------------------------------------------------------------
+//  include c++
+// -----------------------------------------------------------------------------
 #include <memory>
 
+// -----------------------------------------------------------------------------
+//  include VoronoiMeshMaker
+// -----------------------------------------------------------------------------
 #include <VoronoiMeshMaker/ErrorHandling/Language.h>
 #include <VoronoiMeshMaker/ErrorHandling/Severity.h>
 

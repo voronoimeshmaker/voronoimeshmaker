@@ -1,5 +1,5 @@
 // ============================================================================
-// File: CoreErrors.h
+// File:CoreErrors.h
 // Author: VoronoiMeshMaker Team
 // Version: 0.1.0
 // Description: Example core error enum + ErrorTraits specialization.
@@ -9,13 +9,14 @@
 
 #pragma once
 
-#include <string_view>
 
+// -----------------------------------------------------------------------------
+//  include VoronoiMeshMaker
+// -----------------------------------------------------------------------------
 #include <VoronoiMeshMaker/ErrorHandling/ErrorTraits.h>
-#include <VoronoiMeshMaker/ErrorHandling/Severity.h>
 
 /**
- * @file CoreErrors.h
+ * @fileCoreErrors.h
  * @brief Core error examples and their traits (extensible pattern).
  * @ingroup errorhandling
  */

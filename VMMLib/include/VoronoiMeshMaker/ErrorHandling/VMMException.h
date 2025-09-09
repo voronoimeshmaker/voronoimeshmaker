@@ -9,15 +9,16 @@
 
 #pragma once
 
-#include <exception>
+// -----------------------------------------------------------------------------
+//  include c++
+// -----------------------------------------------------------------------------
 #include <source_location>
-#include <string>
-#include <string_view>
 
+// -----------------------------------------------------------------------------
+//  include VoronoiMeshMaker
+// -----------------------------------------------------------------------------
 #include <VoronoiMeshMaker/ErrorHandling/ErrorConfig.h>
-#include <VoronoiMeshMaker/ErrorHandling/ErrorTraits.h>
 #include <VoronoiMeshMaker/ErrorHandling/MessageCatalog.hpp>
-#include <VoronoiMeshMaker/ErrorHandling/Severity.h>
 
 /**
  * @file VMMException.h

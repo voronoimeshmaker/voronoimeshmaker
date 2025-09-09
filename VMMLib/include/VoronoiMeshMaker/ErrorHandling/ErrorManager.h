@@ -9,15 +9,17 @@
 
 #pragma once
 
+// -----------------------------------------------------------------------------
+//  include c++
+// -----------------------------------------------------------------------------
 #include <chrono>
-#include <mutex>
-#include <string>
 #include <thread>
-#include <utility>
-#include <vector>
 
+// -----------------------------------------------------------------------------
+//  include VoronoiMeshMaker
+// -----------------------------------------------------------------------------
 #include <VoronoiMeshMaker/ErrorHandling/ErrorConfig.h>
-#include <VoronoiMeshMaker/ErrorHandling/Severity.h>
+#include <VoronoiMeshMaker/ErrorHandling/CoreErrors.h>
 
 /**
  * @file ErrorManager.h
