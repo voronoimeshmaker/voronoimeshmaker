@@ -11,6 +11,25 @@ if(POLICY CMP0135)
   cmake_policy(SET CMP0135 NEW)
 endif()
 
+# ------------------------------------------------------------
+# Block in-source builds (root folder) with a clear PT/EN help
+# ------------------------------------------------------------
+if(CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
+  message(FATAL_ERROR
+    "\n[PT] Compilação no diretório raiz (in-source) não é permitida.\n"
+    "Crie uma pasta separada para a build e execute:\n"
+    "  mkdir -p build && cmake -S . -B build && cmake --build build\n"
+    "Se você já configurou aqui por engano, remova 'CMakeCache.txt' e a pasta 'CMakeFiles'.\n"
+    "\n[EN] In-source builds are not allowed.\n"
+    "Create a separate build directory and run:\n"
+    "  mkdir -p build && cmake -S . -B build && cmake --build build\n"
+    "If you already configured here by mistake, delete 'CMakeCache.txt' and the 'CMakeFiles' directory.\n"
+    "\nWindows (PowerShell):\n"
+    "  mkdir build; cmake -S . -B build; cmake --build build\n"
+  )
+endif()
+
+
 project(VoronoiMeshMaker VERSION 1.0 LANGUAGES CXX)
 
 # ------------------------------------------------------------
@@ -22,8 +41,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # ------------------------------------------------------------
 # Options
 # ------------------------------------------------------------
-option(BUILD_EXAMPLES "Build examples" OFF)
-option(BUILD_TESTS    "Build tests"    ON)
+option(BUILD_EXAMPLES "Build examples" ON)
+option(BUILD_TESTS    "Build tests"    OFF)
 option(BUILD_DOCS     "Build docs (Doxygen + Sphinx)" OFF)
 
 # Default build type

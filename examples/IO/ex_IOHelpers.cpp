@@ -1,13 +1,19 @@
-// -----------------------------------------------------------------------------
-// ex_IOHelpers.cpp
-// Minimal usage demo for PrintLine, HeaderPrinter, and CommentPrinter.
-// Comments/messages in English. Lines kept <= 80 columns.
-// -----------------------------------------------------------------------------
+//==============================================================================
+// Nome        : main.cpp
+// Autor       : João Flávio Vieira de Vasconcellos
+// Versão      : 1.0
+// Descrição   : Programa de teste da biblioteca TAO do Petsc
 //
-// Build (example):
-//   g++ -std=c++20 -O2 ex_IOHelpers.cpp -I<path-to-includes> -o ex_iohelpers
+// Este programa é um software livre: você pode redistribuí-lo e/ou modificá-lo
+// sob os termos da Licença Pública Geral GNU, conforme publicada pela
+// Free Software Foundation, na versão 3 da licença.
 //
-// -----------------------------------------------------------------------------
+// Este programa é distribuído na esperança de que seja útil,
+// mas SEM NENHUMA GARANTIA; sem mesmo a garantia implícita de
+// COMERCIABILIDADE ou ADEQUAÇÃO A UM DETERMINADO PROPÓSITO. Veja a
+// Licença Pública Geral GNU para mais detalhes.
+//==============================================================================
+
 
 #include <iostream>
 #include <string>
@@ -19,6 +25,16 @@
     using vmm::io::CommentPrinter;
 
 int main() {
+
+    // ---- HeaderPrinter (default license text) -------------------------------
+//    std::cout << "\nHeaderPrinter (default license):\n";
+    HeaderPrinter hp_default(
+        "IOHelpers.hpp",
+        "VoronoiMeshMaker Team",
+        "1.0.0",
+        "Helper classes for formatted output (line, header, comments)"
+    );
+    std::cout << hp_default;
 
 
     // ---- PrintLine ----------------------------------------------------------
@@ -32,15 +48,6 @@ int main() {
     pl_custom.size(30);            // fluent-style size change
     std::cout << pl_custom;
 
-    // ---- HeaderPrinter (default license text) -------------------------------
-    std::cout << "\nHeaderPrinter (default license):\n";
-    HeaderPrinter hp_default(
-        "IOHelpers.hpp",
-        "VoronoiMeshMaker Team",
-        "1.0.0",
-        "Helper classes for formatted output (line, header, comments)"
-    );
-    std::cout << hp_default;
 
     // ---- HeaderPrinter (custom license + different line size) ---------------
     std::cout << "\nHeaderPrinter (custom license, 60 cols):\n";

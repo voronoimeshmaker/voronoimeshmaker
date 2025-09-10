@@ -43,7 +43,8 @@ VORMAKER_NAMESPACE_OPEN
 //------------------------------------------------------------------------------
 // Geometric kernel and types (kept inside a sub-namespace gtp).
 //------------------------------------------------------------------------------
-namespace gtp {
+
+GEOTYPES_NAMESPACE_OPEN
 
 /// Kernel used in CGAL computations (robust predicates, fast constructions).
 using Kernel = CGAL::Exact_predicates_inexact_constructions_kernel;
@@ -104,14 +105,15 @@ enum class GeometryType {
     Polyhedron3D
 };
 
-}  // namespace gtp
+GEOTYPES_NAMESPACE_CLOSE
+
 
 //------------------------------------------------------------------------------
 // Numeric type exposed at the vmm level (used by constants.h).
 //------------------------------------------------------------------------------
 
-using Real = gtp::Kernel::FT;
-using Int  = gtp::Kernel::RT;
+using Real = vmm::gtp::Kernel::FT;
+using Int  = vmm::gtp::Kernel::RT;
 
 //--- Common integer/real containers (non-geometry) ----------------------------
 
@@ -121,3 +123,4 @@ using LstReal = std::list<Real>;
 using VecReal = std::vector<Real>;
 
 VORMAKER_NAMESPACE_CLOSE
+
