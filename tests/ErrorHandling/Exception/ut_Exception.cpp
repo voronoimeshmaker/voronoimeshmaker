@@ -1,26 +1,36 @@
-// -----------------------------------------------------------------------------
-// ut_exception.cpp
-// Tests for VMMException: code(), severity(), what(), message(), location().
-// One test executable dedicated to VMMException.
-// Comments/messages in English.
-// -----------------------------------------------------------------------------
+//==============================================================================
+// Name        : ut_Exception.cpp
+// Author      : João Flávio Vieira de Vasconcellos
+// Version     : 1.0.3
+// Description : Tests for VMMException: code(), severity(), what(), message(),
+//               and location(). One test executable dedicated to VMMException.
+//
+// This program is free software: you can redistribute it and/or modify it
+// under the terms of the GNU General Public License as published by the
+// Free Software Foundation, version 3 of the License.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// GNU General Public License for more details.
+//==============================================================================
 
-// -----------------------------------------------------------------------------
-//  include gtest
-// -----------------------------------------------------------------------------
+//==============================================================================
+//      External libraries
+//==============================================================================
 #include <gtest/gtest.h>
 
-// -----------------------------------------------------------------------------
-//  include VoronoiMeshMaker
-// -----------------------------------------------------------------------------
+//==============================================================================
+//      VoronoiMeshMaker includes
+//==============================================================================
 #include <VoronoiMeshMaker/ErrorHandling/VMMException.h>
 #include <VoronoiMeshMaker/ErrorHandling/CoreErrors.h>
 
 namespace ve = vmm::error;
 
-// -----------------------------------------------------------------------------
-//  helpers
-// -----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+// RAII helper: temporarily switch language; restore on scope exit.
+//------------------------------------------------------------------------------
 namespace {
 struct ScopedLanguage {
     ve::ErrorConfig old_;
@@ -34,23 +44,24 @@ struct ScopedLanguage {
 };
 } // namespace
 
-// -----------------------------------------------------------------------------
-//  tests
-// -----------------------------------------------------------------------------
-
+//------------------------------------------------------------------------------
+// Tests
+//------------------------------------------------------------------------------
 TEST(VMMException, CarriesCodeSeverityMessageAndLocation) {
-    // Force PtBR to ensure message() is localized; what() must stay English.
+    // Force PtBR to ensure message() is localized; what() must remain English.
     ScopedLanguage lang_guard(ve::Language::PtBR);
 
     constexpr ve::CoreErr err = ve::CoreErr::InvalidArgument;
+
     // Known placeholder {name} for InvalidArgument.
-    ve::VMMException ex(err, {{"name","beta"}});
+    ve::VMMException ex(err, {{"name", "beta"}});
 
     // code() must match composed domain+value per ErrorTraits.
     EXPECT_EQ(ex.code(), ve::error_code(err));
 
     // severity() must match the default severity from traits.
-    EXPECT_EQ(ex.severity(), ve::ErrorTraits<ve::CoreErr>::default_severity(err));
+    EXPECT_EQ(ex.severity(),
+              ve::ErrorTraits<ve::CoreErr>::default_severity(err));
 
     // what() (English, stable) and message() (localized) must be non-empty
     // and contain the interpolated placeholder value.
@@ -69,7 +80,7 @@ TEST(VMMException, CarriesCodeSeverityMessageAndLocation) {
 
 TEST(VMMException, WorksForDifferentErrorKinds) {
     // Smoke-check other enumerators (no strict text expectations).
-    ve::VMMException ex1(ve::CoreErr::OutOfRange, {{"index","5"}});
+    ve::VMMException ex1(ve::CoreErr::OutOfRange, {{"index", "5"}});
     EXPECT_EQ(ex1.code(), ve::error_code(ve::CoreErr::OutOfRange));
     EXPECT_FALSE(std::string(ex1.what()).empty());
 
@@ -84,7 +95,7 @@ TEST(VMMException, WorksForDifferentErrorKinds) {
 
 TEST(VMMException, CopyAndMoveKeepStableTexts) {
     ScopedLanguage lang_guard(ve::Language::PtBR);
-    ve::VMMException ex(ve::CoreErr::InvalidArgument, {{"name","gamma"}});
+    ve::VMMException ex(ve::CoreErr::InvalidArgument, {{"name", "gamma"}});
     std::string what_before = ex.what();
     std::string msg_before  = ex.message();
 

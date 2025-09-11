@@ -1,28 +1,39 @@
-// -----------------------------------------------------------------------------
-// ut_config.cpp 
-// Concurrent tests for ErrorConfig + Config (atomic shared_ptr swap).
-// One test executable dedicated to Config.
-// Comments/messages in English.
-// -----------------------------------------------------------------------------
+//==============================================================================
+// Name        : ut_Config.cpp
+// Author      : João Flávio Vieira de Vasconcellos
+// Version     : 1.0.3
+// Description : Concurrency tests for ErrorConfig/Config (atomic snapshot).
+//
+// This program is free software: you can redistribute it and/or modify it
+// under the terms of the GNU General Public License as published by the
+// Free Software Foundation, version 3 of the License.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// GNU General Public License for more details.
+//==============================================================================
 
-// -----------------------------------------------------------------------------
-//  include c++
-// -----------------------------------------------------------------------------
+//==============================================================================
+//      C++ Standard Library includes
+//==============================================================================
 #include <barrier>
 
-// -----------------------------------------------------------------------------
-//  include gtest
-// -----------------------------------------------------------------------------
+//==============================================================================
+//      External libraries
+//==============================================================================
 #include <gtest/gtest.h>
 
-// -----------------------------------------------------------------------------
-//  include VoronoiMeshMaker
-// -----------------------------------------------------------------------------
+//==============================================================================
+//      VoronoiMeshMaker includes
+//==============================================================================
 #include <VoronoiMeshMaker/ErrorHandling/ErrorConfig.h>
 
 namespace ve = vmm::error;
 
+//------------------------------------------------------------------------------
 // RAII guard to restore the original config at scope exit.
+//------------------------------------------------------------------------------
 struct ScopedConfig {
     ve::ErrorConfig old_;
     explicit ScopedConfig(const ve::ErrorConfig& next) {
@@ -32,12 +43,16 @@ struct ScopedConfig {
     ~ScopedConfig() { ve::Config::set(old_); }
 };
 
-static bool equals_on_core_fields(const ve::ErrorConfig& a, const ve::ErrorConfig& b) {
+static bool equals_on_core_fields(const ve::ErrorConfig& a,
+                                  const ve::ErrorConfig& b) {
     return a.language          == b.language
         && a.min_severity      == b.min_severity
         && a.thread_buffer_cap == b.thread_buffer_cap;
 }
 
+//------------------------------------------------------------------------------
+// Serial sanity baseline for defaults
+//------------------------------------------------------------------------------
 TEST(Config, DefaultIsSane_SerialBaseline) {
     auto cfg = ve::Config::get();
     ASSERT_TRUE(static_cast<bool>(cfg));
@@ -47,8 +62,10 @@ TEST(Config, DefaultIsSane_SerialBaseline) {
     (void)cfg->min_severity; // field exists
 }
 
-// Readers check that each snapshot matches one of two fully-formed configs (A or B),
-// never a mix of fields (no torn reads).
+//------------------------------------------------------------------------------
+// Readers must only observe either version A or version B of the config,
+// never a mixed/torn snapshot while a writer toggles.
+//------------------------------------------------------------------------------
 TEST(Config, ConcurrentReadersAndWriters_NoTornSnapshots) {
     auto base = ve::Config::get();
     ASSERT_TRUE(static_cast<bool>(base));
@@ -88,6 +105,7 @@ TEST(Config, ConcurrentReadersAndWriters_NoTornSnapshots) {
                 if (equals_on_core_fields(*cur, A)) obs[r].sawA = true;
                 else if (equals_on_core_fields(*cur, B)) obs[r].sawB = true;
                 else { obs[r].bad = true; break; } // mixed/torn snapshot
+
                 // tiny pause occasionally to allow interleaving
                 if ((i & 0x3FF) == 0) std::this_thread::yield();
             }
@@ -108,17 +126,20 @@ TEST(Config, ConcurrentReadersAndWriters_NoTornSnapshots) {
 
     // No reader should have observed a torn/mixed snapshot.
     for (int r = 0; r < Readers; ++r) {
-        EXPECT_FALSE(obs[r].bad) << "Reader " << r << " saw a mixed snapshot";
+        EXPECT_FALSE(obs[r].bad) << "Reader " << r
+                                 << " saw a mixed snapshot";
     }
 
-    // Sanity: at least one reader must have seen both versions given the toggling.
+    // Sanity: at least one reader must have seen both versions.
     bool any_both = false;
     for (auto& o : obs) any_both = any_both || (o.sawA && o.sawB);
     EXPECT_TRUE(any_both) << "No reader observed both A and B under toggling";
 }
 
+//------------------------------------------------------------------------------
 // Many writers flip between two configs while readers continuously load;
 // readers must still only see either A or B — never a partially-mixed state.
+//------------------------------------------------------------------------------
 TEST(Config, ManyWriters_ManyReaders_AllSnapshotsMatchAorB) {
     auto base = ve::Config::get();
     ASSERT_TRUE(static_cast<bool>(base));
@@ -150,7 +171,8 @@ TEST(Config, ManyWriters_ManyReaders_AllSnapshotsMatchAorB) {
             sync.arrive_and_wait();
             for (int i = 0; i < Iters; ++i) {
                 auto cur = ve::Config::get();
-                if (!cur || !(equals_on_core_fields(*cur, A) || equals_on_core_fields(*cur, B))) {
+                if (!cur || !(equals_on_core_fields(*cur, A) ||
+                              equals_on_core_fields(*cur, B))) {
                     ++bad_reads;
                     break;
                 }
@@ -175,5 +197,6 @@ TEST(Config, ManyWriters_ManyReaders_AllSnapshotsMatchAorB) {
     for (auto& t : readers) t.join();
     for (auto& t : writers) t.join();
 
-    EXPECT_EQ(bad_reads.load(), 0) << "Some reader observed a mixed/torn snapshot";
+    EXPECT_EQ(bad_reads.load(), 0)
+        << "Some reader observed a mixed/torn snapshot";
 }

@@ -12,7 +12,7 @@
 // -----------------------------------------------------------------------------
 //  include VoronoiMeshMaker
 // -----------------------------------------------------------------------------
-#include <VoronoiMeshMaker/ErrorHandling/ErrorManager.h>
+#include <VoronoiMeshMaker/ErrorHandling/ErrorManeger.h>
 #include <VoronoiMeshMaker/ErrorHandling/VMMException.h>
 
 /**
@@ -50,7 +50,7 @@ VORMAKER_NAMESPACE_CLOSE
         rec.code     = error_code(e);                                                  \
         rec.severity = ErrorTraits<decltype(e)>::default_severity(e);                  \
         rec.message  = render(e, cfg->language, __VA_ARGS__);                          \
-        ::vmm::error::ErrorManager::log(std::move(rec));                               \
+        ::vmm::error::ErrorManeger::log(std::move(rec));                               \
     } while (0)
 
 /** @brief Precondition: throws if !(cond). */

@@ -1,34 +1,42 @@
-// -----------------------------------------------------------------------------
-// ut_macros.cpp  
-// Parallel tests for Macros: VMM_ERROR logging across threads, VMM_REQUIRE
-// throwing/behaving concurrently, and VMM_ASSERT in Debug builds.
-// One test executable dedicated to Macros.
-// Comments/messages in English.
-// -----------------------------------------------------------------------------
+//==============================================================================
+// Name        : ut_Macros.cpp
+// Author      : João Flávio Vieira de Vasconcellos
+// Version     : 1.0.3
+// Description : Parallel tests for ErrorHandling Macros:
+//               - VMM_ERROR logging across threads
+//               - VMM_REQUIRE mixed pass/throw in parallel
+//               - VMM_ASSERT behavior (Debug vs Release)
+//
+// This program is free software: you can redistribute it and/or modify it
+// under the terms of the GNU General Public License as published by the
+// Free Software Foundation, version 3 of the License.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// GNU General Public License for more details.
+//==============================================================================
 
-// -----------------------------------------------------------------------------
-//  include c++
-// -----------------------------------------------------------------------------
+//==============================================================================
+//      C++ Standard Library includes
+//==============================================================================
 #include <barrier>
 
-// -----------------------------------------------------------------------------
-//  include gtest
-// -----------------------------------------------------------------------------
+//==============================================================================
+//      External libraries
+//==============================================================================
 #include <gtest/gtest.h>
 
-// -----------------------------------------------------------------------------
-//  include VoronoiMeshMaker
-// -----------------------------------------------------------------------------
+//==============================================================================
+//      VoronoiMeshMaker includes
+//==============================================================================
 #include <VoronoiMeshMaker/ErrorHandling/Macros.h>
-#include <VoronoiMeshMaker/ErrorHandling/VMMException.h>
 
 namespace ve = vmm::error;
 
-// -----------------------------------------------------------------------------
-//  helpers
-// -----------------------------------------------------------------------------
-
+//------------------------------------------------------------------------------
 // RAII guard to temporarily set ErrorConfig (and restore on scope exit).
+//------------------------------------------------------------------------------
 struct ScopedConfig {
     ve::ErrorConfig old_;
     explicit ScopedConfig(const ve::ErrorConfig& next) {
@@ -38,12 +46,14 @@ struct ScopedConfig {
     ~ScopedConfig() { ve::Config::set(old_); }
 };
 
-// Clean current thread buffer
-static void clean_thread_buffer() { (void)ve::ErrorManager::flush(); }
+//------------------------------------------------------------------------------
+// Convenience: clear current thread buffer.
+//------------------------------------------------------------------------------
+static void clean_thread_buffer() { (void)ve::ErrorManeger::flush(); }
 
-// -----------------------------------------------------------------------------
-//  tests
-// -----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+// Tests
+//------------------------------------------------------------------------------
 
 // Parallel logging with VMM_ERROR: each thread logs M records and flushes.
 // Ensures no throw and that per-thread buffers are isolated.
@@ -65,22 +75,25 @@ TEST(Macros, Parallel_VMM_ERROR_NoThrow_And_PerThreadIsolation) {
     ths.reserve(T);
 
     for (int t = 0; t < T; ++t) {
-        ths.emplace_back([&, t]{
+        ths.emplace_back([&, t] {
             clean_thread_buffer();
             sync.arrive_and_wait();
             for (int i = 0; i < M; ++i) {
                 // Use a code with a known placeholder {name}.
                 EXPECT_NO_THROW(
                     VMM_ERROR(ve::CoreErr::InvalidArgument,
-                              {{"name", "thr"+std::to_string(t)}})
+                              {{"name", "thr" + std::to_string(t)}})
                 );
             }
-            auto out = ve::ErrorManager::flush();
+            auto out = ve::ErrorManeger::flush();
             counts[t] = out.size();
             // All records from this thread should be present and tagged.
             ASSERT_EQ(out.size(), static_cast<size_t>(M));
             for (auto& r : out) {
-                EXPECT_NE(r.message.find("thr"+std::to_string(t)), std::string::npos);
+                EXPECT_NE(
+                    r.message.find("thr" + std::to_string(t)),
+                    std::string::npos
+                );
             }
         });
     }
@@ -94,7 +107,7 @@ TEST(Macros, Parallel_VMM_ERROR_NoThrow_And_PerThreadIsolation) {
 #endif
 }
 
-// Parallel VMM_REQUIRE: Half the threads pass (true), half throw (false).
+// Parallel VMM_REQUIRE: half the threads pass (true), half throw (false).
 // Each throwing thread must catch its own exception; no cross-thread impact.
 TEST(Macros, Parallel_VMM_REQUIRE_MixedThrowAndPass) {
 #ifdef VMM_REQUIRE
@@ -105,21 +118,20 @@ TEST(Macros, Parallel_VMM_REQUIRE_MixedThrowAndPass) {
     std::vector<std::thread> ths;
     ths.reserve(T);
     for (int t = 0; t < T; ++t) {
-        ths.emplace_back([&, t]{
+        ths.emplace_back([&, t] {
             sync.arrive_and_wait();
-            bool should_throw = (t % 2 == 1);
+            const bool should_throw = (t % 2 == 1);
             if (should_throw) {
                 try {
                     VMM_REQUIRE(false, ve::CoreErr::InvalidArgument,
-                                {{"name", "t"+std::to_string(t)}});
+                                {{"name", "t" + std::to_string(t)}});
                 } catch (const ve::VMMException&) {
                     threw.fetch_add(1, std::memory_order_relaxed);
                 }
             } else {
-                // Should not throw
                 EXPECT_NO_THROW(
                     VMM_REQUIRE(true, ve::CoreErr::InvalidArgument,
-                                {{"name", "t"+std::to_string(t)}})
+                                {{"name", "t" + std::to_string(t)}})
                 );
                 passed.fetch_add(1, std::memory_order_relaxed);
             }
@@ -127,8 +139,8 @@ TEST(Macros, Parallel_VMM_REQUIRE_MixedThrowAndPass) {
     }
     for (auto& th : ths) th.join();
 
-    EXPECT_EQ(threw.load(), T/2);
-    EXPECT_EQ(passed.load(), (T+1)/2); // ceil for odd T
+    EXPECT_EQ(threw.load(), T / 2);
+    EXPECT_EQ(passed.load(), (T + 1) / 2); // ceil for odd T
 #else
     GTEST_SKIP() << "VMM_REQUIRE not defined.";
 #endif
@@ -146,20 +158,24 @@ TEST(Macros, Parallel_VMM_ASSERT_Behavior) {
     std::vector<std::thread> ths;
     ths.reserve(T);
     for (int t = 0; t < T; ++t) {
-        ths.emplace_back([&, t]{
+        ths.emplace_back([&, t] {
             sync.arrive_and_wait();
             if (t % 2 == 0) {
-                try { VMM_ASSERT(false); } catch (const ve::VMMException&) { caught++; }
+                try {
+                    VMM_ASSERT(false);
+                } catch (const ve::VMMException&) {
+                    caught.fetch_add(1, std::memory_order_relaxed);
+                }
             } else {
                 EXPECT_NO_THROW(VMM_ASSERT(true));
-                silent++;
+                silent.fetch_add(1, std::memory_order_relaxed);
             }
         });
     }
     for (auto& th : ths) th.join();
 
-    EXPECT_EQ(caught.load(), (T+1)/2); // even indices
-    EXPECT_EQ(silent.load(), T/2);
+    EXPECT_EQ(caught.load(), (T + 1) / 2); // even indices
+    EXPECT_EQ(silent.load(), T / 2);
   #else
     // NDEBUG: assert is a no-op
     EXPECT_NO_THROW(VMM_ASSERT(false));
@@ -188,20 +204,20 @@ TEST(Macros, Parallel_MixedPressure_NoThrowAndConsistentLogging) {
     ths.reserve(T);
 
     for (int t = 0; t < T; ++t) {
-        ths.emplace_back([&, t]{
+        ths.emplace_back([&, t] {
             clean_thread_buffer();
             sync.arrive_and_wait();
             for (int i = 0; i < M; ++i) {
                 EXPECT_NO_THROW(
                     VMM_ERROR(ve::CoreErr::InvalidArgument,
-                              {{"name", "mix"+std::to_string(t)}})
+                              {{"name", "mix" + std::to_string(t)}})
                 );
                 EXPECT_NO_THROW(
                     VMM_REQUIRE(true, ve::CoreErr::InvalidArgument,
                                 {{"name", "ok"}})
                 );
             }
-            counts[t] = ve::ErrorManager::flush().size();
+            counts[t] = ve::ErrorManeger::flush().size();
         });
     }
     for (auto& th : ths) th.join();

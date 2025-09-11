@@ -14,8 +14,7 @@
 //  includec++
 // -----------------------------------------------------------------------------
 #include <initializer_list>
-// #include <utility>
-
+using Initializer = std::initializer_list<std::pair<std::string_view, std::string_view>>;
 // -----------------------------------------------------------------------------
 //  include VoronoiMeshMaker
 // -----------------------------------------------------------------------------
@@ -29,7 +28,7 @@
  */
 
 VORMAKER_NAMESPACE_OPEN
-namespace error {
+ERROR_NAMESPACE_OPEN
 
 /**
  * @brief Very small named placeholder replacer: replaces "{name}" tokens.
@@ -58,15 +57,15 @@ inline std::string replace_named(
 
 /** @brief Render message for enum value E in the given language. */
 template <ErrorEnum E>
-inline std::string render(E e,
-                          Language lang,
-                          std::initializer_list<std::pair<std::string_view,
-                                                          std::string_view>> kv) {
+inline std::string render   (E  e
+                            ,   Language        _lang
+                            ,   Initializer     _kv
+                            ) {
     const std::string_view t =
-        (lang == Language::PtBR) ? ErrorTraits<E>::ptBR(e)
+        (_lang == Language::PtBR) ? ErrorTraits<E>::ptBR(e)
                                  : ErrorTraits<E>::enUS(e);
-    return replace_named(t, kv);
+    return replace_named(t, _kv);
 }
 
-}  // namespace error
+ERROR_NAMESPACE_CLOSE
 VORMAKER_NAMESPACE_CLOSE

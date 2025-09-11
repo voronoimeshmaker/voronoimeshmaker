@@ -1,5 +1,5 @@
 // ============================================================================
-// File: ErrorManager.h
+// File: ErrorManeger.h
 // Author: VoronoiMeshMaker Team
 // Version: 0.1.0
 // Description: Minimal thread-safe error recorder and flush.
@@ -22,7 +22,7 @@
 #include <VoronoiMeshMaker/ErrorHandling/CoreErrors.h>
 
 /**
- * @file ErrorManager.h
+ * @file ErrorManeger.h
  * @brief Simple per-thread buffer for error records and flush.
  * @ingroup errorhandling
  */
@@ -43,7 +43,7 @@ struct ErrorRecord {
  * @brief Minimal thread-local error recorder.
  * For now it stores message strings; can be replaced by a ring buffer.
  */
-class ErrorManager {
+class ErrorManeger {
 public:
     static void log(ErrorRecord rec) {
         auto cap = Config::get()->thread_buffer_cap;

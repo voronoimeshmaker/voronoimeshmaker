@@ -58,6 +58,26 @@
         "variant": "cpp",
         "format": "cpp",
         "__nullptr": "cpp",
-        "barrier": "cpp"
+        "barrier": "cpp",
+        "cmath": "cpp",
+        "cstdarg": "cpp",
+        "any": "cpp",
+        "strstream": "cpp",
+        "cfenv": "cpp",
+        "complex": "cpp",
+        "deque": "cpp",
+        "forward_list": "cpp",
+        "list": "cpp",
+        "unordered_set": "cpp",
+        "numeric": "cpp",
+        "source_location": "cpp",
+        "fstream": "cpp",
+        "latch": "cpp",
+        "numbers": "cpp",
+        "shared_mutex": "cpp",
+        "stdfloat": "cpp",
+        "text_encoding": "cpp",
+        "cinttypes": "cpp",
+        "typeindex": "cpp"
     }
 }
