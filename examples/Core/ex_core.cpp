@@ -1,6 +1,6 @@
 //==============================================================================
 // Name        : main.cpp
-// Author      : João Flávio Vieira de Vasconcellos
+// Author      : João Flávio  Vasconcellos
 // Version     : 1.0
 // Description : Test program for the PETSc TAO library
 //

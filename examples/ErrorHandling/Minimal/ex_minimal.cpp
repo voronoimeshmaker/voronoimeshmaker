@@ -1,132 +1,154 @@
-// ============================================================================
-// File: ex_minimal.cpp
-// Purpose: Minimal end-to-end demo of VoronoiMeshMaker ErrorHandling.
-// Build: add this file to your examples target and link as usual.
-// Notes:
-//   - Comments/messages in code are in English (project standard).
-//   - Keep lines <= 80 cols when possible.
-// ============================================================================
+//==============================================================================
+// Name        : ex_minimal.cpp
+// Author      : João Flávio Vieira de Vasconcellos
+// Version     : 1.0.2
+// Description : Minimal demo for ErrorHandling: throw/catch VMMException.
+//
+// This program is free software: you can redistribute it and/or modify it
+// under the terms of the GNU General Public License as published by the
+// Free Software Foundation, version 3 of the License.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// GNU General Public License for more details.
+//==============================================================================
 
-#include <iostream>
-#include <string>
-#include <string_view>
-#include <utility>
 
-
-// ErrorHandling headers
-#include <VoronoiMeshMaker/ErrorHandling/ErrorHandling.h>
+//==============================================================================
+//      VoronoiMeshMaker includes
+//==============================================================================
 #include <VoronoiMeshMaker/IO/IOHelpers.hpp>
+#include <VoronoiMeshMaker/ErrorHandling/VMMException.h>
 
-int main() {
+// Bring only what we need into the local scope.
+using vmm::io::HeaderPrinter;
+using vmm::io::PrintLine;
+using vmm::io::CommentPrinter;
+using vmm::error::VMMException;
 
 
-//==============================================================================
-//      Impressão da licemsa defaul
-//==============================================================================
+// Enable "sv" literal for std::string_view ("text"sv).
+using namespace std::literals::string_view_literals;
 
-vmm::io::HeaderPrinter hp_default(
-        "ex_core.cpp",
-        "João Flávio Vasconcellos",
-        "1.0.0",
-        "Exemplo de uso das classes da pasta Core"
+//------------------------------------------------------------------------------
+// A simple local enum that satisfies the ErrorEnum concept via ErrorTraits.
+// Replace with your official project enum if you already have one.
+//------------------------------------------------------------------------------
+enum class DemoError {
+    InvalidInput = 1
+};
+
+//------------------------------------------------------------------------------
+// ErrorTraits specialization for DemoError (required by VMMException concept).
+//------------------------------------------------------------------------------
+namespace vmm::error {
+
+template <>
+struct ErrorTraits<DemoError> {
+    static constexpr uint16_t domain_id() noexcept { return 0xD001; }
+    static constexpr std::string_view domain_name() noexcept {
+        return "DemoError";
+    }
+    static constexpr std::string_view key(DemoError e) noexcept {
+        switch (e) {
+            case DemoError::InvalidInput: return "InvalidInput";
+        }
+        return "Unknown";
+    }
+    static constexpr std::string_view enUS(DemoError e) noexcept {
+        switch (e) {
+            case DemoError::InvalidInput:
+                return "Invalid input for operation.";
+        }
+        return "Unknown error.";
+    }
+    static constexpr std::string_view ptBR(DemoError e) noexcept {
+        switch (e) {
+            case DemoError::InvalidInput:
+                return "Entrada invalida para a operacao.";
+        }
+        return "Erro desconhecido.";
+    }
+    static constexpr Severity default_severity(DemoError) noexcept {
+        return Severity::Error;
+    }
+};
+
+} // namespace vmm::error
+
+//------------------------------------------------------------------------------
+// A tiny domain function that fails to demonstrate ErrorHandling.
+//------------------------------------------------------------------------------
+static void failing_operation() {
+    // Pass enum + localized messages (EN/PT). The 3rd parameter
+    // (std::source_location) is defaulted inside VMMException.
+    throw VMMException(
+        DemoError::InvalidInput,
+        {
+            {"en"sv,
+             "Invalid input provided to failing_operation()."},
+            {"pt"sv,
+             "Entrada invalida fornecida para failing_operation()."}
+        }
     );
-    std::cout << hp_default << "\n\n";    
-
-
-    // // 1) Configure language to Portuguese (what() stays in English).
-    // ErrorConfig cfg;
-    // cfg.language = Language::PtBR;
-    // cfg.thread_buffer_cap = 8;
-    // Config::set(cfg);
-
-    // std::cout << "[1] Throw/try-catch demo\n";
-    // try {
-    //     // This will throw: division by zero (b == 0).
-    //     (void)divide_or_throw(10, 0);
-    // } catch (const VMMException& ex) {
-    //     std::cout << "  what():   " << ex.what() << '\n';
-    //     std::cout << "  message(): " << ex.message() << '\n';
-    //     std::cout << "  code:     " << ex.code() << '\n';
-    //     std::cout << "  key:      " << ex.key() << '\n';
-    //     std::cout << "  where:    " << ex.location().file_name() << ':'
-    //               << ex.location().line() << " in "
-    //               << ex.location().function_name() << '\n';
-    // }
-
-    // // 2) Log a non-fatal issue (no throw) and flush.
-    // std::cout << "\n[2] Log/flush demo\n";
-    // {
-    //     // Minimal manual record (avoids extra macros for clarity here).
-    //     ErrorRecord rec;
-    //     rec.code = error_code(CoreErr::NotImplemented);
-    //     rec.severity = ErrorTraits<CoreErr>::default_severity(
-    //         CoreErr::NotImplemented);
-    //     rec.message = render(CoreErr::NotImplemented,
-    //                          Config::get()->language, {});
-    //     ErrorManager::log(std::move(rec));
-    // }
-    // auto recs = ErrorManager::flush();
-    // for (const auto& r : recs) {
-    //     std::cout << "  logged: code=" << r.code << " sev="
-    //               << static_cast<int>(r.severity)
-    //               << " msg=\"" << r.message << "\"\n";
-    // }
-
-    // // 3) StatusOr (no exceptions).
-    // std::cout << "\n[3] StatusOr demo\n";
-    // auto okv = parse_positive_int("123");
-    // if (okv.ok()) {
-    //     std::cout << "  parsed value = " << okv.value() << '\n';
-    // }
-    // auto errv = parse_positive_int("12x");
-    // if (!errv.ok()) {
-    //     std::cout << "  status error: code=" << errv.status().code()
-    //               << " msg=\"" << errv.status().message() << "\"\n";
-    // }
-
-    // std::cout << "\nDone.\n";
-    return 0;
 }
 
+int main() {
+    //==============================================================================
+    //      Default header/license printing
+    //==============================================================================
+    HeaderPrinter hp_default(
+        "ex_minimal.cpp",
+        "João Flávio Vasconcellos",
+        "1.0.2",
+        "Minimal demo for ErrorHandling: throw and catch VMMException"
+    );
+    std::cout << hp_default << "\n";
 
+    std::cout << "\n\n" << PrintLine();
+    std::cout << CommentPrinter("Starting minimal ErrorHandling demo");
+    std::cout << PrintLine() << "\n\n";
 
+    //==============================================================================
+    //      Minimal try/catch usage
+    //==============================================================================
+    try {
+        failing_operation();
+        std::cout << "This line is never reached.\n";
+    }
+    catch (const VMMException& ex) {
+        // Outermost catch: print user-facing message exactly once.
+        std::cerr << "[VMMException] " << ex.what() << "\n";
+        std::cerr << "Handling at the top level and exiting with failure.\n";
 
+        std::cout << "\n\n" << PrintLine();
+        std::cout << CommentPrinter(
+            "Program ex_minimal.cpp finished with error"
+        );
+        std::cout << PrintLine() << "\n\n";
+        return EXIT_FAILURE;
+    }
+    catch (const std::exception& ex) {
+        // Fallback for unexpected std::exceptions.
+        std::cerr << "[std::exception] " << ex.what() << "\n";
 
-// // ---- Example API that uses exceptions --------------------------------------
+        std::cout << "\n\n" << PrintLine();
+        std::cout << CommentPrinter(
+            "Program ex_minimal.cpp finished with error"
+        );
+        std::cout << PrintLine() << "\n\n";
+        return EXIT_FAILURE;
+    }
 
-// int divide_or_throw(int a, int b) {
-//     // Precondition: b != 0
-//     VMM_REQUIRE(b != 0, CoreErr::InvalidArgument, {{"name", "b"}});
-//     return a / b;
-// }
+    //==============================================================================
+    //      End of program (success path)
+    //==============================================================================
+    std::cout << "\n\n" << PrintLine();
+    std::cout << CommentPrinter(
+        "Program ex_minimal.cpp finished successfully"
+    );
+    std::cout << PrintLine() << "\n\n";
 
-// // ---- Example API that uses StatusOr (no throw) ------------------------------
-
-// StatusOr<int> parse_positive_int(std::string_view s) {
-//     // Tiny parser: accept digits only, no sign.
-//     int value = 0;
-//     if (s.empty()) {
-//         auto msg = render(CoreErr::InvalidArgument, Language::EnUS,
-//                           {{"name", "empty string"}});
-//         return Status(error_code(CoreErr::InvalidArgument),
-//                       std::move(msg), Severity::Error);
-//     }
-//     for (char c : s) {
-//         if (c < '0' || c > '9') {
-//             auto msg = render(CoreErr::InvalidArgument, Language::EnUS,
-//                               {{"name", "non-digit char"}});
-//             return Status(error_code(CoreErr::InvalidArgument),
-//                           std::move(msg), Severity::Error);
-//         }
-//         value = value * 10 + (c - '0');
-//     }
-//     if (value <= 0) {
-//         auto msg = render(CoreErr::InvalidArgument, Language::EnUS,
-//                           {{"name", "non-positive value"}});
-//         return Status(error_code(CoreErr::InvalidArgument),
-//                       std::move(msg), Severity::Error);
-//     }
-//     return value;
-// }
-
-// // ---- Demo main --------------------------------------------------------------
+    return EXIT_SUCCESS;
+}
