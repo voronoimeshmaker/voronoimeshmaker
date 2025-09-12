@@ -1,154 +1,117 @@
+#pragma once
 //==============================================================================
 // Name        : namespace.h
-// Author      : Joao Flavio Vieira de Vasconcellos
-// Version     : 1.2
-// Description : Namespace macros for the VoronoiMeshMaker library.
-//               Single-responsibility: no logic, no state.
+// Project     : VoronoiMeshMaker (VMM)
+// Description : Centralized namespace helpers and Doxygen docs.
+//               - Root   : vmm
+//               - Module : vmm::b2d (Boundary2D)
+//               - Geo    : vmm::gtp (GeoTypes)
+//               - Const  : vmm::constants
+//               - Error  : vmm::error
 // License     : GNU GPL v3
+// Version     : 1.4.0
 //==============================================================================
-
-#pragma once
 
 /**
  * @file namespace.h
- * @brief Namespace macros for the VoronoiMeshMaker library.
+ * @brief Namespace utilities and macros for the VoronoiMeshMaker project.
  *
- * These macros provide a consistent way to open/close the main library
- * namespace (`vmm`) and the geometry sub-namespace (`gtp`). They exist to
- * keep source files tidy and to make it harder to forget a closing brace.
+ * Root namespace: **vmm**.
+ * Sub-namespaces:
+ *  - **b2d**      : Boundary2D module
+ *  - **gtp**      : GeoTypes (CGAL kernel/types)
+ *  - **constants**: numerical constants
+ *  - **error**    : error handling (exceptions, severities, catalogs)
  *
- * @ingroup core
+ * Provided macros:
+ *  - VORMAKER_NAMESPACE_OPEN / VORMAKER_NAMESPACE_CLOSE
+ *  - BOUNDARY2D_NAMESPACE_OPEN / BOUNDARY2D_NAMESPACE_CLOSE
+ *  - DETAIL_NAMESPACE_OPEN / DETAIL_NAMESPACE_CLOSE
+ *  - BOUNDARY2D_NAMESPACE_DETAIL_OPEN / BOUNDARY2D_NAMESPACE_DETAIL_CLOSE
+ *  - GEOTYPES_NAMESPACE_OPEN / GEOTYPES_NAMESPACE_CLOSE
+ *  - CONSTANTS_NAMESPACE_OPEN / CONSTANTS_NAMESPACE_CLOSE
+ *  - ERROR_NAMESPACE_OPEN / ERROR_NAMESPACE_CLOSE
  */
 
-/** @defgroup core Core
- *  Core infrastructure (namespaces, types, constants).
- *  @{
- */
+//------------------------------------------------------------------------------
+// Root: vmm
+//------------------------------------------------------------------------------
+#ifndef VORMAKER_NAMESPACE_OPEN
+#  define VORMAKER_NAMESPACE_OPEN  namespace vmm {
+#endif
+#ifndef VORMAKER_NAMESPACE_CLOSE
+#  define VORMAKER_NAMESPACE_CLOSE } /* namespace vmm */
+#endif
 
-/**
- * @brief Open the main namespace of the library.
- *
- * Usage:
- * @code
- * VORMAKER_NAMESPACE_OPEN
- * // ... code inside namespace vmm ...
- * VORMAKER_NAMESPACE_CLOSE
- * @endcode
- */
-#define VORMAKER_NAMESPACE_OPEN \
-    namespace vmm {
+//------------------------------------------------------------------------------
+// Boundary2D: vmm::b2d
+//------------------------------------------------------------------------------
+#ifndef BOUNDARY2D_NAMESPACE_OPEN
+#  define BOUNDARY2D_NAMESPACE_OPEN  namespace b2d {
+#endif
+#ifndef BOUNDARY2D_NAMESPACE_CLOSE
+#  define BOUNDARY2D_NAMESPACE_CLOSE } /* namespace b2d */
+#endif
 
-/**
- * @brief Close the main namespace of the library.
- */
-#define VORMAKER_NAMESPACE_CLOSE \
-    }
+//------------------------------------------------------------------------------
+// detail helpers (generic)
+//------------------------------------------------------------------------------
+#ifndef DETAIL_NAMESPACE_OPEN
+#  define DETAIL_NAMESPACE_OPEN  namespace detail {
+#endif
+#ifndef DETAIL_NAMESPACE_CLOSE
+#  define DETAIL_NAMESPACE_CLOSE } /* namespace detail */
+#endif
 
-/**
- * @brief Open the geometry sub-namespace (to be used *inside* vmm).
- *
- * Usage:
- * @code
- * VORMAKER_NAMESPACE_OPEN
- * GEOTYPES_NAMESPACE_OPEN
- * // ... code inside namespace vmm::gtp ...
- * GEOTYPES_NAMESPACE_CLOSE
- * VORMAKER_NAMESPACE_CLOSE
- * @endcode
- */
-#define GEOTYPES_NAMESPACE_OPEN \
-    namespace gtp {
+//------------------------------------------------------------------------------
+// vmm::b2d::detail open/close in one step
+//------------------------------------------------------------------------------
+#ifndef BOUNDARY2D_NAMESPACE_DETAIL_OPEN
+#  define BOUNDARY2D_NAMESPACE_DETAIL_OPEN \
+     namespace vmm { namespace b2d { namespace detail {
+#endif
+#ifndef BOUNDARY2D_NAMESPACE_DETAIL_CLOSE
+#  define BOUNDARY2D_NAMESPACE_DETAIL_CLOSE \
+     } } } /* namespace vmm::b2d::detail */
+#endif
 
-/**
- * @brief Close the geometry sub-namespace.
- */
-#define GEOTYPES_NAMESPACE_CLOSE \
-    }
+//------------------------------------------------------------------------------
+// GeoTypes: vmm::gtp
+//------------------------------------------------------------------------------
+#ifndef GEOTYPES_NAMESPACE_OPEN
+#  define GEOTYPES_NAMESPACE_OPEN  namespace gtp {
+#endif
+#ifndef GEOTYPES_NAMESPACE_CLOSE
+#  define GEOTYPES_NAMESPACE_CLOSE } /* namespace gtp */
+#endif
 
-/**
- * @brief Open the error sub-namespace (to be used *inside* vmm).
- *
- * Usage:
- * @code
- * VORMAKER_NAMESPACE_OPEN
- * ERROR_NAMESPACE_OPEN
- * // ... code inside namespace vmm::error ...
- * ERROR_NAMESPACE_CLOSE
- * VORMAKER_NAMESPACE_CLOSE
- * @endcode
- */
-#define ERROR_NAMESPACE_OPEN \
-    namespace error {
+//------------------------------------------------------------------------------
+// Constants: vmm::constants
+//------------------------------------------------------------------------------
+#ifndef CONSTANTS_NAMESPACE_OPEN
+#  define CONSTANTS_NAMESPACE_OPEN  namespace constants {
+#endif
+#ifndef CONSTANTS_NAMESPACE_CLOSE
+#  define CONSTANTS_NAMESPACE_CLOSE } /* namespace constants */
+#endif
 
-/**
- * @brief Close the error sub-namespace.
- */
-#define ERROR_NAMESPACE_CLOSE \
-    }
+//------------------------------------------------------------------------------
+// Error handling: vmm::error
+//------------------------------------------------------------------------------
+#ifndef ERROR_NAMESPACE_OPEN
+#  define ERROR_NAMESPACE_OPEN  namespace error {
+#endif
+#ifndef ERROR_NAMESPACE_CLOSE
+#  define ERROR_NAMESPACE_CLOSE } /* namespace error */
+#endif
 
-/**
- * @brief Open the error sub-namespace (to be used *inside* error).
- *
- * Usage:
- * @code
- * VORMAKER_NAMESPACE_OPEN
- * ERROR_NAMESPACE_OPEN
- * DETAIL_NAMESPACE_OPEN
- * // ... code inside namespace vmm::error::detail ...
- * DETAIL_NAMESPACE_CLOSE
- * ERROR_NAMESPACE_CLOSE
- * VORMAKER_NAMESPACE_CLOSE
- * @endcode
- */
-#define DETAIL_NAMESPACE_OPEN \
-    namespace error {
 
-/**
- * @brief Close the error sub-namespace.
- */
-#define DETAIL_NAMESPACE_CLOSE \
-    }
-
-/**
- * @brief Open the io sub-namespace (to be used *inside* vmm).
- *
- * Usage:
- * @code
- * VORMAKER_NAMESPACE_OPEN
- * IO_NAMESPACE_OPEN
- * // ... code inside namespace vmm::io ...
- * IO_NAMESPACE_CLOSE
- * VORMAKER_NAMESPACE_CLOSE
- * @endcode
- */
-#define IO_NAMESPACE_OPEN \
-    namespace io {
-
-/**
- * @brief Close the io sub-namespace.
- */
-#define IO_NAMESPACE_CLOSE \
-    }
-
-/**
- * @brief Open the constants sub-namespace (to be used *inside* vmm).
- *
- * Usage:
- * @code
- * VORMAKER_NAMESPACE_OPEN
- * CONSTANTS_NAMESPACE_OPEN
- * // ... code inside namespace vmm::constants ...
- * CONSTANTS_NAMESPACE_CLOSE
- * VORMAKER_NAMESPACE_CLOSE
- * @endcode
- */
-#define CONSTANTS_NAMESPACE_OPEN \
-    namespace constants {
-
-/**
- * @brief Close the constants sub-namespace.
- */
-#define CONSTANTS_NAMESPACE_CLOSE \
-    }
-
-/** @} */  // end of core
+//------------------------------------------------------------------------------
+// Error handling: vmm::io
+//------------------------------------------------------------------------------
+#ifndef IO_NAMESPACE_OPEN
+#  define IO_NAMESPACE_OPEN  namespace io {
+#endif
+#ifndef IO_NAMESPACE_CLOSE
+#  define IO_NAMESPACE_CLOSE } /* namespace io */
+#endif

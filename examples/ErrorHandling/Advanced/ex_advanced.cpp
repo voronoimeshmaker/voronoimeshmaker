@@ -21,6 +21,7 @@
 #include <latch>         // std::latch
 #include <mutex>         // std::mutex, std::scoped_lock
 #include <thread>        // std::jthread
+#include <vector>        // std::vector 
 
 //==============================================================================
 //      VoronoiMeshMaker includes

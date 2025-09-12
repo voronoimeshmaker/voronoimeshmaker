@@ -10,15 +10,20 @@
 
 #pragma once
 
+// -----------------------------------------------------------------------------
+//  include c++
+// -----------------------------------------------------------------------------
+#include <algorithm>
+#include <iomanip>
 #include <iostream>
+#include <iterator>
 #include <string>
 #include <string_view>
 #include <sstream>
-#include <iterator>
-#include <algorithm>
-#include <functional>
-#include <iomanip>
 
+//------------------------------------------------------------------------------
+//  VoronoiMeshMaker includes
+//------------------------------------------------------------------------------
 #include <VoronoiMeshMaker/Core/namespace.h>
 
 VORMAKER_NAMESPACE_OPEN
