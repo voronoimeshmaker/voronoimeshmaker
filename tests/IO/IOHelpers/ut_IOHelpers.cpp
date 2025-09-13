@@ -14,7 +14,7 @@
 #include <sstream>
 #include <string>
 
-// Adjust path if your include tree differs:
+
 #include <VoronoiMeshMaker/IO/IOHelpers.hpp>
 
 namespace {

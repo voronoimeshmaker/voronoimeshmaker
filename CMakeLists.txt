@@ -3,7 +3,7 @@
 # ------------------------------------------------------------
 cmake_minimum_required(VERSION 3.30)
 
-# Policies (silence common warnings on newer CMake)
+# Definir políticas para silenciar warnings
 if(POLICY CMP0167)
   cmake_policy(SET CMP0167 NEW)
 endif()
@@ -11,6 +11,9 @@ if(POLICY CMP0135)
   cmake_policy(SET CMP0135 NEW)
 endif()
 
+# Definir políticas GLOBAIS para todo o projeto
+# Isso afetará também os submódulos e scripts incluídos
+set(CMAKE_POLICY_DEFAULT_CMP0167 NEW)
 
 # ------------------------------------------------------------
 # Block in-source builds - DEFINITIVE SOLUTION
@@ -100,7 +103,15 @@ file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS
 
 add_library(VoronoiMeshMaker SHARED ${SOURCES})
 
+# ------------------------------------------------------------
 # CGAL (required)
+# ------------------------------------------------------------
+
+# Definir política CMP0167 para evitar warning do FindBoost
+if(POLICY CMP0167)
+  cmake_policy(SET CMP0167 NEW)
+endif()
+
 find_package(CGAL REQUIRED COMPONENTS Core)
 target_link_libraries(VoronoiMeshMaker
     PUBLIC CGAL::CGAL CGAL::CGAL_Core
@@ -133,6 +144,16 @@ install(DIRECTORY ${VMMLib_DIR}/include/
 install(DIRECTORY ${VMMLib_DIR}/src/
     DESTINATION include
     FILES_MATCHING PATTERN "*.tpp")
+
+
+# --- yaml-cpp (opcional para exemplos que usam YAML) ---
+find_package(yaml-cpp QUIET)  # tenta achar via config ou module
+if(yaml-cpp_FOUND)
+  message(STATUS "yaml-cpp found: enabling YAML-based examples")
+else()
+  message(STATUS "yaml-cpp NOT found: YAML-based examples will be skipped")
+endif()
+
 
 # ------------------------------------------------------------
 # Examples

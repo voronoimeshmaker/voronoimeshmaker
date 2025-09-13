@@ -1,27 +1,20 @@
 # ------------------------------------------------------------
 # examples/CMakeLists.txt
-# - Um executável por pasta que contenha exatamente um ex_*.cpp
-# - Suporta subpastas aninhadas (p.ex.: core/core1, core/core2, ...)
-# - Alvos agregados:
-#     examples          -> compila todos
-#     run_all_examples  -> executa todos
-#     run_<target>      -> executa um específico (ex.: run_ex_core1)
-# - Cada binário é gerado ao lado do seu .cpp
+# - Um executável por pasta que contenha ex_*.cpp
+# - Detecção automática de dependência yaml-cpp por arquivo-fonte
+# - Se yaml-cpp não estiver disponível, exemplos que usam YAML são pulados
 # ------------------------------------------------------------
-cmake_minimum_required(VERSION 3.30)
+cmake_minimum_required(VERSION 3.24)
 
-
-# Se estiver usando CMake 3.24 ou superior
+# Políticas úteis
 if(POLICY CMP0167)
   cmake_policy(SET CMP0167 NEW)
 endif()
-
-# Evita warning do FetchContent (CMP0135) ao extrair arquivos
 if(POLICY CMP0135)
   cmake_policy(SET CMP0135 NEW)
 endif()
 
-# --- Modo standalone (se abrir esta pasta direto com cmake):
+# Standalone (caso rode cmake direto nesta pasta)
 if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
   project(VoronoiMeshMakerExamples LANGUAGES CXX)
   set(CMAKE_CXX_STANDARD 20)
@@ -32,21 +25,26 @@ set(PROJECT_ROOT    "${CMAKE_SOURCE_DIR}")
 set(EXAMPLES_ROOT   "${CMAKE_CURRENT_SOURCE_DIR}")
 set(VMM_INCLUDE_DIR "${PROJECT_ROOT}/VMMLib/include")
 
+# --- yaml-cpp (opcional) ---
+find_package(yaml-cpp QUIET)
+if(yaml-cpp_FOUND)
+  message(STATUS "[examples] yaml-cpp found; YAML-based examples will be built")
+else()
+  message(STATUS "[examples] yaml-cpp NOT found; YAML-based examples will be skipped")
+endif()
+
 # Alvos agregados
 add_custom_target(examples         COMMENT "Compilando todos os exemplos")
 add_custom_target(run_all_examples COMMENT "Executando todos os exemplos")
 
-# 1) Varre recursivamente, pega todos os ex_*.cpp
-file(GLOB_RECURSE EXAMPLE_CPP_ABS CONFIGURE_DEPENDS
-     "${EXAMPLES_ROOT}/ex_*.cpp")
-
+# 1) Varre recursivamente todos os ex_*.cpp
+file(GLOB_RECURSE EXAMPLE_CPP_ABS CONFIGURE_DEPENDS "${EXAMPLES_ROOT}/ex_*.cpp")
 if(EXAMPLE_CPP_ABS STREQUAL "")
-  message(STATUS "  [Examples] Nenhum ex_*.cpp encontrado em ${EXAMPLES_ROOT}")
+  message(STATUS "[examples] Nenhum ex_*.cpp encontrado em ${EXAMPLES_ROOT}")
   return()
 endif()
 
-# 2) Mapeia: diretório -> lista de ex_*.cpp dentro dele
-#    (esperado: 1 arquivo por pasta; se houver mais, avisamos e usamos todos)
+# 2) Agrupa por diretório
 set(EXAMPLE_DIRS_ABS "")
 foreach(f_abs IN LISTS EXAMPLE_CPP_ABS)
   get_filename_component(dir_abs "${f_abs}" DIRECTORY)
@@ -54,62 +52,70 @@ foreach(f_abs IN LISTS EXAMPLE_CPP_ABS)
 endforeach()
 list(REMOVE_DUPLICATES EXAMPLE_DIRS_ABS)
 
-message(STATUS "  [Examples] Pastas de exemplos detectadas:")
+message(STATUS "[examples] Pastas de exemplos detectadas:")
 
 foreach(dir_abs IN LISTS EXAMPLE_DIRS_ABS)
-  # Arquivos desta pasta (apenas neste nível)
   file(GLOB EX_SOURCES_THIS_DIR "${dir_abs}/ex_*.cpp")
   if(EX_SOURCES_THIS_DIR STREQUAL "")
-    # (não deve acontecer pois a pasta veio do passo 2)
     continue()
   endif()
 
-  # Caminho relativo para mensagens e para compor nomes
+  # Nome do alvo
   file(RELATIVE_PATH dir_rel "${EXAMPLES_ROOT}" "${dir_abs}")
   if(dir_rel STREQUAL "")
     set(dir_rel ".")
   endif()
 
-  # Nome base do alvo:
-  #   - se existir só um ex_*.cpp, usamos o stem desse arquivo (ex_core1)
-  #   - se houver mais de um, usamos o nome da pasta "flattened"
   list(LENGTH EX_SOURCES_THIS_DIR _n_src)
   if(_n_src EQUAL 1)
     list(GET EX_SOURCES_THIS_DIR 0 _only_src)
-    get_filename_component(stem "${_only_src}" NAME_WE) # ex_core1
+    get_filename_component(stem "${_only_src}" NAME_WE) # ex_foo
     set(target_name "${stem}")
   else()
-    # transforma 'core/core1' -> 'core_core1'
     string(REPLACE "/" "_" target_name "${dir_rel}")
     set(target_name "ex_${target_name}")
-    message(WARNING "  [Examples] Pasta '${dir_rel}' contém ${_n_src} exemplos; "
-                    "o alvo será '${target_name}' com todos eles.")
+    message(WARNING "[examples] Pasta '${dir_rel}' contém ${_n_src} exemplos; alvo único '${target_name}'.")
   endif()
 
-  # Garante unicidade de nome (caso haja colisão com outro alvo)
   if(TARGET "${target_name}")
     string(MD5 _hash "${dir_rel}")
     string(SUBSTRING "${_hash}" 0 8 _short)
     set(target_name "${target_name}__${_short}")
   endif()
 
-  message(STATUS "    - ${dir_rel}  -> alvo: ${target_name}")
+  # --- Detecta se algum fonte desta pasta usa yaml-cpp ---
+  set(needs_yaml FALSE)
+  foreach(src ${EX_SOURCES_THIS_DIR})
+    file(READ "${src}" _src_txt)
+    if(_src_txt MATCHES "yaml-cpp/yaml.h")
+      set(needs_yaml TRUE)
+    endif()
+  endforeach()
 
-  # 3) Cria o executável desta pasta
+  # Se precisa YAML mas não temos a lib, pula este exemplo
+  if(needs_yaml AND NOT yaml-cpp_FOUND)
+    message(STATUS "  - ${dir_rel}  -> SKIP (yaml-cpp não encontrado)")
+    continue()
+  else()
+    message(STATUS "  - ${dir_rel}  -> alvo: ${target_name}"
+                    "$<$<BOOL:${needs_yaml}>: (com yaml-cpp)>")
+  endif()
+
+  # Cria alvo
   add_executable(${target_name} ${EX_SOURCES_THIS_DIR})
   target_link_libraries(${target_name} PRIVATE VoronoiMeshMaker)
   target_include_directories(${target_name} PRIVATE "${VMM_INCLUDE_DIR}")
 
-  # Binário é gerado dentro da própria pasta
-  # Nome do binário:
-  #   - 1 arquivo  -> stem do arquivo (ex_core1)
-  #   - vários     -> nome do alvo (ex_core_core1)
+  if(needs_yaml)
+    target_link_libraries(${target_name} PRIVATE yaml-cpp)
+  endif()
+
+  # Output ao lado do .cpp
   if(_n_src EQUAL 1)
     set(out_name "${stem}")
   else()
     set(out_name "${target_name}")
   endif()
-
   set_target_properties(${target_name} PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY "${dir_abs}"
     OUTPUT_NAME "${out_name}"
