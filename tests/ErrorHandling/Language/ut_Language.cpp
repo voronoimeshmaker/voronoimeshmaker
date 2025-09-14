@@ -1,41 +1,47 @@
 // -----------------------------------------------------------------------------
-// ut_language.cpp
-// Tests for Language enum and interaction with ErrorConfig.
-// One test executable dedicated to Language.
-// Comments/messages in English.
+// File        : ut_Language.cpp
+// Description : Tests for Language enum and its interaction with ErrorConfig.
+//               - enum shape
+//               - default language
+//               - scoped guard (set/restore)
+//               - concurrent readers (threads + std::barrier)
+//               - parallel readers (<execution>::par)
 // -----------------------------------------------------------------------------
 
-// -----------------------------------------------------------------------------
-//  include gtest
-// -----------------------------------------------------------------------------
 #include <gtest/gtest.h>
 
-// -----------------------------------------------------------------------------
-//  include VoronoiMeshMaker
-// -----------------------------------------------------------------------------
+#include <type_traits>
+#include <atomic>
+#include <barrier>
+#include <execution>
+#include <thread>
+#include <vector>
+
 #include <VoronoiMeshMaker/ErrorHandling/Language.h>
 #include <VoronoiMeshMaker/ErrorHandling/ErrorConfig.h>
 
 namespace ve = vmm::error;
 
 // -----------------------------------------------------------------------------
-//  helpers
+// RAII helper: temporarily switch language; restore on scope exit.
+// Uses shared_ptr from Config::get() to avoid relying on a global default state.
 // -----------------------------------------------------------------------------
 struct ScopedLanguage {
-    ve::ErrorConfig old_;
+    std::shared_ptr<const ve::ErrorConfig> prev_;
     explicit ScopedLanguage(ve::Language lang) {
-        if (auto cur = ve::Config::get()) old_ = *cur;
-        auto next     = old_;
+        prev_ = ve::Config::get();
+        ve::ErrorConfig next = prev_ ? *prev_ : ve::ErrorConfig{};
         next.language = lang;
         ve::Config::set(next);
     }
-    ~ScopedLanguage() { ve::Config::set(old_); }
+    ~ScopedLanguage() {
+        if (prev_) ve::Config::set(*prev_);
+    }
 };
 
 // -----------------------------------------------------------------------------
-//  tests
+// tests
 // -----------------------------------------------------------------------------
-
 TEST(Language, IsEnumAndHasTwoLocales) {
     static_assert(std::is_enum_v<ve::Language>, "Language must be an enum");
     auto en = ve::Language::EnUS;
@@ -64,4 +70,89 @@ TEST(Language, ChangeAndRestoreWithScopedGuard) {
     auto after = ve::Config::get();
     ASSERT_TRUE(static_cast<bool>(after));
     EXPECT_EQ(after->language, before->language);
+}
+
+// -----------------------------------------------------------------------------
+// Concurrent readers using std::barrier: all threads start together and verify
+// the language is what we set on the main thread (read-only workload).
+// -----------------------------------------------------------------------------
+TEST(Language, ConcurrentReadersBarrier) {
+    // Set once on main thread; readers only read.
+    {
+        auto cur = ve::Config::get();
+        ASSERT_TRUE(static_cast<bool>(cur));
+        auto next = *cur;
+        next.language = ve::Language::PtBR;
+        ve::Config::set(next);
+    }
+
+    constexpr int Readers = 16;
+    constexpr int Iters   = 2000;
+    std::barrier sync(Readers);
+    std::atomic<int> bad{0};
+
+    auto worker = [&] {
+        sync.arrive_and_wait();
+        for (int i = 0; i < Iters; ++i) {
+            auto cfg = ve::Config::get();
+            if (!cfg || cfg->language != ve::Language::PtBR) {
+                ++bad; break;
+            }
+            if ((i & 0xFF) == 0) std::this_thread::yield();
+        }
+    };
+
+    std::vector<std::thread> th;
+    th.reserve(Readers);
+    for (int r = 0; r < Readers; ++r) th.emplace_back(worker);
+    for (auto &t : th) t.join();
+
+    EXPECT_EQ(bad.load(), 0);
+
+    // Restore default for other tests
+    {
+        auto cur = ve::Config::get();
+        ASSERT_TRUE(static_cast<bool>(cur));
+        auto next = *cur;
+        next.language = ve::Language::EnUS;
+        ve::Config::set(next);
+    }
+}
+
+// -----------------------------------------------------------------------------
+// Parallel readers using std::execution::par (read-only).
+// -----------------------------------------------------------------------------
+TEST(Language, ParallelReadersStdPar) {
+    // Ensure EnUS before running
+    {
+        auto cur = ve::Config::get();
+        ASSERT_TRUE(static_cast<bool>(cur));
+        auto next = *cur;
+        next.language = ve::Language::EnUS;
+        ve::Config::set(next);
+    }
+
+    // Dummy indices to drive parallel for_each
+    std::vector<int> idx(5000);
+    for (int i = 0; i < static_cast<int>(idx.size()); ++i) idx[i] = i;
+
+    std::atomic<int> ok{0};
+    std::for_each(std::execution::par, idx.begin(), idx.end(),
+                  [&](int) {
+                      auto cfg = ve::Config::get();
+                      if (cfg && (cfg->language == ve::Language::EnUS ||
+                                  cfg->language == ve::Language::PtBR)) {
+                          ++ok;
+                      }
+                  });
+
+    EXPECT_EQ(ok.load(), static_cast<int>(idx.size()));
+}
+
+// -----------------------------------------------------------------------------
+// main
+// -----------------------------------------------------------------------------
+int main(int argc, char **argv) {
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }

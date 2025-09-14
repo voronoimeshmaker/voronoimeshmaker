@@ -1,7 +1,7 @@
 // ============================================================================
 // File: ErrorConfig.h
 // Author: VoronoiMeshMaker Team
-// Version: 0.1.0
+// Version: 0.1.1 (Refactored)
 // Description: Runtime configuration for error handling.
 // License: GNU GPL v3
 // (c) 2025 VoronoiMeshMaker Project. All rights reserved.
@@ -13,16 +13,18 @@
 //  include c++
 // -----------------------------------------------------------------------------
 #include <memory>
+#include <atomic>
 
 // -----------------------------------------------------------------------------
 //  include VoronoiMeshMaker
 // -----------------------------------------------------------------------------
 #include <VoronoiMeshMaker/ErrorHandling/Language.h>
 #include <VoronoiMeshMaker/ErrorHandling/Severity.h>
+#include <VoronoiMeshMaker/ErrorHandling/IErrorLogger.h>
 
 /**
  * @file ErrorConfig.h
- * @brief Runtime configuration (language, policy, thresholds).
+ * @brief Runtime configuration (language, policy, logger, thresholds).
  * @ingroup errorhandling
  */
 
@@ -40,14 +42,15 @@ struct ErrorConfig {
     Language language{Language::EnUS};
     Policy policy{Policy::Throw};
     Severity min_severity{Severity::Warning};
-    bool deterministic{false};
-    bool expose_breadcrumbs{false};
     std::size_t thread_buffer_cap{256};
+    std::shared_ptr<IErrorLogger> logger;
+
+    /** @brief Default constructor initializes with a ThreadLocalBufferLogger. */
+    ErrorConfig(); // <-- MODIFICADO (agora é só uma declaração)
 };
 
 /**
  * @brief Global config handle (atomic shared_ptr swap).
- * Minimal and header-only for now.
  */
 class Config {
 public:

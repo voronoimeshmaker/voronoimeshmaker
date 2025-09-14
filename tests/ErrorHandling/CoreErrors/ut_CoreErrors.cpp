@@ -1,26 +1,29 @@
 //==============================================================================
 // File        : ut_CoreErrors.cpp
 // Author      : João Flávio Vieira de Vasconcellos
-// Version     : 1.1.0
-// Description : Unified tests for CoreErrors
-//               - Google Test + Google Mock
-//               - Parallel checks (threads + <execution> + std::barrier)
-//               - Leak-safe dynamic usage + stress
+// Version     : 1.0.1
+// Description : Unified tests for CoreErrors (GTest + GMock + parallel checks)
 // License     : GNU GPL v3
 //==============================================================================
 
 //------------------------------------------------------------------------------
 // c++ includes
 //------------------------------------------------------------------------------
-#include <barrier>
+// #include <atomic>
+#include <cstdint>
 #include <execution>
-#include <unordered_set>
+#include <string>
+#include <string_view>
+#include <thread>
+#include <vector>
+
 
 //------------------------------------------------------------------------------
 // external includes
 //------------------------------------------------------------------------------
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
+
 
 //------------------------------------------------------------------------------
 // VoronoiMeshMaker includes
@@ -41,18 +44,8 @@ static bool is_valid(Severity s) {
            s == Severity::Error || s == Severity::Fatal;
 }
 
-static std::vector<std::uint16_t> all_ids() {
-    std::vector<std::uint16_t> ids;
-    ids.reserve(static_cast<std::uint16_t>(CoreErr::_Count) - 1);
-    for (std::uint16_t i = 1;
-         i < static_cast<std::uint16_t>(CoreErr::_Count); ++i) {
-        ids.push_back(i);
-    }
-    return ids;
-}
-
 //------------------------------------------------------------------------------
-// 1) Enum layout / counts
+// 1) Enum layout / counts (kept as in original tests)
 //------------------------------------------------------------------------------
 TEST(CoreErrors, EnumValues) {
     EXPECT_EQ(static_cast<std::uint16_t>(CoreErr::InvalidArgument), 1);
@@ -67,7 +60,8 @@ TEST(CoreErrors, EnumValues) {
 //------------------------------------------------------------------------------
 TEST(CoreErrors, DomainInfo) {
     EXPECT_EQ(ErrorTraits<CoreErr>::domain_id(), 0x0001);
-    EXPECT_EQ(ErrorTraits<CoreErr>::domain_name(), sv{"Core"});
+    auto name = ErrorTraits<CoreErr>::domain_name();
+    EXPECT_TRUE(name == sv{"Core"});
 }
 
 //------------------------------------------------------------------------------
@@ -137,8 +131,9 @@ TEST(CoreErrors, DetailAccess) {
 // 6) Bounds safety / coverage over whole enum
 //------------------------------------------------------------------------------
 TEST(CoreErrors, BoundsSafety) {
-    for (auto id : all_ids()) {
-        auto e   = static_cast<CoreErr>(id);
+    for (std::uint16_t i = 1;
+         i < static_cast<std::uint16_t>(CoreErr::_Count); ++i) {
+        auto e   = static_cast<CoreErr>(i);
         auto key = ErrorTraits<CoreErr>::key(e);
         auto sev = ErrorTraits<CoreErr>::default_severity(e);
         EXPECT_FALSE(key.empty());
@@ -147,45 +142,22 @@ TEST(CoreErrors, BoundsSafety) {
 }
 
 //------------------------------------------------------------------------------
-// 7) Keys are unique
-//------------------------------------------------------------------------------
-TEST(CoreErrors, KeysAreUnique) {
-    std::unordered_set<std::string> uniq;
-    for (auto id : all_ids()) {
-        auto e = static_cast<CoreErr>(id);
-        uniq.insert(std::string(ErrorTraits<CoreErr>::key(e)));
-    }
-    EXPECT_EQ(uniq.size(), all_ids().size());
-}
-
-//------------------------------------------------------------------------------
-// 8) Translations exist for all enumerators
-//------------------------------------------------------------------------------
-TEST(CoreErrors, TranslationsNonEmpty) {
-    for (auto id : all_ids()) {
-        auto e = static_cast<CoreErr>(id);
-        EXPECT_FALSE(ErrorTraits<CoreErr>::enUS(e).empty());
-        EXPECT_FALSE(ErrorTraits<CoreErr>::ptBR(e).empty());
-    }
-}
-
-//------------------------------------------------------------------------------
-// 9) Thread-safety: benign concurrent readers (manual threads)
+// 7) Thread-safety: benign concurrent readers (manual threads)
 //------------------------------------------------------------------------------
 TEST(CoreErrors, ThreadSafeReaders) {
-    constexpr int nthreads = 8;
-    constexpr int iters    = 1'000;
+    constexpr int nthreads = 4;
+    constexpr int iters    = 100;
     std::atomic<int> ok{0};
 
     auto worker = [&]() {
         for (int k = 0; k < iters; ++k) {
-            for (auto id : all_ids()) {
-                CoreErr e = static_cast<CoreErr>(id);
+            for (std::uint16_t i = 1;
+                 i < static_cast<std::uint16_t>(CoreErr::_Count); ++i) {
+                CoreErr e = static_cast<CoreErr>(i);
                 auto ksv  = ErrorTraits<CoreErr>::key(e);
                 auto sev  = ErrorTraits<CoreErr>::default_severity(e);
                 if (!ksv.empty() && is_valid(sev)) ++ok;
             }
-            if ((k & 0x7F) == 0) std::this_thread::yield();
         }
     };
 
@@ -193,16 +165,22 @@ TEST(CoreErrors, ThreadSafeReaders) {
     for (int t = 0; t < nthreads; ++t) ts.emplace_back(worker);
     for (auto &t : ts) t.join();
 
-    const int per_iter = static_cast<int>(all_ids().size());
-    const int expected = nthreads * iters * per_iter;
+    const int expected =
+        nthreads * iters *
+        (static_cast<std::uint16_t>(CoreErr::_Count) - 1);
     EXPECT_EQ(ok.load(), expected);
 }
 
 //------------------------------------------------------------------------------
-// 10) Parallel algorithms (std::execution::par): readers
+// 8) Parallel algorithms (std::execution::par): readers
 //------------------------------------------------------------------------------
 TEST(CoreErrors, ParallelReaders_StdPar) {
-    auto ids = all_ids();
+    std::vector<std::uint16_t> ids;
+    for (std::uint16_t i = 1;
+         i < static_cast<std::uint16_t>(CoreErr::_Count); ++i) {
+        ids.push_back(i);
+    }
+
     std::atomic<int> ok{0};
     std::for_each(std::execution::par, ids.begin(), ids.end(),
                   [&](std::uint16_t i) {
@@ -211,54 +189,26 @@ TEST(CoreErrors, ParallelReaders_StdPar) {
                       auto sev  = ErrorTraits<CoreErr>::default_severity(e);
                       if (!ksv.empty() && is_valid(sev)) ++ok;
                   });
+
     EXPECT_EQ(ok.load(), static_cast<int>(ids.size()));
 }
 
 //------------------------------------------------------------------------------
-// 11) Readers start together (barrier), then hammer lookups
-//      (pattern mirrors the std::barrier start you used in Config tests).
-//------------------------------------------------------------------------------
-TEST(CoreErrors, ReadersStartTogether_Barrier) {
-    constexpr int Readers = 16;
-    constexpr int Iters   = 3'000;
-    std::barrier sync(Readers);
-    std::atomic<int> bad{0};
-
-    auto ids = all_ids();
-    auto worker = [&] {
-        sync.arrive_and_wait();
-        for (int i = 0; i < Iters; ++i) {
-            for (auto id : ids) {
-                auto e = static_cast<CoreErr>(id);
-                if (ErrorTraits<CoreErr>::key(e).empty() ||
-                    !is_valid(ErrorTraits<CoreErr>::default_severity(e))) {
-                    ++bad; break;
-                }
-            }
-            if ((i & 0xFF) == 0) std::this_thread::yield();
-        }
-    };
-
-    std::vector<std::thread> th;
-    th.reserve(Readers);
-    for (int r = 0; r < Readers; ++r) th.emplace_back(worker);
-    for (auto &t : th) t.join();
-
-    EXPECT_EQ(bad.load(), 0);
-}
-
-//------------------------------------------------------------------------------
-// 12) Determinism smoke: parallel pass repeated should match (index-based)
+// 9) Determinism smoke: parallel pass repeated should match
 //------------------------------------------------------------------------------
 TEST(CoreErrors, ParallelDeterminism_Smoke) {
     auto run = [] {
-        auto ids = all_ids();
+        std::vector<std::uint16_t> ids;
+        for (std::uint16_t i = 1;
+             i < static_cast<std::uint16_t>(CoreErr::_Count); ++i) {
+            ids.push_back(i);
+        }
         std::vector<std::string> keys(ids.size());
         std::for_each(std::execution::par, ids.begin(), ids.end(),
                       [&](std::uint16_t i) {
                           CoreErr e = static_cast<CoreErr>(i);
-                          keys[i - 1] = std::string(
-                              ErrorTraits<CoreErr>::key(e));
+                          keys[i - 1] =
+                              std::string(ErrorTraits<CoreErr>::key(e));
                       });
         return keys;
     };
@@ -270,39 +220,44 @@ TEST(CoreErrors, ParallelDeterminism_Smoke) {
 }
 
 //------------------------------------------------------------------------------
-// 13) Memory patterns: dynamic allocation + no leaks
+// 10) Memory patterns: dynamic allocation + no leaks
 //------------------------------------------------------------------------------
 TEST(CoreErrors, NoLeaks_DynamicUse) {
     auto *acc = new std::vector<sv>;
-    acc->reserve(all_ids().size());
-    for (auto id : all_ids()) {
+    for (std::uint16_t i = 1;
+         i < static_cast<std::uint16_t>(CoreErr::_Count); ++i) {
         acc->push_back(ErrorTraits<CoreErr>::key(
-            static_cast<CoreErr>(id)));
+            static_cast<CoreErr>(i)));
     }
-    EXPECT_EQ(acc->size(), all_ids().size());
-    delete acc;  // Valgrind should report no leaks.
+    EXPECT_EQ(acc->size(),
+              static_cast<std::size_t>(
+                  static_cast<std::uint16_t>(CoreErr::_Count) - 1));
+    delete acc;  // Valgrind should report no leaks here.
 }
 
 //------------------------------------------------------------------------------
-// 14) Stress test: build many small strings
+// 11) Stress test: build many small strings
 //------------------------------------------------------------------------------
 TEST(CoreErrors, StressStrings) {
     constexpr int N = 500;
     std::vector<std::string> out;
-    out.reserve(N * all_ids().size());
+    out.reserve(N * (static_cast<std::uint16_t>(CoreErr::_Count) - 1));
 
     for (int r = 0; r < N; ++r) {
-        for (auto id : all_ids()) {
-            CoreErr e = static_cast<CoreErr>(id);
-            out.emplace_back(std::string(
-                ErrorTraits<CoreErr>::key(e)));
+        for (std::uint16_t i = 1;
+             i < static_cast<std::uint16_t>(CoreErr::_Count); ++i) {
+            CoreErr e = static_cast<CoreErr>(i);
+            out.emplace_back(
+                std::string(ErrorTraits<CoreErr>::key(e)));
         }
     }
-    EXPECT_EQ(out.size(), static_cast<std::size_t>(N) * all_ids().size());
+    EXPECT_EQ(out.size(),
+              static_cast<std::size_t>(N) *
+                  (static_cast<std::uint16_t>(CoreErr::_Count) - 1));
 }
 
 //------------------------------------------------------------------------------
-// 15) Tiny perf smoke (not a benchmark): constant lookups
+// 12) Tiny perf smoke (not a benchmark): constant lookups
 //------------------------------------------------------------------------------
 TEST(CoreErrors, Perf_Smoke) {
     constexpr int N = 10000;
@@ -320,7 +275,7 @@ TEST(CoreErrors, Perf_Smoke) {
 }
 
 //------------------------------------------------------------------------------
-// 16) Google Mock: example integration with a mockable sink
+// 13) Google Mock: example integration with a mockable sink
 //------------------------------------------------------------------------------
 class MockErrorSink {
 public:

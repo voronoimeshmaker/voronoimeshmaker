@@ -1,26 +1,22 @@
 //==============================================================================
-// Name        : ut_Message_Catalog.cpp
+// Name        : ut_MessageCatalog.cpp
 // Author      : João Flávio Vieira de Vasconcellos
-// Version     : 1.0.3
+// Version     : 1.0.5
 // Description : Parallel tests for message rendering (EN/PT) using explicit
 //               locale and under concurrent config toggling. Focus on the
 //               thread-safety of render(). One test executable dedicated to
 //               MessageCatalog.
-//
-// This program is free software: you can redistribute it and/or modify it
-// under the terms of the GNU General Public License as published by the
-// Free Software Foundation, version 3 of the License.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU General Public License for more details.
 //==============================================================================
 
 //==============================================================================
 //      C++ Standard Library includes
 //==============================================================================
 #include <barrier>
+#include <atomic>
+#include <thread>
+#include <vector>
+#include <string>
+#include <string_view>
 
 //==============================================================================
 //      External libraries
@@ -44,13 +40,16 @@ static bool contains(std::string_view hay, std::string_view needle) {
 }
 
 // RAII to set a config and restore the previous one on scope exit.
+// Usa shared_ptr para restaurar exatamente o estado anterior quando existir.
 struct ScopedConfig {
-    ve::ErrorConfig old_;
+    std::shared_ptr<const ve::ErrorConfig> prev_;
     explicit ScopedConfig(const ve::ErrorConfig& next) {
-        if (auto cur = ve::Config::get()) old_ = *cur;
+        prev_ = ve::Config::get();
         ve::Config::set(next);
     }
-    ~ScopedConfig() { ve::Config::set(old_); }
+    ~ScopedConfig() {
+        if (prev_) ve::Config::set(*prev_);
+    }
 };
 
 //------------------------------------------------------------------------------
@@ -118,7 +117,7 @@ TEST(MessageCatalog, Parallel_Render_ConfigDriven_WithLanguageToggling) {
     std::vector<std::thread> readers;
     readers.reserve(Readers);
     for (int r = 0; r < Readers; ++r) {
-        readers.emplace_back([&] {
+        readers.emplace_back([&, r] {  // capture 'r' by value (fix ASan)
             sync.arrive_and_wait();
             for (int i = 0; i < Iters; ++i) {
                 auto cfg = ve::Config::get();
@@ -154,4 +153,12 @@ TEST(MessageCatalog, Parallel_Render_ConfigDriven_WithLanguageToggling) {
 
     EXPECT_EQ(failures.load(), 0)
         << "render() failed under config toggling";
+}
+
+//------------------------------------------------------------------------------
+// main
+//------------------------------------------------------------------------------
+int main(int argc, char **argv) {
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }

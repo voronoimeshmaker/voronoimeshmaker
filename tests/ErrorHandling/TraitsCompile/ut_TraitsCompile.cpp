@@ -1,20 +1,19 @@
 //==============================================================================
-// Name        : ut_Traits_Compile.cpp
+// Name        : ut_TraitsCompile.cpp
 // Author      : João Flávio Vieira de Vasconcellos
-// Version     : 1.0.3
+// Version     : 1.0.4
 // Description : Compile-time checks for ErrorTraits/CoreErr mapping (no runtime).
 //               Tip: add this TU to an OBJECT library or a target that is only
 //               compiled (no need to link or run).
-//
-// This program is free software: you can redistribute it and/or modify it
-// under the terms of the GNU General Public License as published by the
-// Free Software Foundation, version 3 of the License.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU General Public License for more details.
 //==============================================================================
+
+//==============================================================================
+//      Standard Library
+//==============================================================================
+#include <type_traits>   // std::is_enum_v, std::unsigned_integral
+#include <concepts>      // std::same_as
+#include <cstdint>       // std::uint32_t
+#include <string_view>   // std::string_view
 
 //==============================================================================
 //      VoronoiMeshMaker includes
@@ -60,6 +59,12 @@ static_assert(std::same_as<
                   ve::Severity>,
               "ErrorTraits<CoreErr>::default_severity must return Severity");
 
+// Keys must be available as string_view too (útil para exporters).
+static_assert(std::same_as<
+                  decltype(ve::ErrorTraits<E>::key(E{})),
+                  std::string_view>,
+              "ErrorTraits<CoreErr>::key must return std::string_view");
+
 // domain_id must exist and be an unsigned integral (typically uint16_t).
 static_assert(std::unsigned_integral<decltype(ve::ErrorTraits<E>::domain_id())>,
               "ErrorTraits<CoreErr>::domain_id must be an unsigned integral");
@@ -70,6 +75,7 @@ constexpr bool _vmm_traits_compile_sentinel = [] {
     (void)ve::ErrorTraits<E>::enUS(E::InvalidArgument);
     (void)ve::ErrorTraits<E>::ptBR(E::InvalidArgument);
     (void)ve::ErrorTraits<E>::default_severity(E::InvalidArgument);
+    (void)ve::ErrorTraits<E>::key(E::InvalidArgument);
     (void)ve::error_code(E::InvalidArgument);
     return true;
 }();

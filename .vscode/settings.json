@@ -78,6 +78,7 @@
         "stdfloat": "cpp",
         "text_encoding": "cpp",
         "cinttypes": "cpp",
-        "typeindex": "cpp"
+        "typeindex": "cpp",
+        "target": "cpp"
     }
 }

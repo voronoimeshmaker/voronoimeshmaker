@@ -1,7 +1,7 @@
 // ============================================================================
 // File: Macros.h
 // Author: VoronoiMeshMaker Team
-// Version: 0.1.0
+// Version: 0.1.6
 // Description: Convenience macros for throwing and logging.
 // License: GNU GPL v3
 // (c) 2025 VoronoiMeshMaker Project. All rights reserved.
@@ -10,72 +10,54 @@
 #pragma once
 
 // -----------------------------------------------------------------------------
-//  include VoronoiMeshMaker
+//  VoronoiMeshMaker
 // -----------------------------------------------------------------------------
-#include <VoronoiMeshMaker/ErrorHandling/ErrorManeger.h>
+// Precisamos do enum CoreErr aqui (VMM_ASSERT e usos diretos em chamadas).
+#include <VoronoiMeshMaker/ErrorHandling/CoreErrors.h>
 #include <VoronoiMeshMaker/ErrorHandling/VMMException.h>
+#include <VoronoiMeshMaker/ErrorHandling/Detail.h> // detail::log_error
 
 /**
  * @file Macros.h
  * @brief Convenience macros for pre/post conditions, throw and log.
  * @ingroup errorhandling
+ *
+ * Observações:
+ * - Suporta chamadas COM e SEM lista de pares {{"k","v"},...} graças a __VA_OPT__.
+ * - VMMException já possui source_location padrão (current()), logo não passamos aqui.
  */
 
-VORMAKER_NAMESPACE_OPEN
-ERROR_NAMESPACE_OPEN
-DETAIL_NAMESPACE_OPEN
-
-inline void swallow(...) {}
-
-DETAIL_NAMESPACE_CLOSE
-ERROR_NAMESPACE_CLOSE
-VORMAKER_NAMESPACE_CLOSE
-
-/** @brief Throw a VMMException with key/value replacements. */
-#define VMM_THROW(err_enum, /* {{"k","v"},...} */ ...)                                 \
-    throw ::vmm::error::VMMException(                                                  \
-        (err_enum), __VA_ARGS__, std::source_location::current())
-
-/** @brief Register an error record (no throw). */
-#define VMM_ERROR(err_enum, /* {{"k","v"},...} */ ...)                                 \
-    do {                                                                               \
-        using ::vmm::error::Config;                                                    \
-        using ::vmm::error::ErrorRecord;                                               \
-        using ::vmm::error::ErrorTraits;                                               \
-        using ::vmm::error::error_code;                                                \
-        using ::vmm::error::render;                                                    \
-        auto e   = (err_enum);                                                         \
-        auto cfg = Config::get();                                                      \
-        ErrorRecord rec;                                                               \
-        rec.code     = error_code(e);                                                  \
-        rec.severity = ErrorTraits<decltype(e)>::default_severity(e);                  \
-        rec.message  = render(e, cfg->language, __VA_ARGS__);                          \
-        ::vmm::error::ErrorManeger::log(std::move(rec));                               \
+/** @brief Throw a VMMException with optional key/value replacements. */
+#define VMM_THROW(err_enum, /* {{"k","v"},...} */ ...)                                  \
+    do {                                                                                \
+        throw ::vmm::error::VMMException(                                               \
+            (err_enum) __VA_OPT__(, __VA_ARGS__)                                        \
+        );                                                                              \
     } while (0)
 
-/** @brief Precondition: throws if !(cond). */
-#define VMM_REQUIRE(cond, err_enum, ...)                                               \
-    do {                                                                               \
-        if (!(cond)) {                                                                 \
-            VMM_THROW((err_enum), __VA_ARGS__);                                        \
-        }                                                                              \
+/** @brief Register an error record (no throw). Delegates to helper function. */
+#define VMM_ERROR(err_enum, /* {{"k","v"},...} */ ...)                                  \
+    do {                                                                                \
+        ::vmm::error::detail::log_error(                                                \
+            (err_enum) __VA_OPT__(, __VA_ARGS__)                                        \
+        );                                                                              \
     } while (0)
 
-/** @brief Postcondition: throws if !(cond). */
-#define VMM_ENSURE(cond, err_enum, ...)                                                \
-    do {                                                                               \
-        if (!(cond)) {                                                                 \
-            VMM_THROW((err_enum), __VA_ARGS__);                                        \
-        }                                                                              \
+/** @brief Require condition, otherwise throw with optional KV message. */
+#define VMM_REQUIRE(cond, err_enum, /* {{"k","v"},...} */ ...)                          \
+    do {                                                                                \
+        if (!(cond)) {                                                                  \
+            VMM_THROW((err_enum) __VA_OPT__(, __VA_ARGS__));                            \
+        }                                                                               \
     } while (0)
 
-/** @brief Debug-only assert. */
+/** @brief Debug-only assert (throws VMMException in Debug; no-op in Release). */
 #ifndef NDEBUG
-#  define VMM_ASSERT(cond)                                                             \
-    do {                                                                               \
-        if (!(cond)) {                                                                 \
-            VMM_THROW(::vmm::error::CoreErr::AssertFailed);                            \
-        }                                                                              \
+#  define VMM_ASSERT(cond)                                                              \
+    do {                                                                                \
+        if (!(cond)) {                                                                  \
+            VMM_THROW(::vmm::error::CoreErr::AssertFailed);                             \
+        }                                                                               \
     } while (0)
 #else
 #  define VMM_ASSERT(cond) do { (void)sizeof(cond); } while (0)

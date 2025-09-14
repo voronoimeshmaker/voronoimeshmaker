@@ -67,5 +67,6 @@ inline std::string render   (E  e
     return replace_named(t, _kv);
 }
 
+
 ERROR_NAMESPACE_CLOSE
 VORMAKER_NAMESPACE_CLOSE

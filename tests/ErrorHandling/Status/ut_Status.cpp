@@ -1,7 +1,7 @@
 //==============================================================================
 // Name        : ut_Status.cpp
 // Author      : João Flávio Vieira de Vasconcellos
-// Version     : 1.0.3
+// Version     : 1.0.4
 // Description : Tests for Status and StatusOr.
 //               One test executable dedicated to this module.
 //
@@ -15,6 +15,15 @@
 // GNU General Public License for more details.
 //==============================================================================
 
+//==============================================================================
+//      C++ Standard Library includes
+//==============================================================================
+#include <string>
+#include <utility>
+#include <thread>
+#include <vector>
+#include <atomic>
+#include <barrier>
 
 //==============================================================================
 //      External libraries
@@ -90,7 +99,74 @@ TEST(StatusOr, CopyMoveValueType) {
     EXPECT_EQ(p1.a, 10);
     EXPECT_EQ(p1.s, "ten");
 
-    P p2 = std::move(so.value());  // move-out (allowed by many impls)
+    P p2 = std::move(so.value());  // move-out (ok em muitas impls; aqui é smoke)
     EXPECT_EQ(p2.a, 10);
     EXPECT_EQ(p2.s, "ten");
+}
+
+//------------------------------------------------------------------------------
+// Extras leves: criação/inspeção em paralelo (somente leitura/criação)
+// Não alteram a API nem a semântica; ajudam a flagrar problemas óbvios
+// sob concorrência de uso comum.
+//------------------------------------------------------------------------------
+TEST(Status, Parallel_CreateAndInspect) {
+    constexpr int T = 8;
+    constexpr int N = 2000;
+
+    std::barrier sync(T);
+    std::atomic<int> bad{0};
+    std::vector<std::thread> th;
+    th.reserve(T);
+
+    for (int t = 0; t < T; ++t) {
+        th.emplace_back([&, t] {
+            sync.arrive_and_wait();
+            for (int i = 0; i < N; ++i) {
+                ve::Status ok = ve::Status::Ok();
+                if (!ok.ok() || ok.code() != 0u) { ++bad; break; }
+
+                ve::Status err(static_cast<uint32_t>(t + 1),
+                               "e", ve::Severity::Error);
+                if (err.ok() || err.code() != static_cast<uint32_t>(t + 1) ||
+                    err.message().empty()) {
+                    ++bad; break;
+                }
+                if ((i & 0xFF) == 0) std::this_thread::yield();
+            }
+        });
+    }
+    for (auto& x : th) x.join();
+    EXPECT_EQ(bad.load(), 0);
+}
+
+TEST(StatusOr, Parallel_ValueAndError) {
+    constexpr int T = 6;
+    constexpr int N = 1500;
+
+    std::barrier sync(T);
+    std::atomic<int> okcnt{0}, errcnt{0};
+    std::vector<std::thread> th;
+    th.reserve(T);
+
+    for (int t = 0; t < T; ++t) {
+        th.emplace_back([&, t] {
+            sync.arrive_and_wait();
+            for (int i = 0; i < N; ++i) {
+                ve::StatusOr<int> v(i);
+                if (v.ok() && v.value() == i) ++okcnt;
+
+                ve::Status st(static_cast<uint32_t>(100 + t),
+                               "x", ve::Severity::Warning);
+                ve::StatusOr<int> e(st);
+                if (!e.ok() && e.status().code() == static_cast<uint32_t>(100 + t))
+                    ++errcnt;
+
+                if ((i & 0xFF) == 0) std::this_thread::yield();
+            }
+        });
+    }
+    for (auto& x : th) x.join();
+
+    EXPECT_EQ(okcnt.load(), T * N);
+    EXPECT_EQ(errcnt.load(), T * N);
 }

@@ -1,20 +1,12 @@
 //==============================================================================
 // Name        : ut_Macros.cpp
 // Author      : João Flávio Vieira de Vasconcellos
-// Version     : 1.0.3
+// Version     : 1.0.4
 // Description : Parallel tests for ErrorHandling Macros:
 //               - VMM_ERROR logging across threads
 //               - VMM_REQUIRE mixed pass/throw in parallel
 //               - VMM_ASSERT behavior (Debug vs Release)
-//
-// This program is free software: you can redistribute it and/or modify it
-// under the terms of the GNU General Public License as published by the
-// Free Software Foundation, version 3 of the License.
-//
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU General Public License for more details.
+// License     : GNU GPL v3
 //==============================================================================
 
 //==============================================================================
@@ -31,6 +23,9 @@
 //      VoronoiMeshMaker includes
 //==============================================================================
 #include <VoronoiMeshMaker/ErrorHandling/Macros.h>
+#include <VoronoiMeshMaker/ErrorHandling/ErrorManager.h>
+#include <VoronoiMeshMaker/ErrorHandling/CoreErrors.h>
+// #include <VoronoiMeshMaker/ErrorHandling/ErrorConfig.h>
 
 namespace ve = vmm::error;
 
@@ -38,18 +33,22 @@ namespace ve = vmm::error;
 // RAII guard to temporarily set ErrorConfig (and restore on scope exit).
 //------------------------------------------------------------------------------
 struct ScopedConfig {
-    ve::ErrorConfig old_;
+    std::shared_ptr<const ve::ErrorConfig> prev_;
     explicit ScopedConfig(const ve::ErrorConfig& next) {
-        if (auto cur = ve::Config::get()) old_ = *cur;
+        prev_ = ve::Config::get();
         ve::Config::set(next);
     }
-    ~ScopedConfig() { ve::Config::set(old_); }
+    ~ScopedConfig() {
+        if (prev_) ve::Config::set(*prev_);
+    }
 };
 
 //------------------------------------------------------------------------------
 // Convenience: clear current thread buffer.
 //------------------------------------------------------------------------------
-static void clean_thread_buffer() { (void)ve::ErrorManeger::flush(); }
+static void clean_thread_buffer() {
+    (void)ve::ErrorManager::flush();
+}
 
 //------------------------------------------------------------------------------
 // Tests
@@ -84,8 +83,9 @@ TEST(Macros, Parallel_VMM_ERROR_NoThrow_And_PerThreadIsolation) {
                     VMM_ERROR(ve::CoreErr::InvalidArgument,
                               {{"name", "thr" + std::to_string(t)}})
                 );
+                if ((i & 0x7F) == 0) std::this_thread::yield();
             }
-            auto out = ve::ErrorManeger::flush();
+            auto out = ve::ErrorManager::flush();
             counts[t] = out.size();
             // All records from this thread should be present and tagged.
             ASSERT_EQ(out.size(), static_cast<size_t>(M));
@@ -217,7 +217,7 @@ TEST(Macros, Parallel_MixedPressure_NoThrowAndConsistentLogging) {
                                 {{"name", "ok"}})
                 );
             }
-            counts[t] = ve::ErrorManeger::flush().size();
+            counts[t] = ve::ErrorManager::flush().size();
         });
     }
     for (auto& th : ths) th.join();
@@ -228,4 +228,12 @@ TEST(Macros, Parallel_MixedPressure_NoThrowAndConsistentLogging) {
 #else
     GTEST_SKIP() << "VMM_ERROR and/or VMM_REQUIRE not defined.";
 #endif
+}
+
+//------------------------------------------------------------------------------
+// main
+//------------------------------------------------------------------------------
+int main(int argc, char **argv) {
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }
