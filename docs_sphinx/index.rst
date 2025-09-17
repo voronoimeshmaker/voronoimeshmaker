@@ -11,6 +11,14 @@ Welcome to the **VoronoiMeshMaker** documentation - a C++20 library for Voronoi 
    :margin: 0
 
    .. grid-item-card::
+      :link: overview
+      :text-align: center
+      
+      📋 Project Overview
+      ^^^
+      Complete project description and features
+
+   .. grid-item-card::
       :link: getting_started
       :text-align: center
       
@@ -34,13 +42,14 @@ Welcome to the **VoronoiMeshMaker** documentation - a C++20 library for Voronoi 
       ^^^
       Complete API documentation
 
-   .. grid-item-card::
-      :link: development
-      :text-align: center
-      
-      🔧 Development
-      ^^^
-      Contributing guidelines
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   :caption: Project
+
+   overview
+   changelog
+   license
 
 .. toctree::
    :maxdepth: 2
@@ -58,14 +67,6 @@ Welcome to the **VoronoiMeshMaker** documentation - a C++20 library for Voronoi 
 
    development
    contributing
-
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-   :caption: Project
-
-   changelog
-   license
 
 Indices and tables
 ==================

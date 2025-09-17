@@ -19,11 +19,9 @@
 // -----------------------------------------------------------------------------
 #include <VoronoiMeshMaker/ErrorHandling/ErrorTraits.h>
 
-/**
- * @fileCoreErrors.h
- * @brief Core error examples and their traits (extensible pattern).
- * @ingroup errorhandling
- */
+/** @file CoreErrors.h */
+/** @brief Core error examples and their traits (extensible pattern). */
+/** @ingroup errorhandling */
 
 VORMAKER_NAMESPACE_OPEN
 namespace error {

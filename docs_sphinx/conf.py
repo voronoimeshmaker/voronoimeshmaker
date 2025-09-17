@@ -1,6 +1,7 @@
 # VoronoiMeshMaker — Sphinx config (PETSc-like layout via PyData theme)
 
 import os
+import sys
 from pathlib import Path
 
 # -----------------------------------------------------------------------------
@@ -74,16 +75,71 @@ pygments_style = "default"
 pygments_dark_style = "native"
 
 # -----------------------------------------------------------------------------
-# Breathe Configuration
+# Breathe Configuration - COMPLETAMENTE GENÉRICO
 # -----------------------------------------------------------------------------
+def find_doxygen_xml_directory():
+    """
+    Find Doxygen XML directory robustly in this order:
+    1. VMM_DOXY_XML environment variable (set by CMake)
+    2. Common build directories
+    3. Any directory containing doxygen output
+    4. Default fallback with clear error message
+    """
+    # 1. Check environment variable (set by CMake during build)
+    env_path = os.environ.get('VMM_DOXY_XML')
+    if env_path:
+        env_path = Path(env_path)
+        if env_path.exists():
+            print(f"Using Doxygen XML from environment: {env_path}")
+            return str(env_path)
+        else:
+            print(f"Warning: VMM_DOXY_XML path does not exist: {env_path}")
+    
+    # 2. Check common build directories
+    common_build_dirs = [
+        "../build",
+        "../cmake-build", 
+        "../cmake-build-debug",
+        "../cmake-build-release",
+        "../out/build",
+        "../x64",
+        "../bin",
+        "../.build"
+    ]
+    
+    for build_dir in common_build_dirs:
+        xml_path = Path(build_dir) / "docs_doxygen" / "xml"
+        if xml_path.exists():
+            print(f"Using Doxygen XML from build directory: {xml_path}")
+            return str(xml_path)
+    
+    # 3. Search for any doxygen output in parent directories
+    for item in Path("..").rglob("docs_doxygen/xml"):
+        if item.exists():
+            print(f"Found Doxygen XML at: {item}")
+            return str(item)
+    
+    # 4. Final fallback with clear error message
+    default_path = "../build/docs_doxygen/xml"
+    print(f"Warning: Doxygen XML not found. Using fallback: {default_path}")
+    print("To fix this, run: cmake --build <build-dir> --target doc_doxygen")
+    return default_path
+
+# Configure Breathe
+doxygen_xml_path = find_doxygen_xml_directory()
 breathe_projects = {
-    "VoronoiMeshMaker": "../doxygen/xml"
+    "VoronoiMeshMaker": doxygen_xml_path
 }
+
+print(f"Breathe configured with: {breathe_projects['VoronoiMeshMaker']}")
+
 breathe_default_project = "VoronoiMeshMaker"
 breathe_domain_by_extension = {
     "h": "c",
     "hpp": "cpp",
     "cpp": "cpp",
+    "tpp": "cpp",
+    "ipp": "cpp",
 }
 breathe_show_define_initializer = True
 breathe_show_enumvalue_initializer = True
@@ -98,7 +154,6 @@ cpp_id_attributes = [
     "DETAIL_NAMESPACE_OPEN", "DETAIL_NAMESPACE_CLOSE",
     "GEOTYPES_NAMESPACE_OPEN", "GEOTYPES_NAMESPACE_CLOSE",
     "VMM_PUBLIC", "VMM_INTERNAL", "VMM_API", "VMM_INLINE",
-    "PETSC_EXTERN", "PETSC_DEPRECATED",
 ]
 
 cpp_paren_attributes = [
@@ -111,7 +166,8 @@ cpp_paren_attributes = [
 intersphinx_mapping = {
     "python": ("https://docs.python.org/3", None),
     "sphinx": ("https://www.sphinx-doc.org/en/master", None),
-    "cgal": ("https://doc.cgal.org/latest/Manual", None),
+    # CGAL comentado - não tem inventário intersphinx válido
+    # "cgal": ("https://doc.cgal.org/latest/Manual", None),
 }
 
 # -----------------------------------------------------------------------------
@@ -130,3 +186,10 @@ mathjax3_config = {
         'useLabelIds': True
     }
 }
+
+# -----------------------------------------------------------------------------
+# Debug info
+# -----------------------------------------------------------------------------
+print(f"Python executable: {sys.executable}")
+print(f"Current directory: {Path.cwd()}")
+print(f"Sphinx source: {_here}")
