@@ -1,5 +1,4 @@
 # VoronoiMeshMaker — Sphinx config (PETSc-like layout via PyData theme)
-# Comments/messages in English.
 
 import os
 from pathlib import Path
@@ -9,6 +8,8 @@ from pathlib import Path
 # -----------------------------------------------------------------------------
 project = "VoronoiMeshMaker"
 html_title = "VoronoiMeshMaker Documentation"
+copyright = "2024, VoronoiMeshMaker Team"
+author = "VoronoiMeshMaker Team"
 
 # -----------------------------------------------------------------------------
 # Extensions
@@ -21,13 +22,15 @@ extensions = [
     "sphinx.ext.intersphinx",
     "sphinx.ext.viewcode",
     "sphinx.ext.todo",
+    "sphinx.ext.mathjax",
+    "sphinx_design",    # For better design elements
 ]
 
-# Markdown tweaks (optional)
-myst_enable_extensions = ["deflist", "smartquotes", "dollarmath"]
+# Markdown tweaks
+myst_enable_extensions = ["deflist", "smartquotes", "dollarmath", "fieldlist"]
 
 templates_path = ["_templates"]
-exclude_patterns = ["_build"]
+exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 # -----------------------------------------------------------------------------
 # PETSc-like HTML layout: PyData Sphinx Theme
@@ -37,89 +40,93 @@ html_theme = "pydata_sphinx_theme"
 _here = Path(__file__).parent
 _static_dir = _here / "_static"
 
-# Only set html_static_path if the folder exists (avoids Sphinx warning)
+# Only set html_static_path if the folder exists
 html_static_path = ["_static"] if _static_dir.is_dir() else []
 
-# Optional: set logo/favicon *only* if present
-_logo = _static_dir / "logo.png"
-_favicon = _static_dir / "favicon.ico"
-html_logo = "_static/logo.png" if _logo.is_file() else None
-html_favicon = "_static/favicon.ico" if _favicon.is_file() else None
-
-# Theme options (navbar, repo icon, optional version switcher)
-navbar_end_items = ["theme-switcher", "navbar-icon-links"]
-theme_options = {
-    "navbar_end": navbar_end_items.copy(),
-    "show_nav_level": 2,
+# Theme options for PETSc-like layout
+html_theme_options = {
+    "navbar_start": ["navbar-logo"],
+    "navbar_center": ["navbar-nav"],
+    "navbar_end": ["theme-switcher", "navbar-icon-links"],
     "navigation_depth": 4,
-    # DO NOT enable 'use_edit_page_button' unless html_context is set properly.
-    # 'repository_url', 'repository_branch' and 'path_to_docs' are not supported
-    # by this theme version -> removed to avoid warnings.
+    "show_toc_level": 2,
+    "show_nav_level": 1,
+    "header_links_before_dropdown": 6,
+    
     "icon_links": [
         {
             "name": "GitHub",
-            "url": "https://github.com/SEU_USUARIO/SEU_REPO",
+            "url": "https://github.com/SEU_USUARIO/VoronoiMeshMaker",
             "icon": "fa-brands fa-github",
         },
     ],
+    
+    "external_links": [
+        {
+            "name": "CGAL Documentation", 
+            "url": "https://doc.cgal.org/latest/Manual/index.html"
+        },
+    ],
 }
-
-# Optional version switcher (enable only if _static/versions.json exists)
-_versions_json = _static_dir / "versions.json"
-if _versions_json.is_file():
-    theme_options["switcher"] = {
-        "json_url": "_static/versions.json",
-        "version_match": os.environ.get("VMM_DOC_VERSION", "dev"),
-    }
-    theme_options["navbar_end"] = navbar_end_items + ["version-switcher"]
-
-html_theme_options = theme_options
 
 # Code style
 pygments_style = "default"
 pygments_dark_style = "native"
 
 # -----------------------------------------------------------------------------
-# Treat project macros as C++ attributes so parser ignores them (safety net)
+# Breathe Configuration
+# -----------------------------------------------------------------------------
+breathe_projects = {
+    "VoronoiMeshMaker": "../doxygen/xml"
+}
+breathe_default_project = "VoronoiMeshMaker"
+breathe_domain_by_extension = {
+    "h": "c",
+    "hpp": "cpp",
+    "cpp": "cpp",
+}
+breathe_show_define_initializer = True
+breathe_show_enumvalue_initializer = True
+
+# -----------------------------------------------------------------------------
+# C++ specific settings for PETSc-style documentation
 # -----------------------------------------------------------------------------
 cpp_id_attributes = [
     "VORMAKER_NAMESPACE_OPEN", "VORMAKER_NAMESPACE_CLOSE",
     "CONSTANTS_NAMESPACE_OPEN", "CONSTANTS_NAMESPACE_CLOSE",
-    "ERROR_NAMESPACE_OPEN",    "ERROR_NAMESPACE_CLOSE",
-    "DETAIL_NAMESPACE_OPEN",   "DETAIL_NAMESPACE_CLOSE",
+    "ERROR_NAMESPACE_OPEN", "ERROR_NAMESPACE_CLOSE",
+    "DETAIL_NAMESPACE_OPEN", "DETAIL_NAMESPACE_CLOSE",
     "GEOTYPES_NAMESPACE_OPEN", "GEOTYPES_NAMESPACE_CLOSE",
     "VMM_PUBLIC", "VMM_INTERNAL", "VMM_API", "VMM_INLINE",
+    "PETSC_EXTERN", "PETSC_DEPRECATED",
 ]
-cpp_paren_attributes = []
+
+cpp_paren_attributes = [
+    "__attribute__", "__declspec", "__cdecl", "__stdcall"
+]
 
 # -----------------------------------------------------------------------------
-# Breathe (reads Doxygen XML path from env passed by CMake)
-# -----------------------------------------------------------------------------
-def _sanitize(path: str) -> str:
-    if not path:
-        return ""
-    p = path.strip().strip('"').strip("'")
-    return os.path.abspath(p) if not os.path.isabs(p) else p
-
-import os.path  # after function: used below
-doxy_xml = _sanitize(os.environ.get("VMM_DOXY_XML", ""))
-
-breathe_projects = {}
-if doxy_xml and os.path.exists(os.path.join(doxy_xml, "index.xml")):
-    breathe_projects = {"VoronoiMeshMaker": doxy_xml}
-breathe_default_project = "VoronoiMeshMaker"
-
-# -----------------------------------------------------------------------------
-# Intersphinx (Sphinx 8: inventory must be a string or None — not {})
+# Intersphinx Mapping
 # -----------------------------------------------------------------------------
 intersphinx_mapping = {
     "python": ("https://docs.python.org/3", None),
     "sphinx": ("https://www.sphinx-doc.org/en/master", None),
+    "cgal": ("https://doc.cgal.org/latest/Manual", None),
 }
 
 # -----------------------------------------------------------------------------
 # HTML extras
 # -----------------------------------------------------------------------------
 html_show_sourcelink = True
-html_copy_source = True
+html_copy_source = False
 todo_include_todos = True
+html_show_copyright = True
+
+# Enable equation numbering
+mathjax3_config = {
+    'tex': {
+        'tags': 'ams',
+        'tagSide': 'right',
+        'useLabelIds': True
+    }
+}

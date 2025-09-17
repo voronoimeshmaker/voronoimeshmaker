@@ -79,9 +79,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # ------------------------------------------------------------
 # Options
 # ------------------------------------------------------------
-option(BUILD_EXAMPLES "Build examples" OFF)
+option(BUILD_EXAMPLES "Build examples" ON)
 option(BUILD_TESTS    "Build tests"    ON)
-option(BUILD_DOCS     "Build docs (Doxygen + Sphinx)" OFF)
+option(BUILD_DOCS     "Build docs (Doxygen + Sphinx)" ON)
 
 # Default build type
 if(NOT CMAKE_BUILD_TYPE)
@@ -210,18 +210,6 @@ endif()
 # Documentation (Doxygen + Sphinx)
 # ------------------------------------------------------------
 
-# Forçar detecção do sphinx-build
-if(BUILD_DOCS AND NOT SPHINX_EXECUTABLE)
-    find_program(SPHINX_EXECUTABLE NAMES sphinx-build DOC "Sphinx documentation generator")
-    if(SPHINX_EXECUTABLE)
-        message(STATUS "Found sphinx-build: ${SPHINX_EXECUTABLE}")
-    else()
-        # Fallback para o caminho conhecido
-        set(SPHINX_EXECUTABLE "/usr/bin/sphinx-build" CACHE FILEPATH "Path to sphinx-build" FORCE)
-        message(STATUS "Using fallback sphinx-build: ${SPHINX_EXECUTABLE}")
-    endif()
-endif()
-
 # Sphinx source and build dirs
 set(SPHINX_SRC   "${CMAKE_SOURCE_DIR}/docs_sphinx")
 set(SPHINX_BUILD "${CMAKE_BINARY_DIR}/docs_sphinx")
@@ -252,7 +240,10 @@ if(BUILD_DOCS AND DOXYGEN_FOUND)
 endif()
 
 # Sphinx detection (prefer venv, then system)
-set(SPHINX_EXECUTABLE "" CACHE FILEPATH "Path to sphinx-build executable")
+# Mantém valor existente se já foi dado via -DSPHINX_EXECUTABLE=...
+if(NOT DEFINED SPHINX_EXECUTABLE)
+  set(SPHINX_EXECUTABLE "" CACHE FILEPATH "Path to sphinx-build executable")
+endif()
 
 if(BUILD_DOCS AND NOT SPHINX_EXECUTABLE)
   if(DEFINED ENV{VIRTUAL_ENV})
@@ -282,10 +273,13 @@ if(BUILD_DOCS AND NOT SPHINX_EXECUTABLE)
   find_program(SPHINX_EXECUTABLE sphinx-build)
 endif()
 
+# Preferir `python -m sphinx` (robusto contra wrappers do sistema)
+find_package(Python3 COMPONENTS Interpreter QUIET)
+
 # Sphinx target (depends on Doxygen if available)
 if(BUILD_DOCS)
-  if(NOT SPHINX_EXECUTABLE)
-    message(WARNING "sphinx-build not found. Sphinx docs will be skipped.")
+  if(NOT SPHINX_EXECUTABLE AND NOT Python3_Interpreter_FOUND)
+    message(WARNING "sphinx-build/Python3 not found. Sphinx docs will be skipped.")
   else()
     if(NOT TARGET doc_doxygen)
       add_custom_target(doc_doxygen
@@ -293,11 +287,18 @@ if(BUILD_DOCS)
       set(DOXYGEN_OUTPUT_DIR "${CMAKE_BINARY_DIR}/docs_doxygen")
     endif()
 
+    # Decide como invocar o Sphinx
+    if(Python3_Interpreter_FOUND)
+      set(_SPHINX_CMD ${Python3_EXECUTABLE} -m sphinx)
+    else()
+      set(_SPHINX_CMD "${SPHINX_EXECUTABLE}")
+    endif()
+
     add_custom_target(doc_sphinx
       COMMAND ${CMAKE_COMMAND} -E make_directory "${SPHINX_BUILD}/html"
       # Pass Doxygen XML path via environment variable (read in conf.py)
       COMMAND ${CMAKE_COMMAND} -E env VMM_DOXY_XML=${DOXYGEN_OUTPUT_DIR}/xml
-              "${SPHINX_EXECUTABLE}" -b html
+              ${_SPHINX_CMD} -b html
               "${SPHINX_SRC}" "${SPHINX_BUILD}/html"
       # Publish to source-tree directory
       COMMAND ${CMAKE_COMMAND} -E rm -rf "${DOCS_PUBLISH_DIR}"
