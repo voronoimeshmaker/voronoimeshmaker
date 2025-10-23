@@ -1,10 +1,10 @@
-# ------------------------------------------------------------
+# ==============================================================================
 # examples/CMakeLists.txt
 # - Um executável por pasta que contenha ex_*.cpp
 # - Detecção automática de dependência yaml-cpp por arquivo-fonte
 # - Se yaml-cpp não estiver disponível, exemplos que usam YAML são pulados
-# ------------------------------------------------------------
-cmake_minimum_required(VERSION 3.24)
+# ==============================================================================
+cmake_minimum_required(VERSION 3.10)
 
 # Políticas úteis
 if(POLICY CMP0167)
@@ -21,8 +21,8 @@ if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
   set(CMAKE_CXX_STANDARD_REQUIRED ON)
 endif()
 
-set(PROJECT_ROOT    "${CMAKE_SOURCE_DIR}")
-set(EXAMPLES_ROOT   "${CMAKE_CURRENT_SOURCE_DIR}")
+set(PROJECT_ROOT      "${CMAKE_SOURCE_DIR}")
+set(EXAMPLES_ROOT     "${CMAKE_CURRENT_SOURCE_DIR}")
 set(VMM_INCLUDE_DIR "${PROJECT_ROOT}/VMMLib/include")
 
 # --- yaml-cpp (opcional) ---
@@ -34,7 +34,7 @@ else()
 endif()
 
 # Alvos agregados
-add_custom_target(examples         COMMENT "Compilando todos os exemplos")
+add_custom_target(examples           COMMENT "Compilando todos os exemplos")
 add_custom_target(run_all_examples COMMENT "Executando todos os exemplos")
 
 # 1) Varre recursivamente todos os ex_*.cpp
@@ -98,11 +98,16 @@ foreach(dir_abs IN LISTS EXAMPLE_DIRS_ABS)
     continue()
   else()
     message(STATUS "  - ${dir_rel}  -> alvo: ${target_name}"
-                    "$<$<BOOL:${needs_yaml}>: (com yaml-cpp)>")
+                   "$<$<BOOL:${needs_yaml}>: (com yaml-cpp)>")
   endif()
 
   # Cria alvo
   add_executable(${target_name} ${EX_SOURCES_THIS_DIR})
+
+  # ✅ CORREÇÃO: Adiciona a definição de compilação para passar o caminho fonte ao C++.
+  # Esta linha cria a macro VMM_EXAMPLE_SOURCE_DIR que o seu .cpp pode ler.
+  target_compile_definitions(${target_name} PRIVATE "VMM_EXAMPLE_SOURCE_DIR=\"${dir_abs}\"")
+
   target_link_libraries(${target_name} PRIVATE VoronoiMeshMaker)
   target_include_directories(${target_name} PRIVATE "${VMM_INCLUDE_DIR}")
 

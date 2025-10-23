@@ -11,16 +11,6 @@
 /**
  * @file Sinks.hpp
  * @brief Sinks básicos: `OStreamSink` (wrap de ostream) e `FileSink`.
- *
- * Contrato esperado pelos writers:
- *  - void write(std::string_view)
- *  - void write_binary(std::span<const std::byte>)
- *  - void flush()
- *
- * Observações:
- * - `FileSink` abre o arquivo com `std::ios::binary` por padrão para evitar
- *   transformações de newline em plataformas como Windows. ASCII continua
- *   funcionando normalmente em modo binário.
  */
 
 #include <cstddef>
@@ -69,12 +59,14 @@ public:
                           (std::ios::out | std::ios::trunc | std::ios::binary))
         : path_(std::move(path)), ofs_(path_, mode)
     {
+        // Garante que o ficheiro foi aberto com sucesso, lançando uma exceção caso contrário.
         if (!ofs_) {
             VMM_THROW(::vmm::error::CoreErr::InvalidArgument,
                       {{"file","cannot_open"}});
         }
     }
 
+    // Desabilita cópia e habilita movimentação para gestão correta do recurso (ficheiro).
     FileSink(const FileSink&) = delete;
     FileSink& operator=(const FileSink&) = delete;
 

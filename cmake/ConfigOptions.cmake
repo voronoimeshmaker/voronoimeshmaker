@@ -19,7 +19,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Project options
 option(BUILD_EXAMPLES "Build examples" ON)
 option(BUILD_TESTS    "Build tests"    ON)
-option(BUILD_DOCS     "Build docs (Doxygen + Sphinx)" ON)
+option(BUILD_DOCS     "Build docs (Doxygen + Sphinx)" OFF)
 
 # Default build type
 if(NOT CMAKE_BUILD_TYPE)

@@ -115,3 +115,14 @@
 #ifndef IO_NAMESPACE_CLOSE
 #  define IO_NAMESPACE_CLOSE } /* namespace io */
 #endif
+
+
+//------------------------------------------------------------------------------
+// I/O: vmm::io
+//------------------------------------------------------------------------------
+#ifndef IO_NAMESPACE_OPEN
+#  define IO_NAMESPACE_OPEN  namespace io {
+#endif
+#ifndef IO_NAMESPACE_CLOSE
+#  define IO_NAMESPACE_CLOSE } /* namespace io */
+#endif

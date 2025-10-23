@@ -11,61 +11,58 @@
 /**
  * @file Options.hpp
  * @brief Define enums e opções comuns usadas pelos exportadores (VTK/VisIt).
- *
- * Diretrizes:
- * - Dialeto:
- *     - Legacy : formato VTK “clássico” (.vtk).
- *     - XML    : VTK XML PolyData (.vtp).
- * - Topologia:
- *     - PolyLines : contornos (rings) como linhas fechadas.
- *     - Polys     : superfícies (futuro; requer triangulação).
- * - Encoding:
- *     - ASCII       : texto legível (depuração).
- *     - Binary      : binário do Legacy (.vtk).
- *     - AppendedRaw : “binário” do XML (.vtp) sem Base64 (recomendado).
- *
- * Flags de execução:
- * - deterministic : força ordem/saída estável (recomendado para testes/golden).
- * - parallel_prep : permite paralelizar a fase de preparação (contagens,
- *                   prefix sums, buffers) — a escrita final continua sequencial.
  */
 
 #include <VoronoiMeshMaker/Core/namespace.h>
 
 VORMAKER_NAMESPACE_OPEN
-IO_NAMESPACE_OPEN
+IO_NAMESPACE_OPEN // Usa a sua macro de namespace.h
 
-/// Dialeto/formato alvo do ecossistema VTK.
-enum class Dialect  : unsigned char {
-    Legacy,  ///< VTK legacy (.vtk)
-    XML      ///< VTK XML PolyData (.vtp)
+/** * @brief Dialeto/formato alvo do ecossistema VTK.
+ * Define o tipo de ficheiro que será gerado.
+ */
+enum class Dialect : unsigned char {
+    Legacy,  ///< VTK legacy (.vtk), simples e amplamente compatível.
+    XML      ///< VTK XML PolyData (.vtp), mais moderno e flexível.
 };
 
-/// Topologia a ser escrita.
+/**
+ * @brief Topologia a ser escrita no ficheiro de saída.
+ * Define como os dados geométricos são representados.
+ */
 enum class Topology : unsigned char {
-    PolyLines, ///< Contornos (rings) como linhas fechadas
-    Polys      ///< Superfícies preenchidas (triangulado) — futuro
+    PolyLines, ///< Contornos (rings) como linhas fechadas. Ideal para visualizar fronteiras.
+    Polys      ///< Superfícies preenchidas (requer triangulação). Marcado como futuro.
 };
 
-/// Codificação de saída.
+/**
+ * @brief Codificação dos dados numéricos.
+ * Permite escolher entre ficheiros legíveis por humanos ou binários compactos.
+ */
 enum class Encoding : unsigned char {
-    ASCII,       ///< Texto (depuração)
-    Binary,      ///< Binário do Legacy (.vtk)
-    AppendedRaw  ///< Binário “anexado” do XML (.vtp), sem Base64
+    ASCII,       ///< Texto legível, excelente para depuração.
+    Binary,      ///< Binário Big-Endian do formato Legacy (.vtk). Rápido e compacto.
+    AppendedRaw  ///< Binário "anexado" do formato XML (.vtp), sem a sobrecarga do Base64.
 };
 
-/// Opções de exportação VTK.
+/**
+ * @brief Agrega todas as opções de exportação para o formato VTK.
+ * Esta struct é passada para as funções de escrita para controlar o seu comportamento.
+ */
 struct VtkOptions {
-    Dialect  dialect      { Dialect::Legacy };      ///< Dialeto padrão
-    Topology topology     { Topology::PolyLines };  ///< Topologia padrão
-    Encoding encoding     { Encoding::ASCII };      ///< Encoding padrão
+    // --- Configuração do Formato ---
+    Dialect  dialect      { Dialect::Legacy };      ///< Dialeto padrão.
+    Topology topology     { Topology::PolyLines };  ///< Topologia padrão.
+    Encoding encoding     { Encoding::ASCII };      ///< Codificação padrão para segurança e depuração.
 
-    int      precision    { 17 };    ///< Precisão p/ ASCII (stream)
-    bool     write_z      { false }; ///< Se true, emite z=0 (3D)
-    bool     cell_data    { true };  ///< Emite CELL_DATA (tags básicas)
+    // --- Configuração da Formatação ---
+    int      precision    { 17 };    ///< Precisão máxima para double em ASCII, garantindo reprodutibilidade.
+    bool     write_z      { false }; ///< Se true, emite uma coordenada z=0 para compatibilidade com software 3D.
+    bool     cell_data    { true };  ///< Controla se dados associados às células (como RegionId) são escritos.
 
-    bool     deterministic{ true };  ///< Saída estável/reprodutível
-    bool     parallel_prep{ false }; ///< Paraleliza preparação (não a escrita)
+    // --- Configuração da Execução ---
+    bool     deterministic{ true };  ///< Garante que a saída seja sempre a mesma para a mesma entrada, essencial para testes.
+    bool     parallel_prep{ false }; ///< Flag para otimizações futuras: permite paralelizar a preparação dos dados antes da escrita.
 };
 
 IO_NAMESPACE_CLOSE
