@@ -15,7 +15,6 @@
 // -----------------------------------------------------------------------------
 //  include VoronoiMeshMaker
 // -----------------------------------------------------------------------------
-
 #include <VoronoiMeshMaker/Boundary2D/Boundary2DTypes.hpp>
 #include <VoronoiMeshMaker/Boundary2D/Boundary2DData.hpp>
 #include <VoronoiMeshMaker/Boundary2D/Policies/PolygonizePolicy.hpp>
@@ -41,7 +40,8 @@ std::string read_file(const std::filesystem::path& p) {
 
 TEST(IO_VTK_Legacy_Integration, WriteFile_WithPathUtils_AndFileSink) {
     // 1) Geometria simples (1 ring, 4 vértices)
-    Rectangle R{ .w = 2.0, .h = 1.0 };
+    // ✅ CORREÇÃO: Use o construtor padrão em vez de designated initializers.
+    Rectangle R(2.0, 1.0);
     PolygonizePolicy pol{};
     auto ring = R.polygonize(pol);
 
