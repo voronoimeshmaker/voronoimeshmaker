@@ -1,0 +1,27 @@
+name: Build & Deploy Docs
+on:
+  push:
+    branches: [main]
+    paths: ['docs/**', 'VMMLib/include/**', 'README.md', 'CHANGELOG.md']
+permissions:
+  contents: write
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Install dependencies
+        run: |
+          sudo apt-get install -y doxygen graphviz
+          python3 -m pip install sphinx sphinx-rtd-theme breathe exhale myst-parser sphinx-tabs sphinx-copybutton sphinx-linkcheck
+      - name: Build HTML
+        run: |
+          cd docs
+          sphinx-build -b html -W source build/html
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: docs/build/html

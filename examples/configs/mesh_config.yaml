@@ -1,0 +1,30 @@
+version: "1.0"
+strategy: voronoi_2d  # or: voronoi_3d_pure, extruded_3d
+
+domain:
+  type: polygon
+  boundary_file: "coastline.geojson"
+  holes:
+    - "island1.geojson"
+    - "island2.geojson"
+
+seeds:
+  method: poisson_disk
+  min_distance: 100.0
+
+refinement:
+  enabled: true
+  metric: distance_to_boundary
+  min_size: 50.0
+  max_size: 500.0
+
+output:
+  format: msh4
+  file: "mesh_final.msh"
+  include_metrics: true
+
+validation:
+  check_volumes: true
+  min_orthogonality: 0.9
+  max_skewness: 0.8
+  report_file: "validation_report.txt"

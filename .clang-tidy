@@ -1,0 +1,10 @@
+Checks: >
+  modernize-*,
+  cppcoreguidelines-*,
+  performance-*,
+  bugprone-*,
+  readability-*,
+  -modernize-use-trailing-return-type,
+  -cppcoreguidelines-owning-memory
+WarningsAsErrors: '*'
+HeaderFilterRegex: 'VMMLib/include/.*'
