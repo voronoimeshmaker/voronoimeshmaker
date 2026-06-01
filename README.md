@@ -3,63 +3,63 @@
 [![License: GPL-3.0+](https://img.shields.io/badge/License-GPLv3%2B-blue.svg)](LICENSE)
 [![C++20](https://img.shields.io/badge/C%2B%2B-20-blue.svg)](https://isocpp.org/std/the-standard)
 [![Build & Test](https://github.com/voronoimeshmaker/voronoimeshmaker/actions/workflows/build-test.yml/badge.svg)](https://github.com/voronoimeshmaker/voronoimeshmaker/actions)
-[![Docs](https://github.com/voronoimeshmaker/voronoimeshmaker/actions/workflows/docs.yml/badge.svg)](https://voronoimeshmaker.github.io/voronoimeshmaker)
+[![Docs Source](https://img.shields.io/badge/Docs-Source-yellow.svg)](docs/)
 
-Gerador de malhas não estruturadas Voronoi 2D/3D de alta performance para modelagem hidrodinâmica, geociências e simulações científicas. Projetado para integração direta com `Mohid-NG` e solvers HPC (PETSc, Trilinos), com arquitetura moderna, isolamento rigoroso de dependências e instrumentação zero-overhead.
-
----
-
-## 🎯 Visão & Propósito
-
-O `VoronoiMeshMaker` nasce para superar limitações de discretização de ferramentas legadas, oferecendo:
-- **Geração robusta**: Tesselação via CGAL (CDT 2D com furos / Delaunay 3D) + remeshing guiado por métricas
-- **Arquitetura científica**: C++20 Concepts, Ranges, Data-Oriented Design (SoA), zero herança virtual
-- **Reprodutibilidade acadêmica**: Configs versionáveis, metadados de proveniência, erros bilíngues, documentação Sphinx/Doxygen
-- **Integração limpa**: API pública livre de CGAL; comunicação com solvers via arquivos neutros ou bindings C/Fortran
+A high-performance, non-structured Voronoi mesh generator for hydrodynamic modelling and scientific computing. Designed for direct integration with `Mohid-NG` and HPC solvers, the library employs modern C++20, Data-Oriented Design (DOD), strict backend isolation, and toggleable instrumentation.
 
 ---
 
-## ✨ Características Técnicas
+## Overview
 
-| Categoria | Recursos |
-|-----------|----------|
-| **Tesselação & Remeshing** | CDT 2D (contornos + furos), Delaunay 3D, split/coarsen/smooth por campo métrico, preservação topológica |
-| **Layout & Performance** | Structure-of-Arrays (SoA) interno, `std::span`/views públicas, alinhamento SIMD, zero alocação em hot paths |
-| **Abstração Moderna** | C++20 Concepts > herança, policies compile-time, Ranges composables, `std::expected` para falhas esperadas |
-| **IDs & Conectividade** | `GeneratorID` sequencial determinístico, matriz CSR explícita, mapeamento direto para solvers esparsos |
-| **Instrumentação** | `FlowTracer` (entry/exit) e `PhaseTimer` toggleáveis via CMake; overhead ≈ 0 em Release |
-| **Erros & Warnings** | Sistema bilíngue (`pt_BR` default, `en_US` fallback), códigos estáticos, contexto estruturado, switching runtime |
-| **Exportação** | VTK/VTU (Paraview), MSH v4 (Gmsh/OpenFOAM), UGRID/NetCDF (CF-Conventions) com metadados de qualidade |
-| **Análise de Qualidade** | Ângulos internos, ortogonalidade, skewness, aspect ratio, volume relativo; warnings configuráveis ou falha fatal |
+`VoronoiMeshMaker` addresses limitations in legacy discretisation tools by providing:
+- **Robust tessellation**: Constrained Delaunay (2D) and Delaunay/Regular (3D) via CGAL, with metric-driven remeshing
+- **Scientific architecture**: C++20 concepts, ranges, SoA memory layout, and compile-time policy composition
+- **Reproducibility**: Versionable configurations, provenance metadata, bilingual error reporting, and automated documentation
+- **Clean integration**: A public API free of CGAL dependencies; solver communication via neutral file formats or a stable C API
 
 ---
 
-## 🏗️ Arquitetura & Filosofia de Design
+## Technical Features
 
-### 🔹 Separação Core / Backend
-- **API Pública (`include/vmm/`)**: PODs, views, conceitos. **Zero** `#include <CGAL/...>`
-- **Backend Privado (`src/backend/`)**: CGAL encapsulado em `cgal_2d/` e `cgal_3d/`. Linkado como `PRIVATE`
-- **Contrato de Integração**: `Mohid-NG` consome via arquivos neutros ou C API estável (`iso_c_binding`)
-
-### 🔹 DOD & C++20
-- Layout interno: `Structure of Arrays` para campos quentes (`volumes_`, `centroids_`, `flags_`)
-- API pública: `std::span`, iteradores lazy, filtros composáveis (`mesh.cells() | filter(...)`)
-- SOLID reinterpretado: Concepts garantem LSP/OCP; composition > inheritance; policies compile-time > factories runtime
-
-### 🔹 Estratégia 2D / 3D
-- **API unificada**: `template<Dimension Dim> class MeshTopology`
-- **Backends especializados**: `CDTGenerator2D` vs `DTGenerator3D` (separação explícita em `src/`)
-- **Zero overhead sem furos**: `if constexpr (holes.empty())` usa Delaunay padrão mais rápido
-
-### 🔹 Licenciamento
-- Biblioteca: **GPLv3+** (compatível com CGAL-GPL)
-- Solver (`Mohid-NG`): Licença independente via intercâmbio de arquivos neutros (sem linkagem direta)
+| Category | Capabilities |
+|----------|--------------|
+| **Tessellation & Remeshing** | CDT 2D (external boundaries + holes), Delaunay 3D, split/coarsen/smoothing guided by scalar fields, topological preservation |
+| **Memory Layout & Performance** | Structure-of-Arrays (SoA) internally, `std::span`/views publicly, SIMD-aligned allocations, zero dynamic allocation in hot paths |
+| **Modern Abstraction** | C++20 concepts replacing virtual inheritance, compile-time policies, composable ranges, `std::expected` for recoverable failures |
+| **IDs & Connectivity** | Deterministic sequential `GeneratorID`, explicit CSR connectivity matrix, direct mapping to sparse solver structures |
+| **Instrumentation** | `FlowTracer` (entry/exit) and `PhaseTimer` toggleable at compile time; negligible overhead in release builds |
+| **Errors & Warnings** | Bilingual system (`en_GB` default, `pt_BR` supported), static error codes, structured context, runtime locale switching |
+| **Export Formats** | VTK/VTU (ParaView), MSH v4 (Gmsh/OpenFOAM), UGRID/NetCDF (CF-Conventions) with quality metadata |
+| **Quality Analysis** | Internal angles, orthogonality, skewness, aspect ratio, relative volume; configurable warnings or fatal validation |
 
 ---
 
-## 🚀 Início Rápido (WSL / Ubuntu)
+## Architecture & Design Principles
 
-### 1. Dependências
+### Core / Backend Separation
+- **Public API (`include/vmm/`)**: Plain data structures, views, and concepts. Contains zero `#include <CGAL/...>` directives.
+- **Private Backend (`src/backend/`)**: CGAL encapsulated within `cgal_2d/` and `cgal_3d/`. Linked strictly as `PRIVATE`.
+- **Integration Contract**: External solvers consume exported neutral files or interact via a stable C API (`iso_c_binding`).
+
+### DOD & C++20
+- Internal layout uses Structure-of-Arrays for hot fields (`volumes_`, `centroids_`, `flags_`).
+- The public API exposes `std::span`, lazy iterators, and composable filters.
+- SOLID principles are reinterpreted for modern C++: concepts guarantee LSP/OCP; composition replaces inheritance; compile-time policies replace runtime factories.
+
+### 2D / 3D Strategy
+- **Unified API**: `template<Dimension Dim> class MeshTopology` provides a dimension-agnostic interface.
+- **Specialised Backends**: `CDTGenerator2D` and `DTGenerator3D` are maintained in separate source directories.
+- **Optimised Path**: When no holes are present, the pipeline automatically selects the faster unconstrained Delaunay routine via compile-time dispatch.
+
+### Licensing
+- Library: **GPLv3+** (required for CGAL compatibility).
+- Solver (`Mohid-NG`): May adopt independent licences provided communication occurs via neutral mesh files or the C API (no direct linkage to CGAL headers).
+
+---
+
+## Quick Start (WSL / Ubuntu)
+
+### 1. Dependencies
 ```bash
 sudo apt update && sudo apt install -y \
   cmake g++ make \
