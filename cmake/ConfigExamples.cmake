@@ -1,10 +1,8 @@
 # -----------------------------------------------------------------------------
-# Tests configuration
+# Examples configuration
 # -----------------------------------------------------------------------------
 
-if(VMM_BUILD_TESTS)
-    message(STATUS "Building tests")
-    include(CTest)
-    enable_testing()
-    add_subdirectory(tests)
+if(VMM_BUILD_EXAMPLES)
+    message(STATUS "Building examples")
+    add_subdirectory(examples)
 endif()

@@ -23,7 +23,8 @@ A high-performance, non-structured Voronoi mesh generator for hydrodynamic model
 
 | Category | Capabilities |
 |----------|--------------|
-| **Tessellation & Remeshing** | CDT 2D (external boundaries + holes), Delaunay 3D, split/coarsen/smoothing guided by scalar fields, topological preservation |
+| **Tessellation** | Constrained Delaunay 2D (external boundaries + internal holes), Delaunay/Regular 3D, deterministic dualisation, sequential generator ID assignment |
+| **Remeshing** | Metric-driven split/coarsen/smoothing, adaptive refinement guided by scalar fields, topological preservation, continuous ID reassignment |
 | **Memory Layout & Performance** | Structure-of-Arrays (SoA) internally, `std::span`/views publicly, SIMD-aligned allocations, zero dynamic allocation in hot paths |
 | **Modern Abstraction** | C++20 concepts replacing virtual inheritance, compile-time policies, composable ranges, `std::expected` for recoverable failures |
 | **IDs & Connectivity** | Deterministic sequential `GeneratorID`, explicit CSR connectivity matrix, direct mapping to sparse solver structures |
