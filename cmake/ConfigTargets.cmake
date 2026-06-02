@@ -1,4 +1,4 @@
-# Main library target
+# cmake/ConfigTargets.cmake
 
 include(CMakePackageConfigHelpers)
 
@@ -14,6 +14,8 @@ set_target_properties(VoronoiMeshMaker PROPERTIES
     ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}"
     LIBRARY_OUTPUT_DIRECTORY "${CMAKE_LIBRARY_OUTPUT_DIRECTORY}"
     RUNTIME_OUTPUT_DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}"
+    BUILD_WITH_INSTALL_RPATH TRUE
+    INSTALL_RPATH_USE_LINK_PATH TRUE
 )
 
 target_include_directories(VoronoiMeshMaker
@@ -23,16 +25,14 @@ target_include_directories(VoronoiMeshMaker
 )
 
 target_compile_features(VoronoiMeshMaker
-    PUBLIC
-        cxx_std_${VMM_CXX_STANDARD}
+    PUBLIC cxx_std_${VMM_CXX_STANDARD}
 )
 
 target_link_libraries(VoronoiMeshMaker
-    PUBLIC
+    PRIVATE
         CGAL::CGAL
         CGAL::CGAL_Core
         TBB::tbb
-    PRIVATE
         vmm_project_options
         vmm_project_warnings
 )

@@ -7,38 +7,35 @@ endif()
 
 project(VoronoiMeshMaker
     VERSION 1.0
-    DESCRIPTION "Two-dimensional Voronoi mesh generation library based on CGAL"
+    DESCRIPTION "High-performance Voronoi mesh generation library for scientific computing"
     LANGUAGES CXX
 )
 
-# -----------------------------------------------------------------------------
-# Project configuration modules
-# -----------------------------------------------------------------------------
+include(cmake/ConfigUtils.cmake)
+include(cmake/ConfigOptions.cmake)
+include(cmake/ConfigCompiler.cmake)
+include(cmake/ConfigDependencies.cmake)
+include(cmake/ConfigTargets.cmake)
+include(cmake/ConfigRunTargets.cmake)
+include(cmake/ConfigExamples.cmake)
+include(cmake/ConfigTests.cmake)
+include(cmake/ConfigDocs.cmake)
 
-include(cmake/ConfigUtils.cmake)          # Guard rails and CMake helpers
-include(cmake/ConfigOptions.cmake)        # Project options and layout
-include(cmake/ConfigCompiler.cmake)       # Compiler settings and shared flags
-include(cmake/ConfigDependencies.cmake)   # External dependencies
-include(cmake/ConfigTargets.cmake)        # Main library target
-include(cmake/ConfigExamples.cmake)       # Optional examples
-include(cmake/ConfigPaper.cmake)          # Optional paper/research programs
-include(cmake/ConfigTests.cmake)          # Optional tests
-include(cmake/ConfigDocs.cmake)           # Optional documentation
+vmm_create_run_group_targets()
 
-# -----------------------------------------------------------------------------
-# Summary
-# -----------------------------------------------------------------------------
+get_property(VMM_CONFIGURED_RUN_TARGETS GLOBAL PROPERTY VMM_RUN_TARGETS)
 
 message(STATUS "VoronoiMeshMaker configuration complete")
-message(STATUS "Build type          : ${CMAKE_BUILD_TYPE}")
-message(STATUS "C++ standard        : ${CMAKE_CXX_STANDARD}")
-message(STATUS "Build shared library: ${VMM_BUILD_SHARED_LIBS}")
-message(STATUS "Build examples      : ${VMM_BUILD_EXAMPLES}")
-message(STATUS "Build paper programs: ${VMM_BUILD_PAPER}")
-message(STATUS "Build tests         : ${VMM_BUILD_TESTS}")
-message(STATUS "Build docs          : ${VMM_BUILD_DOCS}")
-message(STATUS "Warnings            : ${VMM_ENABLE_WARNINGS}")
-message(STATUS "Native architecture : ${VMM_ENABLE_NATIVE_ARCH}")
-message(STATUS "LTO/IPO             : ${VMM_ENABLE_LTO}")
-message(STATUS "Fast math           : ${VMM_ENABLE_FAST_MATH}")
-message(STATUS "Install prefix      : ${CMAKE_INSTALL_PREFIX}")
+message(STATUS "  Build type          : ${CMAKE_BUILD_TYPE}")
+message(STATUS "  C++ standard        : ${CMAKE_CXX_STANDARD}")
+message(STATUS "  Shared library      : ${VMM_BUILD_SHARED_LIBS}")
+message(STATUS "  Examples            : ${VMM_BUILD_EXAMPLES}")
+message(STATUS "  Tests               : ${VMM_BUILD_TESTS}")
+message(STATUS "  Documentation       : ${VMM_BUILD_DOCS}")
+message(STATUS "  Warnings            : ${VMM_ENABLE_WARNINGS}")
+message(STATUS "  Native architecture : ${VMM_ENABLE_NATIVE_ARCH}")
+message(STATUS "  LTO/IPO             : ${VMM_ENABLE_LTO}")
+message(STATUS "  Fast math           : ${VMM_ENABLE_FAST_MATH}")
+message(STATUS "  Sanitisers          : ${VMM_ENABLE_SANITIZERS}")
+message(STATUS "  Install prefix      : ${CMAKE_INSTALL_PREFIX}")
+message(STATUS "  Run targets         : ${VMM_CONFIGURED_RUN_TARGETS}")
