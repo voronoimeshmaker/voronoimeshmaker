@@ -35,7 +35,7 @@
 // VoronoiMeshMaker includes
 //==============================================================================
 #include <vmm/core/Types.hpp>
-#include <vmm/core/MeshTopology.hpp>
+#include <vmm/mesh/MeshTopology.hpp>
 
 namespace vmm::analysis {
 

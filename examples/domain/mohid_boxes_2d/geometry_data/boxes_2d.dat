@@ -1,0 +1,21 @@
+DT_OUTPUT_TIME                : 3600
+WRITE_BOXES                   : 0
+DT_BOXES                      : 300
+
+<beginpolygon>
+<<beginvertix>>
+1 1
+7 1
+7 4
+1 4
+<<endvertix>>
+<endpolygon>
+
+<beginpolygon>
+<<beginvertix>>
+8 2
+12 2
+12 6
+8 6
+<<endvertix>>
+<endpolygon>

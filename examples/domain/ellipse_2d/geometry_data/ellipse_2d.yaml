@@ -1,0 +1,10 @@
+ellipse:
+  radius_x: 3.0
+  radius_y: 1.5
+  centre_x: 0.5
+  centre_y: -0.25
+  segments: 96
+transform:
+  rotation_degrees: 20.0
+  translation_x: 1.0
+  translation_y: 0.5

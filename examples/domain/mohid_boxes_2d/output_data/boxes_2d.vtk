@@ -1,0 +1,16 @@
+# vtk DataFile Version 3.0
+MOHID boxes 2D geometry
+ASCII
+DATASET POLYDATA
+POINTS 8 double
+1 1 0
+7 1 0
+7 4 0
+1 4 0
+8 2 0
+12 2 0
+12 6 0
+8 6 0
+LINES 2 12
+5 0 1 2 3 0
+5 4 5 6 7 4

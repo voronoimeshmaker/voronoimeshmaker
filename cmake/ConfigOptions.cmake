@@ -50,6 +50,16 @@ option(VMM_ENABLE_SANITIZERS
     OFF
 )
 
+option(VMM_ENABLE_LOGGING
+    "Enable optional VoronoiMeshMaker diagnostic logging"
+    OFF
+)
+
+option(VMM_ENABLE_TIMING
+    "Enable optional VoronoiMeshMaker phase timing instrumentation"
+    OFF
+)
+
 set(VMM_CXX_STANDARD 20 CACHE STRING
     "C++ standard used by VoronoiMeshMaker"
 )

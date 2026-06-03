@@ -1,0 +1,13 @@
+# Rectangle domain used by ex_rectangle_2d.
+# Units are arbitrary and interpreted consistently by the example.
+
+rectangle:
+  width: 4.0
+  height: 2.0
+  centre_x: 1.0
+  centre_y: -0.5
+
+transform:
+  rotation_degrees: 30.0
+  translation_x: 0.25
+  translation_y: 0.75

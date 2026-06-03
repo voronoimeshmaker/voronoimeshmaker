@@ -28,12 +28,12 @@
 // c++ includes
 //==============================================================================
 #include <concepts>
-#include <core/Types.hpp>
+#include <vmm/core/Types.hpp>
 
 //==============================================================================
 // VoronoiMeshMaker includes
 //==============================================================================
-#include <core/MeshTopology.hpp>
+#include <vmm/mesh/MeshTopology.hpp>
 
 namespace vmm::core {
 

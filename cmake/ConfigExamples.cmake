@@ -37,6 +37,13 @@ if(VMM_BUILD_EXAMPLES)
                 "${_src}"
             )
 
+            get_filename_component(_example_source_dir "${_src}" DIRECTORY)
+
+            target_compile_definitions("${_target}"
+                PRIVATE
+                    VMM_EXAMPLE_SOURCE_DIR="${_example_source_dir}"
+            )
+
             target_link_libraries("${_target}"
                 PRIVATE
                     VoronoiMeshMaker::VoronoiMeshMaker

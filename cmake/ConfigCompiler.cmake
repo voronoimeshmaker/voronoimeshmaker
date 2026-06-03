@@ -49,6 +49,12 @@ target_compile_options(vmm_project_options
         $<${_vmm_optimised_msvc}:/DNDEBUG>
 )
 
+target_compile_definitions(vmm_project_options
+    INTERFACE
+        $<$<BOOL:${VMM_ENABLE_LOGGING}>:VMM_ENABLE_LOGGING=1>
+        $<$<BOOL:${VMM_ENABLE_TIMING}>:VMM_ENABLE_TIMING=1>
+)
+
 if(VMM_ENABLE_NATIVE_ARCH)
     target_compile_options(vmm_project_options
         INTERFACE
