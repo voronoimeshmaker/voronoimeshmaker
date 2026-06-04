@@ -94,6 +94,22 @@ void MeshTopology<Dim>::set_boundary_flag(CellIndex id, BoundaryType type) {
     boundary_flags_.at(id) = static_cast<uint8_t>(type);
 }
 
+template<Dimension Dim>
+void MeshTopology<Dim>::set_neighbours(const std::vector<std::vector<CellIndex>>& neighbours) {
+    if(neighbours.size() != cell_count()) {
+        throw std::out_of_range("Neighbour list size must match cell count");
+    }
+
+    cell_offsets_.assign(cell_count() + 1U, CellIndex{});
+    neighbour_ids_.clear();
+
+    for(std::size_t cell = 0U; cell < neighbours.size(); ++cell) {
+        cell_offsets_[cell] = static_cast<CellIndex>(neighbour_ids_.size());
+        neighbour_ids_.insert(neighbour_ids_.end(), neighbours[cell].begin(), neighbours[cell].end());
+    }
+    cell_offsets_.back() = static_cast<CellIndex>(neighbour_ids_.size());
+}
+
 // Explicit template instantiations
 template class MeshTopology<Dimension::D2>;
 template class MeshTopology<Dimension::D3>;

@@ -26,6 +26,7 @@
 #pragma once
 
 #include <vmm/core/Types.hpp>
+#include <vmm/domain/PlanarCell2D.hpp>
 #include <vmm/domain/PolygonalDomain2D.hpp>
 #include <vmm/error/MeshException.hpp>
 #include <vmm/mesh/MeshTopology.hpp>
@@ -152,6 +153,159 @@ inline void write_legacy_vtk_polygonal_domain_2d(
         polygons.push_back(hole);
     }
     write_legacy_vtk_polygons_2d(file_path, title, polygons, scalar_points, scalar_name);
+}
+
+
+inline void write_legacy_vtk_voronoi_cells_2d(
+    const std::filesystem::path& file_path,
+    std::string_view title,
+    std::span<const vmm::domain::Polygon2D> cells,
+    std::span<const vmm::domain::Point2D> sites = {})
+{
+    std::filesystem::create_directories(file_path.parent_path());
+    std::ofstream output{file_path};
+    if(!output) {
+        vmm::error::throw_file_not_found("write_legacy_vtk_voronoi_cells_2d", file_path.string());
+    }
+
+    std::size_t point_count{};
+    std::size_t polygon_storage_count{};
+    for(const auto& cell : cells) {
+        const auto count = detail::visible_vertex_count(cell);
+        point_count += count;
+        polygon_storage_count += count + 1U;
+    }
+
+    output << "# vtk DataFile Version 3.0\n";
+    output << title << "\n";
+    output << "ASCII\n";
+    output << "DATASET POLYDATA\n";
+    output << "POINTS " << point_count << " double\n";
+    output << std::setprecision(17);
+
+    for(const auto& cell : cells) {
+        const auto vertices = cell.vertices();
+        const auto count = detail::visible_vertex_count(cell);
+        for(std::size_t i = 0U; i < count; ++i) {
+            output << vertices[i].x << ' ' << vertices[i].y << " 0\n";
+        }
+    }
+
+    output << "POLYGONS " << cells.size() << ' ' << polygon_storage_count << "\n";
+    std::size_t offset{};
+    for(const auto& cell : cells) {
+        const auto count = detail::visible_vertex_count(cell);
+        output << count;
+        for(std::size_t i = 0U; i < count; ++i) {
+            output << ' ' << (offset + i);
+        }
+        output << "\n";
+        offset += count;
+    }
+
+    output << "CELL_DATA " << cells.size() << "\n";
+    output << "SCALARS cell_id unsigned_int 1\n";
+    output << "LOOKUP_TABLE default\n";
+    for(std::size_t i = 0U; i < cells.size(); ++i) {
+        output << i << "\n";
+    }
+
+    if(sites.size() == cells.size()) {
+        output << "SCALARS generator_x double 1\n";
+        output << "LOOKUP_TABLE default\n";
+        for(const auto site : sites) {
+            output << site.x << "\n";
+        }
+        output << "SCALARS generator_y double 1\n";
+        output << "LOOKUP_TABLE default\n";
+        for(const auto site : sites) {
+            output << site.y << "\n";
+        }
+    }
+}
+
+
+inline void write_legacy_vtk_planar_cells_2d(
+    const std::filesystem::path& file_path,
+    std::string_view title,
+    std::span<const vmm::domain::PlanarCell2D> cells)
+{
+    std::vector<vmm::domain::Polygon2D> exteriors;
+    std::vector<vmm::domain::Point2D> sites;
+    exteriors.reserve(cells.size());
+    sites.reserve(cells.size());
+    for(const auto& cell : cells) {
+        exteriors.push_back(cell.exterior());
+        sites.push_back(cell.generator_site());
+    }
+
+    std::filesystem::create_directories(file_path.parent_path());
+    std::ofstream output{file_path};
+    if(!output) {
+        vmm::error::throw_file_not_found("write_legacy_vtk_planar_cells_2d", file_path.string());
+    }
+
+    std::size_t point_count{};
+    std::size_t polygon_storage_count{};
+    for(const auto& cell : exteriors) {
+        const auto count = detail::visible_vertex_count(cell);
+        point_count += count;
+        polygon_storage_count += count + 1U;
+    }
+
+    output << "# vtk DataFile Version 3.0\n";
+    output << title << "\n";
+    output << "ASCII\n";
+    output << "DATASET POLYDATA\n";
+    output << "POINTS " << point_count << " double\n";
+    output << std::setprecision(17);
+
+    for(const auto& cell : exteriors) {
+        const auto vertices = cell.vertices();
+        const auto count = detail::visible_vertex_count(cell);
+        for(std::size_t i = 0U; i < count; ++i) {
+            output << vertices[i].x << ' ' << vertices[i].y << " 0\n";
+        }
+    }
+
+    output << "POLYGONS " << exteriors.size() << ' ' << polygon_storage_count << "\n";
+    std::size_t offset{};
+    for(const auto& cell : exteriors) {
+        const auto count = detail::visible_vertex_count(cell);
+        output << count;
+        for(std::size_t i = 0U; i < count; ++i) {
+            output << ' ' << (offset + i);
+        }
+        output << "\n";
+        offset += count;
+    }
+
+    output << "CELL_DATA " << cells.size() << "\n";
+    output << "SCALARS generator_id unsigned_long 1\n";
+    output << "LOOKUP_TABLE default\n";
+    for(const auto& cell : cells) {
+        output << cell.generator_id() << "\n";
+    }
+    output << "SCALARS area double 1\n";
+    output << "LOOKUP_TABLE default\n";
+    for(const auto& cell : cells) {
+        output << cell.area() << "\n";
+    }
+    output << "SCALARS boundary_type unsigned_char 1\n";
+    output << "LOOKUP_TABLE default\n";
+    for(const auto& cell : cells) {
+        output << static_cast<unsigned>(cell.boundary_type()) << "\n";
+    }
+    output << "SCALARS centroid_x double 1\n";
+    output << "LOOKUP_TABLE default\n";
+    for(const auto& cell : cells) {
+        output << cell.centroid().x << "\n";
+    }
+    output << "SCALARS centroid_y double 1\n";
+    output << "LOOKUP_TABLE default\n";
+    for(const auto& cell : cells) {
+        output << cell.centroid().y << "\n";
+    }
 }
 
 template<vmm::core::Dimension Dim>

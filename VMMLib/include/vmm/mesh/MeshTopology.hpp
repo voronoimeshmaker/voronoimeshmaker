@@ -104,6 +104,9 @@ public:
     /** @brief Flags a cell as internal, external boundary, or hole boundary. */
     void set_boundary_flag(CellIndex id, BoundaryType type);
 
+    /** @brief Replaces CSR neighbour storage after mesh extraction. */
+    void set_neighbours(const std::vector<std::vector<CellIndex>>& neighbours);
+
 private:
     // Structure-of-Arrays layout (hot fields contiguous in memory)
     std::vector<Point<Dim>>       centroids_;
