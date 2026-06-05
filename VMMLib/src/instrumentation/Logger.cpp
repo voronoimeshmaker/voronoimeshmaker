@@ -30,32 +30,18 @@
 #include <iostream>
 #include <mutex>
 #include <ostream>
-#include <type_traits>
 
 namespace vmm::instrumentation {
 namespace {
 
 [[nodiscard]] constexpr std::string_view level_name(LogLevel level) noexcept
 {
-    switch(level) {
-    case LogLevel::Trace:
-        return "trace";
-    case LogLevel::Debug:
-        return "debug";
-    case LogLevel::Info:
-        return "info";
-    case LogLevel::Warning:
-        return "warning";
-    case LogLevel::Error:
-        return "error";
-    }
-
-    return "unknown";
+    return level.name;
 }
 
 [[nodiscard]] constexpr auto level_rank(LogLevel level) noexcept
 {
-    return static_cast<std::underlying_type_t<LogLevel>>(level);
+    return level.rank;
 }
 
 } // namespace
@@ -63,7 +49,7 @@ namespace {
 struct Logger::Impl final {
     mutable std::mutex mutex{};
     std::ostream* output{&std::clog};
-    LogLevel minimum_level{LogLevel::Info};
+    LogLevel minimum_level{LogLevelTraits::Info};
 };
 
 Logger::Logger() noexcept
@@ -108,7 +94,7 @@ LogLevel Logger::minimum_level() const noexcept
     std::lock_guard<std::mutex> lock{impl_->mutex};
     return impl_->minimum_level;
 #else
-    return LogLevel::Error;
+    return LogLevelTraits::Error;
 #endif
 }
 

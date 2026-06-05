@@ -58,7 +58,7 @@ public:
     PlanarCell2D(Polygon2D exterior,
                  Point2D generator_site,
                  vmm::core::GeneratorID generator_id,
-                 vmm::core::BoundaryType boundary_type = vmm::core::BoundaryType::Internal);
+                 vmm::core::BoundaryType boundary_type = vmm::core::BoundaryTypeTraits::Internal);
 
     /**
      * @brief Creates a cell from exterior and interior rings.
@@ -67,7 +67,7 @@ public:
                  std::vector<Polygon2D> holes,
                  Point2D generator_site,
                  vmm::core::GeneratorID generator_id,
-                 vmm::core::BoundaryType boundary_type = vmm::core::BoundaryType::Internal);
+                 vmm::core::BoundaryType boundary_type = vmm::core::BoundaryTypeTraits::Internal);
 
     [[nodiscard]] const Polygon2D& exterior() const noexcept;
     [[nodiscard]] std::span<const Polygon2D> holes() const noexcept;
@@ -89,7 +89,7 @@ private:
     vmm::core::GeneratorID generator_id_{};
     Point2D centroid_{};
     vmm::core::Real area_{};
-    vmm::core::BoundaryType boundary_type_{vmm::core::BoundaryType::Internal};
+    vmm::core::BoundaryType boundary_type_{vmm::core::BoundaryTypeTraits::Internal};
 };
 
 using VoronoiCell2D = PlanarCell2D;

@@ -41,7 +41,7 @@ MeshTopology<Dim>::MeshTopology(std::size_t capacity)
     , generator_ids_(capacity)
     , cell_offsets_(capacity + 1, 0)
     , neighbour_ids_()
-    , boundary_flags_(capacity, static_cast<uint8_t>(BoundaryType::Internal))
+    , boundary_flags_(capacity, BoundaryTypeTraits::Internal)
 {}
 
 template<Dimension Dim>
@@ -66,7 +66,7 @@ std::span<const CellIndex> MeshTopology<Dim>::neighbours(CellIndex cell_id) cons
 
 template<Dimension Dim>
 BoundaryType MeshTopology<Dim>::boundary_type(CellIndex cell_id) const {
-    return static_cast<BoundaryType>(boundary_flags_.at(cell_id));
+    return boundary_flags_.at(cell_id);
 }
 
 template<Dimension Dim>
@@ -91,7 +91,7 @@ void MeshTopology<Dim>::assign_generator_id(CellIndex id, GeneratorID gid) {
 
 template<Dimension Dim>
 void MeshTopology<Dim>::set_boundary_flag(CellIndex id, BoundaryType type) {
-    boundary_flags_.at(id) = static_cast<uint8_t>(type);
+    boundary_flags_.at(id) = type;
 }
 
 template<Dimension Dim>

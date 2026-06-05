@@ -294,7 +294,7 @@ inline void write_legacy_vtk_planar_cells_2d(
     output << "SCALARS boundary_type unsigned_char 1\n";
     output << "LOOKUP_TABLE default\n";
     for(const auto& cell : cells) {
-        output << static_cast<unsigned>(cell.boundary_type()) << "\n";
+        output << static_cast<unsigned>(cell.boundary_type().code) << "\n";
     }
     output << "SCALARS centroid_x double 1\n";
     output << "LOOKUP_TABLE default\n";
@@ -361,7 +361,7 @@ void write_vtu_cell_centres(const std::filesystem::path& file_path,
     output << "         ";
     for(std::size_t i = 0; i < cell_count; ++i) {
         const auto cell = static_cast<vmm::core::CellIndex>(i);
-        output << ' ' << static_cast<unsigned>(topology.boundary_type(cell));
+        output << ' ' << static_cast<unsigned>(topology.boundary_type(cell).code);
     }
     output << "\n        </DataArray>\n";
     output << "      </CellData>\n";

@@ -38,7 +38,7 @@ FlowTracer::FlowTracer(std::string_view scope_name) noexcept
 #endif
 {
 #if defined(VMM_ENABLE_LOGGING)
-    log(LogLevel::Debug, std::string{"enter "} + std::string{scope_name_});
+    log(LogLevelTraits::Debug, std::string{"enter "} + std::string{scope_name_});
 #else
     static_cast<void>(scope_name);
 #endif
@@ -47,7 +47,7 @@ FlowTracer::FlowTracer(std::string_view scope_name) noexcept
 FlowTracer::~FlowTracer() noexcept
 {
 #if defined(VMM_ENABLE_LOGGING)
-    log(LogLevel::Debug, std::string{"leave "} + std::string{scope_name_});
+    log(LogLevelTraits::Debug, std::string{"leave "} + std::string{scope_name_});
 #endif
 }
 

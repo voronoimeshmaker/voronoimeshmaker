@@ -49,7 +49,7 @@ MeshTopology<Dimension::D2> build_regular_grid_2d(std::size_t n_cells) {
     for (std::size_t i = 0; i < n_cells; ++i) {
         mesh.set_centroid(static_cast<CellIndex>(i), {static_cast<Real>(i), static_cast<Real>(0)});
         mesh.assign_generator_id(static_cast<CellIndex>(i), static_cast<GeneratorID>(i));
-        mesh.set_boundary_flag(static_cast<CellIndex>(i), BoundaryType::Internal);
+        mesh.set_boundary_flag(static_cast<CellIndex>(i), BoundaryTypeTraits::Internal);
     }
     return mesh;
 }
@@ -96,9 +96,9 @@ TEST(MeshAnalyzerTest, BoundaryFlagsHandledCorrectly) {
     mesh.set_centroid(1, {static_cast<Real>(1), static_cast<Real>(0)});
     mesh.set_centroid(2, {static_cast<Real>(2), static_cast<Real>(0)});
     
-    mesh.set_boundary_flag(0, BoundaryType::ExternalBoundary);
-    mesh.set_boundary_flag(1, BoundaryType::Internal);
-    mesh.set_boundary_flag(2, BoundaryType::HoleBoundary);
+    mesh.set_boundary_flag(0, BoundaryTypeTraits::ExternalBoundary);
+    mesh.set_boundary_flag(1, BoundaryTypeTraits::Internal);
+    mesh.set_boundary_flag(2, BoundaryTypeTraits::HoleBoundary);
     
     // Analyser should not crash when reading boundary flags
     QualityCriteria criteria;

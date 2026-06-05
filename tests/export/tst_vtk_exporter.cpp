@@ -52,7 +52,7 @@ TEST(VTKExporterTest, WritesD2CellCentresAsVertexCells)
     topology.set_centroid(1U, {3.0, 4.0});
     topology.assign_generator_id(0U, 10U);
     topology.assign_generator_id(1U, 11U);
-    topology.set_boundary_flag(1U, vmm::core::BoundaryType::ExternalBoundary);
+    topology.set_boundary_flag(1U, vmm::core::BoundaryTypeTraits::ExternalBoundary);
 
     const auto output = std::filesystem::temp_directory_path() / "vmm_tst_vtk_exporter.vtu";
     vmm::io::write_vtu_cell_centres(output, topology);

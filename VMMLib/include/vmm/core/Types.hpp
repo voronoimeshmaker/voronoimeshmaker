@@ -28,6 +28,7 @@
 //==============================================================================
 #include <cstdint>
 // #include <cstddef>
+#include <string_view>
 #include <type_traits>
 
 namespace vmm::core {
@@ -74,10 +75,25 @@ using FaceIndex   = uint32_t;
  * @brief Boundary classification for cells and faces.
  * @ingroup vmm_core
  */
-enum class BoundaryType : uint8_t {
-    Internal         = 0, ///< Cell/face lies strictly within the computational domain.
-    ExternalBoundary = 1, ///< Cell/face contacts the outer physical boundary.
-    HoleBoundary     = 2  ///< Cell/face contacts an internal hole or excluded region.
+struct BoundaryType final {
+    std::string_view name;
+    std::uint8_t code;
+
+    [[nodiscard]] friend constexpr bool operator==(BoundaryType lhs, BoundaryType rhs) noexcept
+    {
+        return lhs.code == rhs.code && lhs.name == rhs.name;
+    }
+
+    [[nodiscard]] friend constexpr bool operator!=(BoundaryType lhs, BoundaryType rhs) noexcept
+    {
+        return !(lhs == rhs);
+    }
+};
+
+struct BoundaryTypeTraits final {
+    static constexpr BoundaryType Internal{"internal", 0U};
+    static constexpr BoundaryType ExternalBoundary{"external-boundary", 1U};
+    static constexpr BoundaryType HoleBoundary{"hole-boundary", 2U};
 };
 
 //==============================================================================

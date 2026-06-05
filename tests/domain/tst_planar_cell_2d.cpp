@@ -42,14 +42,14 @@ TEST(PlanarCell2DTest, StoresGeometryAndGeneratorMetadata)
         exterior,
         {1.0, 1.0},
         42U,
-        vmm::core::BoundaryType::ExternalBoundary
+        vmm::core::BoundaryTypeTraits::ExternalBoundary
     };
 
     EXPECT_DOUBLE_EQ(cell.area(), 4.0);
     EXPECT_DOUBLE_EQ(cell.centroid().x, 1.0);
     EXPECT_DOUBLE_EQ(cell.centroid().y, 1.0);
     EXPECT_EQ(cell.generator_id(), 42U);
-    EXPECT_EQ(cell.boundary_type(), vmm::core::BoundaryType::ExternalBoundary);
+    EXPECT_EQ(cell.boundary_type(), vmm::core::BoundaryTypeTraits::ExternalBoundary);
     EXPECT_FALSE(cell.has_holes());
 }
 

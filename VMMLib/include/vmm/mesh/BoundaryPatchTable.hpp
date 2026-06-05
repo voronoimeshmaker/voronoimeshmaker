@@ -12,21 +12,37 @@
 #include <cstdint>
 #include <span>
 #include <string>
+#include <string_view>
 #include <vector>
 
 namespace vmm::mesh {
 
-enum class BoundaryPatchType : std::uint8_t {
-    Internal = 0,
-    Wall,
-    Island,
-    Inlet,
-    Outlet,
-    OpenBoundary,
-    LandBoundary,
-    NoFlux,
-    Bottom,
-    Surface
+struct BoundaryPatchType final {
+    std::string_view name;
+    std::uint16_t code;
+
+    [[nodiscard]] friend constexpr bool operator==(BoundaryPatchType lhs, BoundaryPatchType rhs) noexcept
+    {
+        return lhs.code == rhs.code && lhs.name == rhs.name;
+    }
+
+    [[nodiscard]] friend constexpr bool operator!=(BoundaryPatchType lhs, BoundaryPatchType rhs) noexcept
+    {
+        return !(lhs == rhs);
+    }
+};
+
+struct BoundaryPatchTypeTraits final {
+    static constexpr BoundaryPatchType Internal{"internal", 0U};
+    static constexpr BoundaryPatchType Wall{"wall", 1U};
+    static constexpr BoundaryPatchType Island{"island", 2U};
+    static constexpr BoundaryPatchType Inlet{"inlet", 3U};
+    static constexpr BoundaryPatchType Outlet{"outlet", 4U};
+    static constexpr BoundaryPatchType OpenBoundary{"open-boundary", 5U};
+    static constexpr BoundaryPatchType LandBoundary{"land-boundary", 6U};
+    static constexpr BoundaryPatchType NoFlux{"no-flux", 7U};
+    static constexpr BoundaryPatchType Bottom{"bottom", 8U};
+    static constexpr BoundaryPatchType Surface{"surface", 9U};
 };
 
 struct BoundaryPatchTable final {

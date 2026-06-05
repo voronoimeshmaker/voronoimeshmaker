@@ -113,7 +113,7 @@ private:
     std::vector<GeneratorID>      generator_ids_;
     std::vector<CellIndex>        cell_offsets_;     // CSR start indices (size = cell_count + 1)
     std::vector<CellIndex>        neighbour_ids_;    // Flattened adjacency list
-    std::vector<uint8_t>          boundary_flags_;   // BoundaryType encoded as uint8_t
+    std::vector<BoundaryType>     boundary_flags_;
 };
 
 } // namespace vmm::core

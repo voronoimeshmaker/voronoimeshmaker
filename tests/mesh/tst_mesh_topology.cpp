@@ -99,13 +99,13 @@ TEST_F(MeshTopologyD2Test, SequentialIDAssignmentAndRetrieval) {
 // Boundary Flag Management
 // ============================================================================
 TEST_F(MeshTopologyD2Test, BoundaryClassificationAssignment) {
-    mesh_->set_boundary_flag(0, BoundaryType::Internal);
-    mesh_->set_boundary_flag(1, BoundaryType::ExternalBoundary);
-    mesh_->set_boundary_flag(2, BoundaryType::HoleBoundary);
+    mesh_->set_boundary_flag(0, BoundaryTypeTraits::Internal);
+    mesh_->set_boundary_flag(1, BoundaryTypeTraits::ExternalBoundary);
+    mesh_->set_boundary_flag(2, BoundaryTypeTraits::HoleBoundary);
 
-    EXPECT_EQ(mesh_->boundary_type(0), BoundaryType::Internal);
-    EXPECT_EQ(mesh_->boundary_type(1), BoundaryType::ExternalBoundary);
-    EXPECT_EQ(mesh_->boundary_type(2), BoundaryType::HoleBoundary);
+    EXPECT_EQ(mesh_->boundary_type(0), BoundaryTypeTraits::Internal);
+    EXPECT_EQ(mesh_->boundary_type(1), BoundaryTypeTraits::ExternalBoundary);
+    EXPECT_EQ(mesh_->boundary_type(2), BoundaryTypeTraits::HoleBoundary);
 }
 
 // ============================================================================

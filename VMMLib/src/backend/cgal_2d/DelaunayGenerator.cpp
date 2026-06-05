@@ -255,8 +255,8 @@ generate_voronoi_2d(std::span<const vmm::domain::Point2D> sites,
         topology.assign_generator_id(cell, static_cast<vmm::core::GeneratorID>(i));
         topology.set_boundary_flag(cell,
                                    is_boundary_site(domain, sites[i], hint)
-                                       ? vmm::core::BoundaryType::ExternalBoundary
-                                       : vmm::core::BoundaryType::Internal);
+                                       ? vmm::core::BoundaryTypeTraits::ExternalBoundary
+                                       : vmm::core::BoundaryTypeTraits::Internal);
     }
     topology.set_neighbours(neighbours);
     return topology;

@@ -35,12 +35,27 @@ namespace vmm::instrumentation {
  * @brief Severity level used by the optional logger.
  * @ingroup vmm_instrumentation
  */
-enum class LogLevel : std::uint8_t {
-    Trace = 0,
-    Debug = 1,
-    Info = 2,
-    Warning = 3,
-    Error = 4
+struct LogLevel final {
+    std::string_view name;
+    std::uint8_t rank;
+
+    [[nodiscard]] friend constexpr bool operator==(LogLevel lhs, LogLevel rhs) noexcept
+    {
+        return lhs.rank == rhs.rank && lhs.name == rhs.name;
+    }
+
+    [[nodiscard]] friend constexpr bool operator!=(LogLevel lhs, LogLevel rhs) noexcept
+    {
+        return !(lhs == rhs);
+    }
+};
+
+struct LogLevelTraits final {
+    static constexpr LogLevel Trace{"trace", 0U};
+    static constexpr LogLevel Debug{"debug", 1U};
+    static constexpr LogLevel Info{"info", 2U};
+    static constexpr LogLevel Warning{"warning", 3U};
+    static constexpr LogLevel Error{"error", 4U};
 };
 
 /**
@@ -81,11 +96,11 @@ void log(LogLevel level, std::string_view message) noexcept;
 } // namespace vmm::instrumentation
 
 #if defined(VMM_ENABLE_LOGGING)
-#define VMM_LOG_TRACE(message) ::vmm::instrumentation::log(::vmm::instrumentation::LogLevel::Trace, (message))
-#define VMM_LOG_DEBUG(message) ::vmm::instrumentation::log(::vmm::instrumentation::LogLevel::Debug, (message))
-#define VMM_LOG_INFO(message) ::vmm::instrumentation::log(::vmm::instrumentation::LogLevel::Info, (message))
-#define VMM_LOG_WARNING(message) ::vmm::instrumentation::log(::vmm::instrumentation::LogLevel::Warning, (message))
-#define VMM_LOG_ERROR(message) ::vmm::instrumentation::log(::vmm::instrumentation::LogLevel::Error, (message))
+#define VMM_LOG_TRACE(message) ::vmm::instrumentation::log(::vmm::instrumentation::LogLevelTraits::Trace, (message))
+#define VMM_LOG_DEBUG(message) ::vmm::instrumentation::log(::vmm::instrumentation::LogLevelTraits::Debug, (message))
+#define VMM_LOG_INFO(message) ::vmm::instrumentation::log(::vmm::instrumentation::LogLevelTraits::Info, (message))
+#define VMM_LOG_WARNING(message) ::vmm::instrumentation::log(::vmm::instrumentation::LogLevelTraits::Warning, (message))
+#define VMM_LOG_ERROR(message) ::vmm::instrumentation::log(::vmm::instrumentation::LogLevelTraits::Error, (message))
 #else
 #define VMM_LOG_TRACE(message) static_cast<void>(0)
 #define VMM_LOG_DEBUG(message) static_cast<void>(0)
