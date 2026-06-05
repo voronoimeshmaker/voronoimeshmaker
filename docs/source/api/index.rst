@@ -12,4 +12,5 @@ current 2D workflow.
    tessellation
    export
    mesh
+   text-audit-format
    errors

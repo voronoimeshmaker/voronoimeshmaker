@@ -16,13 +16,13 @@ Implemented now
 * Strong IDs and invalid sentinels for canonical FV mesh entities.
 * Index audit for canonical 2D FV meshes.
 * Connectivity and basic geometry audit for canonical 2D FV meshes.
+* Text audit writer for canonical 2D FV mesh diagnostics.
 * Structured error layer with bilingual message direction.
 
 Planned next
 ------------
 
 * Voronoi cells with holes.
-* Stable text audit writer for canonical 2D FV meshes.
 * Face reconstruction from clipped polygonal cells.
 * 3D domain geometry implementation.
 * More site patterns.
