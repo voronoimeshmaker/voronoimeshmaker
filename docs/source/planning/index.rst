@@ -15,4 +15,5 @@ working synthesis used to guide implementation.
    block-0-completion
    block-roadmap-review
    block-1-definition
+   block-3-completion
    mesh-generator-survey

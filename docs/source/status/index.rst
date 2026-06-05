@@ -12,13 +12,18 @@ Implemented now
 * 2D clipped Voronoi cells for exterior polygonal domains.
 * Rich 2D planar cell representation with optional holes and generator metadata.
 * VTK export for domains, Voronoi cell polygons, and cell centres.
+* Canonical 2D finite-volume DOD tables for nodes, cells, faces, patches, and cell-face connectivity.
+* Strong IDs and invalid sentinels for canonical FV mesh entities.
+* Index audit for canonical 2D FV meshes.
+* Connectivity and basic geometry audit for canonical 2D FV meshes.
 * Structured error layer with bilingual message direction.
 
 Planned next
 ------------
 
 * Voronoi cells with holes.
-* Explicit mesh geometry: points, faces, owner, neighbour, and patches.
+* Stable text audit writer for canonical 2D FV meshes.
+* Face reconstruction from clipped polygonal cells.
 * 3D domain geometry implementation.
 * More site patterns.
 * Automatic API extraction with Doxygen/Breathe once the public headers settle.
