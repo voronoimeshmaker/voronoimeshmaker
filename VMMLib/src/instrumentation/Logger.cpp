@@ -38,15 +38,15 @@ namespace {
 [[nodiscard]] constexpr std::string_view level_name(LogLevel level) noexcept
 {
     switch(level) {
-    case LogLevel::trace:
+    case LogLevel::Trace:
         return "trace";
-    case LogLevel::debug:
+    case LogLevel::Debug:
         return "debug";
-    case LogLevel::info:
+    case LogLevel::Info:
         return "info";
-    case LogLevel::warning:
+    case LogLevel::Warning:
         return "warning";
-    case LogLevel::error:
+    case LogLevel::Error:
         return "error";
     }
 
@@ -63,7 +63,7 @@ namespace {
 struct Logger::Impl final {
     mutable std::mutex mutex{};
     std::ostream* output{&std::clog};
-    LogLevel minimum_level{LogLevel::info};
+    LogLevel minimum_level{LogLevel::Info};
 };
 
 Logger::Logger() noexcept
@@ -108,7 +108,7 @@ LogLevel Logger::minimum_level() const noexcept
     std::lock_guard<std::mutex> lock{impl_->mutex};
     return impl_->minimum_level;
 #else
-    return LogLevel::error;
+    return LogLevel::Error;
 #endif
 }
 

@@ -24,8 +24,8 @@ FiniteVolumeMesh2D make_two_cell_mesh()
     mesh.cells.face_count = {4U, 4U};
 
     mesh.patches.id = {BoundaryPatchId{0U}, BoundaryPatchId{1U}};
-    mesh.patches.name = {"wall", "open"};
-    mesh.patches.type = {BoundaryPatchType::wall, BoundaryPatchType::open_boundary};
+    mesh.patches.name = {"Wall", "open"};
+    mesh.patches.type = {BoundaryPatchType::Wall, BoundaryPatchType::OpenBoundary};
 
     mesh.faces.owner = {
         CellId{0U}, CellId{0U}, CellId{0U}, CellId{0U}, CellId{1U}, CellId{1U}, CellId{1U}};
@@ -126,5 +126,5 @@ TEST(FiniteVolumeMesh2DTest, InternalAndBoundarySentinelsCanBeRepresented)
 
     EXPECT_FALSE(is_valid(mesh.faces.neighbour[0]));
     EXPECT_TRUE(is_valid(mesh.faces.patch_id[0]));
-    EXPECT_EQ(mesh.patches.type[mesh.faces.patch_id[0].value], BoundaryPatchType::wall);
+    EXPECT_EQ(mesh.patches.type[mesh.faces.patch_id[0].value], BoundaryPatchType::Wall);
 }

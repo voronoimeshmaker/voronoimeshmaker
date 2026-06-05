@@ -17,16 +17,16 @@
 namespace vmm::mesh {
 
 enum class BoundaryPatchType : std::uint8_t {
-    internal = 0,
-    wall,
-    island,
-    inlet,
-    outlet,
-    open_boundary,
-    land_boundary,
-    no_flux,
-    bottom,
-    surface
+    Internal = 0,
+    Wall,
+    Island,
+    Inlet,
+    Outlet,
+    OpenBoundary,
+    LandBoundary,
+    NoFlux,
+    Bottom,
+    Surface
 };
 
 struct BoundaryPatchTable final {

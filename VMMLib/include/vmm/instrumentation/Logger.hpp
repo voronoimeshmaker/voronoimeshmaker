@@ -36,11 +36,11 @@ namespace vmm::instrumentation {
  * @ingroup vmm_instrumentation
  */
 enum class LogLevel : std::uint8_t {
-    trace = 0,
-    debug = 1,
-    info = 2,
-    warning = 3,
-    error = 4
+    Trace = 0,
+    Debug = 1,
+    Info = 2,
+    Warning = 3,
+    Error = 4
 };
 
 /**
@@ -81,11 +81,11 @@ void log(LogLevel level, std::string_view message) noexcept;
 } // namespace vmm::instrumentation
 
 #if defined(VMM_ENABLE_LOGGING)
-#define VMM_LOG_TRACE(message) ::vmm::instrumentation::log(::vmm::instrumentation::LogLevel::trace, (message))
-#define VMM_LOG_DEBUG(message) ::vmm::instrumentation::log(::vmm::instrumentation::LogLevel::debug, (message))
-#define VMM_LOG_INFO(message) ::vmm::instrumentation::log(::vmm::instrumentation::LogLevel::info, (message))
-#define VMM_LOG_WARNING(message) ::vmm::instrumentation::log(::vmm::instrumentation::LogLevel::warning, (message))
-#define VMM_LOG_ERROR(message) ::vmm::instrumentation::log(::vmm::instrumentation::LogLevel::error, (message))
+#define VMM_LOG_TRACE(message) ::vmm::instrumentation::log(::vmm::instrumentation::LogLevel::Trace, (message))
+#define VMM_LOG_DEBUG(message) ::vmm::instrumentation::log(::vmm::instrumentation::LogLevel::Debug, (message))
+#define VMM_LOG_INFO(message) ::vmm::instrumentation::log(::vmm::instrumentation::LogLevel::Info, (message))
+#define VMM_LOG_WARNING(message) ::vmm::instrumentation::log(::vmm::instrumentation::LogLevel::Warning, (message))
+#define VMM_LOG_ERROR(message) ::vmm::instrumentation::log(::vmm::instrumentation::LogLevel::Error, (message))
 #else
 #define VMM_LOG_TRACE(message) static_cast<void>(0)
 #define VMM_LOG_DEBUG(message) static_cast<void>(0)

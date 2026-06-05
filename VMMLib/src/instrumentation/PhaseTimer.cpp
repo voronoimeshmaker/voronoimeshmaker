@@ -65,7 +65,7 @@ void PhaseTimer::stop() noexcept
     std::ostringstream message;
     message << phase_name_ << " took " << std::fixed << std::setprecision(3) << elapsed.count() << " ms";
 
-    log(LogLevel::info, message.str());
+    log(LogLevel::Info, message.str());
 #endif
 }
 

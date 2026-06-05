@@ -18,6 +18,24 @@ All identifiers must follow the LLVM / C++ Core Guidelines convention. Hungarian
 | **Template Parameters** | `PascalCase` (descriptive) | `Dim`, `Strategy`, `StorageLayout`, `T` | `T`/`U` only for trivial generics; prefer semantic names |
 | **Source Files** | `PascalCase.hpp` / `PascalCase.cpp` | `MeshTopology.hpp`, `CDTGenerator.cpp` | Lowercase extensions; one primary concept per file |
 
+## Repository Exceptions and Transitional Placeholders
+
+The following repository-level exceptions are intentional and should not be treated
+as style violations:
+
+- `VMMLib/include/vmm/vmm.hpp` is the lowercase umbrella header.
+- Test source files use the `tst_*.cpp` prefix so generated CMake targets remain
+  visually distinct from production targets.
+- Example programs use the `ex_*.cpp` prefix for the same reason.
+- Module namespaces may use underscores when they match existing directory names
+  or backend identifiers, for example `vmm::site_generation`, `vmm::backend::cgal_2d`,
+  `builtin_error_id`, and `export_format`.
+
+Empty placeholder files are transitional only. A placeholder must either be
+removed before release or replaced with a minimal documented stub explaining its
+reserved purpose. Empty test files must not be used as permanent placeholders,
+because GTest discovery expects a real executable.
+
 ## 🧱 Modern SOLID Principles (C++20 & DOD)
 
 Classical SOLID is reinterpreted for compile-time composition and data-oriented memory layouts. Virtual inheritance is avoided in favour of concepts and policies.

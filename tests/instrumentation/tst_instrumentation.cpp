@@ -41,9 +41,9 @@ TEST(InstrumentationTest, LoggerHonoursCompileTimeSwitch)
 
     auto& logger = vmm::instrumentation::Logger::instance();
     logger.set_output(output);
-    logger.set_minimum_level(vmm::instrumentation::LogLevel::trace);
+    logger.set_minimum_level(vmm::instrumentation::LogLevel::Trace);
 
-    vmm::instrumentation::log(vmm::instrumentation::LogLevel::info, "instrumentation message");
+    vmm::instrumentation::log(vmm::instrumentation::LogLevel::Info, "instrumentation message");
 
 #if defined(VMM_ENABLE_LOGGING)
     EXPECT_NE(output.str().find("instrumentation message"), std::string::npos);
@@ -58,7 +58,7 @@ TEST(InstrumentationTest, PhaseTimerCanBeScoped)
 
     auto& logger = vmm::instrumentation::Logger::instance();
     logger.set_output(output);
-    logger.set_minimum_level(vmm::instrumentation::LogLevel::trace);
+    logger.set_minimum_level(vmm::instrumentation::LogLevel::Trace);
 
     {
         VMM_TIME_PHASE("test phase");
@@ -77,7 +77,7 @@ TEST(InstrumentationTest, FlowTracerCanBeScoped)
 
     auto& logger = vmm::instrumentation::Logger::instance();
     logger.set_output(output);
-    logger.set_minimum_level(vmm::instrumentation::LogLevel::trace);
+    logger.set_minimum_level(vmm::instrumentation::LogLevel::Trace);
 
     {
         VMM_TRACE_SCOPE("scope");
