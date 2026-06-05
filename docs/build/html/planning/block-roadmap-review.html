@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Block Roadmap Review &#8212; VoronoiMeshMaker</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Block 1 Definition" href="block-1-definition.html" />
+    <link rel="prev" title="Upgrade Proposals" href="upgrade-proposals.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="block-roadmap-review">
+<h1>Block Roadmap Review<a class="headerlink" href="#block-roadmap-review" title="Link to this heading">¶</a></h1>
+<section id="purpose">
+<h2>Purpose<a class="headerlink" href="#purpose" title="Link to this heading">¶</a></h2>
+<p>This page reviews the proposed block roadmap against the current repository
+state. It records adjustments before implementation starts.</p>
+</section>
+<section id="current-repository-state">
+<h2>Current repository state<a class="headerlink" href="#current-repository-state" title="Link to this heading">¶</a></h2>
+<p>The current repository already has:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">VMMLib/include/vmm</span></code> as the public include root;</p></li>
+<li><p>CGAL isolated under private backend source directories;</p></li>
+<li><p>2D domain geometry and clipped Voronoi cells;</p></li>
+<li><p>a DOD/CSR <code class="docutils literal notranslate"><span class="pre">MeshTopology</span></code> for cell-centred topology;</p></li>
+<li><p>VTK diagnostics for current 2D outputs;</p></li>
+<li><p>placeholder or explicit-failure exporters for formats that require faces;</p></li>
+<li><p>empty reserved files such as <code class="docutils literal notranslate"><span class="pre">Mesh.hpp</span></code>, <code class="docutils literal notranslate"><span class="pre">MeshBuilder.hpp</span></code>, <code class="docutils literal notranslate"><span class="pre">MeshValidation.hpp</span></code>, and <code class="docutils literal notranslate"><span class="pre">Handles.hpp</span></code>.</p></li>
+</ul>
+<p>The main gap is explicit face-centred finite-volume geometry. MohidNG, OpenFOAM,
+UGRID, text audit, and finite-volume stencil export all depend on this gap being
+closed first.</p>
+</section>
+<section id="review-conclusion">
+<h2>Review conclusion<a class="headerlink" href="#review-conclusion" title="Link to this heading">¶</a></h2>
+<p>The proposed roadmap is technically sound, but it should be adapted to the
+existing repository in three ways:</p>
+<ul class="simple">
+<li><p>keep the current <code class="docutils literal notranslate"><span class="pre">VMMLib/include/vmm</span></code> layout instead of moving to a fresh top-level <code class="docutils literal notranslate"><span class="pre">include</span></code> directory now;</p></li>
+<li><p>split the original Block 1 into a small foundation block and a finite-volume table block, because strong IDs and sentinel policy are cross-cutting API decisions;</p></li>
+<li><p>move HDF5 dependency integration after text audit and basic audits are stable, because CMake currently does not find HDF5.</p></li>
+</ul>
+</section>
+<section id="adjusted-block-sequence">
+<h2>Adjusted block sequence<a class="headerlink" href="#adjusted-block-sequence" title="Link to this heading">¶</a></h2>
+<dl class="simple">
+<dt>Block 0, Planning and documentation capture</dt><dd><p>Store proposal source material, consolidate decisions, review the roadmap, and
+define Block 1. This page and its siblings are the exit artefacts.</p>
+</dd>
+<dt>Block 1, Strong IDs and finite-volume DOD 2D tables</dt><dd><p>Introduce strong ID types, invalid sentinel policy, canonical 2D FV tables,
+basic size/range helpers, and focused unit tests. Do not connect CGAL yet.</p>
+</dd>
+<dt>Block 2, Index audit for canonical FV mesh</dt><dd><p>Implement <code class="docutils literal notranslate"><span class="pre">MeshAuditReport</span></code> and <code class="docutils literal notranslate"><span class="pre">MeshIndexAudit2D</span></code> for owners,
+neighbours, patches, cell-face offsets, face IDs, and node IDs. Add valid and
+intentionally invalid manual mesh tests.</p>
+</dd>
+<dt>Block 3, Connectivity and geometry audit</dt><dd><p>Add owner/neighbour reciprocity checks, face occurrence checks, duplicate
+cell-face detection, minimum face count, positive cell area, positive face
+length, and basic normal checks.</p>
+</dd>
+<dt>Block 4, Text audit writer</dt><dd><p>Write stable, column-aligned 2D audit output from the canonical mesh and use
+manual meshes for regression tests.</p>
+</dd>
+<dt>Block 5, Face reconstruction from clipped polygonal cells</dt><dd><p>Convert existing clipped Voronoi polygon cells into the canonical FV mesh:
+shared edge detection, global face creation, owner/neighbour assignment,
+boundary face detection, patch assignment, face centres, normals, lengths, and
+cell-face connectivity.</p>
+</dd>
+<dt>Block 6, Boundary patches for real domains with holes</dt><dd><p>Extend patch assignment so outer boundaries, islands, walls, open boundaries,
+and no-flow regions are represented explicitly and deterministically.</p>
+</dd>
+<dt>Block 7, MohidNG HDF5 writer 2D</dt><dd><p>Add HDF5 as an I/O dependency, write the MohidNG mesh package groups, and
+enforce audit-before-export. If MohidNG reader integration is not available,
+add an internal schema validation test first.</p>
+</dd>
+<dt>Block 8, Solver-neutral stencil graph</dt><dd><p>Build compact internal and boundary stencil arrays from the canonical face
+table. Keep backend solver adaptation outside VMM core.</p>
+</dd>
+<dt>Block 9, Projection and orthogonality anomaly audits</dt><dd><p>Add boundary projection and internal face midpoint anomaly reporting. Report
+first; do not automatically alter operators or remesh.</p>
+</dd>
+<dt>Block 10, GIS vector input and CRS handling</dt><dd><p>Introduce GDAL/OGR and PROJ behind <code class="docutils literal notranslate"><span class="pre">vmm::gis</span></code> and convert real GIS features
+to VMM-owned domain and patch types.</p>
+</dd>
+<dt>Block 11, Raster bathymetry/topography</dt><dd><p>Add raster reading and interpolation after vector domains and metric CRS are
+stable.</p>
+</dd>
+<dt>Block 12, Remeshing by site editing</dt><dd><p>Add site edit batches and remeshing plans that rebuild the canonical mesh and
+rerun mandatory audits.</p>
+</dd>
+<dt>Block 13, Extruded 3D finite-volume mesh</dt><dd><p>Extrude stable 2D finite-volume meshes vertically and add 3D audits and text
+audit output.</p>
+</dd>
+<dt>Block 14, MohidNG HDF5 writer 3D</dt><dd><p>Extend the HDF5 package to extruded 3D once 3D tables and audits are stable.</p>
+</dd>
+<dt>Block 15, Optional advanced backends</dt><dd><p>Evaluate JIGSAW, Voro++, regular triangulation, or other backends without
+leaking external types into public APIs.</p>
+</dd>
+</dl>
+</section>
+<section id="rationale-for-changes">
+<h2>Rationale for changes<a class="headerlink" href="#rationale-for-changes" title="Link to this heading">¶</a></h2>
+<p>The original roadmap put face reconstruction before some audit work. In this
+repository, manual canonical meshes should come first. They create a stable test
+target and make every later importer, reconstructor, or exporter accountable to
+the same invariants.</p>
+<p>The original roadmap also grouped boundary patches early. The data table belongs
+in Block 1, but full patch semantics for real holes, islands, and open
+boundaries should wait until face reconstruction exists.</p>
+<p>HDF5 export should remain a first milestone, but not before canonical tables,
+audits, and text diagnostics are passing. Otherwise invalid mesh packages become
+too easy to write and too hard to debug.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">VoronoiMeshMaker</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">Architecture</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Planning Records</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="upgrade-proposals.html">Upgrade Proposals</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Block Roadmap Review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="block-1-definition.html">Block 1 Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../error-codes/index.html">Error Codes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../status/index.html">Implementation Status</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Planning Records</a><ul>
+      <li>Previous: <a href="upgrade-proposals.html" title="previous chapter">Upgrade Proposals</a></li>
+      <li>Next: <a href="block-1-definition.html" title="next chapter">Block 1 Definition</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Joao Flavio Vieira de Vasconcellos.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/planning/block-roadmap-review.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -26,5 +26,6 @@ The current public direction is deliberately simple for users:
    tutorials/index
    api/index
    architecture/index
+   planning/index
    error-codes/index
    status/index

@@ -1,0 +1,19 @@
+{
+  "package": "vmm_codex_upgrade_package",
+  "created": "2026-06-05T12:33:38",
+  "purpose": "Specification package for Codex to upgrade VoronoiMeshMaker for MohidNG integration",
+  "core_rules": [
+    "Data-Oriented Design core",
+    "solver-neutral mesh and stencil connectivity",
+    "external backends hidden from public API",
+    "mandatory index and connectivity audit",
+    "2D FV mesh first, GIS and 3D later"
+  ],
+  "first_blocks": [
+    "DOD finite-volume mesh 2D",
+    "face reconstruction",
+    "mandatory audits",
+    "text audit writer",
+    "MohidNG HDF5 writer"
+  ]
+}

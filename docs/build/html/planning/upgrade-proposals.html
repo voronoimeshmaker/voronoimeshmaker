@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Upgrade Proposals &#8212; VoronoiMeshMaker</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css?v=27fed22d" />
+    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Block Roadmap Review" href="block-roadmap-review.html" />
+    <link rel="prev" title="Planning Records" href="index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="upgrade-proposals">
+<h1>Upgrade Proposals<a class="headerlink" href="#upgrade-proposals" title="Link to this heading">¶</a></h1>
+<section id="source-packages">
+<h2>Source packages<a class="headerlink" href="#source-packages" title="Link to this heading">¶</a></h2>
+<p>The original proposal documents from the Codex packages are stored in the
+repository for traceability:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">docs/source/planning/source-packages/upgrade</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">docs/source/planning/source-packages/visual-identity</span></code></p></li>
+</ul>
+<p>This page consolidates the proposals that affect architecture, implementation,
+documentation, and visual identity.</p>
+</section>
+<section id="project-role">
+<h2>Project role<a class="headerlink" href="#project-role" title="Link to this heading">¶</a></h2>
+<p>VoronoiMeshMaker is a mesh generation and validation tool, not a solver. Its
+responsibility is to produce geometry, finite-volume topology, boundary patches,
+audit data, and solver-neutral connectivity. MohidNG or another consumer is
+responsible for physical operators and solver backend adaptation.</p>
+<p>The VMM core must not depend on PETSc, Trilinos, Eigen, Ginkgo, or any other
+linear algebra backend. Solver-facing data should be expressed through neutral
+mesh tables and compact stencil arrays.</p>
+</section>
+<section id="core-architecture">
+<h2>Core architecture<a class="headerlink" href="#core-architecture" title="Link to this heading">¶</a></h2>
+<p>The proposed architecture is layered around VMM-owned types:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">vmm::geometry</span></code> for points, vectors, segments, polygons, bounding boxes, and CRS descriptors.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vmm::gis</span></code> for GIS reading and CRS conversion, with GDAL/OGR/PROJ hidden from public APIs.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vmm::sites</span></code> for site tables, site generation, and site edit batches.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vmm::tessellation</span></code> for Voronoi/Delaunay algorithms selected through concepts, traits, and registries.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vmm::mesh</span></code> for the canonical finite-volume mesh tables.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vmm::audit</span></code> for mandatory index, connectivity, geometry, patch, projection, and remap audits.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vmm::remeshing</span></code> for remeshing through site edits and full mesh rebuilds.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vmm::stencil</span></code> for solver-neutral finite-volume stencil graphs.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vmm::io</span></code> for text audit, VTK/VTU diagnostics, and MohidNG HDF5 export.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vmm::backend</span></code> for isolated CGAL, GDAL, PROJ, GEOS, Voro++, or other backend code.</p></li>
+</ul>
+<p>External backend types must not appear in public core headers. CGAL, GDAL/OGR,
+PROJ, GEOS, HDF5, JIGSAW, and Voro++ are implementation details at module
+boundaries.</p>
+</section>
+<section id="data-oriented-design-policy">
+<h2>Data-oriented design policy<a class="headerlink" href="#data-oriented-design-policy" title="Link to this heading">¶</a></h2>
+<p>The finite-volume core should use contiguous arrays, Structure of Arrays,
+CSR-style offsets, <code class="docutils literal notranslate"><span class="pre">std::span</span></code> views, preallocation, and batch operations.</p>
+<p>Avoid per-cell object graphs, pointer networks, <code class="docutils literal notranslate"><span class="pre">std::vector</span></code> inside each cell,
+runtime polymorphism per mesh entity, and dynamic allocation per face or cell in
+hot paths.</p>
+</section>
+<section id="canonical-finite-volume-mesh">
+<h2>Canonical finite-volume mesh<a class="headerlink" href="#canonical-finite-volume-mesh" title="Link to this heading">¶</a></h2>
+<p>The canonical 2D finite-volume representation is face-based and should include:</p>
+<ul class="simple">
+<li><p>strong IDs: <code class="docutils literal notranslate"><span class="pre">CellId</span></code>, <code class="docutils literal notranslate"><span class="pre">FaceId</span></code>, <code class="docutils literal notranslate"><span class="pre">NodeId</span></code>, <code class="docutils literal notranslate"><span class="pre">SiteId</span></code>, <code class="docutils literal notranslate"><span class="pre">BoundaryPatchId</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NodeTable2D</span></code> with contiguous coordinate arrays;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CellTable2D</span></code> with centres, areas, site IDs, face offsets, and face counts;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FaceTable2D</span></code> with owner, neighbour, centre, unit normal, length, patch ID, and endpoint node IDs;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BoundaryPatchTable</span></code> with patch IDs, names, and patch types;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CellFaceConnectivity</span></code> with a flat face-ID array addressed by cell offsets;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FiniteVolumeMesh2D</span></code> as the aggregate of those tables.</p></li>
+</ul>
+<p>Invalid neighbour IDs represent boundary faces. Invalid patch IDs represent
+internal faces. Boundary faces must have a valid patch.</p>
+</section>
+<section id="boundary-and-gis-proposals">
+<h2>Boundary and GIS proposals<a class="headerlink" href="#boundary-and-gis-proposals" title="Link to this heading">¶</a></h2>
+<p>The 2D domain model must support outer boundaries, holes, islands, obstacles,
+excluded regions, open boundaries, walls, and patch attributes.</p>
+<p>The fluid domain is the outer boundary minus holes. Islands and no-flow regions
+should be represented as holes in the active fluid domain, not as active cells
+with artificial zero velocity.</p>
+<p>GIS support should be progressive. GeoPackage is the preferred first vector
+format if GDAL is available, with Shapefile as fallback. GeoJSON, GeoTIFF,
+bathymetry rasters, topography rasters, refinement regions, constraint lines,
+and patch attributes come later.</p>
+<p>All lengths, areas, distances, normals, and volumes should be computed in a
+metric working CRS unless an explicit geodetic mode is introduced.</p>
+</section>
+<section id="tessellation-and-remeshing-proposals">
+<h2>Tessellation and remeshing proposals<a class="headerlink" href="#tessellation-and-remeshing-proposals" title="Link to this heading">¶</a></h2>
+<p>The first robust 2D tessellation path should be:</p>
+<p><code class="docutils literal notranslate"><span class="pre">sites</span> <span class="pre">-&gt;</span> <span class="pre">Delaunay</span> <span class="pre">triangulation</span> <span class="pre">-&gt;</span> <span class="pre">Voronoi</span> <span class="pre">dual</span> <span class="pre">-&gt;</span> <span class="pre">clipping</span> <span class="pre">-&gt;</span> <span class="pre">clipped</span> <span class="pre">cells</span> <span class="pre">-&gt;</span> <span class="pre">face</span> <span class="pre">reconstruction</span></code>.</p>
+<p>The architecture should allow multiple tessellation algorithms through strategy,
+registry/factory, concepts, and traits. Runtime selection belongs at algorithm
+boundaries, not inside per-cell or per-face loops.</p>
+<p>Remeshing should happen by editing sites, not by mutating final cells directly.
+Initial operations include insert, remove, move, and batch site edits. After site
+edits, VMM rebuilds the finite-volume mesh and reruns mandatory audits.</p>
+</section>
+<section id="audit-and-validation-proposals">
+<h2>Audit and validation proposals<a class="headerlink" href="#audit-and-validation-proposals" title="Link to this heading">¶</a></h2>
+<p>Auditing is mandatory before exporting any mesh as valid. The proposed audit
+families are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">MeshIndexAudit</span></code> for ID ranges and references;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MeshConnectivityAudit</span></code> for owner/neighbour/cell-face consistency;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MeshGeometryAudit</span></code> for positive measures and normals;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PatchAudit</span></code> for boundary patch consistency;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">BoundaryProjectionAudit</span></code> for physical-boundary projection anomalies;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">InternalFaceOrthogonalityAudit</span></code> for seed-midpoint/internal-face anomalies;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">MeshRemapAudit</span></code> for compaction or remeshing maps.</p></li>
+</ul>
+<p>Fatal audit errors must block HDF5 export.</p>
+</section>
+<section id="text-audit-report-proposal">
+<h2>Text audit report proposal<a class="headerlink" href="#text-audit-report-proposal" title="Link to this heading">¶</a></h2>
+<p>VMM should emit a stable, column-aligned text audit report suitable for human
+inspection and diff-based regression tests.</p>
+<p>For 2D, each cell block should include area, number of faces, local face order,
+face ID, neighbour, centre distance, normal distance, face length, patch ID,
+patch type, and status. Faces should be printed clockwise by face-centre angle
+around the cell centre.</p>
+</section>
+<section id="solver-neutral-stencil-proposal">
+<h2>Solver-neutral stencil proposal<a class="headerlink" href="#solver-neutral-stencil-proposal" title="Link to this heading">¶</a></h2>
+<p>VMM should produce solver-neutral finite-volume connectivity, with compact arrays
+such as <code class="docutils literal notranslate"><span class="pre">row_ptr</span></code>, <code class="docutils literal notranslate"><span class="pre">col_idx</span></code>, <code class="docutils literal notranslate"><span class="pre">face_id</span></code>, <code class="docutils literal notranslate"><span class="pre">centre_distance</span></code>,
+<code class="docutils literal notranslate"><span class="pre">normal_distance</span></code>, and <code class="docutils literal notranslate"><span class="pre">face_measure</span></code>. In 2D, <code class="docutils literal notranslate"><span class="pre">face_measure</span></code> is length; in
+3D, it is area.</p>
+<p>Boundary stencil data should be represented separately from internal sparse
+connectivity. PETSc and Trilinos adaptation belongs in consuming solvers, not in
+VMM core.</p>
+</section>
+<section id="mohidng-hdf5-proposal">
+<h2>MohidNG HDF5 proposal<a class="headerlink" href="#mohidng-hdf5-proposal" title="Link to this heading">¶</a></h2>
+<p>The MohidNG-oriented HDF5 package should include metadata plus canonical groups:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">/nodes/id</span></code> and <code class="docutils literal notranslate"><span class="pre">/nodes/xy</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/cells/id</span></code>, <code class="docutils literal notranslate"><span class="pre">/cells/centre</span></code>, and <code class="docutils literal notranslate"><span class="pre">/cells/area</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/faces/id</span></code>, <code class="docutils literal notranslate"><span class="pre">/faces/owner</span></code>, <code class="docutils literal notranslate"><span class="pre">/faces/neighbour</span></code>, <code class="docutils literal notranslate"><span class="pre">/faces/centre</span></code>, <code class="docutils literal notranslate"><span class="pre">/faces/unit_normal</span></code>, <code class="docutils literal notranslate"><span class="pre">/faces/length</span></code>, and <code class="docutils literal notranslate"><span class="pre">/faces/patch_id</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/boundary_patches/id</span></code>, <code class="docutils literal notranslate"><span class="pre">/boundary_patches/name</span></code>, and <code class="docutils literal notranslate"><span class="pre">/boundary_patches/type</span></code>.</p></li>
+</ul>
+<p>Optional VMM-specific groups may store audit summaries, anomalies, and stencil
+connectivity.</p>
+</section>
+<section id="d-proposal">
+<h2>3D proposal<a class="headerlink" href="#d-proposal" title="Link to this heading">¶</a></h2>
+<p>The first 3D target should be vertical extrusion of stable 2D finite-volume
+meshes. General 3D Voronoi/polyhedral support is explicitly later work.</p>
+<p>Extruded 3D should introduce 3D node, cell, face, volume, area, face role, and
+vertical connectivity tables. Face ordering in text audit should use lateral
+faces clockwise, then bottom, then top.</p>
+</section>
+<section id="visual-identity-proposal">
+<h2>Visual identity proposal<a class="headerlink" href="#visual-identity-proposal" title="Link to this heading">¶</a></h2>
+<p>The approved visual direction is minimalist, technical, and geometric, using a
+cracked-earth/Voronoi circular motif and a stacked mark:</p>
+<p><code class="docutils literal notranslate"><span class="pre">Voronoi</span></code>
+<code class="docutils literal notranslate"><span class="pre">Mesh</span> <span class="pre">Maker</span></code></p>
+<p>Approved colours:</p>
+<ul class="simple">
+<li><p>Deep Slate: <code class="docutils literal notranslate"><span class="pre">#263640</span></code>;</p></li>
+<li><p>Off White: <code class="docutils literal notranslate"><span class="pre">#F5F7F8</span></code>;</p></li>
+<li><p>Steel Blue: <code class="docutils literal notranslate"><span class="pre">#4C6A7F</span></code>;</p></li>
+<li><p>Cool Graphite: <code class="docutils literal notranslate"><span class="pre">#3A434B</span></code>;</p></li>
+<li><p>Teal Accent: <code class="docutils literal notranslate"><span class="pre">#3FA7A0</span></code>.</p></li>
+</ul>
+<p>Use the visual identity for documentation, README assets, Sphinx styling,
+landing-page material, GitHub presentation material, and slides. It is not part
+of the numerical core.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">VoronoiMeshMaker</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../architecture/index.html">Architecture</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Planning Records</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Upgrade Proposals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="block-roadmap-review.html">Block Roadmap Review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="block-1-definition.html">Block 1 Definition</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../error-codes/index.html">Error Codes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../status/index.html">Implementation Status</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Planning Records</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Planning Records</a></li>
+      <li>Next: <a href="block-roadmap-review.html" title="next chapter">Block Roadmap Review</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, Joao Flavio Vieira de Vasconcellos.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="../_sources/planning/upgrade-proposals.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

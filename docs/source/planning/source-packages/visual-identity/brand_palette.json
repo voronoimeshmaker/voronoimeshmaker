@@ -1,0 +1,47 @@
+{
+  "brand": "Voronoi Mesh Maker",
+  "approved_visual_direction": {
+    "style": "minimalist, technical, cracked-earth / Voronoi motif",
+    "layout": "stacked logo; cracked Voronoi sphere above; 'Voronoi' on first line; 'Mesh Maker' on second line",
+    "shape_language": "thick negative-space cracks, irregular Voronoi cells, restrained geometry",
+    "typography": "modern futuristic segmented sans-serif, high legibility, subtle Voronoi/cell cuts",
+    "primary_use": "GitHub, documentation, website, technical reports, slides"
+  },
+  "colors": [
+    {
+      "name": "Deep Slate",
+      "hex": "#263640",
+      "role": "primary dark background and dark ink for print-negative logo"
+    },
+    {
+      "name": "Off White",
+      "hex": "#F5F7F8",
+      "role": "primary logo colour on dark backgrounds and print background"
+    },
+    {
+      "name": "Steel Blue",
+      "hex": "#4C6A7F",
+      "role": "secondary UI/documentation accent"
+    },
+    {
+      "name": "Cool Graphite",
+      "hex": "#3A434B",
+      "role": "secondary dark neutral, borders, cards, code panels"
+    },
+    {
+      "name": "Teal Accent",
+      "hex": "#3FA7A0",
+      "role": "restrained accent for highlights, links and diagrams"
+    }
+  ],
+  "usage_rules": [
+    "Keep the logo minimalist.",
+    "Avoid gradients, 3D effects, shadows, excessive colours and complex textures.",
+    "Preserve the cracked-earth / Voronoi icon concept with thick negative-space divisions.",
+    "Use the dark version on Deep Slate or similarly dark backgrounds.",
+    "Use the print-negative version on white or off-white paper.",
+    "Do not expose the logo with low contrast.",
+    "For technical documentation, prefer Deep Slate, Off White and Steel Blue; use Teal Accent sparingly.",
+    "For GitHub avatar/favicon, use the icon alone where text becomes illegible."
+  ]
+}
