@@ -22,15 +22,19 @@
 //==============================================================================
 #pragma once
 
-#include <vmm/core/StrongIds.hpp>
-
-#include <cstddef>
-#include <cstdint>
+//==============================================================================
+// c++ includes
+//==============================================================================
 #include <span>
 #include <string>
-#include <string_view>
-#include <utility>
 #include <vector>
+
+//==============================================================================
+// VoronoiMeshMaker includes
+//==============================================================================
+#include <vmm/core/StrongIds.hpp>
+
+
 
 namespace vmm::audit {
 

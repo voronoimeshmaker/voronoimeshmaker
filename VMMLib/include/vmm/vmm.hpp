@@ -18,6 +18,7 @@
 #include <vmm/instrumentation/FlowTracer.hpp>
 #include <vmm/instrumentation/Logger.hpp>
 #include <vmm/instrumentation/PhaseTimer.hpp>
+#include <vmm/mesh/FiniteVolumeMeshBuilder2D.hpp>
 #include <vmm/site_generation/HexagonalSitePattern2D.hpp>
 #include <vmm/site_generation/SiteFactory.hpp>
 #include <vmm/tessellation/TessellationResult.hpp>
