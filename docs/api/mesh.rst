@@ -20,7 +20,9 @@ optional patch rings, and filling cell-face connectivity.
 ``vmm::mesh::FiniteVolumeStencilGraph2D``
    Solver-neutral compact graph derived from the canonical face table. It stores
    internal owner-neighbour entries and boundary cell-patch entries without
-   encoding any solver-specific coefficient policy.
+   encoding any solver-specific coefficient policy. The helper
+   ``vmm::mesh::finite_volume_matrix_bandwidth_2d`` reports the matrix bandwidth
+   implied by the internal stencil graph.
 
 Current legacy topology data
 ----------------------------
@@ -98,6 +100,23 @@ Integrated 2D workflow
    This is the preferred public entry point for other projects that need a
    complete 2D VMM mesh rather than individual construction steps.
 
+Site-edit remeshing
+-------------------
+
+``vmm::remeshing::SiteEditBatch2D``
+   Records sequential generator-site edits. Insert, remove, and move operations
+   are expressed through open traits rather than a closed enum.
+
+``vmm::remeshing::remesh_complete_finite_volume_voronoi_mesh_2d``
+   Applies a site edit batch, validates the resulting site set, rebuilds the
+   complete 2D finite-volume Voronoi mesh through the integrated workflow, and
+   reruns the mandatory audit chain.
+
+``vmm::remeshing::SiteRemeshingRegistry2D``
+   Registers remeshing methods by identifier. The default registry currently
+   exposes ``site-edit-rebuild`` and can accept future remeshing algorithms
+   without replacing the public workflow.
+
 Extension policy
 ----------------
 
@@ -112,6 +131,6 @@ The mesh layer now has canonical face tables, text diagnostics, cell-to-face
 reconstruction, explicit boundary patch assignment, MohidNG HDF5 export, and a
 solver-neutral stencil graph. Projection and orthogonality anomaly audits now
 report mesh-quality risks without remeshing automatically. GIS vector input,
-raster sampling, and the integrated 2D workflow now have isolated public APIs.
-The next layers should add remeshing and richer import validation around those
-stable tables rather than another table redesign.
+raster sampling, the integrated 2D workflow, and site-edit remeshing now have
+isolated public APIs. The next layers should add 3D extrusion and richer import
+validation around those stable tables rather than another table redesign.

@@ -8,8 +8,10 @@
 //==============================================================================
 // c++ includes
 //==============================================================================
+#include <algorithm>
 #include <cmath>
 #include <cstddef>
+#include <cstdint>
 #include <string>
 
 
@@ -165,6 +167,23 @@ FiniteVolumeStencilGraph2D build_finite_volume_stencil_graph_2d(
     const FiniteVolumeStencilGraph2DOptions& options)
 {
     return FiniteVolumeStencilGraphBuilder2D{}.build(mesh, options);
+}
+
+std::uint64_t finite_volume_matrix_half_bandwidth_2d(const FiniteVolumeStencilGraph2D& graph) noexcept
+{
+    std::uint64_t half_bandwidth{};
+    for(std::size_t entry = 0U; entry < graph.internal.size(); ++entry) {
+        const auto owner = graph.internal.owner[entry].value;
+        const auto neighbour = graph.internal.neighbour[entry].value;
+        const auto distance = owner > neighbour ? owner - neighbour : neighbour - owner;
+        half_bandwidth = std::max(half_bandwidth, distance);
+    }
+    return half_bandwidth;
+}
+
+std::uint64_t finite_volume_matrix_bandwidth_2d(const FiniteVolumeStencilGraph2D& graph) noexcept
+{
+    return (2U * finite_volume_matrix_half_bandwidth_2d(graph)) + 1U;
 }
 
 } // namespace vmm::mesh

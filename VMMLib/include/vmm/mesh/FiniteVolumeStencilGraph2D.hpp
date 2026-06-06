@@ -26,6 +26,7 @@
 // c++ includes
 //==============================================================================
 #include <cstddef>
+#include <cstdint>
 #include <span>
 #include <vector>
 
@@ -90,5 +91,11 @@ public:
 [[nodiscard]] FiniteVolumeStencilGraph2D build_finite_volume_stencil_graph_2d(
     const FiniteVolumeMesh2D& mesh,
     const FiniteVolumeStencilGraph2DOptions& options = {});
+
+[[nodiscard]] std::uint64_t finite_volume_matrix_half_bandwidth_2d(
+    const FiniteVolumeStencilGraph2D& graph) noexcept;
+
+[[nodiscard]] std::uint64_t finite_volume_matrix_bandwidth_2d(
+    const FiniteVolumeStencilGraph2D& graph) noexcept;
 
 } // namespace vmm::mesh

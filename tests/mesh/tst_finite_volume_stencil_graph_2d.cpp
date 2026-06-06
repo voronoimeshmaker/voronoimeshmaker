@@ -116,6 +116,15 @@ TEST(FiniteVolumeStencilGraph2DTest, SingleCellMeshHasOnlyBoundaryStencils)
     EXPECT_EQ(graph.boundary_count(), 4U);
 }
 
+TEST(FiniteVolumeStencilGraph2DTest, ComputesMatrixBandwidthFromInternalStencils)
+{
+    const auto mesh = make_two_square_mesh();
+    const auto graph = build_finite_volume_stencil_graph_2d(mesh);
+
+    EXPECT_EQ(finite_volume_matrix_half_bandwidth_2d(graph), 1U);
+    EXPECT_EQ(finite_volume_matrix_bandwidth_2d(graph), 3U);
+}
+
 TEST(FiniteVolumeStencilGraph2DTest, RejectsInvalidMeshBeforeBuildingGraph)
 {
     auto mesh = make_two_square_mesh();

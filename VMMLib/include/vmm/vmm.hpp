@@ -31,6 +31,7 @@
 #include <vmm/mesh/FiniteVolumeMeshBuilder2D.hpp>
 #include <vmm/mesh/FiniteVolumeStencilGraph2D.hpp>
 #include <vmm/raster/RasterField2D.hpp>
+#include <vmm/remeshing/Remesher.hpp>
 #include <vmm/site_generation/HexagonalSitePattern2D.hpp>
 #include <vmm/site_generation/SiteFactory.hpp>
 #include <vmm/tessellation/TessellationResult.hpp>
