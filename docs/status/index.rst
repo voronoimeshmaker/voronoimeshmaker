@@ -29,6 +29,7 @@ Implemented now
 * Site-edit remeshing that rebuilds the complete 2D FV mesh and reruns audits.
 * Matrix bandwidth reporting from the solver-neutral 2D FV stencil graph.
 * Extruded 3D finite-volume mesh tables, vertical extrusion, audit, and text diagnostics.
+* MohidNG HDF5 writer for audited extruded 3D FV mesh packages.
 * Structured error layer with bilingual message direction.
 
 Planned next
@@ -36,7 +37,6 @@ Planned next
 
 * Automated clipping/import workflows for Voronoi cells with holes.
 * Raster-to-export workflows and raster/vector CRS import validation.
-* MohidNG HDF5 writer for extruded 3D FV meshes.
 * General 3D domain geometry implementation.
 * More site patterns.
 * Automatic API extraction with Doxygen/Breathe once the public headers settle.

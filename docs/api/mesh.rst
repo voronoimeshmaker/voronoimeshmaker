@@ -64,6 +64,13 @@ MohidNG HDF5 export
    schema ``mohidng.voronoi_mesh_package/0.1`` with nodes, cells, faces,
    boundary patches, root metadata, and no public HDF5 types in the VMM API.
 
+``vmm::io::write_mohidng_hdf5_mesh_3d``
+   Runs the extruded 3D mesh audit, then writes schema
+   ``mohidng.voronoi_mesh_package_3d/0.1`` with 3D nodes, cells, faces,
+   boundary patches, root metadata, face roles, cell-face connectivity, and
+   face-node connectivity. The writer keeps HDF5 isolated from public mesh
+   tables and is intended for checking and downstream MohidNG package exchange.
+
 GIS vector input
 ----------------
 
@@ -145,6 +152,6 @@ reconstruction, explicit boundary patch assignment, MohidNG HDF5 export, and a
 solver-neutral stencil graph. Projection and orthogonality anomaly audits now
 report mesh-quality risks without remeshing automatically. GIS vector input,
 raster sampling, the integrated 2D workflow, site-edit remeshing, and vertical
-3D extrusion now have isolated public APIs. The next layers should extend HDF5
-3D export and richer import validation around those stable tables rather than
-another table redesign.
+3D extrusion now have isolated public APIs. HDF5 package export covers audited
+2D and extruded 3D finite-volume meshes. The next layers should extend richer
+import validation around those stable tables rather than another table redesign.

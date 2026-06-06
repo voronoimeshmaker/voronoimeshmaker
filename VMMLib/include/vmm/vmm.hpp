@@ -23,6 +23,7 @@
 #include <vmm/error/MeshException.hpp>
 #include <vmm/error/Result.hpp>
 #include <vmm/export/MohidNGHDF5Writer2D.hpp>
+#include <vmm/export/MohidNGHDF5Writer3D.hpp>
 #include <vmm/export/VTKExporter.hpp>
 #include <vmm/gis/GisVectorReader2D.hpp>
 #include <vmm/instrumentation/FlowTracer.hpp>
