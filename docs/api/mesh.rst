@@ -71,6 +71,23 @@ GIS vector input
    implementation backends: their types do not appear in public headers, and
    unsupported builds fail explicitly at runtime.
 
+Raster bathymetry/topography
+----------------------------
+
+``vmm::raster::RasterScalarField2D``
+   Stores regular 2D scalar rasters with grid-centre geometry, CRS metadata,
+   no-data handling, and nearest-neighbour or bilinear sampling.
+
+``vmm::raster::sample_cell_centres``
+   Samples a raster field at canonical finite-volume cell centres and returns
+   compact value and validity arrays suitable for bathymetry/topography
+   diagnostics or later export workflows.
+
+``vmm::raster::read_gis_raster_scalar_field_2d``
+   Reads GDAL-supported raster sources when the optional backend is available.
+   Builds without GDAL keep the API available and report unsupported operation
+   explicitly at runtime.
+
 Extension policy
 ----------------
 
@@ -84,7 +101,7 @@ Next direction
 The mesh layer now has canonical face tables, text diagnostics, cell-to-face
 reconstruction, explicit boundary patch assignment, MohidNG HDF5 export, and a
 solver-neutral stencil graph. Projection and orthogonality anomaly audits now
-report mesh-quality risks without remeshing automatically. GIS vector input now
-has an isolated public API and optional GDAL/PROJ backend. The next layers
-should add raster workflows and richer import validation around those stable
-tables rather than another table redesign.
+report mesh-quality risks without remeshing automatically. GIS vector input and
+raster sampling now have isolated public APIs with optional backends. The next
+layers should add richer import validation around those stable tables rather
+than another table redesign.

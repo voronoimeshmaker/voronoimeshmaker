@@ -65,6 +65,11 @@ option(VMM_ENABLE_GIS
     ON
 )
 
+option(VMM_ENABLE_RASTER
+    "Enable optional GIS raster backend discovery"
+    ON
+)
+
 set(VMM_CXX_STANDARD 20 CACHE STRING
     "C++ standard used by VoronoiMeshMaker"
 )

@@ -13,8 +13,11 @@ find_package(CGAL REQUIRED COMPONENTS Core)
 find_package(TBB  REQUIRED)
 find_package(HDF5 REQUIRED COMPONENTS C)
 
-if(VMM_ENABLE_GIS)
+if(VMM_ENABLE_GIS OR VMM_ENABLE_RASTER)
     find_package(GDAL QUIET)
+endif()
+
+if(VMM_ENABLE_GIS)
     find_package(PROJ QUIET)
 
     if(GDAL_FOUND)
@@ -27,6 +30,14 @@ if(VMM_ENABLE_GIS)
         message(STATUS "PROJ found: CRS transformation backend is available.")
     else()
         message(STATUS "PROJ not found: CRS transformation backend is unavailable.")
+    endif()
+endif()
+
+if(VMM_ENABLE_RASTER)
+    if(GDAL_FOUND)
+        message(STATUS "GDAL found: GIS raster readers will be enabled.")
+    else()
+        message(STATUS "GDAL not found: GIS raster readers will report unsupported operation.")
     endif()
 endif()
 

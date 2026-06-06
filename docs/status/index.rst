@@ -24,13 +24,14 @@ Implemented now
 * Solver-neutral internal and boundary stencil graph for canonical 2D FV meshes.
 * Projection and orthogonality anomaly audit for canonical 2D FV meshes.
 * Optional GIS vector-domain API with isolated GDAL/OGR and PROJ backend discovery.
+* Raster bathymetry/topography field storage, interpolation, and cell-centre sampling.
 * Structured error layer with bilingual message direction.
 
 Planned next
 ------------
 
 * Automated clipping/import workflows for Voronoi cells with holes.
-* Raster bathymetry/topography workflows.
+* Raster-to-export workflows and raster/vector CRS import validation.
 * 3D domain geometry implementation.
 * More site patterns.
 * Automatic API extraction with Doxygen/Breathe once the public headers settle.
