@@ -50,5 +50,5 @@ Block 4 is complete when:
 Deferred work
 -------------
 
-Binary Mohid-NG HDF5 export remains a later block. The text writer is a
+Binary HDF5 export remains a later block. The text writer is a
 diagnostic gate, not the production package format.

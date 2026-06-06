@@ -4,7 +4,7 @@ Block 15 Completion: Raster-to-Export Fields and CRS Validation
 Goal
 ----
 
-Block 15 connects the raster sampling work to the MohidNG-oriented export path
+Block 15 connects the raster sampling work to the mesh-oriented export path
 and adds an explicit CRS compatibility check for workflows that combine vector
 domains, raster fields, and package metadata.
 
@@ -12,7 +12,7 @@ Implemented scope
 -----------------
 
 * Added optional raster cell-field export to ``write_mohidng_hdf5_mesh_2d``.
-* Added ``MohidNGHDF5Writer2DOptions::raster_samples`` and
+* Added ``HDF5Writer2DOptions::raster_samples`` and
   ``raster_field_name``.
 * Wrote sampled raster values to ``/cell_fields/value``.
 * Wrote matching ``/cell_fields/cell_id`` and ``/cell_fields/valid`` arrays.
@@ -34,7 +34,7 @@ Tests
 
 The block adds regression coverage that:
 
-* writes a 2D MohidNG HDF5 package with raster samples;
+* writes a 2D HDF5 package with raster samples;
 * reads back raster field values, validity flags, cell ids, and field metadata;
 * rejects raster samples with wrong cell ids;
 * accepts equivalent CRS identifiers with different case;

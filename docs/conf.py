@@ -22,6 +22,7 @@ exclude_patterns = ["_build", "build", "html", "Thumbs.db", ".DS_Store"]
 html_theme = "alabaster"
 html_static_path = ["_static"]
 html_css_files = ["css/vmm.css"]
+html_js_files = ["js/language-switcher.js"]
 html_favicon = "_static/logo/vmm-logo-dark.jpg"
 html_logo = "_static/logo/vmm-logo-dark.jpg"
 html_title = "VoronoiMeshMaker"

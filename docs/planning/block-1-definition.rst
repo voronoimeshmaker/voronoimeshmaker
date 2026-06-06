@@ -9,7 +9,7 @@ Strong IDs and finite-volume DOD 2D tables.
 Objective
 ---------
 
-Introduce the canonical 2D finite-volume data model required by MohidNG-oriented
+Introduce the canonical 2D finite-volume data model required by mesh-oriented
 export, text audit, and later stencil construction. The block is deliberately
 manual-data first: it must not depend on CGAL, GIS, HDF5, or the existing clipped
 Voronoi pipeline.

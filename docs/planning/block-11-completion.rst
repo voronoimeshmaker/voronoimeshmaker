@@ -29,7 +29,7 @@ Deliberate limits
 
 * Rotated raster geotransforms are rejected for now.
 * CRS transformation is recorded at the API boundary but not resampled yet.
-* Raster values are sampled onto the mesh; they are not written to MohidNG HDF5
+* Raster values are sampled onto the mesh; they are not written to HDF5
   packages in this block.
 
 Next dependencies

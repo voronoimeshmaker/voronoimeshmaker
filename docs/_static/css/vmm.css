@@ -34,6 +34,15 @@ html[data-theme="dark"] {
   max-width: 980px;
 }
 
+/* Content area - make it wider */
+div.body {
+  max-width: 100% !important;
+}
+
+div.bodywrapper {
+  flex: 1 1 auto !important;
+}
+
 .vmm-home {
   margin-top: 0.5rem;
 }
@@ -242,5 +251,129 @@ div.sphinxsidebarwrapper img.logo {
   .vmm-entry-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* Language Flags - Header Switcher */
+.vmm-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid var(--pst-color-border);
+}
+
+.vmm-header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 100%;
+}
+
+.vmm-header-logo {
+  flex: 1;
+}
+
+.vmm-lang-flags {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.vmm-flag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 24px;
+  border: 1px solid var(--pst-color-border);
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0.55;
+  transition: all 0.2s ease;
+  background: transparent;
+  text-decoration: none;
+}
+
+.vmm-flag:hover {
+  opacity: 0.75;
+  border-color: #3FA7A0;
+  transform: scale(1.05);
+}
+
+.vmm-flag-active {
+  opacity: 1;
+  border-color: #3FA7A0;
+  background: rgba(63, 167, 160, 0.1);
+}
+
+.vmm-flag img {
+  width: 26px;
+  height: 20px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+@media (max-width: 600px) {
+  .vmm-header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .vmm-header-container {
+    flex-direction: column;
+  }
+
+  .vmm-lang-flags {
+    padding: 0.5rem 0;
+  }
+
+  .vmm-flag {
+    width: 28px;
+    height: 22px;
+  }
+
+  .vmm-flag img {
+    width: 24px;
+    height: 18px;
+  }
+}
+
+/* Sidebar customization - Increase width and prevent text breaking */
+div.sphinxsidebar {
+  width: 300px !important;
+}
+
+.sphinxsidebar {
+  width: 300px !important;
+}
+
+div.bodywrapper {
+  margin-left: 300px !important;
+}
+
+body {
+  margin-left: 0;
+}
+
+.sphinxsidebarwrapper {
+  width: 100%;
+}
+
+.sphinxsidebarwrapper h1.logo {
+  white-space: nowrap;
+}
+
+.sphinxsidebarwrapper h1.logo a {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sphinxsidebarwrapper p.blurb {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 

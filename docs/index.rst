@@ -9,10 +9,6 @@ VoronoiMeshMaker Documentation
          <span class="vmm-kicker">Audited Voronoi finite-volume mesh preparation</span>
          <h1>VoronoiMeshMaker</h1>
          <p class="vmm-lead">A C++20 mesh-preparation library for domains, sites, clipped Voronoi cells, canonical finite-volume tables, mesh audits and export-ready connectivity.</p>
-         <div class="vmm-hero-actions" aria-label="Documentation entry points">
-           <a class="vmm-button primary" href="en-gb/index.html">Start with British English</a>
-           <a class="vmm-button" href="pt-br/index.html">Português do Brasil</a>
-         </div>
        </div>
        <div class="vmm-hero-visual" aria-label="VoronoiMeshMaker identity">
          <img src="_static/logo/vmm-logo-dark.jpg" alt="VoronoiMeshMaker logo" />
@@ -26,10 +22,6 @@ VoronoiMeshMaker Documentation
        <div class="vmm-panel">
          <h2>VMM Responsibility</h2>
          <p>VMM owns mesh generation, site policies, remeshing plans, face reconstruction, boundary patches, mesh-quality audits and solver-neutral connectivity.</p>
-       </div>
-       <div class="vmm-panel">
-         <h2>Mohid-NG Boundary</h2>
-         <p>Mohid-NG consumes validated mesh packages and focuses on fields, finite-volume operators, physical models and reproducible simulations.</p>
        </div>
      </div>
 
@@ -70,8 +62,7 @@ VoronoiMeshMaker Documentation
    :hidden:
    :maxdepth: 2
 
-   Default: British English <en-gb/index>
-   Português do Brasil <pt-br/index>
+   languages
    tutorials/index
    api/index
    architecture/index

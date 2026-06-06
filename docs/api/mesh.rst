@@ -56,11 +56,11 @@ Audit APIs
    orthogonality warnings for internal midpoint offsets, strongly non-orthogonal
    internal faces, and tangentially shifted boundary projections.
 
-MohidNG HDF5 export
+HDF5 export
 -------------------
 
 ``vmm::io::write_mohidng_hdf5_mesh_2d``
-   Runs the mandatory mesh audits, then writes the MohidNG Voronoi mesh package
+   Runs the mandatory mesh audits, then writes the Voronoi mesh package
    schema ``mohidng.voronoi_mesh_package/0.1`` with nodes, cells, faces,
    boundary patches, root metadata, optional sampled raster cell fields, and no
    public HDF5 types in the VMM API.
@@ -70,7 +70,7 @@ MohidNG HDF5 export
    ``mohidng.voronoi_mesh_package_3d/0.1`` with 3D nodes, cells, faces,
    boundary patches, root metadata, face roles, cell-face connectivity, and
    face-node connectivity. The writer keeps HDF5 isolated from public mesh
-   tables and is intended for checking and downstream MohidNG package exchange.
+   tables and is intended for checking and downstream package exchange.
 
 GIS vector input
 ----------------
@@ -91,7 +91,7 @@ Raster bathymetry/topography
 ``vmm::raster::sample_cell_centres``
    Samples a raster field at canonical finite-volume cell centres and returns
    compact value and validity arrays suitable for bathymetry/topography
-   diagnostics and MohidNG HDF5 export workflows.
+   diagnostics and HDF5 export workflows.
 
 ``vmm::raster::read_gis_raster_scalar_field_2d``
    Reads GDAL-supported raster sources when the optional backend is available.
@@ -176,7 +176,7 @@ Next direction
 --------------
 
 The mesh layer now has canonical face tables, text diagnostics, cell-to-face
-reconstruction, explicit boundary patch assignment, MohidNG HDF5 export, and a
+reconstruction, explicit boundary patch assignment, HDF5 export, and a
 solver-neutral stencil graph. Projection and orthogonality anomaly audits now
 report mesh-quality risks without remeshing automatically. GIS vector input,
 raster sampling, the integrated 2D workflow, site-edit remeshing, and vertical

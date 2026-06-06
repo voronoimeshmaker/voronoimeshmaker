@@ -32,7 +32,7 @@ The project will keep the current repository layout rooted at VMMLib/include/vmm
 for the near-term restructuring. A disruptive top-level include migration is not
 part of the first implementation blocks.
 
-The MohidNG-oriented mesh core will be finite-volume and face-based. The first
+The mesh-oriented mesh core will be finite-volume and face-based. The first
 implementation target is not GIS, HDF5, remeshing, or 3D; it is the canonical 2D
 finite-volume data model.
 
@@ -60,14 +60,14 @@ The adjusted implementation sequence is:
 * Block 4: Text audit writer.
 * Block 5: Face reconstruction from clipped polygonal cells.
 * Block 6: Boundary patches for real domains with holes.
-* Block 7: MohidNG HDF5 writer 2D.
+* Block 7: HDF5 writer 2D.
 * Block 8: Solver-neutral stencil graph.
 * Block 9: Projection and orthogonality anomaly audits.
 * Block 10: GIS vector input and CRS handling.
 * Block 11: Raster bathymetry/topography.
 * Block 12: Remeshing by site editing.
 * Block 13: Extruded 3D finite-volume mesh.
-* Block 14: MohidNG HDF5 writer 3D.
+* Block 14: HDF5 writer 3D.
 * Block 15: Optional advanced backends.
 
 Block 1 authorization

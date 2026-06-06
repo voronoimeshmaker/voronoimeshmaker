@@ -2,7 +2,7 @@ Planning Records
 ================
 
 This section records design proposals, roadmap decisions, and block definitions
-for the MohidNG-oriented restructuring of VoronoiMeshMaker.
+for the mesh-oriented restructuring of VoronoiMeshMaker.
 
 The source material imported from the Codex packages is preserved under
 ``docs/planning/source-packages``. The pages in this section are the

@@ -1,17 +1,17 @@
-Block 14 Completion: MohidNG HDF5 Export for Extruded 3D Meshes
+Block 14 Completion: HDF5 Export for Extruded 3D Meshes
 ================================================================
 
 Goal
 ----
 
 Block 14 makes the extruded 3D finite-volume mesh useful outside memory by
-adding a MohidNG-oriented HDF5 package writer for audited 3D meshes.
+adding a mesh-oriented HDF5 package writer for audited 3D meshes.
 
 Implemented scope
 -----------------
 
 * Added ``vmm::io::write_mohidng_hdf5_mesh_3d``.
-* Added ``MohidNGHDF5Writer3DOptions`` with coordinate reference system,
+* Added ``HDF5Writer3DOptions`` with coordinate reference system,
   vertical reference, note, and validation controls.
 * Added schema marker ``mohidng.voronoi_mesh_package_3d/0.1``.
 * Wrote root metadata with producer, dimension, CRS, vertical reference, and

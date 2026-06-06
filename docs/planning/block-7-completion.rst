@@ -1,11 +1,11 @@
-Block 7 Completion: MohidNG HDF5 Writer 2D
+Block 7 Completion: HDF5 Writer 2D
 ==========================================
 
 Purpose
 -------
 
 Block 7 turns the canonical 2D finite-volume mesh into the physical package
-consumed by MohidNG. The writer follows the current MohidNG reader contract
+consumed by the solver. The writer follows the current reader contract
 rather than inventing a parallel format inside VMM.
 
 Implemented Artifacts
@@ -17,7 +17,7 @@ Implemented Artifacts
   coordinate reference system, and note.
 * The package contains ``/nodes``, ``/cells``, ``/faces``, and
   ``/boundary_patches`` groups with the dataset names, shapes, and primitive
-  types expected by the MohidNG reader.
+  types expected by the reader.
 * Export is audit-gated by default. The writer refuses invalid canonical FV
   meshes before creating the package.
 * HDF5 is linked as an implementation dependency. The public VMM writer header
@@ -45,7 +45,7 @@ audits.
 
 The HDF5 schema uses row indices as contiguous ids for nodes, cells, and faces,
 because the canonical DOD tables store those entities by row. Internal faces use
-``-1`` for neighbour-invalid and patch-invalid sentinels, matching the MohidNG
+``-1`` for neighbour-invalid and patch-invalid sentinels, matching the solver specifications
 reader.
 
 Exit Criteria
@@ -54,7 +54,7 @@ Exit Criteria
 Block 7 is complete when:
 
 * CMake locates and links HDF5;
-* a valid canonical 2D FV mesh writes a MohidNG-compatible HDF5 package;
+* a valid canonical 2D FV mesh writes a mesh-compatible HDF5 package;
 * a schema-focused test verifies root attributes, dataset shapes, and key
   values;
 * invalid meshes are rejected before export;

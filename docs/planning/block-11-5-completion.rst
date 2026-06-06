@@ -21,7 +21,7 @@ Implemented
 * The workflow fails before returning invalid production meshes when
   ``require_valid_mesh`` is enabled.
 * A complete example writes domain/cell VTK diagnostics, text audit output, and
-  a MohidNG HDF5 package from one workflow result.
+  a HDF5 package from one workflow result.
 * Unit tests cover the default workflow, raster sampling integration, and the
   optional stencil graph switch.
 
@@ -29,5 +29,5 @@ Use in later blocks
 -------------------
 
 Block 12 remeshing can now rebuild the complete 2D mesh through this workflow
-after applying site edit batches. Solver and MohidNG-side experiments can call
+after applying site edit batches. Solver and mesh-side experiments can call
 the same public workflow instead of stitching internal layers manually.

@@ -30,8 +30,8 @@ Design Decisions
 ----------------
 
 The graph is derived only from canonical FV faces. It does not inspect CGAL
-types, polygon clipping details, HDF5 packages, or MohidNG internals. That keeps
-the VMM core as the owner of mesh topology while allowing MohidNG or other
+types, polygon clipping details, HDF5 packages, or internals. That keeps
+the VMM core as the owner of mesh topology while allowing or other
 consumers to build their own numerical operators from the same neutral arrays.
 
 Boundary entries retain patch ids rather than closed boundary enums. New

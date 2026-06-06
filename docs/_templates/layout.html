@@ -1,0 +1,34 @@
+{% extends "alabaster/layout.html" %}
+
+{%- block relbar1 %}{%- endblock %}
+
+{%- block header %}
+<header class="vmm-header">
+  <div class="vmm-header-container">
+    <div class="vmm-header-logo">
+      {{ super() }}
+    </div>
+    <div class="vmm-lang-flags">
+      <a href="https://en.wikipedia.org/wiki/United_Kingdom" 
+         class="vmm-flag vmm-flag-gb" 
+         data-lang="en-gb" 
+         title="British English"
+         aria-label="Switch to British English">
+        <img src="{{ pathto('_static/flags/gb.svg', 1) }}" alt="UK flag" />
+      </a>
+      <a href="https://en.wikipedia.org/wiki/Brazil" 
+         class="vmm-flag vmm-flag-br" 
+         data-lang="pt-br" 
+         title="Português do Brasil"
+         aria-label="Mudar para Português do Brasil">
+        <img src="{{ pathto('_static/flags/br.svg', 1) }}" alt="Brazil flag" />
+      </a>
+    </div>
+  </div>
+</header>
+{% endblock %}
+
+{%- block footer %}
+{{ super() }}
+<script src="{{ pathto('_static/js/language-switcher.js', 1) }}"></script>
+{%- endblock %}

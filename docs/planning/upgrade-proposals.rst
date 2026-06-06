@@ -18,7 +18,7 @@ Project role
 
 VoronoiMeshMaker is a mesh generation and validation tool, not a solver. Its
 responsibility is to produce geometry, finite-volume topology, boundary patches,
-audit data, and solver-neutral connectivity. MohidNG or another consumer is
+audit data, and solver-neutral connectivity. or another consumer is
 responsible for physical operators and solver backend adaptation.
 
 The VMM core must not depend on PETSc, Trilinos, Eigen, Ginkgo, or any other
@@ -38,7 +38,7 @@ The proposed architecture is layered around VMM-owned types:
 * ``vmm::audit`` for mandatory index, connectivity, geometry, patch, projection, and remap audits.
 * ``vmm::remeshing`` for remeshing through site edits and full mesh rebuilds.
 * ``vmm::stencil`` for solver-neutral finite-volume stencil graphs.
-* ``vmm::io`` for text audit, VTK/VTU diagnostics, and MohidNG HDF5 export.
+* ``vmm::io`` for text audit, VTK/VTU diagnostics, and HDF5 export.
 * ``vmm::backend`` for isolated CGAL, GDAL, PROJ, GEOS, Voro++, or other backend code.
 
 External backend types must not appear in public core headers. CGAL, GDAL/OGR,
@@ -143,10 +143,10 @@ Boundary stencil data should be represented separately from internal sparse
 connectivity. PETSc and Trilinos adaptation belongs in consuming solvers, not in
 VMM core.
 
-MohidNG HDF5 proposal
+HDF5 proposal
 ---------------------
 
-The MohidNG-oriented HDF5 package should include metadata plus canonical groups:
+The mesh-oriented HDF5 package should include metadata plus canonical groups:
 
 * ``/nodes/id`` and ``/nodes/xy``;
 * ``/cells/id``, ``/cells/centre``, and ``/cells/area``;

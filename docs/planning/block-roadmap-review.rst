@@ -20,7 +20,7 @@ The current repository already has:
 * placeholder or explicit-failure exporters for formats that require faces;
 * empty reserved files such as ``Mesh.hpp``, ``MeshBuilder.hpp``, ``MeshValidation.hpp``, and ``Handles.hpp``.
 
-The main gap is explicit face-centred finite-volume geometry. MohidNG, OpenFOAM,
+The main gap is explicit face-centred finite-volume geometry. OpenFOAM,
 UGRID, text audit, and finite-volume stencil export all depend on this gap being
 closed first.
 
@@ -69,9 +69,9 @@ Block 6, Boundary patches for real domains with holes
    Extend patch assignment so outer boundaries, islands, walls, open boundaries,
    and no-flow regions are represented explicitly and deterministically.
 
-Block 7, MohidNG HDF5 writer 2D
-   Add HDF5 as an I/O dependency, write the MohidNG mesh package groups, and
-   enforce audit-before-export. If MohidNG reader integration is not available,
+Block 7, HDF5 writer 2D
+   Add HDF5 as an I/O dependency, write the mesh package groups, and
+   enforce audit-before-export. If reader integration is not available,
    add an internal schema validation test first.
 
 Block 8, Solver-neutral stencil graph
@@ -98,7 +98,7 @@ Block 13, Extruded 3D finite-volume mesh
    Extrude stable 2D finite-volume meshes vertically and add 3D audits and text
    audit output.
 
-Block 14, MohidNG HDF5 writer 3D
+Block 14, HDF5 writer 3D
    Extend the HDF5 package to extruded 3D once 3D tables and audits are stable.
 
 Block 15, Optional advanced backends

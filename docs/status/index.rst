@@ -20,18 +20,18 @@ Implemented now
 * Face reconstruction from planar 2D cells into canonical FV tables.
 * Boundary patch ring assignment for exterior, island, open, inlet, outlet, and no-flux style edges.
 * Patch semantic audit for canonical 2D FV meshes.
-* MohidNG HDF5 writer for audited canonical 2D FV mesh packages.
+* HDF5 writer for audited canonical 2D FV mesh packages.
 * Solver-neutral internal and boundary stencil graph for canonical 2D FV meshes.
 * Projection and orthogonality anomaly audit for canonical 2D FV meshes.
 * Optional GIS vector-domain API with isolated GDAL/OGR and PROJ backend discovery.
 * Raster bathymetry/topography field storage, interpolation, and cell-centre sampling.
-* Raster cell-field export through MohidNG HDF5 2D packages.
+* Raster cell-field export through HDF5 2D packages.
 * Explicit CRS compatibility validation for GIS/raster workflows.
 * Integrated 2D finite-volume Voronoi workflow for complete audited mesh generation.
 * Site-edit remeshing that rebuilds the complete 2D FV mesh and reruns audits.
 * Matrix bandwidth reporting from the solver-neutral 2D FV stencil graph.
 * Extruded 3D finite-volume mesh tables, vertical extrusion, audit, and text diagnostics.
-* MohidNG HDF5 writer for audited extruded 3D FV mesh packages.
+* HDF5 writer for audited extruded 3D FV mesh packages.
 * General 3D domain geometry with analytic primitives and triangular surfaces.
 * Placeholder source/header cleanup for files that no longer represent active API.
 * Structured error layer with bilingual message direction.
