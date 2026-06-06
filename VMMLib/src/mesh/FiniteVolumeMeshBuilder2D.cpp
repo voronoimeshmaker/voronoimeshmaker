@@ -5,10 +5,9 @@
 // Description : Canonical 2D FV mesh reconstruction from planar cells.
 //==============================================================================
 
-#include <vmm/mesh/FiniteVolumeMeshBuilder2D.hpp>
-
-#include <vmm/error/MeshException.hpp>
-
+//==============================================================================
+// c++ includes
+//==============================================================================
 #include <algorithm>
 #include <cmath>
 #include <cstddef>
@@ -16,6 +15,13 @@
 #include <map>
 #include <utility>
 #include <vector>
+
+
+//==============================================================================
+// VoronoiMeshMaker includes
+//==============================================================================
+#include <vmm/error/MeshException.hpp>
+#include <vmm/mesh/FiniteVolumeMeshBuilder2D.hpp>
 
 namespace vmm::mesh {
 namespace {

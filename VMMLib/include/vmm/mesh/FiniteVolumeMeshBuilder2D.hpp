@@ -22,12 +22,19 @@
 //==============================================================================
 #pragma once
 
+//==============================================================================
+// c++ includes
+//==============================================================================
+#include <span>
+#include <string>
+
+
+//==============================================================================
+// VoronoiMeshMaker includes
+//==============================================================================
 #include <vmm/domain/PlanarCell2D.hpp>
 #include <vmm/mesh/BoundaryPatchTable.hpp>
 #include <vmm/mesh/FiniteVolumeMesh2D.hpp>
-
-#include <span>
-#include <string>
 
 namespace vmm::mesh {
 

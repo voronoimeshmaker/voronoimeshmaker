@@ -5,11 +5,18 @@
 // Description : Implementation of the 2D finite-volume mesh index audit.
 //==============================================================================
 
-#include <vmm/audit/MeshIndexAudit2D.hpp>
-
+//==============================================================================
+// c++ includes
+//==============================================================================
 #include <cstddef>
 #include <string>
 #include <utility>
+
+
+//==============================================================================
+// VoronoiMeshMaker includes
+//==============================================================================
+#include <vmm/audit/MeshIndexAudit2D.hpp>
 
 namespace vmm::audit {
 namespace {

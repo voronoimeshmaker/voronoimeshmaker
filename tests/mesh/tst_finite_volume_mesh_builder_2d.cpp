@@ -1,13 +1,24 @@
+//==============================================================================
+// c++ includes
+//==============================================================================
+#include <sstream>
+#include <vector>
+
+
+//==============================================================================
+// external includes
+//==============================================================================
+#include <gtest/gtest.h>
+
+
+//==============================================================================
+// VoronoiMeshMaker includes
+//==============================================================================
 #include <vmm/audit/MeshConnectivityGeometryAudit2D.hpp>
 #include <vmm/audit/MeshTextAuditWriter2D.hpp>
 #include <vmm/domain/PlanarCell2D.hpp>
 #include <vmm/error/MeshException.hpp>
 #include <vmm/mesh/FiniteVolumeMeshBuilder2D.hpp>
-
-#include <gtest/gtest.h>
-
-#include <sstream>
-#include <vector>
 
 using namespace vmm::core;
 using namespace vmm::domain;

@@ -5,15 +5,21 @@
 // Description : Implementation of 2D FV connectivity and geometry audits.
 //==============================================================================
 
-#include <vmm/audit/MeshConnectivityGeometryAudit2D.hpp>
-
-#include <vmm/audit/MeshIndexAudit2D.hpp>
-
+//==============================================================================
+// c++ includes
+//==============================================================================
 #include <algorithm>
 #include <cmath>
 #include <cstddef>
 #include <span>
 #include <vector>
+
+
+//==============================================================================
+// VoronoiMeshMaker includes
+//==============================================================================
+#include <vmm/audit/MeshConnectivityGeometryAudit2D.hpp>
+#include <vmm/audit/MeshIndexAudit2D.hpp>
 
 namespace vmm::audit {
 namespace {

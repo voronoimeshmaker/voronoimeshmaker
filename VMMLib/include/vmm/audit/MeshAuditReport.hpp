@@ -25,15 +25,19 @@
 //==============================================================================
 // c++ includes
 //==============================================================================
+#include <cstddef>
+#include <cstdint>
 #include <span>
 #include <string>
+#include <string_view>
+#include <utility>
 #include <vector>
+
 
 //==============================================================================
 // VoronoiMeshMaker includes
 //==============================================================================
 #include <vmm/core/StrongIds.hpp>
-
 
 
 namespace vmm::audit {
