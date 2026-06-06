@@ -41,11 +41,16 @@ if(VMM_BUILD_TESTS)
                 "${_src}"
             )
 
+            target_include_directories("${_target}"
+                PRIVATE ${HDF5_INCLUDE_DIRS}
+            )
+
             target_link_libraries("${_target}"
                 PRIVATE
                     VoronoiMeshMaker::VoronoiMeshMaker
                     GTest::gtest_main
                     Threads::Threads
+                    ${HDF5_LIBRARIES}
                     vmm_project_options
                     vmm_project_warnings
             )

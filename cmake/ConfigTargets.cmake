@@ -24,6 +24,10 @@ target_include_directories(VoronoiMeshMaker
         $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
 )
 
+target_include_directories(VoronoiMeshMaker
+    PRIVATE ${HDF5_INCLUDE_DIRS}
+)
+
 target_compile_features(VoronoiMeshMaker
     PUBLIC cxx_std_${VMM_CXX_STANDARD}
 )
@@ -33,6 +37,7 @@ target_link_libraries(VoronoiMeshMaker
         CGAL::CGAL
         CGAL::CGAL_Core
         TBB::tbb
+        ${HDF5_LIBRARIES}
         vmm_project_options
         vmm_project_warnings
 )

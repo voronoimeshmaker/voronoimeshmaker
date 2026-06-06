@@ -11,6 +11,7 @@ set(CMAKE_POLICY_DEFAULT_CMP0167 NEW)
 # Core geometric and parallel backends.
 find_package(CGAL REQUIRED COMPONENTS Core)
 find_package(TBB  REQUIRED)
+find_package(HDF5 REQUIRED COMPONENTS C)
 
 # Optional YAML configuration parsing for examples.
 if(VMM_BUILD_EXAMPLES)

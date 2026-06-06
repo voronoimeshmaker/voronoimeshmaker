@@ -44,6 +44,14 @@ Audit APIs
    Runs the index audit first, then validates patch row identity, non-empty
    patch metadata, and boundary faces that reference non-internal patch types.
 
+MohidNG HDF5 export
+-------------------
+
+``vmm::io::write_mohidng_hdf5_mesh_2d``
+   Runs the mandatory mesh audits, then writes the MohidNG Voronoi mesh package
+   schema ``mohidng.voronoi_mesh_package/0.1`` with nodes, cells, faces,
+   boundary patches, root metadata, and no public HDF5 types in the VMM API.
+
 Extension policy
 ----------------
 
@@ -55,6 +63,6 @@ Next direction
 --------------
 
 The mesh layer now has canonical face tables, text diagnostics, cell-to-face
-reconstruction, and explicit boundary patch assignment. The next layer is GIS
-or format-specific import/export around those stable tables rather than another
-table redesign.
+reconstruction, explicit boundary patch assignment, and MohidNG HDF5 export.
+The next layers should add solver-neutral stencils and richer import workflows
+around those stable tables rather than another table redesign.

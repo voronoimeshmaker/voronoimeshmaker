@@ -20,12 +20,14 @@ Implemented now
 * Face reconstruction from planar 2D cells into canonical FV tables.
 * Boundary patch ring assignment for exterior, island, open, inlet, outlet, and no-flux style edges.
 * Patch semantic audit for canonical 2D FV meshes.
+* MohidNG HDF5 writer for audited canonical 2D FV mesh packages.
 * Structured error layer with bilingual message direction.
 
 Planned next
 ------------
 
 * Automated clipping/import workflows for Voronoi cells with holes.
+* Solver-neutral stencil graph construction.
 * 3D domain geometry implementation.
 * More site patterns.
 * Automatic API extraction with Doxygen/Breathe once the public headers settle.
