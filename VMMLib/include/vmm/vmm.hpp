@@ -22,6 +22,7 @@
 #include <vmm/error/Result.hpp>
 #include <vmm/export/MohidNGHDF5Writer2D.hpp>
 #include <vmm/export/VTKExporter.hpp>
+#include <vmm/gis/GisVectorReader2D.hpp>
 #include <vmm/instrumentation/FlowTracer.hpp>
 #include <vmm/instrumentation/Logger.hpp>
 #include <vmm/instrumentation/PhaseTimer.hpp>

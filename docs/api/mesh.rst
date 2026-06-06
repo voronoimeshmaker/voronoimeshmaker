@@ -62,6 +62,15 @@ MohidNG HDF5 export
    schema ``mohidng.voronoi_mesh_package/0.1`` with nodes, cells, faces,
    boundary patches, root metadata, and no public HDF5 types in the VMM API.
 
+GIS vector input
+----------------
+
+``vmm::gis::read_gis_polygonal_domain_2d``
+   Reads GIS vector polygon sources into VMM-owned ``PolygonalDomain2D``,
+   boundary patch rings, and CRS metadata. GDAL/OGR and PROJ are optional
+   implementation backends: their types do not appear in public headers, and
+   unsupported builds fail explicitly at runtime.
+
 Extension policy
 ----------------
 
@@ -75,6 +84,7 @@ Next direction
 The mesh layer now has canonical face tables, text diagnostics, cell-to-face
 reconstruction, explicit boundary patch assignment, MohidNG HDF5 export, and a
 solver-neutral stencil graph. Projection and orthogonality anomaly audits now
-report mesh-quality risks without remeshing automatically. The next layers
-should add richer import workflows around those stable tables rather than
-another table redesign.
+report mesh-quality risks without remeshing automatically. GIS vector input now
+has an isolated public API and optional GDAL/PROJ backend. The next layers
+should add raster workflows and richer import validation around those stable
+tables rather than another table redesign.

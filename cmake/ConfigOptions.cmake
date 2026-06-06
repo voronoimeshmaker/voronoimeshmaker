@@ -60,6 +60,11 @@ option(VMM_ENABLE_TIMING
     OFF
 )
 
+option(VMM_ENABLE_GIS
+    "Enable optional GIS vector/CRS backend discovery"
+    ON
+)
+
 set(VMM_CXX_STANDARD 20 CACHE STRING
     "C++ standard used by VoronoiMeshMaker"
 )

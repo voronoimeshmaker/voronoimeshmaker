@@ -28,6 +28,32 @@ target_include_directories(VoronoiMeshMaker
     PRIVATE ${HDF5_INCLUDE_DIRS}
 )
 
+target_compile_definitions(VoronoiMeshMaker
+    PRIVATE
+        VMM_HAS_GDAL=$<BOOL:${GDAL_FOUND}>
+        VMM_HAS_PROJ=$<BOOL:${PROJ_FOUND}>
+)
+
+if(GDAL_FOUND)
+    if(TARGET GDAL::GDAL)
+        target_link_libraries(VoronoiMeshMaker PRIVATE GDAL::GDAL)
+    else()
+        target_include_directories(VoronoiMeshMaker PRIVATE ${GDAL_INCLUDE_DIRS})
+        target_link_libraries(VoronoiMeshMaker PRIVATE ${GDAL_LIBRARIES})
+    endif()
+endif()
+
+if(PROJ_FOUND)
+    if(TARGET PROJ::proj)
+        target_link_libraries(VoronoiMeshMaker PRIVATE PROJ::proj)
+    elseif(TARGET PROJ::PROJ)
+        target_link_libraries(VoronoiMeshMaker PRIVATE PROJ::PROJ)
+    else()
+        target_include_directories(VoronoiMeshMaker PRIVATE ${PROJ_INCLUDE_DIRS})
+        target_link_libraries(VoronoiMeshMaker PRIVATE ${PROJ_LIBRARIES})
+    endif()
+endif()
+
 target_compile_features(VoronoiMeshMaker
     PUBLIC cxx_std_${VMM_CXX_STANDARD}
 )
