@@ -22,13 +22,14 @@ Implemented now
 * Patch semantic audit for canonical 2D FV meshes.
 * MohidNG HDF5 writer for audited canonical 2D FV mesh packages.
 * Solver-neutral internal and boundary stencil graph for canonical 2D FV meshes.
+* Projection and orthogonality anomaly audit for canonical 2D FV meshes.
 * Structured error layer with bilingual message direction.
 
 Planned next
 ------------
 
 * Automated clipping/import workflows for Voronoi cells with holes.
-* Projection and orthogonality anomaly audits.
+* GIS vector input and CRS handling.
 * 3D domain geometry implementation.
 * More site patterns.
 * Automatic API extraction with Doxygen/Breathe once the public headers settle.

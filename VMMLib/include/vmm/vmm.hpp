@@ -4,6 +4,7 @@
 #include <vmm/audit/MeshConnectivityGeometryAudit2D.hpp>
 #include <vmm/audit/MeshIndexAudit2D.hpp>
 #include <vmm/audit/MeshPatchAudit2D.hpp>
+#include <vmm/audit/MeshProjectionAudit2D.hpp>
 #include <vmm/audit/MeshTextAuditWriter2D.hpp>
 #include <vmm/domain/DomainFactory.hpp>
 #include <vmm/domain/Ellipse2D.hpp>

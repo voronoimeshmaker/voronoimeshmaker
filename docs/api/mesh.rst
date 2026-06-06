@@ -49,6 +49,11 @@ Audit APIs
    Runs the index audit first, then validates patch row identity, non-empty
    patch metadata, and boundary faces that reference non-internal patch types.
 
+``vmm::audit::MeshProjectionAudit2D``
+   Runs the established mesh audits first, then reports projection and
+   orthogonality warnings for internal midpoint offsets, strongly non-orthogonal
+   internal faces, and tangentially shifted boundary projections.
+
 MohidNG HDF5 export
 -------------------
 
@@ -69,6 +74,7 @@ Next direction
 
 The mesh layer now has canonical face tables, text diagnostics, cell-to-face
 reconstruction, explicit boundary patch assignment, MohidNG HDF5 export, and a
-solver-neutral stencil graph. The next layers should add projection/anomaly
-audits and richer import workflows around those stable tables rather than
+solver-neutral stencil graph. Projection and orthogonality anomaly audits now
+report mesh-quality risks without remeshing automatically. The next layers
+should add richer import workflows around those stable tables rather than
 another table redesign.
