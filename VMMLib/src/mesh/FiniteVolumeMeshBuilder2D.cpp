@@ -112,11 +112,78 @@ struct EdgeKey final {
     return polygon.is_closed() ? polygon.vertex_count() - 1U : polygon.vertex_count();
 }
 
-void add_default_patch(FiniteVolumeMesh2D& mesh, const FiniteVolumeMeshBuilder2DOptions& options)
+[[nodiscard]] Real cross(Point2D a, Point2D b, Point2D c) noexcept
 {
-    mesh.patches.id.push_back(BoundaryPatchId{0U});
-    mesh.patches.name.push_back(options.default_boundary_patch_name);
-    mesh.patches.type.push_back(options.default_boundary_patch_type);
+    return ((b.x - a.x) * (c.y - a.y)) - ((b.y - a.y) * (c.x - a.x));
+}
+
+[[nodiscard]] bool point_on_segment(Point2D segment0, Point2D segment1, Point2D point, Real tolerance) noexcept
+{
+    const auto dx = segment1.x - segment0.x;
+    const auto dy = segment1.y - segment0.y;
+    const auto length = std::sqrt((dx * dx) + (dy * dy));
+    const auto scaled_tolerance = tolerance * std::max(Real{1.0}, length);
+    if(std::abs(cross(segment0, segment1, point)) > scaled_tolerance) {
+        return false;
+    }
+
+    const auto dot = ((point.x - segment0.x) * dx) + ((point.y - segment0.y) * dy);
+    const auto length_squared = (dx * dx) + (dy * dy);
+    return dot >= -scaled_tolerance && dot <= length_squared + scaled_tolerance;
+}
+
+[[nodiscard]] bool edge_on_segment(Point2D face0,
+                                   Point2D face1,
+                                   Point2D segment0,
+                                   Point2D segment1,
+                                   Real tolerance) noexcept
+{
+    return point_on_segment(segment0, segment1, face0, tolerance)
+        && point_on_segment(segment0, segment1, face1, tolerance);
+}
+
+[[nodiscard]] bool edge_on_ring(Point2D face0,
+                                Point2D face1,
+                                const vmm::domain::Polygon2D& ring,
+                                Real tolerance) noexcept
+{
+    const auto vertices = ring.vertices();
+    const auto count = visible_vertex_count(ring);
+    for(std::size_t vertex = 0U; vertex < count; ++vertex) {
+        const auto segment0 = vertices[vertex];
+        const auto segment1 = vertices[(vertex + 1U) % count];
+        if(edge_on_segment(face0, face1, segment0, segment1, tolerance)) {
+            return true;
+        }
+    }
+    return false;
+}
+
+[[nodiscard]] BoundaryPatchId classify_boundary_patch(Point2D face0,
+                                                      Point2D face1,
+                                                      const FiniteVolumeMeshBuilder2DOptions& options)
+{
+    for(std::size_t patch = 0U; patch < options.boundary_patches.size(); ++patch) {
+        if(edge_on_ring(face0, face1, options.boundary_patches[patch].ring, options.boundary_tolerance)) {
+            return BoundaryPatchId{patch + 1U};
+        }
+    }
+    return BoundaryPatchId{0U};
+}
+
+void add_patch(FiniteVolumeMesh2D& mesh, std::string name, BoundaryPatchType type)
+{
+    mesh.patches.id.push_back(BoundaryPatchId{mesh.patches.size()});
+    mesh.patches.name.push_back(std::move(name));
+    mesh.patches.type.push_back(type);
+}
+
+void add_boundary_patches(FiniteVolumeMesh2D& mesh, const FiniteVolumeMeshBuilder2DOptions& options)
+{
+    add_patch(mesh, options.default_boundary_patch_name, options.default_boundary_patch_type);
+    for(const auto& patch : options.boundary_patches) {
+        add_patch(mesh, patch.name, patch.type);
+    }
 }
 
 void add_cell(FiniteVolumeMesh2D& mesh, const vmm::domain::PlanarCell2D& cell)
@@ -163,8 +230,12 @@ FiniteVolumeMesh2D FiniteVolumeMeshBuilder2D::build(std::span<const vmm::domain:
         vmm::error::throw_invalid_argument("FiniteVolumeMeshBuilder2D", "Vertex tolerance must be non-negative.");
     }
 
+    if(options.boundary_tolerance < Real{}) {
+        vmm::error::throw_invalid_argument("FiniteVolumeMeshBuilder2D", "Boundary tolerance must be non-negative.");
+    }
+
     FiniteVolumeMesh2D mesh;
-    add_default_patch(mesh, options);
+    add_boundary_patches(mesh, options);
     std::map<EdgeKey, FaceId> edge_to_face;
 
     for(std::size_t cell_index = 0U; cell_index < cells.size(); ++cell_index) {
@@ -188,7 +259,9 @@ FiniteVolumeMesh2D FiniteVolumeMeshBuilder2D::build(std::span<const vmm::domain:
             FaceId face_id{};
             if(existing == edge_to_face.end()) {
                 face_id = FaceId{mesh.face_count()};
-                add_face(mesh, cell_id, node0, node1, signed_area, BoundaryPatchId{0U});
+                const auto patch_id =
+                    classify_boundary_patch(node_point(mesh, node0), node_point(mesh, node1), options);
+                add_face(mesh, cell_id, node0, node1, signed_area, patch_id);
                 edge_to_face.emplace(key, face_id);
             } else {
                 face_id = existing->second;

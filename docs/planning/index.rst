@@ -18,4 +18,5 @@ working synthesis used to guide implementation.
    block-3-completion
    block-4-completion
    block-5-completion
+   block-6-completion
    mesh-generator-survey

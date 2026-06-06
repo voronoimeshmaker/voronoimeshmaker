@@ -27,21 +27,31 @@
 //==============================================================================
 #include <span>
 #include <string>
+#include <vector>
 
 
 //==============================================================================
 // VoronoiMeshMaker includes
 //==============================================================================
 #include <vmm/domain/PlanarCell2D.hpp>
+#include <vmm/domain/Polygon2D.hpp>
 #include <vmm/mesh/BoundaryPatchTable.hpp>
 #include <vmm/mesh/FiniteVolumeMesh2D.hpp>
 
 namespace vmm::mesh {
 
+struct BoundaryPatchRing2D final {
+    vmm::domain::Polygon2D ring;
+    std::string name;
+    BoundaryPatchType type{BoundaryPatchTypeTraits::Wall};
+};
+
 struct FiniteVolumeMeshBuilder2DOptions final {
     vmm::core::Real vertex_tolerance{1.0e-12};
+    vmm::core::Real boundary_tolerance{1.0e-9};
     std::string default_boundary_patch_name{"default-boundary"};
     BoundaryPatchType default_boundary_patch_type{BoundaryPatchTypeTraits::Wall};
+    std::vector<BoundaryPatchRing2D> boundary_patches;
 };
 
 class FiniteVolumeMeshBuilder2D final {

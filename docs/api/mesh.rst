@@ -10,7 +10,8 @@ flat cell-face connectivity.
 
 ``vmm::mesh::FiniteVolumeMeshBuilder2D`` reconstructs the canonical mesh from
 planar 2D cells by deduplicating nodes, detecting shared polygon edges, creating
-global faces, assigning owners/neighbours, and filling cell-face connectivity.
+global faces, assigning owners/neighbours, classifying boundary faces against
+optional patch rings, and filling cell-face connectivity.
 
 ``vmm::core::MeshTopology<Dim>``
    Legacy cell-centred structure-of-arrays topology container with CSR
@@ -39,6 +40,10 @@ Audit APIs
    2D face counts, positive areas and lengths, finite coordinates, finite
    normals, non-zero normals, and basic owner-normal orientation.
 
+``vmm::audit::MeshPatchAudit2D``
+   Runs the index audit first, then validates patch row identity, non-empty
+   patch metadata, and boundary faces that reference non-internal patch types.
+
 Extension policy
 ----------------
 
@@ -49,6 +54,7 @@ registries rather than closed enums.
 Next direction
 --------------
 
-The next mesh layer is not another table redesign. The roadmap now adds stable
-text diagnostics over the canonical FV mesh, then reconstructs the canonical
-tables from clipped polygonal Voronoi cells.
+The mesh layer now has canonical face tables, text diagnostics, cell-to-face
+reconstruction, and explicit boundary patch assignment. The next layer is GIS
+or format-specific import/export around those stable tables rather than another
+table redesign.

@@ -1,5 +1,10 @@
 #pragma once
 
+#include <vmm/audit/MeshAuditReport.hpp>
+#include <vmm/audit/MeshConnectivityGeometryAudit2D.hpp>
+#include <vmm/audit/MeshIndexAudit2D.hpp>
+#include <vmm/audit/MeshPatchAudit2D.hpp>
+#include <vmm/audit/MeshTextAuditWriter2D.hpp>
 #include <vmm/domain/DomainFactory.hpp>
 #include <vmm/domain/Ellipse2D.hpp>
 #include <vmm/domain/MohidGeometryReader.hpp>
@@ -18,6 +23,8 @@
 #include <vmm/instrumentation/FlowTracer.hpp>
 #include <vmm/instrumentation/Logger.hpp>
 #include <vmm/instrumentation/PhaseTimer.hpp>
+#include <vmm/mesh/BoundaryPatchTable.hpp>
+#include <vmm/mesh/FiniteVolumeMesh2D.hpp>
 #include <vmm/mesh/FiniteVolumeMeshBuilder2D.hpp>
 #include <vmm/site_generation/HexagonalSitePattern2D.hpp>
 #include <vmm/site_generation/SiteFactory.hpp>

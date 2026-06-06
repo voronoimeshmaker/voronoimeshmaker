@@ -18,12 +18,14 @@ Implemented now
 * Connectivity and basic geometry audit for canonical 2D FV meshes.
 * Text audit writer for canonical 2D FV mesh diagnostics.
 * Face reconstruction from planar 2D cells into canonical FV tables.
+* Boundary patch ring assignment for exterior, island, open, inlet, outlet, and no-flux style edges.
+* Patch semantic audit for canonical 2D FV meshes.
 * Structured error layer with bilingual message direction.
 
 Planned next
 ------------
 
-* Voronoi cells with holes.
+* Automated clipping/import workflows for Voronoi cells with holes.
 * 3D domain geometry implementation.
 * More site patterns.
 * Automatic API extraction with Doxygen/Breathe once the public headers settle.
