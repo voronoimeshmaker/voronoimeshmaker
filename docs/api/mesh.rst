@@ -17,6 +17,11 @@ optional patch rings, and filling cell-face connectivity.
    Legacy cell-centred structure-of-arrays topology container with CSR
    neighbour indexing.
 
+``vmm::mesh::FiniteVolumeStencilGraph2D``
+   Solver-neutral compact graph derived from the canonical face table. It stores
+   internal owner-neighbour entries and boundary cell-patch entries without
+   encoding any solver-specific coefficient policy.
+
 Current legacy topology data
 ----------------------------
 
@@ -63,6 +68,7 @@ Next direction
 --------------
 
 The mesh layer now has canonical face tables, text diagnostics, cell-to-face
-reconstruction, explicit boundary patch assignment, and MohidNG HDF5 export.
-The next layers should add solver-neutral stencils and richer import workflows
-around those stable tables rather than another table redesign.
+reconstruction, explicit boundary patch assignment, MohidNG HDF5 export, and a
+solver-neutral stencil graph. The next layers should add projection/anomaly
+audits and richer import workflows around those stable tables rather than
+another table redesign.

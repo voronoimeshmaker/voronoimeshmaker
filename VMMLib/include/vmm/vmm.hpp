@@ -27,6 +27,7 @@
 #include <vmm/mesh/BoundaryPatchTable.hpp>
 #include <vmm/mesh/FiniteVolumeMesh2D.hpp>
 #include <vmm/mesh/FiniteVolumeMeshBuilder2D.hpp>
+#include <vmm/mesh/FiniteVolumeStencilGraph2D.hpp>
 #include <vmm/site_generation/HexagonalSitePattern2D.hpp>
 #include <vmm/site_generation/SiteFactory.hpp>
 #include <vmm/tessellation/TessellationResult.hpp>
