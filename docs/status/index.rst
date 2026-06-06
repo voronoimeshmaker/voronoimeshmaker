@@ -25,6 +25,7 @@ Implemented now
 * Projection and orthogonality anomaly audit for canonical 2D FV meshes.
 * Optional GIS vector-domain API with isolated GDAL/OGR and PROJ backend discovery.
 * Raster bathymetry/topography field storage, interpolation, and cell-centre sampling.
+* Integrated 2D finite-volume Voronoi workflow for complete audited mesh generation.
 * Structured error layer with bilingual message direction.
 
 Planned next
@@ -32,6 +33,7 @@ Planned next
 
 * Automated clipping/import workflows for Voronoi cells with holes.
 * Raster-to-export workflows and raster/vector CRS import validation.
+* Site edit batches that rerun the integrated 2D workflow after remeshing changes.
 * 3D domain geometry implementation.
 * More site patterns.
 * Automatic API extraction with Doxygen/Breathe once the public headers settle.

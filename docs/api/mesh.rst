@@ -88,6 +88,16 @@ Raster bathymetry/topography
    Builds without GDAL keep the API available and report unsupported operation
    explicitly at runtime.
 
+Integrated 2D workflow
+----------------------
+
+``vmm::workflow::generate_complete_finite_volume_voronoi_mesh_2d``
+   Runs the official 2D generation sequence from sites and a polygonal domain
+   to clipped Voronoi cells, canonical finite-volume tables, mandatory audit
+   reports, optional stencil graph, and optional cell-centre raster samples.
+   This is the preferred public entry point for other projects that need a
+   complete 2D VMM mesh rather than individual construction steps.
+
 Extension policy
 ----------------
 
@@ -101,7 +111,7 @@ Next direction
 The mesh layer now has canonical face tables, text diagnostics, cell-to-face
 reconstruction, explicit boundary patch assignment, MohidNG HDF5 export, and a
 solver-neutral stencil graph. Projection and orthogonality anomaly audits now
-report mesh-quality risks without remeshing automatically. GIS vector input and
-raster sampling now have isolated public APIs with optional backends. The next
-layers should add richer import validation around those stable tables rather
-than another table redesign.
+report mesh-quality risks without remeshing automatically. GIS vector input,
+raster sampling, and the integrated 2D workflow now have isolated public APIs.
+The next layers should add remeshing and richer import validation around those
+stable tables rather than another table redesign.

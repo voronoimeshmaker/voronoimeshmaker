@@ -35,3 +35,4 @@
 #include <vmm/site_generation/SiteFactory.hpp>
 #include <vmm/tessellation/TessellationResult.hpp>
 #include <vmm/tessellation/Tessellator2D.hpp>
+#include <vmm/workflow/FiniteVolumeVoronoiWorkflow2D.hpp>
