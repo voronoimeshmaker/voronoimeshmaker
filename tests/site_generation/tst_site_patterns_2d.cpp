@@ -24,10 +24,26 @@
 // @ingroup vmm_tests
 //==============================================================================
 
-#include <vmm/domain/Rectangle2D.hpp>
-#include <vmm/site_generation/HexagonalSitePattern2D.hpp>
+//==============================================================================
+// c++ includes
+//==============================================================================
+#include <cstddef>
 
+
+//==============================================================================
+// external includes
+//==============================================================================
 #include <gtest/gtest.h>
+
+
+//==============================================================================
+// VoronoiMeshMaker includes
+//==============================================================================
+#include <vmm/domain/Rectangle2D.hpp>
+#include <vmm/site_generation/CartesianSitePattern2D.hpp>
+#include <vmm/site_generation/HexagonalSitePattern2D.hpp>
+#include <vmm/site_generation/RadialSitePattern2D.hpp>
+#include <vmm/site_generation/RandomSitePattern2D.hpp>
 
 namespace {
 
@@ -39,6 +55,43 @@ TEST(SitePatterns2DTest, HexagonalPatternCreatesSitesInsideDomain)
     ASSERT_FALSE(sites.empty());
     for(const auto site : sites) {
         EXPECT_TRUE(vmm::site_generation::detail::point_in_domain_2d(domain, site));
+    }
+}
+
+TEST(SitePatterns2DTest, CartesianPatternCreatesSitesInsideDomain)
+{
+    const auto domain = vmm::domain::make_rectangle_2d(2.0, 2.0);
+    const auto sites = vmm::site_generation::make_cartesian_sites_2d(domain, 0.5);
+
+    ASSERT_FALSE(sites.empty());
+    for(const auto site : sites) {
+        EXPECT_TRUE(vmm::site_generation::detail::point_in_domain_2d(domain, site));
+    }
+}
+
+TEST(SitePatterns2DTest, RadialPatternCreatesSitesInsideDomain)
+{
+    const auto domain = vmm::domain::make_rectangle_2d(4.0, 4.0);
+    const auto sites = vmm::site_generation::RadialSitePattern2D{0.5, 12U}.generate(domain);
+
+    ASSERT_FALSE(sites.empty());
+    for(const auto site : sites) {
+        EXPECT_TRUE(vmm::site_generation::detail::point_in_domain_2d(domain, site));
+    }
+}
+
+TEST(SitePatterns2DTest, RandomPatternIsDeterministicForFixedSeed)
+{
+    const auto domain = vmm::domain::make_rectangle_2d(2.0, 2.0);
+    const auto first = vmm::site_generation::RandomSitePattern2D{8U, 123U}.generate(domain);
+    const auto second = vmm::site_generation::RandomSitePattern2D{8U, 123U}.generate(domain);
+
+    ASSERT_EQ(first.size(), 8U);
+    ASSERT_EQ(second.size(), first.size());
+    for(std::size_t i = 0U; i < first.size(); ++i) {
+        EXPECT_DOUBLE_EQ(first[i].x, second[i].x);
+        EXPECT_DOUBLE_EQ(first[i].y, second[i].y);
+        EXPECT_TRUE(vmm::site_generation::detail::point_in_domain_2d(domain, first[i]));
     }
 }
 

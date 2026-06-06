@@ -107,6 +107,13 @@ Hdf5Handle open_dataset(hid_t file, const char* path)
     return dataset;
 }
 
+Hdf5Handle open_group(hid_t file, const char* path)
+{
+    Hdf5Handle group{H5Gopen2(file, path, H5P_DEFAULT), H5Gclose};
+    EXPECT_TRUE(group.valid()) << path;
+    return group;
+}
+
 std::vector<hsize_t> dataset_dimensions(hid_t file, const char* path)
 {
     const auto dataset = open_dataset(file, path);
@@ -216,6 +223,12 @@ TEST(MohidNGHDF5Writer2DTest, WritesMohidNGSchemaPackage)
     vmm::io::MohidNGHDF5Writer2DOptions options;
     options.coordinate_reference_system = "EPSG:4326";
     options.note = "writer schema test";
+    vmm::raster::CellRasterSamples2D raster_samples;
+    raster_samples.cell_id = {CellId{0U}, CellId{1U}};
+    raster_samples.value = {3.5, 7.5};
+    raster_samples.valid = {1U, 0U};
+    options.raster_field_name = "bathymetry";
+    options.raster_samples = &raster_samples;
     vmm::io::write_mohidng_hdf5_mesh_2d(output, mesh, options);
 
     const auto file = open_file(output);
@@ -234,6 +247,9 @@ TEST(MohidNGHDF5Writer2DTest, WritesMohidNGSchemaPackage)
     EXPECT_EQ(dataset_dimensions(file.id(), "/faces/centre"), (std::vector<hsize_t>{mesh.face_count(), 2U}));
     EXPECT_EQ(dataset_dimensions(file.id(), "/faces/unit_normal"), (std::vector<hsize_t>{mesh.face_count(), 2U}));
     EXPECT_EQ(dataset_dimensions(file.id(), "/boundary_patches/id"), std::vector<hsize_t>{mesh.patch_count()});
+    EXPECT_EQ(dataset_dimensions(file.id(), "/cell_fields/cell_id"), std::vector<hsize_t>{mesh.cell_count()});
+    EXPECT_EQ(dataset_dimensions(file.id(), "/cell_fields/value"), std::vector<hsize_t>{mesh.cell_count()});
+    EXPECT_EQ(dataset_dimensions(file.id(), "/cell_fields/valid"), std::vector<hsize_t>{mesh.cell_count()});
 
     const auto node_ids = read_int64_dataset(file.id(), "/nodes/id");
     ASSERT_EQ(node_ids.size(), mesh.node_count());
@@ -261,6 +277,19 @@ TEST(MohidNGHDF5Writer2DTest, WritesMohidNGSchemaPackage)
     const auto lengths = read_double_dataset(file.id(), "/faces/length");
     ASSERT_EQ(lengths.size(), mesh.face_count());
     EXPECT_GT(lengths.front(), 0.0);
+
+    const auto raster_cell_ids = read_int64_dataset(file.id(), "/cell_fields/cell_id");
+    const auto raster_values = read_double_dataset(file.id(), "/cell_fields/value");
+    const auto raster_valid = read_int32_dataset(file.id(), "/cell_fields/valid");
+    ASSERT_EQ(raster_cell_ids.size(), mesh.cell_count());
+    ASSERT_EQ(raster_values.size(), mesh.cell_count());
+    ASSERT_EQ(raster_valid.size(), mesh.cell_count());
+    const auto cell_fields_group = open_group(file.id(), "/cell_fields");
+    EXPECT_EQ(read_string_attribute(cell_fields_group.id(), "raster_field_name"), "bathymetry");
+    EXPECT_EQ(raster_cell_ids[0], 0);
+    EXPECT_DOUBLE_EQ(raster_values[0], 3.5);
+    EXPECT_EQ(raster_valid[0], 1);
+    EXPECT_EQ(raster_valid[1], 0);
 }
 
 TEST(MohidNGHDF5Writer2DTest, RejectsInvalidMeshBeforeExport)
@@ -270,4 +299,18 @@ TEST(MohidNGHDF5Writer2DTest, RejectsInvalidMeshBeforeExport)
     const auto output = std::filesystem::temp_directory_path() / "vmm_tst_mohidng_writer_invalid.mngpkg.h5";
 
     EXPECT_THROW(vmm::io::write_mohidng_hdf5_mesh_2d(output, mesh), vmm::error::MeshException);
+}
+
+TEST(MohidNGHDF5Writer2DTest, RejectsRasterSamplesWithWrongCellIds)
+{
+    const auto mesh = make_mesh();
+    vmm::raster::CellRasterSamples2D raster_samples;
+    raster_samples.cell_id = {CellId{0U}, CellId{99U}};
+    raster_samples.value = {1.0, 2.0};
+    raster_samples.valid = {1U, 1U};
+    vmm::io::MohidNGHDF5Writer2DOptions options;
+    options.raster_samples = &raster_samples;
+    const auto output = std::filesystem::temp_directory_path() / "vmm_tst_mohidng_writer_bad_raster.mngpkg.h5";
+
+    EXPECT_THROW(vmm::io::write_mohidng_hdf5_mesh_2d(output, mesh, options), vmm::error::MeshException);
 }

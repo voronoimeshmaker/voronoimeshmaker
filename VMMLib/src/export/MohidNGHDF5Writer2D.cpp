@@ -263,6 +263,29 @@ void validate_before_export(const vmm::mesh::FiniteVolumeMesh2D& mesh)
     }
 }
 
+void validate_raster_samples(const vmm::mesh::FiniteVolumeMesh2D& mesh,
+                             const vmm::raster::CellRasterSamples2D& samples)
+{
+    if(!samples.has_consistent_storage()) {
+        vmm::error::throw_invalid_argument("write_mohidng_hdf5_mesh_2d",
+                                           "Raster sample arrays have inconsistent storage.");
+    }
+    if(samples.size() != mesh.cell_count()) {
+        vmm::error::throw_invalid_argument("write_mohidng_hdf5_mesh_2d",
+                                           "Raster sample count must match finite-volume cell count.");
+    }
+    for(std::size_t cell = 0U; cell < mesh.cell_count(); ++cell) {
+        if(samples.cell_id[cell] != CellId{cell}) {
+            vmm::error::throw_invalid_argument("write_mohidng_hdf5_mesh_2d",
+                                               "Raster sample cell ids must follow finite-volume cell rows.");
+        }
+        if(samples.valid[cell] != 0U && samples.valid[cell] != 1U) {
+            vmm::error::throw_invalid_argument("write_mohidng_hdf5_mesh_2d",
+                                               "Raster sample validity flags must be 0 or 1.");
+        }
+    }
+}
+
 void write_root_metadata(hid_t file, const MohidNGHDF5Writer2DOptions& options)
 {
     write_int_attribute(file, "dimension", 2);
@@ -356,6 +379,27 @@ void write_boundary_patches(hid_t file, const vmm::mesh::FiniteVolumeMesh2D& mes
     write_fixed_string_dataset(group.id(), "type", types);
 }
 
+void write_raster_samples(hid_t file,
+                          const vmm::raster::CellRasterSamples2D& samples,
+                          const std::string& field_name)
+{
+    const auto group = create_group(file, "cell_fields");
+    write_string_attribute(group.id(), "raster_field_name", field_name);
+
+    std::vector<std::int64_t> cell_ids;
+    std::vector<std::int32_t> valid;
+    cell_ids.reserve(samples.size());
+    valid.reserve(samples.size());
+    for(std::size_t index = 0U; index < samples.size(); ++index) {
+        cell_ids.push_back(cell_id_to_hdf5(samples.cell_id[index]));
+        valid.push_back(static_cast<std::int32_t>(samples.valid[index]));
+    }
+
+    write_int64_dataset(group.id(), "cell_id", cell_ids);
+    write_real_dataset_1d(group.id(), "value", samples.value);
+    write_int32_dataset(group.id(), "valid", valid);
+}
+
 } // namespace
 
 void write_mohidng_hdf5_mesh_2d(const std::filesystem::path& file_path,
@@ -364,6 +408,9 @@ void write_mohidng_hdf5_mesh_2d(const std::filesystem::path& file_path,
 {
     if(options.require_valid_mesh) {
         validate_before_export(mesh);
+    }
+    if(options.raster_samples != nullptr) {
+        validate_raster_samples(mesh, *options.raster_samples);
     }
 
     if(file_path.has_parent_path()) {
@@ -379,6 +426,9 @@ void write_mohidng_hdf5_mesh_2d(const std::filesystem::path& file_path,
     write_cells(file.id(), mesh);
     write_faces(file.id(), mesh);
     write_boundary_patches(file.id(), mesh);
+    if(options.raster_samples != nullptr) {
+        write_raster_samples(file.id(), *options.raster_samples, options.raster_field_name);
+    }
 }
 
 } // namespace vmm::io

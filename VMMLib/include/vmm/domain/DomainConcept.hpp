@@ -26,6 +26,7 @@
 #pragma once
 
 #include <vmm/domain/PolygonalDomain2D.hpp>
+#include <vmm/domain/Polyhedron3D.hpp>
 
 #include <concepts>
 
@@ -35,6 +36,12 @@ template<class T>
 concept PolygonalDomain = requires(const T& domain) {
     { domain.exterior() } -> std::same_as<const Polygon2D&>;
     { domain.area() } -> std::convertible_to<vmm::core::Real>;
+};
+
+template<class T>
+concept PolyhedralDomain = requires(const T& domain) {
+    { domain.surface() } -> std::same_as<const SurfaceMesh3D&>;
+    { domain.volume() } -> std::convertible_to<vmm::core::Real>;
 };
 
 } // namespace vmm::domain

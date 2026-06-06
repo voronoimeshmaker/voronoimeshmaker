@@ -62,7 +62,8 @@ MohidNG HDF5 export
 ``vmm::io::write_mohidng_hdf5_mesh_2d``
    Runs the mandatory mesh audits, then writes the MohidNG Voronoi mesh package
    schema ``mohidng.voronoi_mesh_package/0.1`` with nodes, cells, faces,
-   boundary patches, root metadata, and no public HDF5 types in the VMM API.
+   boundary patches, root metadata, optional sampled raster cell fields, and no
+   public HDF5 types in the VMM API.
 
 ``vmm::io::write_mohidng_hdf5_mesh_3d``
    Runs the extruded 3D mesh audit, then writes schema
@@ -90,12 +91,17 @@ Raster bathymetry/topography
 ``vmm::raster::sample_cell_centres``
    Samples a raster field at canonical finite-volume cell centres and returns
    compact value and validity arrays suitable for bathymetry/topography
-   diagnostics or later export workflows.
+   diagnostics and MohidNG HDF5 export workflows.
 
 ``vmm::raster::read_gis_raster_scalar_field_2d``
    Reads GDAL-supported raster sources when the optional backend is available.
    Builds without GDAL keep the API available and report unsupported operation
    explicitly at runtime.
+
+``vmm::gis::require_compatible_coordinate_reference_systems``
+   Validates that two known CRS descriptors are compatible before mixing GIS
+   vector domains, raster fields, or exported package metadata. Empty CRS
+   descriptors remain accepted because no reliable mismatch can be proven.
 
 Integrated 2D workflow
 ----------------------
@@ -106,6 +112,28 @@ Integrated 2D workflow
    reports, optional stencil graph, and optional cell-centre raster samples.
    This is the preferred public entry point for other projects that need a
    complete 2D VMM mesh rather than individual construction steps.
+
+Site patterns
+-------------
+
+* ``vmm::site_generation::HexagonalSitePattern2D``,
+  ``CartesianSitePattern2D``, ``RadialSitePattern2D``, and
+  ``RandomSitePattern2D`` provide the built-in 2D site layouts currently
+  supported by the public site factory. ``RandomSitePattern2D`` is deterministic
+  for a fixed seed so tests and generated meshes can be reproduced.
+
+3D domain geometry
+------------------
+
+* ``vmm::domain::Box3D``, ``Sphere3D``, ``Cylinder3D``, ``Ellipsoid3D``, and
+  ``Tetrahedron3D`` provide the first concrete 3D domain geometry layer with
+  analytic volume, bounds, and point containment. ``Box3D`` and
+  ``Tetrahedron3D`` can also be converted to lightweight triangular
+  ``Polyhedron3D`` surfaces.
+
+* ``vmm::domain::SurfaceMesh3D`` and ``vmm::domain::Polyhedron3D`` store
+  triangular boundary surfaces with named open-trait surface patches and provide
+  a polyhedral-domain concept target for future 3D clipping/import workflows.
 
 Site-edit remeshing
 -------------------

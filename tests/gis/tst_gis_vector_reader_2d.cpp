@@ -97,3 +97,29 @@ TEST(GisVectorReader2DTest, CrsTransformAvailabilityIsExplicit)
     const auto available = gis_crs_transform_backend_available();
     EXPECT_EQ(available, gis_crs_transform_backend_available());
 }
+
+TEST(GisVectorReader2DTest, ValidatesCoordinateReferenceSystemCompatibility)
+{
+    CoordinateReferenceSystem epsg4326;
+    epsg4326.authority = "EPSG";
+    epsg4326.code = "4326";
+
+    CoordinateReferenceSystem lower_case;
+    lower_case.authority = "epsg";
+    lower_case.code = "4326";
+
+    CoordinateReferenceSystem epsg3857;
+    epsg3857.authority = "EPSG";
+    epsg3857.code = "3857";
+
+    EXPECT_TRUE(coordinate_reference_systems_compatible(epsg4326, lower_case));
+    EXPECT_TRUE(coordinate_reference_systems_compatible(epsg4326, {}));
+    EXPECT_FALSE(coordinate_reference_systems_compatible(epsg4326, epsg3857));
+    EXPECT_THROW(require_compatible_coordinate_reference_systems(
+                     "gis-crs-test",
+                     "domain",
+                     epsg4326,
+                     "raster",
+                     epsg3857),
+                 vmm::error::MeshException);
+}

@@ -7,7 +7,7 @@ Implemented now
 * 2D rectangle, triangle, ellipse, polygon, and polygonal domain.
 * 2D translation and rotation.
 * Open domain factory.
-* Hexagonal 2D site pattern.
+* Hexagonal, cartesian, radial, and deterministic random 2D site patterns.
 * Open 2D site factory.
 * 2D clipped Voronoi cells for exterior polygonal domains.
 * Rich 2D planar cell representation with optional holes and generator metadata.
@@ -25,18 +25,19 @@ Implemented now
 * Projection and orthogonality anomaly audit for canonical 2D FV meshes.
 * Optional GIS vector-domain API with isolated GDAL/OGR and PROJ backend discovery.
 * Raster bathymetry/topography field storage, interpolation, and cell-centre sampling.
+* Raster cell-field export through MohidNG HDF5 2D packages.
+* Explicit CRS compatibility validation for GIS/raster workflows.
 * Integrated 2D finite-volume Voronoi workflow for complete audited mesh generation.
 * Site-edit remeshing that rebuilds the complete 2D FV mesh and reruns audits.
 * Matrix bandwidth reporting from the solver-neutral 2D FV stencil graph.
 * Extruded 3D finite-volume mesh tables, vertical extrusion, audit, and text diagnostics.
 * MohidNG HDF5 writer for audited extruded 3D FV mesh packages.
+* General 3D domain geometry with analytic primitives and triangular surfaces.
+* Placeholder source/header cleanup for files that no longer represent active API.
 * Structured error layer with bilingual message direction.
 
 Planned next
 ------------
 
 * Automated clipping/import workflows for Voronoi cells with holes.
-* Raster-to-export workflows and raster/vector CRS import validation.
-* General 3D domain geometry implementation.
-* More site patterns.
 * Automatic API extraction with Doxygen/Breathe once the public headers settle.

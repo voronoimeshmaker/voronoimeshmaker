@@ -39,4 +39,14 @@ TEST(SiteFactoryTest, BuildsDefaultHexagonalPattern)
     EXPECT_FALSE(sites.empty());
 }
 
+TEST(SiteFactoryTest, BuildsAdditionalDefault2DPatterns)
+{
+    const auto domain = vmm::domain::make_rectangle_2d(2.0, 2.0);
+    const auto registry = vmm::site_generation::default_site_factory_registry_2d();
+
+    EXPECT_FALSE(registry.make("cartesian_2d", domain, {{"spacing", 0.5}}).empty());
+    EXPECT_FALSE(registry.make("radial_2d", domain, {{"spacing", 0.5}, {"angular_count", 8.0}}).empty());
+    EXPECT_EQ(registry.make("random_2d", domain, {{"count", 5.0}, {"seed", 7.0}}).size(), 5U);
+}
+
 } // namespace

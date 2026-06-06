@@ -101,6 +101,16 @@ struct GisVectorReadOptions final {
 [[nodiscard]] bool gis_vector_backend_available() noexcept;
 [[nodiscard]] bool gis_crs_transform_backend_available() noexcept;
 
+[[nodiscard]] bool coordinate_reference_systems_compatible(
+    const CoordinateReferenceSystem& lhs,
+    const CoordinateReferenceSystem& rhs) noexcept;
+
+void require_compatible_coordinate_reference_systems(std::string_view context,
+                                                     std::string_view lhs_name,
+                                                     const CoordinateReferenceSystem& lhs,
+                                                     std::string_view rhs_name,
+                                                     const CoordinateReferenceSystem& rhs);
+
 [[nodiscard]] vmm::mesh::BoundaryPatchType boundary_patch_type_from_gis_text(std::string_view text) noexcept;
 
 [[nodiscard]] GeoVectorDomain2D read_gis_polygonal_domain_2d(

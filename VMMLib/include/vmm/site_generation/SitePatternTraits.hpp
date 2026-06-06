@@ -33,5 +33,10 @@ template<typename Pattern>
 struct SitePatternTraits;
 
 inline constexpr std::string_view hexagonal_site_pattern_2d_id = "hexagonal_2d";
+inline constexpr std::string_view cartesian_site_pattern_2d_id = "cartesian_2d";
+inline constexpr std::string_view radial_site_pattern_2d_id = "radial_2d";
+inline constexpr std::string_view random_site_pattern_2d_id = "random_2d";
+inline constexpr std::string_view cartesian_site_pattern_3d_id = "cartesian_3d";
+inline constexpr std::string_view random_site_pattern_3d_id = "random_3d";
 
 } // namespace vmm::site_generation

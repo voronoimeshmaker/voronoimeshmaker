@@ -28,8 +28,13 @@
 #include <vmm/core/Types.hpp>
 #include <vmm/domain/PolygonalDomain2D.hpp>
 #include <vmm/error/MeshException.hpp>
+#include <vmm/site_generation/CartesianSitePattern2D.hpp>
 #include <vmm/site_generation/HexagonalSitePattern2D.hpp>
+#include <vmm/site_generation/RadialSitePattern2D.hpp>
+#include <vmm/site_generation/RandomSitePattern2D.hpp>
 
+#include <cstddef>
+#include <cstdint>
 #include <functional>
 #include <string>
 #include <string_view>
@@ -84,6 +89,27 @@ inline SiteFactoryRegistry2D default_site_factory_registry_2d()
                                   return make_hexagonal_sites_2d(
                                       domain,
                                       site_param_or(params, "spacing", static_cast<vmm::core::Real>(1)));
+                              });
+    registry.register_factory(std::string{cartesian_site_pattern_2d_id},
+                              [](const vmm::domain::PolygonalDomain2D& domain,
+                                 const SitePatternParams& params) {
+                                  return make_cartesian_sites_2d(
+                                      domain,
+                                      site_param_or(params, "spacing", static_cast<vmm::core::Real>(1)));
+                              });
+    registry.register_factory(std::string{radial_site_pattern_2d_id},
+                              [](const vmm::domain::PolygonalDomain2D& domain,
+                                 const SitePatternParams& params) {
+                                  return RadialSitePattern2D{
+                                      site_param_or(params, "spacing", static_cast<vmm::core::Real>(1)),
+                                      static_cast<std::size_t>(site_param_or(params, "angular_count", 16.0))}.generate(domain);
+                              });
+    registry.register_factory(std::string{random_site_pattern_2d_id},
+                              [](const vmm::domain::PolygonalDomain2D& domain,
+                                 const SitePatternParams& params) {
+                                  return RandomSitePattern2D{
+                                      static_cast<std::size_t>(site_param_or(params, "count", 16.0)),
+                                      static_cast<std::uint32_t>(site_param_or(params, "seed", 5489.0))}.generate(domain);
                               });
     return registry;
 }

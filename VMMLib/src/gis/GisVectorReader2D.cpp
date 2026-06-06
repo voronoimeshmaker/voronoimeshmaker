@@ -276,6 +276,44 @@ bool gis_crs_transform_backend_available() noexcept
 #endif
 }
 
+bool coordinate_reference_systems_compatible(const CoordinateReferenceSystem& lhs,
+                                             const CoordinateReferenceSystem& rhs) noexcept
+{
+    if(lhs.empty() || rhs.empty()) {
+        return true;
+    }
+
+    const auto lhs_identifier = lhs.identifier();
+    const auto rhs_identifier = rhs.identifier();
+    if(!lhs_identifier.empty() && !rhs_identifier.empty()) {
+        return text_equals(lhs_identifier, rhs_identifier);
+    }
+
+    if(!lhs.wkt.empty() && !rhs.wkt.empty()) {
+        return lhs.wkt == rhs.wkt;
+    }
+
+    return false;
+}
+
+void require_compatible_coordinate_reference_systems(std::string_view context,
+                                                     std::string_view lhs_name,
+                                                     const CoordinateReferenceSystem& lhs,
+                                                     std::string_view rhs_name,
+                                                     const CoordinateReferenceSystem& rhs)
+{
+    if(coordinate_reference_systems_compatible(lhs, rhs)) {
+        return;
+    }
+
+    const auto lhs_identifier = lhs.identifier().empty() ? std::string{"unknown"} : lhs.identifier();
+    const auto rhs_identifier = rhs.identifier().empty() ? std::string{"unknown"} : rhs.identifier();
+    vmm::error::throw_invalid_argument(
+        context,
+        std::string{"Incompatible coordinate reference systems: "} + std::string{lhs_name} + "=" +
+            lhs_identifier + ", " + std::string{rhs_name} + "=" + rhs_identifier + ".");
+}
+
 vmm::mesh::BoundaryPatchType boundary_patch_type_from_gis_text(std::string_view text) noexcept
 {
     if(text_equals(text, "wall")) {

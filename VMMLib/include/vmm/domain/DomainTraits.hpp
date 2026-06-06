@@ -25,8 +25,13 @@
 //==============================================================================
 #pragma once
 
+#include <vmm/domain/Box3D.hpp>
+#include <vmm/domain/Cylinder3D.hpp>
 #include <vmm/domain/Ellipse2D.hpp>
+#include <vmm/domain/Ellipsoid3D.hpp>
 #include <vmm/domain/Rectangle2D.hpp>
+#include <vmm/domain/Sphere3D.hpp>
+#include <vmm/domain/Tetrahedron3D.hpp>
 #include <vmm/domain/Triangle2D.hpp>
 
 namespace vmm::domain {
@@ -47,6 +52,31 @@ struct DomainTraits<Triangle2D> final {
 template<>
 struct DomainTraits<Ellipse2D> final {
     static constexpr std::string_view id{"ellipse"};
+};
+
+template<>
+struct DomainTraits<Box3D> final {
+    static constexpr std::string_view id{"box"};
+};
+
+template<>
+struct DomainTraits<Sphere3D> final {
+    static constexpr std::string_view id{"sphere"};
+};
+
+template<>
+struct DomainTraits<Cylinder3D> final {
+    static constexpr std::string_view id{"cylinder"};
+};
+
+template<>
+struct DomainTraits<Ellipsoid3D> final {
+    static constexpr std::string_view id{"ellipsoid"};
+};
+
+template<>
+struct DomainTraits<Tetrahedron3D> final {
+    static constexpr std::string_view id{"tetrahedron"};
 };
 
 } // namespace vmm::domain
