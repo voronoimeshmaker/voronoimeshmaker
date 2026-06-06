@@ -117,6 +117,19 @@ Site-edit remeshing
    exposes ``site-edit-rebuild`` and can accept future remeshing algorithms
    without replacing the public workflow.
 
+Extruded 3D FV mesh
+-------------------
+
+``vmm::mesh::extrude_finite_volume_mesh_3d``
+   Builds the first supported 3D mesh family by extruding a valid 2D
+   finite-volume mesh across vertical interfaces. The resulting
+   ``FiniteVolumeMesh3D`` contains 3D node, cell, face, boundary patch,
+   cell-face, and face-node tables.
+
+``vmm::audit::audit_extruded_mesh_3d``
+   Runs basic storage, volume, area, reference, patch, and connectivity checks
+   for extruded 3D meshes.
+
 Extension policy
 ----------------
 
@@ -131,6 +144,7 @@ The mesh layer now has canonical face tables, text diagnostics, cell-to-face
 reconstruction, explicit boundary patch assignment, MohidNG HDF5 export, and a
 solver-neutral stencil graph. Projection and orthogonality anomaly audits now
 report mesh-quality risks without remeshing automatically. GIS vector input,
-raster sampling, the integrated 2D workflow, and site-edit remeshing now have
-isolated public APIs. The next layers should add 3D extrusion and richer import
-validation around those stable tables rather than another table redesign.
+raster sampling, the integrated 2D workflow, site-edit remeshing, and vertical
+3D extrusion now have isolated public APIs. The next layers should extend HDF5
+3D export and richer import validation around those stable tables rather than
+another table redesign.
