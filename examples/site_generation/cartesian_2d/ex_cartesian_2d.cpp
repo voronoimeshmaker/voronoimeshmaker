@@ -16,5 +16,7 @@ int main()
     const auto sites = vmm::site_generation::make_cartesian_sites_2d(domain, 0.5);
 
     std::cout << "cartesian_sites=" << sites.size() << '\n';
+
+
     return 0;
 }

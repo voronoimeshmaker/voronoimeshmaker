@@ -11,6 +11,7 @@
 #include <span>
 #include <string>
 #include <utility>
+#include <vector>
 
 
 //==============================================================================
@@ -56,10 +57,22 @@ CompleteFiniteVolumeVoronoiMesh2D generate_complete_finite_volume_voronoi_mesh_2
     const vmm::domain::PolygonalDomain2D& domain,
     const CompleteFiniteVolumeVoronoiMesh2DOptions& options)
 {
-    auto clipped_voronoi = vmm::tessellation::generate_clipped_voronoi_2d(
-        sites,
-        domain,
-        options.tessellation);
+    std::vector<vmm::tessellation::LloydIterationReport2D> lloyd_iterations;
+    auto clipped_voronoi = [&]() {
+        if(options.lloyd.iteration_count == 0U) {
+            return vmm::tessellation::generate_clipped_voronoi_2d(
+                sites,
+                domain,
+                options.tessellation);
+        }
+
+        auto lloyd_options = options.lloyd;
+        lloyd_options.tessellation = options.tessellation;
+        auto lloyd_result = vmm::tessellation::relax_sites_lloyd_2d(sites, domain, lloyd_options);
+        lloyd_iterations = std::move(lloyd_result.iterations);
+        return std::move(lloyd_result.clipped_voronoi);
+    }();
+
     auto finite_volume_mesh = vmm::mesh::build_finite_volume_mesh_2d(
         clipped_voronoi.planar_cells,
         options.mesh_builder);
@@ -70,6 +83,7 @@ CompleteFiniteVolumeVoronoiMesh2D generate_complete_finite_volume_voronoi_mesh_2
         {},
         {},
         {},
+        std::move(lloyd_iterations),
         {},
         {}};
 

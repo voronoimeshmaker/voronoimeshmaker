@@ -38,6 +38,7 @@
 #include <vmm/instrumentation/Logger.hpp>
 #include <vmm/instrumentation/PhaseTimer.hpp>
 #include <vmm/mesh/BoundaryPatchTable.hpp>
+#include <vmm/mesh/CellRenumbering2D.hpp>
 #include <vmm/mesh/ExtrudedFiniteVolumeMesh3D.hpp>
 #include <vmm/mesh/FiniteVolumeMesh2D.hpp>
 #include <vmm/mesh/FiniteVolumeMesh3D.hpp>
@@ -50,6 +51,7 @@
 #include <vmm/site_generation/RadialSitePattern2D.hpp>
 #include <vmm/site_generation/RandomSitePattern2D.hpp>
 #include <vmm/site_generation/SiteFactory.hpp>
+#include <vmm/tessellation/CentroidalVoronoiRelaxation2D.hpp>
 #include <vmm/tessellation/TessellationResult.hpp>
 #include <vmm/tessellation/Tessellator2D.hpp>
 #include <vmm/workflow/FiniteVolumeVoronoiWorkflow2D.hpp>

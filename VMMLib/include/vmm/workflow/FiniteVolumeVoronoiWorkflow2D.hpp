@@ -11,6 +11,7 @@
 //==============================================================================
 #include <optional>
 #include <span>
+#include <vector>
 
 
 //==============================================================================
@@ -23,6 +24,7 @@
 #include <vmm/mesh/FiniteVolumeMeshBuilder2D.hpp>
 #include <vmm/mesh/FiniteVolumeStencilGraph2D.hpp>
 #include <vmm/raster/RasterField2D.hpp>
+#include <vmm/tessellation/CentroidalVoronoiRelaxation2D.hpp>
 #include <vmm/tessellation/TessellationResult.hpp>
 #include <vmm/tessellation/Tessellator2D.hpp>
 
@@ -30,6 +32,7 @@ namespace vmm::workflow {
 
 struct CompleteFiniteVolumeVoronoiMesh2DOptions final {
     vmm::tessellation::GenerationParams2D tessellation;
+    vmm::tessellation::LloydRelaxation2DOptions lloyd;
     vmm::mesh::FiniteVolumeMeshBuilder2DOptions mesh_builder;
     vmm::audit::MeshProjectionAudit2DOptions projection_audit;
     bool require_valid_mesh{true};
@@ -44,6 +47,7 @@ struct CompleteFiniteVolumeVoronoiMesh2D final {
     vmm::audit::MeshAuditReport connectivity_geometry_report;
     vmm::audit::MeshAuditReport patch_report;
     vmm::audit::MeshAuditReport projection_report;
+    std::vector<vmm::tessellation::LloydIterationReport2D> lloyd_iterations;
     std::optional<vmm::mesh::FiniteVolumeStencilGraph2D> stencil_graph;
     std::optional<vmm::raster::CellRasterSamples2D> raster_samples;
 

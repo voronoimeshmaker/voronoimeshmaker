@@ -2,7 +2,7 @@ VoronoiMeshMaker
 ================
 
 VoronoiMeshMaker prepares audited Voronoi finite-volume mesh packages for
-and diagnostic tools. It owns domain preparation, site generation,
+diagnostic tools and downstream models. It owns domain preparation, site generation,
 tessellation, finite-volume connectivity, boundary patch metadata, audits and
 mesh export.
 

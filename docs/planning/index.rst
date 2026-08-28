@@ -31,4 +31,5 @@ working synthesis used to guide implementation.
    block-15-completion
    block-16-completion
    block-17-completion
+   experimental-mesh-protocol
    mesh-generator-survey

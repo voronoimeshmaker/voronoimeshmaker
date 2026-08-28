@@ -24,6 +24,24 @@ optional patch rings, and filling cell-face connectivity.
    ``vmm::mesh::finite_volume_matrix_bandwidth_2d`` reports the matrix bandwidth
    implied by the internal stencil graph.
 
+``vmm::mesh::CellPermutation2D``
+   Stores bidirectional old-to-new and new-to-old cell mappings for solver-side
+   numbering experiments without changing the canonical mesh tables.
+
+``vmm::mesh::compute_cell_renumbering_2d``
+   Computes open-trait cell renumbering methods for canonical 2D meshes through
+   a function registry rather than a closed enum. The built-in references are
+   native numbering, deterministic random numbering, Reverse Cuthill-McKee
+   through Boost.Graph, Hilbert spatial sorting through CGAL, and internal
+   Morton/Z-order sorting. METIS nested dissection is present as an
+   optional-backend method and reports unsupported operation until a METIS
+   backend is enabled.
+
+``vmm::mesh::finite_volume_matrix_bandwidth_2d(graph, permutation)``
+   Reports the full matrix bandwidth after applying a candidate cell
+   permutation, allowing direct comparison between native, random, RCM, Hilbert,
+   Morton, and future nested-dissection orderings.
+
 Current legacy topology data
 ----------------------------
 
@@ -110,8 +128,10 @@ Integrated 2D workflow
    Runs the official 2D generation sequence from sites and a polygonal domain
    to clipped Voronoi cells, canonical finite-volume tables, mandatory audit
    reports, optional stencil graph, and optional cell-centre raster samples.
-   This is the preferred public entry point for other projects that need a
-   complete 2D VMM mesh rather than individual construction steps.
+   When requested, it first runs controlled Lloyd/CVT relaxation and preserves
+   the per-iteration generator displacement reports. This is the preferred
+   public entry point for other projects that need a complete 2D VMM mesh rather
+   than individual construction steps.
 
 Site patterns
 -------------

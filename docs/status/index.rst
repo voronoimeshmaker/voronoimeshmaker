@@ -28,8 +28,12 @@ Implemented now
 * Raster cell-field export through HDF5 2D packages.
 * Explicit CRS compatibility validation for GIS/raster workflows.
 * Integrated 2D finite-volume Voronoi workflow for complete audited mesh generation.
+* Controlled Lloyd/CVT relaxation for 2D clipped Voronoi meshes, including
+  per-iteration mean and maximum generator displacement.
 * Site-edit remeshing that rebuilds the complete 2D FV mesh and reruns audits.
 * Matrix bandwidth reporting from the solver-neutral 2D FV stencil graph.
+* 2D cell renumbering permutations for native, deterministic random, RCM,
+  Hilbert, Morton/Z-order, and future optional METIS nested-dissection backends.
 * Extruded 3D finite-volume mesh tables, vertical extrusion, audit, and text diagnostics.
 * HDF5 writer for audited extruded 3D FV mesh packages.
 * General 3D domain geometry with analytic primitives and triangular surfaces.
